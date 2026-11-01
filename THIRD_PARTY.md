@@ -4,6 +4,8 @@
 
 HyruleSync is authored by **Neimex23**. It is a project strongly driven by AI, developed with extensive assistance from **Codex · GPT-6.1 · High reasoning**. This describes the development process and does not claim ownership of third-party resources.
 
+Contributor: **Jhon Deved**.
+
 The new HyruleSync Windows implementation, local server, interface, monitoring, scripts and compass/checkmark icon are MIT licensed. Copyright © 2026 Neimex23 and HyruleSync contributors. The complete license is in `LICENSE` and inside the app under **About, licenses and credits**.
 
 Save parsing and completion conditions reference the behavior of TotK Unexplored. HyruleSync's MIT license does not relicense external data or artwork.
@@ -11,7 +13,8 @@ Save parsing and completion conditions reference the behavior of TotK Unexplored
 ## TotK Unexplored · catalog, backgrounds and category icons
 
 - Project: https://github.com/lud99/totk-unexplored
-- Original credits: lud99 and BigBear.
+- Author: lud99 (BigBear on GBAtemp).
+- Author's announcement: https://gbatemp.net/threads/totk-unexplored-easily-view-all-the-unexplored-collectibles-in-your-totk-savefile.637254/
 - Pinned commit: `a68ffbb083ac220c77f2e4ec3ce60d29924c1213`.
 - Resources: `romfs/map_data.json`, `romfs/map/*-medium.png`, selected `romfs/icons/` files.
 - Exact paths, sizes and SHA-256 hashes: `assets/resources.json` in the source.

@@ -4,7 +4,7 @@ Mapa local para consultar el progreso de **The Legend of Zelda: Tears of the Kin
 
 ## Para jugar
 
-1. Descarga `HyruleSync-v0.3.0-windows.zip` desde **Releases** del repositorio donde se publique. Extrae el ZIP en una carpeta con permiso de escritura.
+1. Descarga `HyruleSync-v0.4.0-windows.zip` desde **Releases** del repositorio donde se publique. Extrae el ZIP en una carpeta con permiso de escritura.
 2. Abre **HyruleSync.exe**. No necesitas instalar Python, Node ni TotK Unexplored.
 3. En el primer inicio pulsa **Descargar recursos del mapa**. Es una descarga de unos 44 MB desde un commit fijo de TotK Unexplored. Se comprueban los archivos con SHA-256 y se guardan en `.data/`.
 4. Pulsa **Seguir carpeta → Explorar carpetas** y elige la carpeta de **una cuenta**, la que contiene `slot_00`, `slot_01`, etc. También puedes pegar una ruta.
@@ -17,6 +17,8 @@ La pestaña muestra el mapa y el icono junto al reloj mantiene el lector funcion
 ## Funciones
 
 - Superficie, subsuelo y cielo; filtros por categoría y por estado.
+- Última posición guardada de Link, botón para centrarlo y seguimiento opcional que recuerda la elección y cambia de capa al actualizar.
+- Aviso de nuevas versiones con descarga del ZIP y botón «Reportar problema» que abre GitHub Issues.
 - Catálogo de 2.399 entradas; rutas de kologs y conexiones de cuevas.
 - Carga manual de `progress.sav`, consulta de coordenadas y diagnóstico por hash/GUID.
 - Elección del slot con mayor tiempo de juego, espera para evitar lecturas incompletas y conservación del último estado válido.
@@ -64,7 +66,9 @@ Los recursos deben coincidir con el commit fijado en `assets/resources.json`. El
 
 Sube el código de esta raíz, respetando `.gitignore`. No subas `.local/`, `.data/`, `.state/`, partidas ni los mapas descargados. El ZIP generado usa una lista explícita de archivos y excluye esos datos.
 
-La acción de GitHub **Build Windows** compila, ejecuta las pruebas del lector y adjunta un paquete descargable a cada ejecución. Puedes ejecutar la acción manualmente. Para ofrecer una descarga estable al público, crea una Release y adjunta ese ZIP y su archivo `.sha256`. El workflow no publica Releases automáticamente.
+La acción **Build Windows** compila, prueba y adjunta un paquete a cada ejecución. **Publish Windows release** publica automáticamente la Release, ZIP y SHA-256 al subir un tag estable `vX.Y.Z`: primero sube el commit y luego ejecuta `git tag v0.4.0` y `git push origin v0.4.0`. Usa un tag nuevo para cada versión y deja que el workflow cree la Release. La versión del tag se incorpora en ambos ejecutables, créditos y nombre del ZIP; no necesitas editarla a mano para publicar. Para reproducirlo localmente: `scripts/build.ps1 -Version v0.4.0`.
+
+La interfaz busca la última Release estable al abrirse y una vez por hora; también puedes usar «Acerca de → Buscar actualizaciones». Solo ofrece versiones numéricamente mayores con el paquete Windows esperado. Descarga el ZIP, cierra HyruleSync y reemplaza los ejecutables conservando `.data/` y `.state/`. La consulta no envía guardados ni rutas locales y sus errores no interrumpen Autosync.
 
 Este directorio queda preparado para Git; no se crea un repositorio remoto ni se publica contenido automáticamente.
 

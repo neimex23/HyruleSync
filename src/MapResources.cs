@@ -60,7 +60,7 @@ public static class MapResources {
                     Directory.CreateDirectory(Path.GetDirectoryName(target));
                     var request = (HttpWebRequest)WebRequest.Create(
                         "https://raw.githubusercontent.com/" + Manifest.repository + "/" + Manifest.commit + "/" + item.source);
-                    request.UserAgent = "HyruleSync/0.3.0";
+                    request.UserAgent = "HyruleSync/" + Updates.CurrentVersion;
                     request.Timeout = 30000; request.ReadWriteTimeout = 30000;
                     long length = 0;
                     using (var response = request.GetResponse())

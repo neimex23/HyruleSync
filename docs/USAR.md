@@ -11,6 +11,10 @@ Puedes cerrar la pestaña: el lector continúa junto al reloj de Windows. Haz do
 
 **Cargar .sav** consulta una partida manualmente y desactiva Autosync. Para seguir jugando con actualizaciones, vuelve a seleccionar la carpeta o activa el interruptor. Si el juego está escribiendo un archivo, se conserva el último estado válido y se reintenta.
 
+**Centrar en Link** muestra su última posición guardada. Activa **Seguir a Link al actualizar** para centrar la vista y cambiar a su capa con cada nuevo guardado leído, conservando el zoom. La opción empieza desactivada y se recuerda al reiniciar. La posición cambia al guardar la partida; si no se puede leer, se indica en pantalla.
+
+La app busca actualizaciones estables de GitHub al abrir la interfaz y una vez por hora. Puedes reintentar desde **Acerca de → Buscar actualizaciones**. Si hay una versión nueva con paquete Windows, aparece **Descargar actualización**. Descarga el ZIP, cierra HyruleSync y reemplaza los ejecutables conservando `.data/` y `.state/`. Los errores de conexión no interrumpen el seguimiento. **Reportar problema** abre un nuevo issue del repositorio para que lo completes y envíes.
+
 HyruleSync solo lee los guardados. Sus preferencias están en `.state/` y los mapas descargados en `.data/`, junto al ejecutable. Conserva esas carpetas para evitar configurar o descargar de nuevo. No compartas `.state/` ni tus partidas.
 
 El total es el del catálogo, no el porcentaje oficial de TOTK. Las condiciones y datos proceden del proyecto TotK Unexplored y conservan sus limitaciones.

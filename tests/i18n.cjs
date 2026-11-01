@@ -22,7 +22,7 @@ for(const match of app.matchAll(/\bt\('((?:[^'\\]|\\.)*)'/g))
   assert.ok(Object.hasOwn(i18n.translations,match[1]),'Missing dynamic translation: '+match[1]);
 const html = fs.readFileSync(path.join(root,'web/index.html'),'utf8');
 const unchanged = new Set(['HyruleSync','Hyrule','Sync','progress.sav','TotK Unexplored','—','+','−','⛶','×',
-  'Neimex23','MIT · Copyright © 2026 Neimex23 and HyruleSync contributors','TotK Unexplored · lud99 / BigBear',
+  'Neimex23','Jhon Deved','MIT · Copyright © 2026 Neimex23 and HyruleSync contributors','TotK Unexplored · lud99 (BigBear)',
   'Leaflet','Savegame Editors · Marc Robledo','ZeldaMods · objmap-totk','ZeldaMods · radar-totk','Zelda Dungeon']);
 for(const match of html.matchAll(/>([^<>]+)</g)) {
   const text=match[1].trim();

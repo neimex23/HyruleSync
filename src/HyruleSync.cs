@@ -36,6 +36,14 @@ public class SaveReader {
   for(int p=guidStart;p<bytes.Length-7;p+=8){ulong g=BitConverter.ToUInt64(bytes,p);if(g==0)break;guids.Add(g);}
   int t;if(offsets.TryGetValue(0xe573f564,out t))playtime=U32(t);
  }
+ public Position PlayerPosition(){
+  // PlayerStatus.SavePos is a pointer to three little-endian float32 values.
+  int entry;if(!offsets.TryGetValue(0xc884818du,out entry))return null;
+  uint address=U32(entry);if(address<(uint)(tableEnd+8)||address>(uint)(bytes.Length-12))return null;
+  int p=(int)address;double x=BitConverter.ToSingle(bytes,p),y=BitConverter.ToSingle(bytes,p+4),z=BitConverter.ToSingle(bytes,p+8);
+  if(Double.IsNaN(x)||Double.IsInfinity(x)||Double.IsNaN(y)||Double.IsInfinity(y)||Double.IsNaN(z)||Double.IsInfinity(z))return null;
+  return new Position{x=x,y=y,z=z};
+ }
  public int State(MapPoint p,out string raw){
   if(!String.IsNullOrEmpty(p.guid)){ulong guid=UInt64.Parse(p.guid);bool found=guids.Contains(guid);raw=found?Locale.T("GUID presente","GUID present"):Locale.T("GUID ausente","GUID absent");return found?1:0;}
   int offset;if(!offsets.TryGetValue(UInt32.Parse(p.hash),out offset)){raw=Locale.T("Hash ausente del guardado","Hash missing from the save");return -1;}
@@ -46,9 +54,9 @@ public class SaveReader {
   return status!=0?1:0;
  }
 }
-public class Snapshot {public string revision,file,savedAt,format;public uint playtime;public int[] states;public string[] values;public int tableEnd,guidStart;}
+public class Snapshot {public string revision,file,savedAt,format;public uint playtime;public int[] states;public string[] values;public int tableEnd,guidStart;public Position playerPosition;}
 public class Cached {public long ticks,size;public DateTime observed;public Snapshot snapshot;public string error="";}
-public class Settings {public string source="",mode="file";public bool auto=true;}
+public class Settings {public string source="",mode="file";public bool auto=true,followLink=false;}
 public static class Program {
  static readonly string Home=AppDomain.CurrentDomain.BaseDirectory;
  static readonly object Gate=new object(),JsonGate=new object();
@@ -74,7 +82,7 @@ public static class Program {
  static Snapshot Parse(byte[] data,string path){
   var reader=new SaveReader(data);int[] states=new int[catalog.points.Count];string[] values=new string[states.Length];
   for(int i=0;i<states.Length;i++)states[i]=reader.State(catalog.points[i],out values[i]);
-  return new Snapshot{revision=Sha(data),file=path,savedAt=(File.Exists(path)?File.GetLastWriteTimeUtc(path):DateTime.UtcNow).ToString("o"),format=reader.format,playtime=reader.playtime,states=states,values=values,tableEnd=reader.tableEnd,guidStart=reader.guidStart};
+  return new Snapshot{revision=Sha(data),file=path,savedAt=(File.Exists(path)?File.GetLastWriteTimeUtc(path):DateTime.UtcNow).ToString("o"),format=reader.format,playtime=reader.playtime,states=states,values=values,tableEnd=reader.tableEnd,guidStart=reader.guidStart,playerPosition=reader.PlayerPosition()};
  }
  static void SaveSettings(){try{Directory.CreateDirectory(Path.Combine(Home,".state"));File.WriteAllText(Path.Combine(Home,".state","settings.json"),Serialize(settings),Encoding.UTF8);}catch{}}
  static void SetSource(string source,string mode){lock(Gate){settings.source=source;settings.mode=mode;if(mode=="folder")settings.auto=true;force=true;cache.Clear();imported=null;warning="";SaveSettings();}}
@@ -111,7 +119,7 @@ public static class Program {
   if(selected!=null&&selected.revision!=lastRevision){lastRevision=selected.revision;changedAt=DateTime.UtcNow.ToString("o");updateCount++;}
   var errors=cache.Where(c=>c.Value.error!="").ToArray();string message=warning;
   if(errors.Length>0)message=Locale.T("No se pudo leer ","Could not read ")+Path.GetFileName(Path.GetDirectoryName(errors[0].Key))+": "+errors[0].Value.error+Locale.T(" Se conserva el último estado válido."," The last valid state is preserved.");
-  return new{checkedAt=checkedAt,changedAt=changedAt,updateCount=updateCount,picking=picking,status=message!=""?"error":selected==null?"empty":force?"reading":"ok",message=message,source=settings.source,mode=settings.mode,auto=settings.auto,snapshot=selected,
+  return new{checkedAt=checkedAt,changedAt=changedAt,updateCount=updateCount,picking=picking,status=message!=""?"error":selected==null?"empty":force?"reading":"ok",message=message,source=settings.source,mode=settings.mode,auto=settings.auto,followLink=settings.followLink,snapshot=selected,
    slots=candidates.Select(c=>new{file=c.snapshot.file,playtime=c.snapshot.playtime,savedAt=c.snapshot.savedAt}).ToArray()};
  }}
  static object BrowseDirectories(string query){
@@ -164,6 +172,7 @@ public static class Program {
     }
     if(first[0]=="GET"&&path=="api/config"){mime="application/json; charset=utf-8";bytes=Encoding.UTF8.GetBytes(Serialize(new{language=Locale.Language,windowsCulture=Locale.WindowsCulture}));}
     else if(first[0]=="GET"&&path=="api/credits"){mime="application/json; charset=utf-8";bytes=MapResources.Embedded("credits.json");}
+    else if(first[0]=="GET"&&path=="api/updates"){Updates.Check(false);mime="application/json; charset=utf-8";bytes=Encoding.UTF8.GetBytes(Serialize(Updates.State()));}
     else if(first[0]=="GET"&&path=="api/setup"){mime="application/json; charset=utf-8";bytes=Encoding.UTF8.GetBytes(Serialize(MapResources.State()));}
     else if(first[0]=="GET"&&path=="api/folders"){
      mime="application/json; charset=utf-8";
@@ -176,6 +185,8 @@ public static class Program {
      string actionError=null;
      try{
      if(path=="api/prepare-map")MapResources.StartDownload();
+     else if(path=="api/check-updates")Updates.Check(true);
+     else if(path=="api/follow-on"||path=="api/follow-off"){lock(Gate){settings.followLink=path=="api/follow-on";SaveSettings();}}
      else if(!MapResources.Ready)throw new InvalidDataException(Locale.T("Primero prepara los recursos del mapa.","Prepare the map resources first."));
      else if(path=="api/upload"){
       var next=Parse(body,"progress.sav");

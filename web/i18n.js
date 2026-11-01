@@ -71,6 +71,7 @@ window.I18N = (() => {
     'No se pudo iniciar la descarga.':'Could not start the download.',
     'Acerca de, licencias y créditos':'About, licenses and credits', 'Acerca de HyruleSync':'About HyruleSync',
     'Autoría':'Authorship', 'Un proyecto fuertemente impulsado por IA.':'A project strongly driven by AI.',
+    'Contribuidores':'Contributors',
     'Desarrollado por Neimex23 con amplia asistencia de Codex · GPT-6.1 · razonamiento Alto.':'Developed by Neimex23 with extensive assistance from Codex · GPT-6.1 · High reasoning.',
     'Código de HyruleSync':'HyruleSync code', 'Ver licencia MIT':'View MIT license', 'Ver licencia de Leaflet':'View Leaflet license',
     'Avisos y procedencia de terceros':'Third-party notices and provenance', 'Proyectos y referencias':'Projects and references',
@@ -80,7 +81,18 @@ window.I18N = (() => {
     'No se encontró una licencia explícita de los recursos de Unexplored en la versión revisada. Se descargan por separado y conservan su procedencia.':'No explicit license for Unexplored resources was found in the reviewed version. Resources are downloaded separately and retain their provenance.',
     'Proyecto no oficial. The Legend of Zelda y sus recursos pertenecen a sus titulares, incluida Nintendo.':'Unofficial project. The Legend of Zelda and its assets belong to their respective owners, including Nintendo.',
     'Los textos originales de licencia se conservan en inglés.':'Original license texts are preserved in English.',
-    'Cerrar':'Close', 'No se pudo cargar el texto de licencia.':'Could not load the license text.'
+    'Cerrar':'Close', 'No se pudo cargar el texto de licencia.':'Could not load the license text.',
+    'Reportar problema':'Report a problem', 'Seguir a Link al actualizar':'Follow Link on updates',
+    'Centrar en Link':'Center on Link', 'Última posición conocida de Link':'Last known position of Link',
+    'La posición de Link no está disponible en este guardado.':'Link’s position is unavailable in this save.',
+    'Última posición de Link: {coords} · guardado {time}':'Last position of Link: {coords} · saved {time}',
+    'Posición del último guardado leído; se actualiza al guardar la partida.':'Position from the last save read; updates when you save the game.',
+    'Descargar actualización':'Download update', 'Buscar actualizaciones':'Check for updates',
+    'Buscando actualizaciones…':'Checking for updates…', 'Tienes la última versión.':'You have the latest version.',
+    'Todavía no hay versiones publicadas.':'No releases have been published yet.',
+    'Nueva versión disponible: v{version}':'New version available: v{version}',
+    'No se pudieron buscar actualizaciones. Puedes reintentar.':'Could not check for updates. You can try again.',
+    'Extrae el ZIP y reemplaza los ejecutables con HyruleSync cerrado. Conserva las carpetas .data y .state.':'Extract the ZIP and replace the executables with HyruleSync closed. Keep the .data and .state folders.'
   };
   function t(source, values = {}) {
     let text = language === 'es' ? source : (en[source] ?? source);

@@ -7,7 +7,8 @@ El ejecutable Windows, servidor local, interfaz, seguimiento, scripts e icono de
 ## TotK Unexplored: catálogo, mapas e iconos de categorías
 
 - Proyecto: https://github.com/lud99/totk-unexplored
-- Créditos del proyecto de origen: lud99 y BigBear.
+- Autor: lud99 (BigBear en GBAtemp).
+- Anuncio del autor: https://gbatemp.net/threads/totk-unexplored-easily-view-all-the-unexplored-collectibles-in-your-totk-savefile.637254/
 - Commit fijado: `a68ffbb083ac220c77f2e4ec3ce60d29924c1213`.
 - Recursos: `romfs/map_data.json`, fondos `romfs/map/*-medium.png`, iconos seleccionados de `romfs/icons/`.
 - Ubicaciones, tamaños y hashes exactos: `assets/resources.json`.
@@ -27,6 +28,8 @@ Se redistribuyen sus archivos JavaScript y CSS. Licencia BSD-2-Clause conservada
 ## Autoría y declaración de IA
 
 **Neimex23** es el autor de HyruleSync. Es un proyecto fuertemente impulsado por IA, desarrollado con amplia asistencia de **Codex · GPT-6.1 · razonamiento Alto**. La declaración no atribuye autoría sobre los recursos de terceros.
+
+Contribuidor: **Jhon Deved**.
 
 TotK Unexplored reconoce también estas referencias para sus datos, nombres y rutas: https://github.com/marcrobledo/savegame-editors, https://github.com/zeldamods/objmap-totk, https://github.com/zeldamods/radar-totk y https://zeldadungeon.net. Se conservan como referencias del origen de los datos, no como bibliotecas incluidas en HyruleSync.
 

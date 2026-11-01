@@ -25,6 +25,8 @@ To close all HyruleSync instances in the current Windows session, run **HyruleSy
 ## Features and scope
 
 - Surface, Depths and Sky; category/state filters and coordinates.
+- Link's last saved position, a **Center on Link** button and optional **Follow Link on updates** (remembered across restarts, off by default). Following also selects his map layer and keeps your zoom. Position updates when a save is read.
+- Stable GitHub release notifications with a Windows ZIP download button, plus **Report a problem** to open GitHub Issues.
 - 2,399 catalog entries, Korok routes and cave connections.
 - Manual `progress.sav` loading and hash/GUID diagnostics.
 - Highest-playtime selection, stable-write delay and last-valid-state recovery.
@@ -52,6 +54,7 @@ The Windows .NET Framework C# compiler is required. No NuGet packages, Python or
 python tests/autosync.py --save 'D:\your-account\slot_00\progress.sav'
 # Optional interface translation checks (requires Node):
 node tests/i18n.cjs
+node tests/map-tracking.cjs
 ```
 
 To import an existing matching resource repository instead of downloading:
@@ -79,6 +82,15 @@ Imports are checked against the pinned manifest. Regenerate the original HyruleS
 
 ## Sharing and credits
 
-Respect `.gitignore`. Do not commit `.local/`, `.data/`, `.state/`, saves or downloaded maps. The ZIP uses an explicit allowlist. GitHub **Build Windows** builds, tests and attaches a download; it does not publish Releases automatically.
+Respect `.gitignore`. Do not commit `.local/`, `.data/`, `.state/`, saves or downloaded maps. The ZIP uses an explicit allowlist. GitHub **Build Windows** builds, tests and attaches a download. **Publish Windows release** publishes a stable Release when you push a tag such as `v0.4.0`:
+
+```sh
+git tag v0.4.0
+git push origin v0.4.0
+```
+
+Push the commit containing the changes first, then tag that commit. Use a new `vX.Y.Z` tag for every release (for example `v0.4.1`); prerelease or named tags are not supported. The workflow builds both executables, embeds the tag version in the EXEs and credits, tests, then publishes `HyruleSync-vX.Y.Z-windows.zip` and its SHA-256 file. Let the workflow create the Release; do not publish one manually for the same tag. A local tagged build can be reproduced with `scripts/build.ps1 -Version v0.4.0`.
+
+While the interface is open, HyruleSync checks GitHub's latest stable Release on startup and at most once per hour. **About → Check for updates** allows a manual retry (at most once per minute). Only a newer numeric version with the expected uploaded Windows package is offered. Offline or failed checks do not interrupt save monitoring. Update checks send no saves or local paths. The user downloads the ZIP, closes HyruleSync and replaces the executables, keeping `.data/` and `.state/`.
 
 HyruleSync runs independently of the Unexplored app. Its current catalog and artwork still originate from that project. See [THIRD_PARTY.md](THIRD_PARTY.md). New HyruleSync code is MIT licensed; this does not license third-party maps, data or artwork. This is an unofficial Nintendo-related project.

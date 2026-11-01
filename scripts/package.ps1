@@ -1,8 +1,11 @@
-param([string]$OutputDirectory = '')
+param([string]$OutputDirectory = '', [string]$Version = '')
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 if (-not $OutputDirectory) { $OutputDirectory = Join-Path $projectRoot 'outputs/HyruleSync' }
-$version = (Get-Content -LiteralPath (Join-Path $projectRoot 'assets/credits.json') -Raw | ConvertFrom-Json).version
+$builtVersion = [Diagnostics.FileVersionInfo]::GetVersionInfo((Join-Path $OutputDirectory 'HyruleSync.exe')).FileVersion
+$actualVersion = ([version]$builtVersion).ToString(3)
+if ($Version -and $Version -ne $actualVersion) { throw 'Package version does not match the built executable.' }
+$Version = $actualVersion
 $archiveName = "HyruleSync-v$version-windows.zip"
 $archive = Join-Path $projectRoot "outputs/$archiveName"
 $items = @('HyruleSync.exe', 'HyruleSync.Stop.exe', 'README.md', 'LEEME.es.md', 'THIRD_PARTY.md', 'THIRD_PARTY.es.md', 'LICENSE', 'licenses') | ForEach-Object { Join-Path $OutputDirectory $_ }

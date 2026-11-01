@@ -2,7 +2,7 @@
 const t=(key,values)=>I18N.t(key,values), $=id=>document.getElementById(id), fmt=n=>new Intl.NumberFormat(I18N.language).format(n), norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const descriptions={'shrines':'Clear · 1654019904','carry_koroks':'Clear · 1654019904','lightroots':'Open · 404286466'};
-let catalog,categories,map,background,objects,routes,snapshot=null,revision='',selected=null,layer='surface',active=new Set(['hidden_koroks','carry_koroks','shrines']),points=[],polling=false,source='',sourceMode='file',toastTimer;
+let catalog,categories,map,background,objects,routes,linkMarker,snapshot=null,revision='',selected=null,layer='surface',active=new Set(['hidden_koroks','carry_koroks','shrines']),points=[],polling=false,source='',sourceMode='file',toastTimer,followLink=false,checkingUpdates=false,updateTimer;
 const prefKey='hyrulesync.preferences';let prefs={};try{prefs=JSON.parse(localStorage.getItem(prefKey)||'{}');}catch{}
 const pointState=p=>snapshot?snapshot.states[p.index]:-1;
 // The same layer thresholds and coordinate conversion as MapObject.cpp and ObjectInfo.cpp.
@@ -30,8 +30,23 @@ function switchLayer(next){
  // Upstream: a centred 4500x4500 image and MapScale=0.375 => 12000x12000 world units.
  background=L.imageOverlay(`assets/map/${layer}-medium.png`,[[-6000,-6000],[6000,6000]],{interactive:false}).addTo(map);background.bringToBack();savePrefs();render();
 }
+const playerLayer=p=>p.y<=-50?'depths':p.y>=750?'sky':'surface';
+function centerLink(){
+ const p=snapshot?.playerPosition;if(!p||!map)return;
+ if(layer!==playerLayer(p))switchLayer(playerLayer(p));
+ map.setView(ll(p),map.getZoom(),{animate:false});
+}
+function renderLink(){
+ if(linkMarker){map.removeLayer(linkMarker);linkMarker=null;}
+ const p=snapshot?.playerPosition;$('centerLink').disabled=!p;
+ $('linkPosition').textContent=p?t('Última posición de Link: {coords} · guardado {time}',{coords:coordinateString(p),time:new Date(snapshot.savedAt).toLocaleString(I18N.language)}):t('La posición de Link no está disponible en este guardado.');
+ if(!p||playerLayer(p)!==layer)return;
+ const icon=L.divIcon({className:'link-marker',html:'&#9650;',iconSize:[28,28],iconAnchor:[14,14]});
+ linkMarker=L.marker(ll(p),{icon,title:t('Última posición conocida de Link'),alt:t('Última posición conocida de Link'),zIndexOffset:2000}).addTo(map);
+ linkMarker.bindTooltip(esc(t('Última posición conocida de Link'))+'<br>'+esc(coordinateString(p)),{direction:'top'});
+}
 function render(){
- if(!map||!catalog)return;const query=norm($('search').value.trim()),numeric=/^-?\d+[\s,;]+-?\d+(?:[\s,;]+-?\d+)?$/.test(query),mode=$('showMode').value;
+ if(!map||!catalog)return;renderLink();const query=norm($('search').value.trim()),numeric=/^-?\d+[\s,;]+-?\d+(?:[\s,;]+-?\d+)?$/.test(query),mode=$('showMode').value;
  points=catalog.points.filter(p=>inLayer(p)&&active.has(p.category)&&(!query||numeric||norm(p.name+' '+p.korokType+' '+p.internalName+' '+categories[p.category].name).includes(query))&&(mode==='all'||pointState(p)===(mode==='missing'?0:mode==='found'?1:-1)));
  $('visibleCount').textContent=t('{n} puntos filtrados',{n:fmt(points.length)});objects.clearLayers();routes.clearLayers();
  const bounds=map.getBounds().pad(.15),visible=points.filter(p=>bounds.contains(ll(p.position)));
@@ -82,10 +97,12 @@ async function poll(){
   $('liveStatus').textContent=state.auto&&source?t('● Observando cambios')+(state.changedAt?t(' · mapa actualizado {time}',{time:new Date(state.changedAt).toLocaleTimeString(I18N.language)}):''):source?t('Autosync en pausa · puedes actualizar manualmente'):t('Elige una carpeta para seguir tu partida automáticamente.');
   $('liveStatus').classList.toggle('live',state.auto&&!!source);
   $('openSave').disabled=state.picking;$('openFolder').disabled=state.picking;$('refresh').disabled=!source;
+  const wasFollowing=followLink;followLink=state.followLink===true;$('followLink').checked=followLink;
   const next=state.snapshot;$('welcome').hidden=!!next;
   if(next){
    const seconds=next.playtime;$('saveInfo').textContent=t('{file} · {h} h {m} min · formato {format}',{file:next.file.split(/[\\/]/).slice(-2).join(' / '),h:Math.floor(seconds/3600),m:Math.floor(seconds%3600/60),format:next.format});
-   if(next.revision!==revision||next.file!==snapshot?.file){const previous=!!snapshot;snapshot=next;revision=next.revision;updateCounts();render();if(previous)toast('Mapa actualizado con el guardado');}
+   if(next.revision!==revision||next.file!==snapshot?.file){const previous=!!snapshot;snapshot=next;revision=next.revision;updateCounts();if(followLink)centerLink();render();if(previous)toast('Mapa actualizado con el guardado');}
+   else if(followLink&&!wasFollowing)centerLink();
   }else{$('saveInfo').textContent='';if(snapshot){snapshot=null;revision='';updateCounts();render();}}
  }catch(e){$('statusDot').className='error';$('statusTitle').textContent=t('Ejecutable desconectado');$('error').hidden=false;$('error').textContent=t('Abre HyruleSync.exe para reanudar. Se conserva la última vista.');}finally{polling=false;}
 }
@@ -94,6 +111,7 @@ async function init(){
  if(Array.isArray(prefs.active))active=new Set(prefs.active.filter(c=>categories[c]));$('showMode').value=['missing','found','all','unknown'].includes(prefs.mode)?prefs.mode:'missing';$('showPaths').checked=prefs.paths!==false;buildCategories();updateCounts();
  map=L.map('map',{crs:L.CRS.Simple,minZoom:-5,maxZoom:2,zoomSnap:.25,zoomDelta:.5,zoomControl:false,attributionControl:false,maxBounds:[[-7500,-7500],[7500,7500]],maxBoundsViscosity:.8}).fitBounds([[-6000,-6000],[6000,6000]]);
  routes=L.layerGroup().addTo(map);objects=L.layerGroup().addTo(map);switchLayer(prefs.layer||'surface');map.on('moveend zoomend',render);map.on('mousemove',e=>$('mouseCoords').textContent=`${Math.trunc(e.latlng.lng)}, ${Math.trunc(e.latlng.lat)}`);
+ $('centerLink').onclick=centerLink;$('followLink').onchange=async()=>{const enabled=$('followLink').checked;$('followLink').disabled=true;try{await command(enabled?'follow-on':'follow-off');}catch(e){$('followLink').checked=followLink;toast(e.message);}finally{$('followLink').disabled=false;}};
  document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=()=>switchLayer(b.dataset.layer));$('openSave').onclick=chooseSave;$('welcomeLoad').onclick=chooseSave;$('saveFile').onchange=()=>uploadSave($('saveFile').files[0]);$('openFolder').onclick=chooseFolder;$('refresh').onclick=()=>command('refresh').catch(e=>toast(e.message));$('autosync').onchange=()=>{if($('autosync').checked&&!source)chooseFolder();else command($('autosync').checked?'auto-on':'auto-off').catch(e=>toast(e.message));};
  $('browseFolder').onclick=()=>browseFolders($('folderPath').value);
  $('folderUp').onclick=()=>browseFolders($('folderUp').dataset.parent||'');$('folderDrives').onclick=()=>browseFolders('');
@@ -120,11 +138,28 @@ $('prepareResources').onclick=async()=>{try{const res=await fetch('api/prepare-m
 async function showLicense(name,title){
  $('licenseTitle').textContent=title;$('licenseText').textContent='';$('licenseDialog').showModal();try{const res=await fetch('legal/'+name);if(!res.ok)throw Error(t('No se pudo cargar el texto de licencia.'));$('licenseText').textContent=await res.text();}catch(e){$('licenseText').textContent=e.message;}
 }
+async function checkUpdates(manual=false){
+ if(checkingUpdates)return;checkingUpdates=true;clearTimeout(updateTimer);$('checkUpdates').disabled=true;
+ try{
+  if(manual){const response=await fetch('api/check-updates',{method:'POST',body:''});if(!response.ok)throw Error();}
+  const response=await fetch('api/updates',{cache:'no-store'});if(!response.ok)throw Error();const state=await response.json();
+  $('aboutVersion').textContent='HyruleSync '+state.currentVersion;
+  $('updateNotice').hidden=!state.available;
+  $('updateMessage').textContent=state.available?t('Nueva versión disponible: v{version}',{version:state.latestVersion}):'';
+  // The server accepts only this repository's exact Windows release asset.
+  const download=$('downloadUpdate');download.removeAttribute('href');
+  if(state.available&&state.downloadUrl)download.href=state.downloadUrl;
+  $('updateStatus').textContent=state.busy?t('Buscando actualizaciones…'):state.error|| (state.available?t('Nueva versión disponible: v{version}',{version:state.latestVersion}):state.latestVersion?t('Tienes la última versión.'):t('Todavía no hay versiones publicadas.'));
+  updateTimer=setTimeout(()=>checkUpdates(),state.busy?1000:60000);
+ }catch{$('updateStatus').textContent=t('No se pudieron buscar actualizaciones. Puedes reintentar.');updateTimer=setTimeout(()=>checkUpdates(),60000);}
+ finally{checkingUpdates=false;$('checkUpdates').disabled=false;}
+}
 async function start(){
  try{const config=await(await fetch('api/config')).json();I18N.setLanguage(config.language);}catch{I18N.setLanguage('en');}
  I18N.apply();
- const openAbout=async()=>{$('aboutDialog').showModal();try{const credits=await(await fetch('api/credits')).json();$('aboutVersion').textContent='HyruleSync '+credits.version;}catch{}};
+ const openAbout=()=>{$('aboutDialog').showModal();checkUpdates();};
  $('aboutOpen').onclick=openAbout;$('setupAboutOpen').onclick=openAbout;
+ $('checkUpdates').onclick=()=>checkUpdates(true);checkUpdates();
  document.querySelectorAll('[data-license]').forEach(button=>button.onclick=()=>showLicense(button.dataset.license,button.textContent));
  $('thirdPartyNotice').onclick=()=>showLicense('third-party.'+I18N.language+'.md',t('Avisos y procedencia de terceros'));
  boot();

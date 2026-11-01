@@ -16,6 +16,10 @@ jobs:
       - name: Test save reader with synthetic fixtures
         shell: powershell
         run: ./scripts/test.ps1
+      - name: Test interface translations and Link tracking
+        run: |
+          node tests/i18n.cjs
+          node tests/map-tracking.cjs
       - uses: actions/upload-artifact@v7
         with:
           name: HyruleSync-Windows
