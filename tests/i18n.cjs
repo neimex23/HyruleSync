@@ -21,9 +21,9 @@ const app = fs.readFileSync(path.join(root,'web/app.js'),'utf8');
 for(const match of app.matchAll(/\bt\('((?:[^'\\]|\\.)*)'/g))
   assert.ok(Object.hasOwn(i18n.translations,match[1]),'Missing dynamic translation: '+match[1]);
 const html = fs.readFileSync(path.join(root,'web/index.html'),'utf8');
-const unchanged = new Set(['HyruleSync','Hyrule','Sync','progress.sav','TotK Unexplored','—','+','−','⛶','×',
-  'Neimex23','Jhon Deved','MIT · Copyright © 2026 Neimex23 and HyruleSync contributors','TotK Unexplored · lud99 (BigBear)',
-  'Leaflet','Savegame Editors · Marc Robledo','ZeldaMods · objmap-totk','ZeldaMods · radar-totk','Zelda Dungeon']);
+const unchanged = new Set(['HyruleSync','Hyrule','Sync','progress.sav','TotK Unexplored','—','+','−','⛶','×','45%',
+  'Neimex23','MIT · Copyright © 2026 Neimex23 and HyruleSync contributors','TotK Unexplored · lud99 (BigBear)',
+  'Leaflet','Savegame Editors · Marc Robledo','ZeldaMods · objmap-totk','ZeldaMods · radar-totk','Zelda Dungeon','Español','English']);
 for(const match of html.matchAll(/>([^<>]+)</g)) {
   const text=match[1].trim();
   if(text)assert.ok(unchanged.has(text)||Object.hasOwn(i18n.translations,text),'Missing static translation: '+text);
@@ -31,4 +31,7 @@ for(const match of html.matchAll(/>([^<>]+)</g)) {
 for(const match of html.matchAll(/(?:title|aria-label)="([^"]+)"/g))
   assert.ok(Object.hasOwn(i18n.translations,match[1]),'Missing accessible translation: '+match[1]);
 assert.match(i18n.translations['Desarrollado por Neimex23 con amplia asistencia de Codex · GPT-6.1 · razonamiento Alto.'],/High reasoning/);
+const credits=JSON.parse(fs.readFileSync(path.join(root,'assets/credits.json'),'utf8'));
+assert.ok(!credits.contributors.includes('Jhon Deved'));
+assert.ok(credits.upstreamContributors.some(c=>c.project==='TotK Unexplored'&&c.name==='Jhon Deved'));
 console.log('English/Spanish coverage, interpolation, accessible labels and author/AI credit checks passed.');

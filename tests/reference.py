@@ -1,9 +1,10 @@
 """Independent implementation of upstream SavefileIO.cpp, checked per object."""
 import json,pathlib,struct,subprocess,hashlib,collections,argparse
-parser=argparse.ArgumentParser();parser.add_argument("--save",nargs="+",required=True,type=pathlib.Path);parser.add_argument("--upstream-save",type=pathlib.Path);args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument("--save",nargs="+",required=True,type=pathlib.Path);parser.add_argument("--upstream-save",type=pathlib.Path);parser.add_argument("--app",type=pathlib.Path);args=parser.parse_args()
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-APP=ROOT/'outputs/HyruleSync';DATA=json.loads((APP/'.data/map_data.json').read_text())
+APP=args.app or ROOT/'outputs/HyruleSync';DATA=json.loads((APP/'.data/map_data.json').read_text())
 ORDER=['hidden_koroks','carry_koroks','shrines','lightroots','caves','bubbuls','wells','chasms','locations','hinoxes','taluses','moldugas','flux_constructs','froxes','gleeoks','sages_wills','old_maps','addison_signposts','schema_stones','yiga_schematics']
+TOWERS=json.loads((ROOT/'assets/towers.json').read_text(encoding='utf-8'))
 WORK=ROOT/'.local/verification';WORK.mkdir(parents=True,exist_ok=True)
 def reference(data):
     hashes={};guid_start=None
@@ -24,6 +25,8 @@ def reference(data):
             if p['completion_hash'] not in hashes:states.append(-1);continue
             value=hashes[p['completion_hash']]
             states.append(int(value==1654019904 if cat in ('shrines','carry_koroks') else value==404286466 if cat=='lightroots' else value!=0))
+    for tower in TOWERS:
+        key=int(tower['activationHash']);states.append(int(hashes[key]!=0) if key in hashes else -1)
     return states,hashes,guid_start
 def inspect(file,label):
     out=WORK/(label+'.json');run=subprocess.run([str(APP/'HyruleSync.exe'),'--inspect',str(file),str(out)],creationflags=subprocess.CREATE_NO_WINDOW)

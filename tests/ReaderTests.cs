@@ -33,8 +33,10 @@ public static class ReaderTests {
             Assert(!Updates.TryVersion(tag,out version),"Reject unsupported tag "+tag);
         string prefix="https://github.com/"+Updates.Repository;
         var asset=new ReleaseAsset{name="HyruleSync-v1.10.0-windows.zip",browser_download_url=prefix+"/releases/download/v1.10.0/HyruleSync-v1.10.0-windows.zip",size=100,state="uploaded"};
-        var release=new ReleaseInfo{tag_name="v1.10.0",assets=new[]{asset}};
+        var release=new ReleaseInfo{tag_name="v1.10.0",body="## Changes\n<script>alert(1)</script>",assets=new[]{asset}};
         Assert(Updates.Evaluate(release,"1.9.0").available,"Compare version numerically");
+        Assert(Updates.Evaluate(release,"1.9.0").releaseNotes==release.body,"Return release notes as unmodified text");
+        release.body=null;Assert(Updates.Evaluate(release,"1.10.0").releaseNotes=="","Missing notes are optional for current release");
         Assert(!Updates.Evaluate(release,"1.10.0").available,"Do not offer current release");
         Assert(!Updates.Evaluate(release,"2.0.0").available,"Do not offer downgrade");
         release.prerelease=true;Assert(!Updates.Evaluate(release,"1.0.0").available,"Ignore prerelease");release.prerelease=false;
@@ -44,6 +46,70 @@ public static class ReaderTests {
         asset.browser_download_url=prefix+"/releases/download/v1.10.0/HyruleSync-v1.10.0-windows.zip";asset.state="new";
         Assert(!Updates.Evaluate(release,"1.0.0").available,"Ignore unfinished upload");
         release.assets=new ReleaseAsset[0];Assert(!Updates.Evaluate(release,"1.0.0").available,"Ignore release without Windows package");
+    }
+    static void CheckContext(int length,uint header,uint metadata){
+        var data=Fixture(length,header,metadata);
+        Assert(new SaveReader(data).CurrentMap()==null,"Missing scene is optional");
+        Put(data,56,0x1d6189da);Put(data,60,128);Put(data,64,0xa3db7114);Put(data,68,80);Put(data,80,0);Put(data,84,0);
+        Array.Copy(System.Text.Encoding.ASCII.GetBytes("Dungeon048"),0,data,128,10);
+        Assert(new SaveReader(data).CurrentMap()=="Dungeon048","Read bounded String64 scene through pointer");
+        var points=new[]{new MapPoint{id="shrines:48",category="shrines",internalName="Dungeon048",name="Test Shrine",position=new Position{x=123,y=900,z=456}}};
+        var raw=new Position{x=1,y=-100,z=2};
+        var context=SaveReader.ResolveContext(new SaveReader(data).CurrentMap(),raw,points);
+        Assert(context.kind=="shrine"&&context.shrineId=="shrines:48"&&context.mapPosition.y==900,"Shrine resolves to its sky entrance, not raw interior height");
+        Assert(raw.y==-100,"Context resolution preserves raw coordinates");
+        points[0].position.y=200;Assert(SaveReader.ResolveContext("Dungeon048",raw,points).mapPosition.y==200,"Surface shrine entrance");
+        Assert(SaveReader.ResolveContext("MainField",raw,points).mapPosition==raw,"Leaving shrine restores world position");
+        foreach(string scene in new[]{null,"Dungeon999","LargeDungeonFire","SmallDungeon","Dungeon048_extra"})
+            Assert(SaveReader.ResolveContext(scene,raw,points).mapPosition==null,"Unknown context never guesses a position");
+        Assert(SaveReader.ResolveContext("Dungeon048",null,points).mapPosition!=null,"Known shrine does not require an interior vector");
+        Put(data,60,44);Assert(new SaveReader(data).CurrentMap()==null,"Reject scene pointer into table");
+        Put(data,60,(uint)(length-63));Assert(new SaveReader(data).CurrentMap()==null,"Reject truncated String64");
+        Put(data,60,UInt32.MaxValue);Assert(new SaveReader(data).CurrentMap()==null,"Reject overflowing scene pointer");
+        Put(data,60,128);for(int i=128;i<192;i++)data[i]=(byte)'A';Assert(new SaveReader(data).CurrentMap()==null,"Reject unterminated scene");
+        data[129]=0;data[128]=255;Assert(new SaveReader(data).CurrentMap()==null,"Reject malformed scene text");
+        var tower=new MapPoint{category="towers",hash="123",visitHash="456"};string value;
+        Put(data,44,0);Assert(new SaveReader(data).State(tower,out value)==0,"Tower not activated");
+        Put(data,44,2);Assert(new SaveReader(data).State(tower,out value)==1,"Tower activation accepts nonzero boolean");
+        Assert(new SaveReader(data).BooleanState(tower.visitHash)==-1,"Missing tower visit remains unverified");
+        Assert(new SaveReader(data).BooleanState(tower.hash)==1,"Visit and activation use independent hashes");
+        Put(data,56,456);Put(data,60,1);Put(data,44,0);
+        Assert(new SaveReader(data).State(tower,out value)==0&&new SaveReader(data).BooleanState(tower.visitHash)==1,"Visited tower without activation remains incomplete");
+        Put(data,44,1);Put(data,60,0);
+        Assert(new SaveReader(data).State(tower,out value)==1&&new SaveReader(data).BooleanState(tower.visitHash)==0,"Activation and visit are reported independently");
+    }
+    static void CheckPageLifetime(){
+        var pages=new PageLifetime();var now=DateTime.UtcNow;var a=new object();var b=new object();
+        Assert(!pages.ShouldExit(now.AddHours(1),false),"Headless startup without a page stays running");
+        pages.Open("a",a);pages.Open("b",b);pages.Close("a",a,now);
+        Assert(!pages.ShouldExit(now.AddHours(1),false),"Closing one of multiple tabs keeps app alive");
+        pages.Close("b",b,now);Assert(!pages.ShouldExit(now.AddSeconds(4),false),"Last close has reload grace period");
+        Assert(pages.ShouldExit(now.AddSeconds(5),false),"Last close exits after grace period");
+        Assert(!pages.ShouldExit(now.AddHours(1),true),"Tray mode keeps app alive");
+        pages.Open("a",a);pages.Open("a",b);pages.Close("a",a,now);
+        Assert(pages.Connected("a",b)&&!pages.ShouldExit(now.AddHours(1),false),"Delayed old disconnect cannot remove reconnect");
+        pages.Close("a",b,now);pages.Open("reload",a);
+        Assert(!pages.ShouldExit(now.AddHours(1),false),"Reload cancels scheduled exit");
+        pages.Close("unknown",null,now);Assert(pages.Connected("reload",a),"Unknown close cannot close another document");
+        pages.Close("reload",null,now);Assert(pages.ShouldExit(now.AddSeconds(5),false),"Pagehide beacon closes its document");
+    }
+    static void CheckProgressCounts(){
+        var catalog=new Catalog();
+        catalog.categories.Add(new Category{id="shrines",count=3});
+        catalog.categories.Add(new Category{id="towers",count=2});
+        catalog.categories.Add(new Category{id="empty",count=0});
+        // Interleave categories: the summary must use each point's catalog index.
+        foreach(string category in new[]{"shrines","towers","shrines","towers","shrines"})
+            catalog.points.Add(new MapPoint{category=category});
+        var counts=catalog.CountProgress(new[]{1,0,-1,1,0});
+        Assert(counts.Length==3&&counts[0].id=="shrines"&&counts[1].id=="towers"&&counts[2].id=="empty","Summary preserves category order, including empty categories");
+        Assert(counts[0].total==3&&counts[0].found==1&&counts[0].unknown==1,"Shrine counts distinguish missing, complete and unknown");
+        Assert(counts[1].total==2&&counts[1].found==1&&counts[1].unknown==0,"Tower counts use their own point indices");
+        Assert(counts[2].total==0&&counts[2].found==0&&counts[2].unknown==0,"Empty category has zero counts");
+        var next=catalog.CountProgress(new[]{0,-1,0,-1,1});
+        Assert(next[0].found==1&&next[0].unknown==0&&next[1].found==0&&next[1].unknown==2,"Successive summaries do not retain previous counts");
+        Assert(counts[0].unknown==1&&counts[1].found==1,"Previous summaries remain unchanged");
+        Assert(new Catalog().CountProgress(new int[0]).Length==0,"Empty catalog produces an empty summary");
     }
     static byte[] Fixture(int length, uint version, uint metadata) {
         byte[] bytes = new byte[length];
@@ -64,6 +130,12 @@ public static class ReaderTests {
             Assert(Locale.Resolve("en-GB")=="en", "English Windows locale");
             Assert(Locale.Resolve("fr-FR")=="en", "Unsupported Windows locale falls back to English");
             string previousLanguage=Locale.Language;
+            Locale.Configure(new string[0],"es");Assert(Locale.Language=="es","Explicit Spanish preference");
+            Locale.Configure(new string[0],"en");Assert(Locale.Language=="en","Explicit English preference");
+            Locale.Configure(new string[0],"auto");Assert(Locale.Language==Locale.Resolve(Locale.WindowsCulture),"Automatic Windows preference");
+            Locale.Configure(new[]{"--language","es"},"en");Assert(Locale.Language=="es","Command line overrides saved preference");
+            Locale.Configure(new string[0],"invalid");Assert(Locale.Language==Locale.Resolve(Locale.WindowsCulture),"Invalid preference falls back to Windows");
+            Assert(Locale.Preference(null)=="auto","Older settings without language use automatic mode");
             Locale.Language="en";Assert(Locale.T("Salir","Exit")=="Exit", "English native strings");
             Locale.Language="es";Assert(Locale.T("Salir","Exit")=="Salir", "Spanish native strings");
             Locale.Language=previousLanguage;
@@ -71,6 +143,11 @@ public static class ReaderTests {
             CheckPosition(2307656,0x47e0f4,0x3c088);
             CheckPosition(2307856,0x49e946,0x3c138);
             CheckUpdates();
+            CheckPageLifetime();
+            CheckProgressCounts();
+            CheckContext(2307552,0x46c3c8,0x3c050);
+            CheckContext(2307656,0x47e0f4,0x3c088);
+            CheckContext(2307856,0x49e946,0x3c138);
             byte[] data = Fixture(2307856, 0x49e946, 0x3c138);
             Assert(new SaveReader(data).playtime == 999, "Read Playtime");
             Put(data, 44, 1);
@@ -93,6 +170,8 @@ public static class ReaderTests {
             Assert(new SaveReader(Fixture(2307656,0x47e0f4,0x3c088)).format=="1.1 / 1.2", "Original 1.1 header");
             bool rejected=false;try {new SaveReader(new byte[30]);}catch(InvalidDataException){rejected=true;}
             Assert(rejected,"Reject truncated input");
+            rejected=false;try {new SaveReader(null);}catch(InvalidDataException){rejected=true;}
+            Assert(rejected,"Reject null input with a validation error");
             Put(data,60,1);rejected=false;try {new SaveReader(data);}catch(InvalidDataException){rejected=true;}
             Assert(rejected,"Reject invalid GUID offset");
             Console.WriteLine(passed+" reader checks passed.");return 0;

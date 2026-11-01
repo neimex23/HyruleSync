@@ -25,6 +25,10 @@ jobs:
         run: |
           node tests/i18n.cjs
           node tests/map-tracking.cjs
+          node tests/map-rendering.cjs
+          node tests/page-lifetime.cjs
+          node tests/language.cjs
+          node tests/http-server.cjs
       - name: Publish ZIP and checksum
         shell: pwsh
         env:

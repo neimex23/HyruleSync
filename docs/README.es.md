@@ -1,25 +1,29 @@
 # HyruleSync
 
+[![Descargas](https://img.shields.io/github/downloads/neimex23/HyruleSync/total?label=descargas)](https://github.com/neimex23/HyruleSync/releases)
+
 Mapa local para consultar el progreso de **The Legend of Zelda: Tears of the Kingdom / TOTK Recomp**, con seguimiento automático de guardados en Windows.
 
 ## Para jugar
 
-1. Descarga `HyruleSync-v0.4.0-windows.zip` desde **Releases** del repositorio donde se publique. Extrae el ZIP en una carpeta con permiso de escritura.
+1. Descarga el ZIP para Windows desde la [última versión publicada](https://github.com/neimex23/HyruleSync/releases/latest). Extrae el ZIP en una carpeta con permiso de escritura.
 2. Abre **HyruleSync.exe**. No necesitas instalar Python, Node ni TotK Unexplored.
 3. En el primer inicio pulsa **Descargar recursos del mapa**. Es una descarga de unos 44 MB desde un commit fijo de TotK Unexplored. Se comprueban los archivos con SHA-256 y se guardan en `.data/`.
 4. Pulsa **Seguir carpeta → Explorar carpetas** y elige la carpeta de **una cuenta**, la que contiene `slot_00`, `slot_01`, etc. También puedes pegar una ruta.
-5. Déjalo abierto mientras juegas. **Autosync se activa al elegir la carpeta** y el mapa se actualiza después de cada guardado estable, normalmente en unos 2–3 segundos.
+5. Déjalo abierto mientras juegas. **Seguir carpeta es la opción recomendada**: activa Autosync y detecta autoguardados y guardados manuales. El mapa se actualiza después de cada guardado estable, normalmente en unos 2–3 segundos. **Cargar .sav** abre una instantánea y pausa Autosync.
 
-La pestaña muestra el mapa y el icono junto al reloj mantiene el lector funcionando. Puedes cerrar la pestaña y reabrirla con doble clic en ese icono. Usa **Salir** en su menú para cerrar completamente. No se inicia con Windows ni instala servicios.
+Al cerrar la última pestaña del mapa, HyruleSync se cierra tras un margen de cinco segundos. Recargar la página o dejar otra pestaña abierta mantiene el programa activo. Para seguir leyendo guardados sin la página, activa **Acerca de → Mantener HyruleSync en la bandeja**. En ese modo, el doble clic en el icono vuelve al mapa y **Salir** cierra el programa. No se inicia con Windows ni instala servicios.
 
 **Solo lectura:** no instala mods ni escribe en los archivos del juego o tus guardados. No envía tu partida a ningún servidor. Una vez preparados los recursos, la consulta funciona sin internet.
+
+El contador suma las descargas de archivos de GitHub Releases de todas las versiones, incluidos los ZIP descargados desde el botón de actualización del programa y los archivos de comprobación SHA-256. Buscar actualizaciones no suma una descarga. Cuenta descargas, no usuarios únicos.
 
 ## Funciones
 
 - Superficie, subsuelo y cielo; filtros por categoría y por estado.
 - Última posición guardada de Link, botón para centrarlo y seguimiento opcional que recuerda la elección y cambia de capa al actualizar.
 - Aviso de nuevas versiones con descarga del ZIP y botón «Reportar problema» que abre GitHub Issues.
-- Catálogo de 2.399 entradas; rutas de kologs y conexiones de cuevas.
+- Catálogo de 2.414 entradas; rutas de kologs y conexiones de cuevas.
 - Carga manual de `progress.sav`, consulta de coordenadas y diagnóstico por hash/GUID.
 - Elección del slot con mayor tiempo de juego, espera para evitar lecturas incompletas y conservación del último estado válido.
 - Preferencias de carpeta y Autosync guardadas localmente; una instancia por carpeta de aplicación.
@@ -52,7 +56,7 @@ Los recursos deben coincidir con el commit fijado en `assets/resources.json`. El
 
 | Ruta | Contenido |
 |---|---|
-| `src/` | Lector de guardados, aplicación Windows y descarga verificada de recursos |
+| `src/` | Aplicación Windows, lector de guardados, catálogo, modelos, servidor HTTP local y recursos |
 | `web/` | Interfaz local embebida y Leaflet |
 | `assets/` | Icono propio y manifiesto de procedencia de recursos |
 | `scripts/` | Compilación, pruebas, importación y empaquetado |
@@ -82,8 +86,18 @@ Consulta [THIRD_PARTY.md](THIRD_PARTY.es.md) antes de redistribuir recursos de t
 
 Autoría: **Neimex23**. Proyecto fuertemente impulsado por IA, desarrollado con asistencia de **Codex · GPT-6.1 · razonamiento Alto**.
 
-El programa detecta el idioma de Windows y utiliza español o inglés, incluidos los errores, categorías y menú del icono. Incorpora una sección «Acerca de, licencias y créditos». **HyruleSync.Stop.exe** cierra las instancias de HyruleSync de tu sesión sin tocar el juego ni el navegador.
+Puedes elegir **Idioma → Español / English / Automático (Windows)** desde la barra lateral o la pantalla inicial. La elección se guarda en `.state/settings.json` y la página se recarga para aplicarla a la interfaz, categorías y menú del icono. En automático se usa español si Windows está en español; inglés en los demás casos. Incorpora una sección «Acerca de, licencias y créditos». **HyruleSync.Stop.exe** cierra las instancias de HyruleSync de tu sesión sin tocar el juego ni el navegador.
 
 Ahora basta ejecutar `build.cmd`: compila ambos ejecutables y genera automáticamente el ZIP y SHA-256 en `outputs/`. No es necesario ejecutar `package.ps1` después. Las instrucciones de compilación anteriores equivalen a pasos separados, pero el empaquetado ya está integrado.
 
 Las referencias relativas de esta traducción se consultan desde la raíz del repositorio. La documentación principal actualizada está en [README.md](../README.md).
+
+## Mapa y consulta de guardados
+
+Link se muestra según el contexto del último guardado: dentro de un santuario aparece en su entrada con un aro azul y un símbolo de santuario. Un contexto desconocido no se proyecta sobre Hyrule. Por defecto, Link se muestra debajo de los iconos con una opacidad del 45 %. «Centrar en Link» acerca la vista si hace falta, conservando un zoom más cercano. Puedes ocultar Link y elegir si queda encima o debajo de los iconos. Ocultarlo suspende el centrado automático y conserva la preferencia de seguimiento. Estas opciones se recuerdan al reiniciar. El recuadro **Link en el mapa** reúne visibilidad, seguimiento, orden y opacidad (0–100 %, con vista previa al mover el control).
+
+El catálogo incluye 15 atalayas adicionales: el completado exige activación, y el detalle distingue si fueron visitadas. Son 21 categorías y 2.414 puntos; el contador sigue sin representar el porcentaje oficial del juego.
+
+«Guardados» permite consultar los slots de la carpeta actual o un archivo elegido manualmente. Muestra fecha de modificación, tiempo jugado, formato, ubicación y progreso por categoría. «Ver en el mapa» abre una instantánea fija; Autosync sigue leyendo la carpeta en segundo plano. Usa «Volver al seguimiento» para mostrar el último guardado observado. No hay comparación, backups, restauración ni edición de saves. Las consultas no cambian el origen observado.
+
+«Ver cambios», en el aviso de actualización y en «Acerca de», muestra las notas de la última Release estable disponible, con enlace a GitHub. Requiere una consulta de actualizaciones exitosa durante la sesión; si faltan notas se indica expresamente.

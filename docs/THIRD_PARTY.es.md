@@ -8,6 +8,7 @@ El ejecutable Windows, servidor local, interfaz, seguimiento, scripts e icono de
 
 - Proyecto: https://github.com/lud99/totk-unexplored
 - Autor: lud99 (BigBear en GBAtemp).
+- Contribuidor de TotK Unexplored: **Jhon Deved**.
 - Anuncio del autor: https://gbatemp.net/threads/totk-unexplored-easily-view-all-the-unexplored-collectibles-in-your-totk-savefile.637254/
 - Commit fijado: `a68ffbb083ac220c77f2e4ec3ce60d29924c1213`.
 - Recursos: `romfs/map_data.json`, fondos `romfs/map/*-medium.png`, iconos seleccionados de `romfs/icons/`.
@@ -29,8 +30,10 @@ Se redistribuyen sus archivos JavaScript y CSS. Licencia BSD-2-Clause conservada
 
 **Neimex23** es el autor de HyruleSync. Es un proyecto fuertemente impulsado por IA, desarrollado con amplia asistencia de **Codex · GPT-6.1 · razonamiento Alto**. La declaración no atribuye autoría sobre los recursos de terceros.
 
-Contribuidor: **Jhon Deved**.
-
 TotK Unexplored reconoce también estas referencias para sus datos, nombres y rutas: https://github.com/marcrobledo/savegame-editors, https://github.com/zeldamods/objmap-totk, https://github.com/zeldamods/radar-totk y https://zeldadungeon.net. Se conservan como referencias del origen de los datos, no como bibliotecas incluidas en HyruleSync.
 
 La aplicación permite consultar estos avisos y los textos originales de las licencias desde «Acerca de, licencias y créditos».
+
+## Datos adicionales de atalayas
+
+Las coordenadas y hashes de visita y activación de las 15 atalayas proceden de Savegame Editors de Marc Robledo, `zelda-totk.coordinates.js` y `zelda-totk.completism.js` (https://github.com/marcrobledo/savegame-editors). MIT, Copyright (c) 2017-2023 Marc Robledo. Se conserva la licencia original en `licenses/SavegameEditors.txt`, también accesible en la aplicación. El icono SVG de atalaya es propio de HyruleSync. El catálogo descargado de Unexplored se conserva intacto; las atalayas se agregan por separado.

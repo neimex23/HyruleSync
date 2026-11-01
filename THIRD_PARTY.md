@@ -4,8 +4,6 @@
 
 HyruleSync is authored by **Neimex23**. It is a project strongly driven by AI, developed with extensive assistance from **Codex · GPT-6.1 · High reasoning**. This describes the development process and does not claim ownership of third-party resources.
 
-Contributor: **Jhon Deved**.
-
 The new HyruleSync Windows implementation, local server, interface, monitoring, scripts and compass/checkmark icon are MIT licensed. Copyright © 2026 Neimex23 and HyruleSync contributors. The complete license is in `LICENSE` and inside the app under **About, licenses and credits**.
 
 Save parsing and completion conditions reference the behavior of TotK Unexplored. HyruleSync's MIT license does not relicense external data or artwork.
@@ -14,6 +12,7 @@ Save parsing and completion conditions reference the behavior of TotK Unexplored
 
 - Project: https://github.com/lud99/totk-unexplored
 - Author: lud99 (BigBear on GBAtemp).
+- Contributor to TotK Unexplored: **Jhon Deved**.
 - Author's announcement: https://gbatemp.net/threads/totk-unexplored-easily-view-all-the-unexplored-collectibles-in-your-totk-savefile.637254/
 - Pinned commit: `a68ffbb083ac220c77f2e4ec3ce60d29924c1213`.
 - Resources: `romfs/map_data.json`, `romfs/map/*-medium.png`, selected `romfs/icons/` files.
@@ -43,3 +42,7 @@ Copyright Vladimir Agafonkin and contributors. JavaScript/CSS are redistributed 
 The Legend of Zelda and its assets belong to their respective owners, including Nintendo. HyruleSync is unofficial and is not affiliated with or endorsed by Nintendo.
 
 Canonical MIT and Leaflet license texts remain in English. Spanish documentation is separate and does not replace the original license terms.
+
+## Additional Skyview Tower data
+
+The 15 tower coordinates and visit/activation hashes are derived from Marc Robledo’s Savegame Editors, `zelda-totk.coordinates.js` and `zelda-totk.completism.js` (https://github.com/marcrobledo/savegame-editors). MIT, Copyright (c) 2017-2023 Marc Robledo. The original license is preserved in `licenses/SavegameEditors.txt` and available in the app. Tower artwork is original HyruleSync SVG. The downloaded Unexplored catalog is unchanged; towers are appended separately.

@@ -23,6 +23,8 @@ $compiler = Join-Path $env:WINDIR 'Microsoft.NET/Framework64/v4.0.30319/csc.exe'
 if (-not (Test-Path -LiteralPath $compiler)) { throw '.NET Framework 4.x on Windows is required to build.' }
 $arguments = @('/nologo', '/target:winexe', '/main:Program', '/optimize+', '/utf8output', "/out:$OutputDirectory/HyruleSync.exe", "/win32icon:$projectRoot/assets/hyrulesync.ico", '/reference:System.Web.Extensions.dll', '/reference:System.Windows.Forms.dll', '/reference:System.Drawing.dll')
 $arguments += "/resource:$projectRoot/assets/resources.json,hyrulesync/resources.json"
+$arguments += "/resource:$projectRoot/assets/towers.json,hyrulesync/towers.json"
+$arguments += "/resource:$projectRoot/licenses/SavegameEditors.txt,hyrulesync/legal/savegame-editors.txt"
 $arguments += "/resource:$creditsPath,hyrulesync/credits.json"
 $arguments += "/resource:$projectRoot/LICENSE,hyrulesync/legal/app.txt"
 $arguments += "/resource:$projectRoot/licenses/Leaflet.txt,hyrulesync/legal/leaflet.txt"

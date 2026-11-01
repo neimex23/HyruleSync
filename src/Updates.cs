@@ -8,8 +8,8 @@ using System.Threading;
 using System.Web.Script.Serialization;
 
 public class ReleaseAsset {public string name,browser_download_url,state;public long size;}
-public class ReleaseInfo {public string tag_name;public bool draft,prerelease;public ReleaseAsset[] assets;}
-public class UpdateInfo {public string currentVersion,latestVersion="",downloadUrl="",releaseUrl="",checkedAt="",error="";public bool available,busy;}
+public class ReleaseInfo {public string tag_name,body;public bool draft,prerelease;public ReleaseAsset[] assets;}
+public class UpdateInfo {public string currentVersion,latestVersion="",downloadUrl="",releaseUrl="",releaseNotes="",checkedAt="",error="";public bool available,busy;}
 
 public static class Updates {
  public const string Repository="neimex23/HyruleSync";
@@ -29,10 +29,11 @@ public static class Updates {
   var asset=(release.assets??new ReleaseAsset[0]).FirstOrDefault(a=>a!=null&&a.name==name&&a.state=="uploaded"&&a.size>0&&String.Equals(a.browser_download_url,expected,StringComparison.OrdinalIgnoreCase));
   if(asset==null)return result;
   result.latestVersion=version;result.releaseUrl="https://github.com/"+Repository+"/releases/tag/"+release.tag_name;
+  result.releaseNotes=release.body??"";
   result.available=latest>installed;if(result.available)result.downloadUrl=asset.browser_download_url;
   return result;
  }
- public static UpdateInfo State(){lock(Gate)return new UpdateInfo{currentVersion=info.currentVersion,latestVersion=info.latestVersion,downloadUrl=info.downloadUrl,releaseUrl=info.releaseUrl,available=info.available,busy=info.busy,checkedAt=info.checkedAt,error=info.error};}
+ public static UpdateInfo State(){lock(Gate)return new UpdateInfo{currentVersion=info.currentVersion,latestVersion=info.latestVersion,downloadUrl=info.downloadUrl,releaseUrl=info.releaseUrl,releaseNotes=info.releaseNotes,available=info.available,busy=info.busy,checkedAt=info.checkedAt,error=info.error};}
  public static void Check(bool manual){
   lock(Gate){
    if(info.busy||(DateTime.UtcNow-attempted).TotalSeconds<(manual?60:3600))return;

@@ -14,8 +14,11 @@ public static class Locale {
         try { return CultureInfo.GetCultureInfo(GetUserDefaultUILanguage()).Name; }
         catch { return CultureInfo.CurrentUICulture.Name; }
     }
-    public static void Configure(string[] args) {
-        Language = Resolve(WindowsCulture);
+    public static string Preference(string value) {
+        return value=="en"||value=="es" ? value : "auto";
+    }
+    public static void Configure(string[] args, string preference = "auto") {
+        Language = Preference(preference)=="auto" ? Resolve(WindowsCulture) : preference;
         for (int i=0;i<args.Length-1;i++)
             if(args[i]=="--language") {
                 string choice=args[++i].ToLowerInvariant();
