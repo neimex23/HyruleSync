@@ -90,7 +90,7 @@ function renderLink(){
  linkMarker.bindTooltip(esc(title)+'<br>'+esc(coordinateString(p)),{direction:'top'});
 }
 function render(){
- if(!map||!catalog)return;renderLink();const query=norm($('search').value.trim()),numeric=/^-?\d+[\s,;]+-?\d+(?:[\s,;]+-?\d+)?$/.test(query),mode=$('showMode').value;
+ if(!map||!catalog)return;renderLink();if(typeof renderQuestMarkers==='function')renderQuestMarkers();const query=norm($('search').value.trim()),numeric=/^-?\d+[\s,;]+-?\d+(?:[\s,;]+-?\d+)?$/.test(query),mode=$('showMode').value;
  points=catalog.points.filter(p=>inLayer(p)&&active.has(p.category)&&(!query||numeric||p.searchText.includes(query))&&(mode==='all'||pointState(p)===(mode==='missing'?0:mode==='found'?1:-1)));
  $('visibleCount').textContent=t('{n} puntos filtrados',{n:fmt(points.length)});objects.clearLayers();routes.clearLayers();
  const bounds=map.getBounds().pad(.15),visible=points.filter(p=>bounds.contains(p.latLng));
@@ -112,6 +112,14 @@ function scheduleRender(){
  if(renderFrame!==null)return;
  renderFrame=requestAnimationFrame(()=>{renderFrame=null;render();});
 }
+function guideLink(p){
+ // These categories have named location articles. Unnamed collectibles use the map.
+ if(['shrines','lightroots','caves','wells','chasms','locations','bubbuls'].includes(p.category))
+  return 'https://www.zeldadungeon.net/wiki/'+encodeURIComponent(p.name.replace(/ /g,'_'));
+ // Zelda Dungeon's map uses north/east, whereas our world positions use east/south.
+ const region=p.position.y<=-50?'Depths':p.position.y>=750?'Sky':'Surface';
+ return `https://www.zeldadungeon.net/tears-of-the-kingdom-interactive-map/?z=6&x=${Math.round(-p.position.z)}&y=${Math.round(p.position.x)}&l=${region}`;
+}
 function detail(p,pan){
  selected=p;$('detailIcon').src=pointIcon(p);$('detailCategory').textContent=categories[p.category].name.toUpperCase();$('detailName').textContent=p.name;$('detailState').textContent=p.category==='towers'?t('Activada: {state}',{state:booleanLabel(pointState(p))}):showState(pointState(p));$('detailCoords').textContent=coordinateString(p.position);$('korokInfo').textContent=p.category==='towers'?t('Visitada: {state}',{state:booleanLabel(snapshot?.visited?.[p.index]??-1)}):p.korokType?t('Tipo original: {type}',{type:p.korokType})+(p.path?t(' · La ruta está dibujada en el mapa.'):''):'';
  const rule=p.category==='towers'?t('Activación de la atalaya'):p.guid?t('Presencia de GUID UInt64'):descriptions[p.category]||t('Valor distinto de cero');
@@ -119,6 +127,8 @@ function detail(p,pan){
  if(p.visitHash)rows.push([t('Hash de visita'),'0x'+Number(p.visitHash).toString(16).padStart(8,'0')]);
  $('diagnostics').replaceChildren();for(const [key,value]of rows){const line=document.createElement('div');line.textContent=key+': '+value;$('diagnostics').append(line);}
  $('detail').hidden=false;
+ $('viewGuide').href=guideLink(p);
+ $('guideHint').textContent=['shrines','lightroots','caves','wells','chasms','locations','bubbuls'].includes(p.category)?t('Abre la ficha en Zelda Dungeon.'):t('Abre la ubicación en Zelda Dungeon. Selecciona su icono para consultar la ayuda.');
  if(pan){map.setView(ll(p.position),Math.max(map.getZoom(),-1));render();}
 }
 async function command(action,body){const res=await fetch('api/'+action,{method:'POST',body:body??''}),reply=await res.json();if(!res.ok||!reply.ok)throw Error(reply.error||t('No se pudo completar la acción.'));await poll();}
@@ -141,7 +151,7 @@ function displaySnapshot(next){
  snapshot=next;$('welcome').hidden=!!next;
  $('saveInfo').textContent=next?t('{file} · {h} h {m} min · formato {format}',{file:next.file.split(/[\\/]/).slice(-2).join(' / '),h:Math.floor(next.playtime/3600),m:Math.floor(next.playtime%3600/60),format:next.format}):'';
  $('previewBanner').hidden=!previewSnapshot;$('previewLabel').textContent=previewSnapshot?t('Consultando {file} · {time}',{file:previewSnapshot.file.split(/[\\/]/).slice(-2).join(' / '),time:new Date(previewSnapshot.savedAt).toLocaleString(I18N.language)}):'';
- updateCounts();render();
+ updateCounts();render();if(typeof renderInventory==='function')renderInventory();if(typeof renderQuests==='function')renderQuests();
 }
 function returnToLive(){previewSnapshot=null;displaySnapshot(liveSnapshot);if(showLink&&followLink)centerLink({zoom:false});}
 function viewInspected(){
@@ -305,7 +315,7 @@ async function start(){
  trackPageLifetime();
  try{const config=await(await fetch('api/config')).json();I18N.setLanguage(config.language);$('runInBackground').checked=config.runInBackground===true;document.querySelectorAll('[data-language-select]').forEach(control=>control.value=config.languagePreference||'auto');}catch{I18N.setLanguage('en');}
  document.querySelectorAll('[data-language-select]').forEach(control=>{control.dataset.preference=control.value;control.onchange=changeLanguage;});
- I18N.apply();
+ I18N.apply();initInventory();initQuests();
  const openAbout=()=>{$('aboutDialog').showModal();checkUpdates();};
  $('aboutOpen').onclick=openAbout;$('setupAboutOpen').onclick=openAbout;
  $('checkUpdates').onclick=()=>checkUpdates(true);checkUpdates();

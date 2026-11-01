@@ -17,7 +17,7 @@ for(const [source,translated] of Object.entries(i18n.translations)) {
   const fields=text=>[...text.matchAll(/\{(\w+)\}/g)].map(m=>m[1]).sort();
   assert.deepEqual(fields(source),fields(translated),'Placeholder mismatch: '+source);
 }
-const app = fs.readFileSync(path.join(root,'web/app.js'),'utf8');
+const app = fs.readFileSync(path.join(root,'web/app.js'),'utf8')+fs.readFileSync(path.join(root,'web/inventory.js'),'utf8')+fs.readFileSync(path.join(root,'web/quests.js'),'utf8');
 for(const match of app.matchAll(/\bt\('((?:[^'\\]|\\.)*)'/g))
   assert.ok(Object.hasOwn(i18n.translations,match[1]),'Missing dynamic translation: '+match[1]);
 const html = fs.readFileSync(path.join(root,'web/index.html'),'utf8');

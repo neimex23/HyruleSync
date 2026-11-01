@@ -34,6 +34,17 @@ TotK Unexplored reconoce también estas referencias para sus datos, nombres y ru
 
 La aplicación permite consultar estos avisos y los textos originales de las licencias desde «Acerca de, licencias y créditos».
 
+## Datos y referencias del inventario
+
+Los campos de las bolsas, unidades de atributos, traducciones de objetos y metadatos de mejora de armaduras proceden de Savegame Editors de Marc Robledo, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`. Se incluyen datos seleccionados en `web/inventory-data.json`, sin ilustraciones de objetos. MIT, Copyright (c) 2017-2023 Marc Robledo; licencia original en `licenses/SavegameEditors.txt`. Investigación y nombres: Echocolat, Exincracci, HylianLZ, Karlos007 y ApacheThunder; nombres traducidos compilados por tingod. La lectura del inventario es una implementación propia de solo lectura. Archivos de referencia y detalles en `THIRD_PARTY.md`.
+
 ## Datos adicionales de atalayas
 
 Las coordenadas y hashes de visita y activación de las 15 atalayas proceden de Savegame Editors de Marc Robledo, `zelda-totk.coordinates.js` y `zelda-totk.completism.js` (https://github.com/marcrobledo/savegame-editors). MIT, Copyright (c) 2017-2023 Marc Robledo. Se conserva la licencia original en `licenses/SavegameEditors.txt`, también accesible en la aplicación. El icono SVG de atalaya es propio de HyruleSync. El catálogo descargado de Unexplored se conserva intacto; las atalayas se agregan por separado.
+
+
+## Catálogo de misiones y enums del guardado
+
+Los metadatos fácticos y coordenadas de referencia seleccionados de `web/quest-data.json` proceden de la planilla TotK Data Collection publicada en JSON por Ignacio9172 (`spreadsheet_totk_json`, commit `f20920ea28c0fa9aa9357ebf640c222c7de64a31`): https://github.com/Ignacio9172/spreadsheet_totk_json. Solo se conservan IDs, nombres, clasificación, personaje/lugar y coordenadas; se excluyen descripciones, textos del diario y diálogos. Los hashes y enums conocidos de los 253 campos `Step_*` proceden de `zelda-totk.hashes.csv` de Marc Robledo, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`: https://github.com/marcrobledo/savegame-editors (MIT; licencia original en `licenses/SavegameEditors.txt`). El lector y los marcadores son código original de HyruleSync.
+
+Los enlaces de ayuda de las misiones remiten a los cuatro índices de Zelda Dungeon Wiki para Tears of the Kingdom (Main Quests, Side Adventures, Shrine Quests y Side Quests), contrastados el 1 de noviembre de 2026: https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Main_Quests, https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Side_Adventures, https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Shrine_Quests y https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Side_Quests. Solo se ofrecen referencias externas; no se distribuye texto ni arte de las guías. El detalle y disponibilidad de las fichas pueden cambiar.

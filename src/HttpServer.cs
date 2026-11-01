@@ -41,6 +41,9 @@ public static partial class Program {
     static readonly Dictionary<string, string> WebFiles = new Dictionary<string, string> {
         { "", "index.html" }, { "index.html", "index.html" },
         { "app.js", "app.js" }, { "i18n.js", "i18n.js" }, { "style.css", "style.css" },
+        { "inventory.js", "inventory.js" }, { "inventory-data.json", "inventory-data.json" },
+        { "inventory-icons.svg", "inventory-icons.svg" },
+        { "quests.js", "quests.js" }, { "quest-data.json", "quest-data.json" },
         { "vendor/leaflet.js", "vendor/leaflet.js" }, { "vendor/leaflet.css", "vendor/leaflet.css" },
         { "app-icon.png", "app-icon.png" }, { "tower.svg", "tower.svg" }
     };
@@ -58,6 +61,7 @@ public static partial class Program {
             case ".png": return "image/png";
             case ".svg": return "image/svg+xml";
             case ".js": return "application/javascript; charset=utf-8";
+            case ".json": return "application/json; charset=utf-8";
             case ".css": return "text/css; charset=utf-8";
             case ".html": return "text/html; charset=utf-8";
             default: return "text/plain; charset=utf-8";

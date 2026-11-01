@@ -1,0 +1,5742 @@
+{
+  "source": "Ignacio9172/spreadsheet_totk_json",
+  "commit": "f20920ea28c0fa9aa9357ebf640c222c7de64a31",
+  "hashSource": "marcrobledo/savegame-editors",
+  "hashCommit": "b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d",
+  "quests": [
+    {
+      "id": "DefeatGanondorf",
+      "name": "Destroy Ganondorf",
+      "type": "main",
+      "giver": "Purah",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 3245700196,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "FindWhereabouts",
+        "GoToDeepHole",
+        "DefeatMonsterArmy",
+        "DefeatGanon1",
+        "DefeatGanon2",
+        "DefeatBlackDragon",
+        "Complete"
+      ],
+      "order": 1
+    },
+    {
+      "id": "MainChallenge",
+      "name": "Find Princess Zelda",
+      "type": "main",
+      "giver": "Steward Construct",
+      "location": "Great Sky Island",
+      "position": {
+        "x": 394.477,
+        "y": 1937.4567,
+        "z": 1259.8545
+      },
+      "locationKind": "area",
+      "hash": 1055395112,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetZonauMajic",
+        "GoToAlterAfterGetRR",
+        "WarpToCaveOfAwake",
+        "GoToBackToGolemInTemple",
+        "GoToBackOfTempleOfTimeAfterWD",
+        "LookingForZelda",
+        "GoToDeepHole",
+        "DefeatMonsterArmy",
+        "DefeatGanon1",
+        "DefeatGanon2",
+        "DefeatBlackDragon",
+        "CatchZelda",
+        "Complete"
+      ],
+      "order": 2
+    },
+    {
+      "id": "LookingForLightSpot",
+      "name": "The Closed Door",
+      "type": "main",
+      "giver": "Rauru",
+      "location": "Great Sky Island",
+      "position": {
+        "x": 394.477,
+        "y": 1937.4567,
+        "z": 1259.8545
+      },
+      "locationKind": "area",
+      "hash": 3119472676,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GoToLightSpotOfPurahPad",
+        "GoBackToTempleEntrance",
+        "Complete"
+      ],
+      "order": 3
+    },
+    {
+      "id": "GOToTheCastleOfHyrule",
+      "name": "To the Kingdom of Hyrule",
+      "type": "main",
+      "giver": "Zelda's Voice",
+      "location": "Temple of Time",
+      "position": {
+        "x": 453.45944,
+        "y": 1661.5502,
+        "z": 800.34515
+      },
+      "locationKind": "area",
+      "hash": 2372471133,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MeetPurah",
+        "Complete"
+      ],
+      "order": 4
+    },
+    {
+      "id": "SurveyOfFourVillages",
+      "name": "Regional Phenomena",
+      "type": "main",
+      "giver": "Purah",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 2241041838,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "EventLightSpot1",
+        "EventLightSpot2",
+        "EventLightSpot3",
+        "EventLightSpot4",
+        "EventLightSpot5",
+        "1stSageClear",
+        "2ndSageClear",
+        "3rdSageClear",
+        "4thSageClear",
+        "ReturnBCAfter4Sage",
+        "Complete"
+      ],
+      "order": 5
+    },
+    {
+      "id": "ClueTotheSixthSage",
+      "name": "Find the Fifth Sage",
+      "type": "main",
+      "giver": "Purah",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 2752004352,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MeetTauro",
+        "RuinsChallenge",
+        "ZonauChallenge",
+        "UntilYouReport",
+        "Complete"
+      ],
+      "order": 6
+    },
+    {
+      "id": "HyruleCastleIncident",
+      "name": "Crisis at Hyrule Castle",
+      "type": "main",
+      "giver": "Purah",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 1663292078,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CastleSurvey",
+        "ReturnBCAfterDefeatMonster",
+        "GoToCannon",
+        "UseTerminal",
+        "UseCannon",
+        "ToLand",
+        "EventLightSpot",
+        "EventLightSpot2",
+        "EventLightSpot3",
+        "EventLightSpot4",
+        "EventLightSpot5",
+        "UnderSurveyOfFourVillages",
+        "ResearchCastle",
+        "DefeatBlackZelda",
+        "ReturnBCAfterBlackZelda",
+        "UnderFindTheFifthSage",
+        "Complete"
+      ],
+      "order": 7
+    },
+    {
+      "id": "MasterSwordClues",
+      "name": "Trail of the Master Sword",
+      "type": "main",
+      "giver": "Mineru",
+      "location": "Spirit Temple",
+      "position": null,
+      "locationKind": "area",
+      "hash": 52456082,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "TalkOldKorok",
+        "TalKDekuTree",
+        "Complete"
+      ],
+      "order": 8
+    },
+    {
+      "id": "GetMasterSword",
+      "name": "Recovering the Hero's Sword",
+      "type": "main",
+      "giver": "Deku Tree",
+      "location": "Korok Forest",
+      "position": {
+        "x": 419,
+        "y": 0,
+        "z": -2140
+      },
+      "locationKind": "area",
+      "hash": 3705828248,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Order",
+        "Complete"
+      ],
+      "order": 9
+    },
+    {
+      "id": "SageOfWind",
+      "name": "Tulin of Rito Village",
+      "type": "main",
+      "giver": "Teba",
+      "location": "Rito Village",
+      "position": {
+        "x": -3620.765,
+        "y": 208.672,
+        "z": -1799.816
+      },
+      "locationKind": "area",
+      "hash": 1748702051,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MountainHut",
+        "GoToCave",
+        "FoundTulin",
+        "IpponSugi",
+        "GetBack",
+        "DefeatEnemy",
+        "GoToHebra",
+        "GoDungeon",
+        "CheckTerminal",
+        "DungeonStart",
+        "BossBattle",
+        "DefeatBoss",
+        "TouchSecretStone",
+        "Finish",
+        "Complete"
+      ],
+      "order": 10
+    },
+    {
+      "id": "SageOfFire",
+      "name": "Yunobo of Goron City",
+      "type": "main",
+      "giver": "Yunobo",
+      "location": "Goron City",
+      "position": {
+        "x": 1657.252,
+        "y": 445.63025,
+        "z": -2440
+      },
+      "locationKind": "area",
+      "hash": 4004018924,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Dream",
+        "GoCrater",
+        "DefeatBossMiddle",
+        "GoMinusField",
+        "GoEntranceDungeon",
+        "GoDungeon",
+        "Dungeon",
+        "StartBossBattle",
+        "DefeatBoss",
+        "TouchSecretStone",
+        "Finale",
+        "Complete"
+      ],
+      "order": 11
+    },
+    {
+      "id": "CleanStatue",
+      "name": "The Sludge-Covered Statue",
+      "type": "main",
+      "giver": "Yona",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 3116157158,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CleanUp",
+        "Complete"
+      ],
+      "order": 12
+    },
+    {
+      "id": "DividedSlate",
+      "name": "The Broken Slate",
+      "type": "main",
+      "giver": "Jiahto",
+      "location": "Toto Lake",
+      "position": {
+        "x": 3478.03,
+        "y": 515.1305,
+        "z": -889.8486
+      },
+      "locationKind": "area",
+      "hash": 730137380,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "RepairSlate",
+        "Complete"
+      ],
+      "order": 13
+    },
+    {
+      "id": "RepairArmor",
+      "name": "Restoring the Zora Armor",
+      "type": "main",
+      "giver": "Yona",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 685860918,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "SubmitMaterial",
+        "Complete"
+      ],
+      "order": 14
+    },
+    {
+      "id": "WaterBridgePlace",
+      "name": "Clues to the Sky",
+      "type": "main",
+      "giver": "Jiahto",
+      "location": "Toto Lake",
+      "position": {
+        "x": 3478.03,
+        "y": 515.1305,
+        "z": -889.8486
+      },
+      "locationKind": "area",
+      "hash": 1890878636,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "FindDrefan",
+        "SearchKingScales",
+        "SearchWaterBridge",
+        "Complete"
+      ],
+      "order": 15
+    },
+    {
+      "id": "SageOfZora",
+      "name": "Sidon of the Zora",
+      "type": "main",
+      "giver": "Yona",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 382216477,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MeetParkShido",
+        "ResearchZora",
+        "InterimReportToShido",
+        "InterimReportToShido_Ex",
+        "FindWaterBridge",
+        "ReportToParkShido",
+        "DefeatLakeBoss",
+        "GoToLakeShido",
+        "GoToUnderLake",
+        "SearchRemains",
+        "GoToBeforeDungeon",
+        "GoToBeforeDungeon_00",
+        "GoToDungeonStart",
+        "TryOneTank",
+        "GoToBossArea",
+        "DefeatBoss",
+        "TouchSecretStone",
+        "Finish",
+        "Complete"
+      ],
+      "order": 16
+    },
+    {
+      "id": "SageOfGerudo",
+      "name": "Riju of Gerudo Town",
+      "type": "main",
+      "giver": "Riju",
+      "location": "Gerudo Town",
+      "position": {
+        "x": -3844.5,
+        "y": 149.16890999999998,
+        "z": 2926.1965
+      },
+      "locationKind": "area",
+      "hash": 3267314487,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Underground",
+        "PracticeStart",
+        "PracticeEnd",
+        "PreDefenseStart",
+        "PreDefenseEnd",
+        "DefenseReady",
+        "DefenseStart",
+        "DefenseEnd",
+        "DungeonSearch",
+        "DungeonFind",
+        "DungeonStart",
+        "DungeonBossDead",
+        "DungeonEnd",
+        "Complete"
+      ],
+      "order": 17
+    },
+    {
+      "id": "GotoFironeZonauRemains",
+      "name": "Secret of the Ring Ruins",
+      "type": "main",
+      "giver": "Tauro",
+      "location": "Kakariko Village",
+      "position": {
+        "x": 1817.4299,
+        "y": 224.45522,
+        "z": 988.03906
+      },
+      "locationKind": "area",
+      "hash": 1026648350,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "DecipherTheIithograph",
+        "EventLightSpot01",
+        "EventLightSpot02",
+        "ZonauRemains_ArriveObservatory",
+        "ZonauRemains_TalkResearcher",
+        "ZonauRemains_AppearsSkyIsland",
+        "ZonauRemains_OpenedTheDoor",
+        "ZonauRemains_TouchTheHead",
+        "Complete"
+      ],
+      "order": 18
+    },
+    {
+      "id": "SageOfSoul",
+      "name": "Guidance from Ages Past",
+      "type": "main",
+      "giver": "Zonai Relic",
+      "location": "Dragonhead Island",
+      "position": {
+        "x": 1460,
+        "y": 2000,
+        "z": 3380.75
+      },
+      "locationKind": "area",
+      "hash": 726083374,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CarryHead_CheckPoint01",
+        "CarryHead_CheckPoint02",
+        "CarryHead_CheckPoint04",
+        "Collected_AllParts",
+        "GolemAppearance",
+        "LightSpotOn",
+        "Dungeon_DuringDungeonCapture",
+        "Dungeon_Entrance",
+        "Dungeon_BeforeBossBattle",
+        "Dungeon_DefeatedBoss",
+        "Complete"
+      ],
+      "order": 19
+    },
+    {
+      "id": "GetCamera",
+      "name": "Camera Work in the Depths",
+      "type": "main",
+      "giver": "Josha",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 2490878017,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GotoUnderground",
+        "TakePicture",
+        "ReturnBaseCamp",
+        "Complete"
+      ],
+      "order": 20
+    },
+    {
+      "id": "DeepHoleSurvey2",
+      "name": "A Mystery in the Depths",
+      "type": "main",
+      "giver": "Josha",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 1161409678,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "AfterInterview",
+        "Step01",
+        "Report",
+        "Buield",
+        "Complete"
+      ],
+      "order": 21
+    },
+    {
+      "id": "GroundPaintingAir01",
+      "name": "Impa and the Geoglyphs",
+      "type": "main",
+      "giver": "Cado",
+      "location": "New Serenne Stable",
+      "position": {
+        "x": -1361,
+        "y": 191.5,
+        "z": -724
+      },
+      "locationKind": "area",
+      "hash": 913795182,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GoToWandererA",
+        "GoToWandererB",
+        "Carry",
+        "Search",
+        "Complete"
+      ],
+      "order": 22
+    },
+    {
+      "id": "MemoryOfTheDragon",
+      "name": "The Dragon's Tears",
+      "type": "main",
+      "giver": "Impa",
+      "location": "New Serenne Stable",
+      "position": {
+        "x": -1361,
+        "y": 191.5,
+        "z": -724
+      },
+      "locationKind": "area",
+      "hash": 614725771,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GoTemple",
+        "GoTemple2",
+        "Step01",
+        "Step2",
+        "Complete"
+      ],
+      "order": 23
+    },
+    {
+      "id": "FindWithSensors",
+      "name": "Hateno Village Research Lab",
+      "type": "adventure",
+      "giver": "Robbie",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 1244385269,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "TestSensor",
+        "Find",
+        "Report",
+        "Complete"
+      ],
+      "order": 24
+    },
+    {
+      "id": "HatenoPurchasePicture",
+      "name": "Filling Out the Compendium",
+      "type": "adventure",
+      "giver": "Robbie",
+      "location": "Hateno Ancient Tech Lab",
+      "position": {
+        "x": 3777.70971679687,
+        "y": 335.311096191406,
+        "z": 2127.36206054687
+      },
+      "locationKind": "area",
+      "hash": 3888249753,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Purchase",
+        "Complete"
+      ],
+      "order": 25
+    },
+    {
+      "id": "GetWarpMarker",
+      "name": "Presenting: The Travel Medallion!",
+      "type": "adventure",
+      "giver": "Robbie",
+      "location": "Hateno Ancient Tech Lab",
+      "position": {
+        "x": 3777.70971679687,
+        "y": 335.311096191406,
+        "z": 2127.36206054687
+      },
+      "locationKind": "area",
+      "hash": 965011350,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "EventLightSpot",
+        "Step01",
+        "Step02",
+        "Step03",
+        "Step04",
+        "Complete"
+      ],
+      "order": 26
+    },
+    {
+      "id": "GetWalker",
+      "name": "Presenting: Hero's Path Mode!",
+      "type": "adventure",
+      "giver": "Robbie",
+      "location": "Hateno Ancient Tech Lab",
+      "position": {
+        "x": 3777.70971679687,
+        "y": 335.311096191406,
+        "z": 2127.36206054687
+      },
+      "locationKind": "area",
+      "hash": 2421407533,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 27
+    },
+    {
+      "id": "GetSensorPlus",
+      "name": "Presenting: Sensor +!",
+      "type": "adventure",
+      "giver": "Robbie",
+      "location": "Hateno Ancient Tech Lab",
+      "position": {
+        "x": 3777.70971679687,
+        "y": 335.311096191406,
+        "z": 2127.36206054687
+      },
+      "locationKind": "area",
+      "hash": 2724658556,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 28
+    },
+    {
+      "id": "IchikaraChallenge01",
+      "name": "Mattison's Independence",
+      "type": "adventure",
+      "giver": "Hudson",
+      "location": "Tarrey Town",
+      "position": {
+        "x": 3965.6387,
+        "y": 233.23712,
+        "z": -1611.1797
+      },
+      "locationKind": "area",
+      "hash": 3103300314,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Research",
+        "Child_Talk",
+        "Quiz2",
+        "Cooking",
+        "GotoRopeway",
+        "MammyReport",
+        "PaPaTalk",
+        "Memory",
+        "Complete"
+      ],
+      "order": 29
+    },
+    {
+      "id": "Hateno_Cheese",
+      "name": "A Letter to Koyin",
+      "type": "adventure",
+      "giver": "Koyin",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 594371990,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 30
+    },
+    {
+      "id": "Hateno_RevitalizeByNewSpeciality",
+      "name": "A New Signature Food",
+      "type": "adventure",
+      "giver": "Reede",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 1015998158,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 31
+    },
+    {
+      "id": "Hateno_SecretLifeOfKusayoshi",
+      "name": "Reede's Secret",
+      "type": "adventure",
+      "giver": "Clavia",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 3640404874,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 32
+    },
+    {
+      "id": "Hateno_SecretLifeOfSagono",
+      "name": "Cece's Secret",
+      "type": "adventure",
+      "giver": "Sophie",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 781260550,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 33
+    },
+    {
+      "id": "Hateno_VillageMayorElection",
+      "name": "Team Cece or Team Reede?",
+      "type": "adventure",
+      "giver": "Cece",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 4130408321,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Step03",
+        "Step04",
+        "Step05",
+        "Step06",
+        "Step07",
+        "Step08",
+        "Step09",
+        "Complete"
+      ],
+      "order": 34
+    },
+    {
+      "id": "Hateno_LetUsElection",
+      "name": "The Mayoral Election",
+      "type": "adventure",
+      "giver": "-",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 2684063001,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Ready1",
+        "Ready2",
+        "Step01",
+        "Complete"
+      ],
+      "order": 35
+    },
+    {
+      "id": "TauraChallenge001",
+      "name": "Ruffian-Infested Village",
+      "type": "adventure",
+      "giver": "Rozel",
+      "location": "Lurelin Village",
+      "position": {
+        "x": 3007.3096,
+        "y": 142.49794,
+        "z": 3473.6292
+      },
+      "locationKind": "area",
+      "hash": 566085616,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Finale",
+        "Complete"
+      ],
+      "order": 36
+    },
+    {
+      "id": "Uotori_RevivePlan",
+      "name": "Lurelin Village Restoration Project",
+      "type": "adventure",
+      "giver": "Bolson",
+      "location": "Lurelin Village",
+      "position": {
+        "x": 3007.3096,
+        "y": 142.49794,
+        "z": 3473.6292
+      },
+      "locationKind": "area",
+      "hash": 2037468418,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CollectWood",
+        "Revive",
+        "Finale",
+        "Complete"
+      ],
+      "order": 37
+    },
+    {
+      "id": "NewsPaper_Mitsuba",
+      "name": "Potential Princess Sightings!",
+      "type": "adventure",
+      "giver": "Traysi",
+      "location": "Lucky Clover Gazette",
+      "position": {
+        "x": -3255.8406,
+        "y": 256.60177999999996,
+        "z": -1757.5853
+      },
+      "locationKind": "area",
+      "hash": 433066452,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Tribune01",
+        "Finish",
+        "Complete"
+      ],
+      "order": 38
+    },
+    {
+      "id": "Tribune07",
+      "name": "The Beckoning Woman",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Outskirt Stable",
+      "position": {
+        "x": -1449.4932,
+        "y": 181.41899,
+        "z": 1269.0115
+      },
+      "locationKind": "area",
+      "hash": 4215371100,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "step1",
+        "step2",
+        "step4",
+        "step5",
+        "step6",
+        "Complete"
+      ],
+      "order": 39
+    },
+    {
+      "id": "Tribune04",
+      "name": "Gourmets Gone Missing",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Riverside Stable",
+      "position": {
+        "x": 339.23242,
+        "y": 145.3124799999999,
+        "z": 1095.2969
+      },
+      "locationKind": "area",
+      "hash": 986736171,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 40
+    },
+    {
+      "id": "Tribune06",
+      "name": "The Beast and the Princess",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "New Serenne Stable",
+      "position": {
+        "x": -1361,
+        "y": 191.5,
+        "z": -724
+      },
+      "locationKind": "area",
+      "hash": 3111621249,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Report",
+        "Complete"
+      ],
+      "order": 41
+    },
+    {
+      "id": "Tribune09",
+      "name": "Zelda's Golden Horse",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Snowfield Stable",
+      "position": {
+        "x": -1654.23,
+        "y": 347.93182,
+        "z": -2565.6287
+      },
+      "locationKind": "area",
+      "hash": 1276445396,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "HorseTake",
+        "Complete"
+      ],
+      "order": 42
+    },
+    {
+      "id": "Tribune03",
+      "name": "White Goats Gone Missing",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Tabantha Bridge Stable",
+      "position": {
+        "x": -2931.5676,
+        "y": 319.16226,
+        "z": -547.598
+      },
+      "locationKind": "area",
+      "hash": 2051928017,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Hearing",
+        "Search",
+        "Complete"
+      ],
+      "order": 43
+    },
+    {
+      "id": "Tribune11",
+      "name": "For Our Princess!",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Foothill Stable",
+      "position": {
+        "x": 2613.332,
+        "y": 253.78871,
+        "z": -1143.5127
+      },
+      "locationKind": "area",
+      "hash": 395073299,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step2",
+        "Step3",
+        "Step4",
+        "Step5",
+        "Step6",
+        "Complete"
+      ],
+      "order": 44
+    },
+    {
+      "id": "Tribune10",
+      "name": "The All-Clucking Cucco",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "South Akkala Stable",
+      "position": {
+        "x": 3148.6758,
+        "y": 338.639799999999,
+        "z": -1691.4481
+      },
+      "locationKind": "area",
+      "hash": 1394819939,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "TalkKokkko",
+        "FirstOracle",
+        "TimeOverFirst",
+        "ClearFirst",
+        "FinishFirstTrial",
+        "SecondOracle",
+        "TimeOverSecond",
+        "ClearSecond",
+        "Battle",
+        "Report",
+        "Complete"
+      ],
+      "order": 45
+    },
+    {
+      "id": "Tribune05",
+      "name": "The Missing Farm Tools",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Wetland Stable",
+      "position": {
+        "x": 888.06165,
+        "y": 175.9657,
+        "z": 173.6723
+      },
+      "locationKind": "area",
+      "hash": 3425102500,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Carry",
+        "Carry2",
+        "Complete"
+      ],
+      "order": 46
+    },
+    {
+      "id": "Tribune02",
+      "name": "Princess Zelda Kidnapped?!",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Dueling Peaks Stable",
+      "position": {
+        "x": 1760.7805,
+        "y": 131.2842699999999,
+        "z": 1925.3597
+      },
+      "locationKind": "area",
+      "hash": 126855444,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Escape",
+        "Report",
+        "Complete"
+      ],
+      "order": 47
+    },
+    {
+      "id": "Tribune13",
+      "name": "An Eerie Voice",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Highland Stable",
+      "position": {
+        "x": 529.6001,
+        "y": 200.5581,
+        "z": 3450.8826
+      },
+      "locationKind": "area",
+      "hash": 1153841256,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Chase",
+        "Discovery",
+        "Report",
+        "Complete"
+      ],
+      "order": 48
+    },
+    {
+      "id": "Tribune14",
+      "name": "The Blocked Well",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Gerudo Canyon Stable",
+      "position": {
+        "x": -2803.8118,
+        "y": 178.5857399999999,
+        "z": 2225.7651
+      },
+      "locationKind": "area",
+      "hash": 3376047880,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step2",
+        "Step3",
+        "Complete"
+      ],
+      "order": 49
+    },
+    {
+      "id": "Orchestra03",
+      "name": "The Flute Player's Plan",
+      "type": "adventure",
+      "giver": "Pyper",
+      "location": "Highland Stable",
+      "position": {
+        "x": 529.6001,
+        "y": 200.5581,
+        "z": 3450.8826
+      },
+      "locationKind": "area",
+      "hash": 3542112264,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "step1",
+        "step2",
+        "step3",
+        "step4",
+        "Complete"
+      ],
+      "order": 50
+    },
+    {
+      "id": "Orchestra02",
+      "name": "Honey, Bee Mine",
+      "type": "adventure",
+      "giver": "Beetz",
+      "location": "West Necluda",
+      "position": {
+        "x": 1297.487,
+        "y": 0,
+        "z": 1524.7384
+      },
+      "locationKind": "area",
+      "hash": 1627584460,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 51
+    },
+    {
+      "id": "Orchestra04",
+      "name": "The Hornist's Dramatic Escape",
+      "type": "adventure",
+      "giver": "Eustus",
+      "location": "Tabantha Frontier",
+      "position": {
+        "x": -3476.1707,
+        "y": 0,
+        "z": -1220.9668
+      },
+      "locationKind": "area",
+      "hash": 4191545690,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "GetPrize",
+        "Complete"
+      ],
+      "order": 52
+    },
+    {
+      "id": "Tribune16",
+      "name": "Serenade to a Great Fairy",
+      "type": "adventure",
+      "giver": "Penn",
+      "location": "Woodland Stable",
+      "position": {
+        "x": 1062.303,
+        "y": 171.95836,
+        "z": -1135.3392
+      },
+      "locationKind": "area",
+      "hash": 3240104244,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Arrival",
+        "Complete"
+      ],
+      "order": 53
+    },
+    {
+      "id": "Fairy4",
+      "name": "Serenade to Kaysa",
+      "type": "adventure",
+      "giver": "Mastro",
+      "location": "Outskirt Stable",
+      "position": {
+        "x": -1449.4932,
+        "y": 181.41899,
+        "z": 1269.0115
+      },
+      "locationKind": "area",
+      "hash": 602198340,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "GoToOrchestra",
+        "CarryNPC",
+        "Complete"
+      ],
+      "order": 54
+    },
+    {
+      "id": "Fairy3",
+      "name": "Serenade to Cotera",
+      "type": "adventure",
+      "giver": "Mastro",
+      "location": "Dueling Peaks Stable",
+      "position": {
+        "x": 1760.7805,
+        "y": 131.2842699999999,
+        "z": 1925.3597
+      },
+      "locationKind": "area",
+      "hash": 3418635314,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "GoToOrchestra",
+        "Craft",
+        "Reach",
+        "Complete"
+      ],
+      "order": 55
+    },
+    {
+      "id": "Fairy2",
+      "name": "Serenade to Mija",
+      "type": "adventure",
+      "giver": "Mastro",
+      "location": "Snowfield Stable",
+      "position": {
+        "x": -1654.23,
+        "y": 347.93182,
+        "z": -2565.6287
+      },
+      "locationKind": "area",
+      "hash": 3330895155,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "ReturnUmayado",
+        "CarryNPC",
+        "CarryNPC2",
+        "Report",
+        "Complete"
+      ],
+      "order": 56
+    },
+    {
+      "id": "MercenaryChallenge_HyrulePlain",
+      "name": "Bring Peace to Hyrule Field!",
+      "type": "adventure",
+      "giver": "Hoz",
+      "location": "Central Hyrule",
+      "position": {
+        "x": -256.19678,
+        "y": 0,
+        "z": 116.21338
+      },
+      "locationKind": "area",
+      "hash": 813758434,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Move",
+        "Exterminate",
+        "Report",
+        "Complete"
+      ],
+      "order": 57
+    },
+    {
+      "id": "MercenaryChallenge_Hebra",
+      "name": "Bring Peace to Necluda!",
+      "type": "adventure",
+      "giver": "Hoz",
+      "location": "Central Hyrule",
+      "position": {
+        "x": -256.19678,
+        "y": 0,
+        "z": 116.21338
+      },
+      "locationKind": "area",
+      "hash": 2455698830,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MeetAgain",
+        "Move",
+        "Exterminate",
+        "Report",
+        "Complete"
+      ],
+      "order": 58
+    },
+    {
+      "id": "MercenaryChallenge_Eldin",
+      "name": "Bring Peace to Eldin!",
+      "type": "adventure",
+      "giver": "Toren",
+      "location": "Eldin Canyon",
+      "position": {
+        "x": 1852.762,
+        "y": 0,
+        "z": -1400.6433
+      },
+      "locationKind": "area",
+      "hash": 4276761055,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Move",
+        "Exterminate",
+        "Report",
+        "Complete"
+      ],
+      "order": 59
+    },
+    {
+      "id": "MercenaryChallenge_Akkare",
+      "name": "Bring Peace to Akkala!",
+      "type": "adventure",
+      "giver": "Toren",
+      "location": "Eldin Canyon",
+      "position": {
+        "x": 1852.762,
+        "y": 0,
+        "z": -1400.6433
+      },
+      "locationKind": "area",
+      "hash": 3489727802,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MeetAgain",
+        "Move",
+        "Exterminate",
+        "Report",
+        "Complete"
+      ],
+      "order": 60
+    },
+    {
+      "id": "MercenaryChallenge_Firone",
+      "name": "Bring Peace to Faron!",
+      "type": "adventure",
+      "giver": "Flaxel",
+      "location": "Faron Grasslands",
+      "position": {
+        "x": -423.30347,
+        "y": 0,
+        "z": 3156.432
+      },
+      "locationKind": "area",
+      "hash": 2014635680,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Craft",
+        "Exterminate",
+        "Report",
+        "Complete"
+      ],
+      "order": 61
+    },
+    {
+      "id": "MercenaryChallenge_Hateru",
+      "name": "Bring Peace to Hebra!",
+      "type": "adventure",
+      "giver": "Flaxel",
+      "location": "Faron Grasslands",
+      "position": {
+        "x": -423.30347,
+        "y": 0,
+        "z": 3156.432
+      },
+      "locationKind": "area",
+      "hash": 434899983,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MeetAgain",
+        "Craft",
+        "Exterminate",
+        "Report",
+        "Complete"
+      ],
+      "order": 62
+    },
+    {
+      "id": "OldKorokHelp",
+      "name": "Hestu's Concerns",
+      "type": "adventure",
+      "giver": "Hestu",
+      "location": "-",
+      "position": null,
+      "locationKind": "area",
+      "hash": 3143164645,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "STEP1",
+        "STEP1_Basecamp",
+        "STEP1_Final",
+        "STEP2",
+        "STEP2_BaseCamp",
+        "STEP2_Final",
+        "Complete"
+      ],
+      "order": 63
+    },
+    {
+      "id": "NushiShop_Tutorial",
+      "name": "The Hunt for Bubbul Gems!",
+      "type": "adventure",
+      "giver": "Koltin",
+      "location": "Eldin Canyon",
+      "position": {
+        "x": 1852.762,
+        "y": 0,
+        "z": -1400.6433
+      },
+      "locationKind": "area",
+      "hash": 2473701211,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "BringCaveMasterMedal",
+        "Complete"
+      ],
+      "order": 64
+    },
+    {
+      "id": "NushiShop_Challenge00",
+      "name": "The Search for Koltin",
+      "type": "adventure",
+      "giver": "Koltin",
+      "location": "Eldin Canyon",
+      "position": {
+        "x": 1852.762,
+        "y": 0,
+        "z": -1400.6433
+      },
+      "locationKind": "area",
+      "hash": 3181661337,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "FindNushiShop",
+        "HeardSpot",
+        "Complete"
+      ],
+      "order": 65
+    },
+    {
+      "id": "MonsterFigures01",
+      "name": "A Monstrous Collection I",
+      "type": "adventure",
+      "giver": "Kilton",
+      "location": "Tarrey Town",
+      "position": {
+        "x": 3965.6387,
+        "y": 233.23712,
+        "z": -1611.1797
+      },
+      "locationKind": "area",
+      "hash": 1456330489,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Photo",
+        "Display",
+        "Exhibition",
+        "Reward",
+        "Complete"
+      ],
+      "order": 66
+    },
+    {
+      "id": "MonsterFigures02",
+      "name": "A Monstrous Collection II",
+      "type": "adventure",
+      "giver": "Kilton",
+      "location": "Tarrey Town",
+      "position": {
+        "x": 3965.6387,
+        "y": 233.23712,
+        "z": -1611.1797
+      },
+      "locationKind": "area",
+      "hash": 205488328,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Photo",
+        "Display",
+        "Exhibition",
+        "Reward",
+        "Complete"
+      ],
+      "order": 67
+    },
+    {
+      "id": "MonsterFigures03",
+      "name": "A Monstrous Collection III",
+      "type": "adventure",
+      "giver": "Kilton",
+      "location": "Tarrey Town",
+      "position": {
+        "x": 3965.6387,
+        "y": 233.23712,
+        "z": -1611.1797
+      },
+      "locationKind": "area",
+      "hash": 1826043395,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Photo",
+        "Display",
+        "Exhibition",
+        "Reward",
+        "Complete"
+      ],
+      "order": 68
+    },
+    {
+      "id": "MonsterFigures04",
+      "name": "A Monstrous Collection IV",
+      "type": "adventure",
+      "giver": "Kilton",
+      "location": "Tarrey Town",
+      "position": {
+        "x": 3965.6387,
+        "y": 233.23712,
+        "z": -1611.1797
+      },
+      "locationKind": "area",
+      "hash": 1622778908,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Photo",
+        "Display",
+        "Exhibition",
+        "Reward",
+        "Complete"
+      ],
+      "order": 69
+    },
+    {
+      "id": "MonsterFigures05",
+      "name": "A Monstrous Collection V",
+      "type": "adventure",
+      "giver": "Kilton",
+      "location": "Tarrey Town",
+      "position": {
+        "x": 3965.6387,
+        "y": 233.23712,
+        "z": -1611.1797
+      },
+      "locationKind": "area",
+      "hash": 1077222823,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Photo",
+        "Display",
+        "Exhibition",
+        "Reward",
+        "Complete"
+      ],
+      "order": 70
+    },
+    {
+      "id": "BlindRuinsTreasure",
+      "name": "Investigate the Thyphlo Ruins",
+      "type": "adventure",
+      "giver": "Kazul",
+      "location": "Thyphlo Ruins",
+      "position": {
+        "x": 327.00436,
+        "y": 0,
+        "z": -3079.971
+      },
+      "locationKind": "area",
+      "hash": 3452782003,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "LookAtBoard_1",
+        "Search_1",
+        "GoToCave",
+        "RewardNotReceived",
+        "Complete"
+      ],
+      "order": 71
+    },
+    {
+      "id": "BlindRuinsTreasure_Rito",
+      "name": "The Owl Protected by Dragons",
+      "type": "adventure",
+      "giver": "Kazul",
+      "location": "Thyphlo Ruins",
+      "position": {
+        "x": 327.00436,
+        "y": 0,
+        "z": -3079.971
+      },
+      "locationKind": "area",
+      "hash": 849736581,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 72
+    },
+    {
+      "id": "BlindRuinsTreasure_Goron",
+      "name": "The Corridor between Two Dragons",
+      "type": "adventure",
+      "giver": "Kazul",
+      "location": "Thyphlo Ruins",
+      "position": {
+        "x": 327.00436,
+        "y": 0,
+        "z": -3079.971
+      },
+      "locationKind": "area",
+      "hash": 1230895272,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 73
+    },
+    {
+      "id": "BlindRuinsTreasure_Zora",
+      "name": "The Six Dragons",
+      "type": "adventure",
+      "giver": "Kazul",
+      "location": "Thyphlo Ruins",
+      "position": {
+        "x": 327.00436,
+        "y": 0,
+        "z": -3079.971
+      },
+      "locationKind": "area",
+      "hash": 744039918,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 74
+    },
+    {
+      "id": "BlindRuinsTreasure_Gerudo",
+      "name": "The Long Dragon",
+      "type": "adventure",
+      "giver": "Kazul",
+      "location": "Thyphlo Ruins",
+      "position": {
+        "x": 327.00436,
+        "y": 0,
+        "z": -3079.971
+      },
+      "locationKind": "area",
+      "hash": 2579511363,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 75
+    },
+    {
+      "id": "FirstskyislandReturns",
+      "name": "Legend of the Great Sky Island",
+      "type": "adventure",
+      "giver": "Steward Construct",
+      "location": "Great Sky Island",
+      "position": {
+        "x": 394.477,
+        "y": 1937.4567,
+        "z": 1259.8545
+      },
+      "locationKind": "area",
+      "hash": 1501143312,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "BeforeGame",
+        "ReturnReady",
+        "InGameWhenActiveTorchNumIs0",
+        "InGameWhenActiveTorchNumIs1",
+        "InGameWhenActiveTorchNumIs2",
+        "GameClear",
+        "Complete"
+      ],
+      "order": 76
+    },
+    {
+      "id": "ZonauReliefSearch",
+      "name": "Messages from an Ancient Era",
+      "type": "adventure",
+      "giver": "Wortsworth",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 3860341172,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Reach_KakarikoVillage",
+        "Step1",
+        "Complete"
+      ],
+      "order": 77
+    },
+    {
+      "id": "StatueDevilTutorial",
+      "name": "A Deal With the Statue",
+      "type": "adventure",
+      "giver": "Horned Statue",
+      "location": "Royal Hidden Passage",
+      "position": {
+        "x": -253.9667,
+        "y": 132.89775,
+        "z": -767.084
+      },
+      "locationKind": "area",
+      "hash": 4002066887,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetBackContainer",
+        "Complete"
+      ],
+      "order": 78
+    },
+    {
+      "id": "LookingForTheVoiceLord",
+      "name": "Who Goes There?",
+      "type": "adventure",
+      "giver": "Jerrin",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 137771244,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 79
+    },
+    {
+      "id": "Connect_FirstIsland",
+      "name": "A Call from the Depths",
+      "type": "adventure",
+      "giver": "Mysterious Voice",
+      "location": "Temple of Time Ruins",
+      "position": {
+        "x": -818.08215,
+        "y": 222.00029,
+        "z": 2002.0026
+      },
+      "locationKind": "area",
+      "hash": 3264354741,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Sky",
+        "Collect1st",
+        "Collect2nd",
+        "Collect3rd",
+        "SkyGather",
+        "Minus1st",
+        "Minus2nd",
+        "Minus3rd",
+        "Minus4th",
+        "Minus5th",
+        "Minus6th",
+        "MinusGather",
+        "Complete"
+      ],
+      "order": 80
+    },
+    {
+      "id": "AssassinGerudoBase",
+      "name": "Infiltrating the Yiga Clan",
+      "type": "adventure",
+      "giver": "Mimos",
+      "location": "Yiga Clan Hideout",
+      "position": {
+        "x": -3611.611,
+        "y": 436.26855,
+        "z": 1353.2732
+      },
+      "locationKind": "area",
+      "hash": 3319299554,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Enlist",
+        "Equip",
+        "Complete"
+      ],
+      "order": 81
+    },
+    {
+      "id": "GerudoCanyon_Adventure",
+      "name": "The Yiga Clan Exam",
+      "type": "adventure",
+      "giver": "Yiga Blademaster",
+      "location": "Yiga Blademaster Station",
+      "position": {
+        "x": -2433.9128,
+        "y": 251.23605,
+        "z": 1819.6832
+      },
+      "locationKind": "area",
+      "hash": 2988613963,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step2",
+        "Complete"
+      ],
+      "order": 82
+    },
+    {
+      "id": "MinusYiga",
+      "name": "Master Kohga of the Yiga Clan",
+      "type": "adventure",
+      "giver": "Kohga",
+      "location": "Great Abandoned Central Mine",
+      "position": {
+        "x": -732.69824,
+        "y": -353.51144,
+        "z": 1829.0629
+      },
+      "locationKind": "area",
+      "hash": 2301337992,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "BeginBeforeHint",
+        "Begin",
+        "Again",
+        "Continue",
+        "Complete"
+      ],
+      "order": 83
+    },
+    {
+      "id": "CarryToShrine09",
+      "name": "The Satori Mountain Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Satori Mountain",
+      "position": {
+        "x": -2138.9785,
+        "y": 212.67612,
+        "z": 874.4414
+      },
+      "locationKind": "shrine",
+      "hash": 2555038963,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 84
+    },
+    {
+      "id": "Rito_ShadowCave",
+      "name": "The White Bird's Guidance",
+      "type": "shrine",
+      "giver": "Laissa",
+      "location": "Rito Village",
+      "position": {
+        "x": -4058.435,
+        "y": 302.437439999999,
+        "z": -1990.0042
+      },
+      "locationKind": "shrine",
+      "hash": 4020348848,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "GetHint",
+        "Complete"
+      ],
+      "order": 85
+    },
+    {
+      "id": "CarryToShrine02",
+      "name": "The Gisa Crater Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Gisa Crater",
+      "position": {
+        "x": -3951.0598,
+        "y": 230.9,
+        "z": -1139.08
+      },
+      "locationKind": "shrine",
+      "hash": 3960935310,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 86
+    },
+    {
+      "id": "CarryToShrine15",
+      "name": "The North Hebra Mountains Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Hebra Mountains",
+      "position": {
+        "x": -2559.4434,
+        "y": 364.04056,
+        "z": -3353.757
+      },
+      "locationKind": "shrine",
+      "hash": 466410115,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 87
+    },
+    {
+      "id": "CarryToShrine16",
+      "name": "The Northwest Hebra Cave Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Hebra Mountains Northwest Cave",
+      "position": {
+        "x": -2997.811,
+        "y": 633.9293,
+        "z": -3101.6274
+      },
+      "locationKind": "shrine",
+      "hash": 4252347632,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 88
+    },
+    {
+      "id": "Korok_CarryToShrine",
+      "name": "A Pretty Stone and Five Golden Apples",
+      "type": "shrine",
+      "giver": "Damia",
+      "location": "Korok Forest",
+      "position": {
+        "x": 621.0962,
+        "y": 283.770969999999,
+        "z": -2211.411
+      },
+      "locationKind": "shrine",
+      "hash": 709630663,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Carry",
+        "Crystal",
+        "Complete"
+      ],
+      "order": 89
+    },
+    {
+      "id": "NoTrespassing",
+      "name": "None Shall Pass?",
+      "type": "shrine",
+      "giver": "Zooki",
+      "location": "Korok Forest",
+      "position": {
+        "x": 166.66013,
+        "y": 298.1685,
+        "z": -2320.1257
+      },
+      "locationKind": "shrine",
+      "hash": 3667565769,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Carry",
+        "Complete"
+      ],
+      "order": 90
+    },
+    {
+      "id": "InfiltrationFromTheSky",
+      "name": "Maca's Special Place",
+      "type": "shrine",
+      "giver": "Maca",
+      "location": "Korok Forest",
+      "position": {
+        "x": 354.6541,
+        "y": 297.70821999999896,
+        "z": -1891.8943
+      },
+      "locationKind": "shrine",
+      "hash": 1803295560,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 91
+    },
+    {
+      "id": "CarryToShrine01",
+      "name": "The Death Caldera Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Death Caldera",
+      "position": {
+        "x": 2960.006,
+        "y": 643.4725,
+        "z": -2758.1106
+      },
+      "locationKind": "shrine",
+      "hash": 1243768047,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 92
+    },
+    {
+      "id": "CarryToShrine03",
+      "name": "The Lake Intenoch Cave Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Lake Intenoch Cave",
+      "position": {
+        "x": 2679.244,
+        "y": 249.97745,
+        "z": -1904.4519
+      },
+      "locationKind": "shrine",
+      "hash": 3089408141,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 93
+    },
+    {
+      "id": "IchikaraChallenge03",
+      "name": "Rock for Sale",
+      "type": "shrine",
+      "giver": "Hagie",
+      "location": "Tarrey Town",
+      "position": {
+        "x": 3810.5168,
+        "y": 209.673319999999,
+        "z": -1219.1128
+      },
+      "locationKind": "shrine",
+      "hash": 2726418107,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 94
+    },
+    {
+      "id": "CraftShadowPicture",
+      "name": "Dyeing to Find It",
+      "type": "shrine",
+      "giver": "Steward Construct",
+      "location": "Lanayru Great Spring",
+      "position": {
+        "x": 2361.2383,
+        "y": 275.39499999999896,
+        "z": 510.75052
+      },
+      "locationKind": "shrine",
+      "hash": 674419724,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 95
+    },
+    {
+      "id": "SnowyMountain_Surfing",
+      "name": "The High Spring and the Light Rings",
+      "type": "shrine",
+      "giver": "Nazbi",
+      "location": "Mount Lanayru",
+      "position": {
+        "x": 3526.2231,
+        "y": 286.85938,
+        "z": 1482.287
+      },
+      "locationKind": "shrine",
+      "hash": 23327975,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 96
+    },
+    {
+      "id": "CarryToShrine10",
+      "name": "The Lanayru Road Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Lanayru Promenade",
+      "position": {
+        "x": 2755.5327,
+        "y": 219.20463999999998,
+        "z": 1089.2527
+      },
+      "locationKind": "shrine",
+      "hash": 612916001,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 97
+    },
+    {
+      "id": "CarryToShrine08_Zora",
+      "name": "The Ralis Channel Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Ralis Channel",
+      "position": {
+        "x": 2918.25,
+        "y": 274.149999999999,
+        "z": -507
+      },
+      "locationKind": "shrine",
+      "hash": 3305395274,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 98
+    },
+    {
+      "id": "IceMaking",
+      "name": "Keys Born of Water",
+      "type": "shrine",
+      "giver": "Steward Construct",
+      "location": "West Necluda",
+      "position": {
+        "x": 930.8906,
+        "y": 149.13925,
+        "z": 1903.416
+      },
+      "locationKind": "shrine",
+      "hash": 3759282213,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 99
+    },
+    {
+      "id": "CarryToShrine13",
+      "name": "The Oakle's Navel Cave Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Oakle's Navel Cave",
+      "position": {
+        "x": 2304.06,
+        "y": 90.0380300000001,
+        "z": 2377.9314
+      },
+      "locationKind": "shrine",
+      "hash": 1803444862,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 100
+    },
+    {
+      "id": "GiantHorse",
+      "name": "Ride the Giant Horse",
+      "type": "shrine",
+      "giver": "Baddek",
+      "location": "Faron Grasslands",
+      "position": {
+        "x": -565,
+        "y": 248.2,
+        "z": 3524
+      },
+      "locationKind": "shrine",
+      "hash": 1590236611,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step2",
+        "Step3",
+        "Complete"
+      ],
+      "order": 101
+    },
+    {
+      "id": "CarryToShrine06",
+      "name": "The Lake Hylia Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Lake Hylia",
+      "position": {
+        "x": 103.4143,
+        "y": 30.973608,
+        "z": 2518.0522
+      },
+      "locationKind": "shrine",
+      "hash": 1344191194,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 102
+    },
+    {
+      "id": "DevoteSpring",
+      "name": "Legend of the Soaring Spear",
+      "type": "shrine",
+      "giver": "Tattered Notebook",
+      "location": "Tobio's Hollow Cave",
+      "position": {
+        "x": 1218.442,
+        "y": 215.77994,
+        "z": 2543.163
+      },
+      "locationKind": "shrine",
+      "hash": 86026324,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 103
+    },
+    {
+      "id": "CarryToShrine07",
+      "name": "The Gerudo Canyon Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Gerudo Canyon",
+      "position": {
+        "x": -2036.9565,
+        "y": 183.89724999999999,
+        "z": 1853.4011
+      },
+      "locationKind": "shrine",
+      "hash": 1744111324,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 104
+    },
+    {
+      "id": "CarryToShrine19",
+      "name": "The North Hyrule Sky Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "North Hyrule Sky Archipelago",
+      "position": {
+        "x": 340.39374,
+        "y": 1939.9,
+        "z": -2814.7324
+      },
+      "locationKind": "shrine",
+      "hash": 1801156153,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 105
+    },
+    {
+      "id": "CarryToShrine11",
+      "name": "The South Hyrule Sky Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "South Hyrule Sky Archipelago",
+      "position": {
+        "x": -1257.2407,
+        "y": 1127.1682,
+        "z": 1486.9595
+      },
+      "locationKind": "shrine",
+      "hash": 2583847977,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 106
+    },
+    {
+      "id": "CarryToShrine20",
+      "name": "The Tabantha Sky Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Tabantha Sky Archipelago",
+      "position": {
+        "x": -3369.6448,
+        "y": 1814.482,
+        "z": -467.49017
+      },
+      "locationKind": "shrine",
+      "hash": 2158569138,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 107
+    },
+    {
+      "id": "CarryToShrine21",
+      "name": "The East Hebra Sky Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "East Hebra Sky Archipelago",
+      "position": {
+        "x": -1802.017,
+        "y": 1067.9,
+        "z": -3406.8071
+      },
+      "locationKind": "shrine",
+      "hash": 1264095424,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 108
+    },
+    {
+      "id": "CarryToShrine14",
+      "name": "The Sky Mine Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Sky Mine",
+      "position": {
+        "x": 4505.997,
+        "y": 1274.0215,
+        "z": -2166.0159
+      },
+      "locationKind": "shrine",
+      "hash": 2028788183,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 109
+    },
+    {
+      "id": "CarryToShrine17",
+      "name": "The Sokkala Sky Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Sokkala Sky Archipelago",
+      "position": {
+        "x": 3670.7004,
+        "y": 1276.9001,
+        "z": -1483.6974
+      },
+      "locationKind": "shrine",
+      "hash": 1374178679,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 110
+    },
+    {
+      "id": "CarryToShrine23",
+      "name": "The South Lanayru Sky Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "South Lanayru Sky Archipelago",
+      "position": {
+        "x": 4613.314,
+        "y": 1908.9,
+        "z": 947.1263
+      },
+      "locationKind": "shrine",
+      "hash": 2689804434,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 111
+    },
+    {
+      "id": "CarryToShrine12",
+      "name": "The North Necluda Sky Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "North Necluda Sky Archipelago",
+      "position": {
+        "x": 1758.4888,
+        "y": 1042.9652,
+        "z": 1208.3844
+      },
+      "locationKind": "shrine",
+      "hash": 816151057,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 112
+    },
+    {
+      "id": "CarryToShrine22",
+      "name": "The West Necluda Sky Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "West Necluda Sky Archipelago",
+      "position": {
+        "x": 1468.6115,
+        "y": 704.81323,
+        "z": 2168.8926
+      },
+      "locationKind": "shrine",
+      "hash": 1940829206,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 113
+    },
+    {
+      "id": "CarryToShrine05",
+      "name": "The Necluda Sky Crystal",
+      "type": "shrine",
+      "giver": "Mysterious Voice",
+      "location": "Necluda Sky Archipelago",
+      "position": {
+        "x": 2856.8481,
+        "y": 1331.025,
+        "z": 2856.474
+      },
+      "locationKind": "shrine",
+      "hash": 932882499,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Complete"
+      ],
+      "order": 114
+    },
+    {
+      "id": "FindWhiteHorse",
+      "name": "Spotting Spot",
+      "type": "side",
+      "giver": "Lester",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 3695716416,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 115
+    },
+    {
+      "id": "NowInTheVillageOfLurelin",
+      "name": "Village Attacked by Pirates",
+      "type": "side",
+      "giver": "Garini",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 3973160992,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 116
+    },
+    {
+      "id": "CookAtBaseCamp",
+      "name": "Today's Menu",
+      "type": "side",
+      "giver": "Burmano",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 2283741397,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 117
+    },
+    {
+      "id": "BuildingMaterialsTutorial",
+      "name": "The Incomplete Stable",
+      "type": "side",
+      "giver": "Karson",
+      "location": "Lookout Landing",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 1226279738,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GiveBuildingMaterials",
+        "Complete"
+      ],
+      "order": 118
+    },
+    {
+      "id": "DefeatHugeEnemy_1",
+      "name": "WANTED: Stone Talus",
+      "type": "side",
+      "giver": "Gralens",
+      "location": "Emergency Shelter",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 172052331,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Defeat",
+        "Report",
+        "Complete"
+      ],
+      "order": 119
+    },
+    {
+      "id": "DefeatHugeEnemy_2",
+      "name": "WANTED: Molduga",
+      "type": "side",
+      "giver": "Gralens",
+      "location": "Emergency Shelter",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 3226572852,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Defeat",
+        "Report",
+        "Complete"
+      ],
+      "order": 120
+    },
+    {
+      "id": "DefeatHugeEnemy_3",
+      "name": "WANTED: Hinox",
+      "type": "side",
+      "giver": "Gralens",
+      "location": "Emergency Shelter",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 2152797049,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Defeat",
+        "Report",
+        "Complete"
+      ],
+      "order": 121
+    },
+    {
+      "id": "DefeatHugeEnemy_4",
+      "name": "Unknown Sky Giant",
+      "type": "side",
+      "giver": "Gralens",
+      "location": "Emergency Shelter",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 923085964,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Defeat",
+        "Report",
+        "Complete"
+      ],
+      "order": 122
+    },
+    {
+      "id": "DefeatHugeEnemy_5",
+      "name": "Unknown Three-Headed Monster",
+      "type": "side",
+      "giver": "Gralens",
+      "location": "Emergency Shelter",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 2782649928,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Defeat",
+        "Report",
+        "Complete"
+      ],
+      "order": 123
+    },
+    {
+      "id": "DefeatHugeEnemy_6",
+      "name": "Unknown Huge Silhouette",
+      "type": "side",
+      "giver": "Gralens",
+      "location": "Emergency Shelter",
+      "position": {
+        "x": -254.11993,
+        "y": 123.4466599999999,
+        "z": -101.601685
+      },
+      "locationKind": "area",
+      "hash": 2446891723,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "EventLightSpot",
+        "Defeat",
+        "Report",
+        "Complete"
+      ],
+      "order": 124
+    },
+    {
+      "id": "TakeAnimals",
+      "name": "The Horse Guard's Request",
+      "type": "side",
+      "giver": "Toffa",
+      "location": "Outskirt Stable",
+      "position": {
+        "x": -1449.4932,
+        "y": 181.41899,
+        "z": 1269.0115
+      },
+      "locationKind": "area",
+      "hash": 86701544,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 125
+    },
+    {
+      "id": "PhotoSpot_Challenge_04",
+      "name": "A Picture for Outskirt Stable",
+      "type": "side",
+      "giver": "Embry",
+      "location": "Outskirt Stable",
+      "position": {
+        "x": -1449.4932,
+        "y": 181.41899,
+        "z": 1269.0115
+      },
+      "locationKind": "area",
+      "hash": 3638510666,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 126
+    },
+    {
+      "id": "HorseInnChallenge005",
+      "name": "Feathered Fugitives",
+      "type": "side",
+      "giver": "Teli",
+      "location": "Riverside Stable",
+      "position": {
+        "x": 339.23242,
+        "y": 145.3124799999999,
+        "z": 1095.2969
+      },
+      "locationKind": "area",
+      "hash": 3033593715,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Report",
+        "Complete"
+      ],
+      "order": 127
+    },
+    {
+      "id": "PhotoSpot_Challenge_05",
+      "name": "A Picture for Riverside Stable",
+      "type": "side",
+      "giver": "Ember",
+      "location": "Riverside Stable",
+      "position": {
+        "x": 339.23242,
+        "y": 145.3124799999999,
+        "z": 1095.2969
+      },
+      "locationKind": "area",
+      "hash": 3929751579,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 128
+    },
+    {
+      "id": "HorseInnChallenge001",
+      "name": "Horse-Drawn Dreams",
+      "type": "side",
+      "giver": "Zumi",
+      "location": "New Serenne Stable",
+      "position": {
+        "x": -1361,
+        "y": 191.5,
+        "z": -724
+      },
+      "locationKind": "area",
+      "hash": 3708561440,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Repair",
+        "Repair2",
+        "Complete"
+      ],
+      "order": 129
+    },
+    {
+      "id": "PhotoSpot_Challenge_01",
+      "name": "A Picture for New Serenne Stable",
+      "type": "side",
+      "giver": "Sprinn",
+      "location": "New Serenne Stable",
+      "position": {
+        "x": -1361,
+        "y": 191.5,
+        "z": -724
+      },
+      "locationKind": "area",
+      "hash": 830910715,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 130
+    },
+    {
+      "id": "Genkos_Kitchen",
+      "name": "Genli's Home Cooking",
+      "type": "side",
+      "giver": "Genli",
+      "location": "Rito Village",
+      "position": {
+        "x": -3620.765,
+        "y": 208.672,
+        "z": -1799.816
+      },
+      "locationKind": "area",
+      "hash": 3823428310,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "HaveFish",
+        "GetPresent",
+        "Complete"
+      ],
+      "order": 131
+    },
+    {
+      "id": "Rito_MedoArmor",
+      "name": "Treasure of the Secret Springs",
+      "type": "side",
+      "giver": "Tulin",
+      "location": "Rito Village",
+      "position": {
+        "x": -3620.765,
+        "y": 208.672,
+        "z": -1799.816
+      },
+      "locationKind": "area",
+      "hash": 1145176289,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 132
+    },
+    {
+      "id": "ArrowMeister_Momo",
+      "name": "Molli the Fletcher's Quest",
+      "type": "side",
+      "giver": "Molli",
+      "location": "Rito Village",
+      "position": {
+        "x": -3620.765,
+        "y": 208.672,
+        "z": -1799.816
+      },
+      "locationKind": "area",
+      "hash": 3743467634,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "HaveWaterFruit",
+        "Complete"
+      ],
+      "order": 133
+    },
+    {
+      "id": "Rito_RevaliWeapon",
+      "name": "Legacy of the Rito",
+      "type": "side",
+      "giver": "Teba",
+      "location": "Rito Village",
+      "position": {
+        "x": -3620.765,
+        "y": 208.672,
+        "z": -1799.816
+      },
+      "locationKind": "area",
+      "hash": 3346241056,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Collect",
+        "Complete"
+      ],
+      "order": 134
+    },
+    {
+      "id": "Rito_ItemExchange",
+      "name": "Fish for Fletching",
+      "type": "side",
+      "giver": "Bedoli",
+      "location": "Rito Village",
+      "position": {
+        "x": -3620.765,
+        "y": 208.672,
+        "z": -1799.816
+      },
+      "locationKind": "area",
+      "hash": 369703844,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Collect",
+        "Complete"
+      ],
+      "order": 135
+    },
+    {
+      "id": "RitoBridgeRepair",
+      "name": "The Rito Rope Bridge",
+      "type": "side",
+      "giver": "Gesane",
+      "location": "Lucky Clover Gazette",
+      "position": {
+        "x": -3255.8406,
+        "y": 256.60177999999996,
+        "z": -1757.5853
+      },
+      "locationKind": "area",
+      "hash": 4075924688,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Report",
+        "Collect",
+        "Complete"
+      ],
+      "order": 136
+    },
+    {
+      "id": "PhotoSpot_Challenge_07",
+      "name": "A Picture for Tabantha Bridge Stable",
+      "type": "side",
+      "giver": "Dabi",
+      "location": "Tabantha Bridge Stable",
+      "position": {
+        "x": -2931.5676,
+        "y": 319.16226,
+        "z": -547.598
+      },
+      "locationKind": "area",
+      "hash": 914197249,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 137
+    },
+    {
+      "id": "PhotoSpot_Challenge_14",
+      "name": "A Picture for Snowfield Stable",
+      "type": "side",
+      "giver": "Varke",
+      "location": "Snowfield Stable",
+      "position": {
+        "x": -1654.23,
+        "y": 347.93182,
+        "z": -2565.6287
+      },
+      "locationKind": "area",
+      "hash": 3938946488,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 138
+    },
+    {
+      "id": "Neck_IceWaterCave",
+      "name": "Crossing the Cold Pool",
+      "type": "side",
+      "giver": "Verla",
+      "location": "Hebra Mountains",
+      "position": {
+        "x": -3079.067,
+        "y": 0,
+        "z": -3024.6821
+      },
+      "locationKind": "area",
+      "hash": 3674350119,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Defeat",
+        "Complete"
+      ],
+      "order": 139
+    },
+    {
+      "id": "Lodge_Chemical001",
+      "name": "Open the Door",
+      "type": "side",
+      "giver": "Jogo",
+      "location": "Tabantha Village Ruins",
+      "position": {
+        "x": -2324,
+        "y": 277,
+        "z": -1895
+      },
+      "locationKind": "area",
+      "hash": 2884053800,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "DefeatAnEnemy",
+        "DefeatedEnemies",
+        "GetPresent",
+        "Complete"
+      ],
+      "order": 140
+    },
+    {
+      "id": "Hack_GuardGoods",
+      "name": "Supply-Eyeing Fliers",
+      "type": "side",
+      "giver": "Huck",
+      "location": "Tabantha Frontier",
+      "position": {
+        "x": -3476.1707,
+        "y": 0,
+        "z": -1220.9668
+      },
+      "locationKind": "area",
+      "hash": 1186747326,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Defeat",
+        "Finish",
+        "Complete"
+      ],
+      "order": 141
+    },
+    {
+      "id": "Nazley_DigCave",
+      "name": "The Blocked Cave",
+      "type": "side",
+      "giver": "Mazli",
+      "location": "Hebra Mountains",
+      "position": {
+        "x": -3079.067,
+        "y": 0,
+        "z": -3024.6821
+      },
+      "locationKind": "area",
+      "hash": 2282844947,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Dig",
+        "Finish",
+        "Complete"
+      ],
+      "order": 142
+    },
+    {
+      "id": "GoneSnowQueen",
+      "name": "The Duchess Who Disappeared",
+      "type": "side",
+      "giver": "Russ",
+      "location": "Selmie's Spot",
+      "position": {
+        "x": -2952.0266,
+        "y": 656.19714,
+        "z": -3142.8638
+      },
+      "locationKind": "area",
+      "hash": 2143920286,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step0",
+        "Step1",
+        "Step2",
+        "Step3",
+        "Complete"
+      ],
+      "order": 143
+    },
+    {
+      "id": "Hebra_SkyRingChallenge",
+      "name": "Kaneli's Flight Training",
+      "type": "side",
+      "giver": "Kaneli",
+      "location": "Flight Range",
+      "position": {
+        "x": -3852.728,
+        "y": 95.322754,
+        "z": -2289.992
+      },
+      "locationKind": "area",
+      "hash": 67086626,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Preparation",
+        "Playing",
+        "Retry",
+        "TimeOver",
+        "Complete"
+      ],
+      "order": 144
+    },
+    {
+      "id": "MushroomSisters_1",
+      "name": "Cave Mushrooms That Glow",
+      "type": "side",
+      "giver": "Nat",
+      "location": "Tabantha Frontier",
+      "position": {
+        "x": -3476.1707,
+        "y": 0,
+        "z": -1220.9668
+      },
+      "locationKind": "area",
+      "hash": 1122504296,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "GetPresent",
+        "Complete"
+      ],
+      "order": 145
+    },
+    {
+      "id": "MushroomSisters_2",
+      "name": "The Captured Tent",
+      "type": "side",
+      "giver": "Nat",
+      "location": "Snowfield Stable",
+      "position": {
+        "x": -1654.23,
+        "y": 347.93182,
+        "z": -2565.6287
+      },
+      "locationKind": "area",
+      "hash": 1805861153,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "GetPresent",
+        "Complete"
+      ],
+      "order": 146
+    },
+    {
+      "id": "MushroomSisters_3",
+      "name": "Who Finds the Haven?",
+      "type": "side",
+      "giver": "Nat",
+      "location": "Snowfield Stable",
+      "position": {
+        "x": -1654.23,
+        "y": 347.93182,
+        "z": -2565.6287
+      },
+      "locationKind": "area",
+      "hash": 605160018,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 147
+    },
+    {
+      "id": "Big_Rotate",
+      "name": "Whirly Swirly Things",
+      "type": "side",
+      "giver": "Kula",
+      "location": "Korok Forest",
+      "position": {
+        "x": 419,
+        "y": 0,
+        "z": -2140
+      },
+      "locationKind": "area",
+      "hash": 2978401746,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 148
+    },
+    {
+      "id": "Mack_SecretBase",
+      "name": "The Secret Room",
+      "type": "side",
+      "giver": "Oaki",
+      "location": "Korok Forest",
+      "position": {
+        "x": 419,
+        "y": 0,
+        "z": -2140
+      },
+      "locationKind": "area",
+      "hash": 1801997621,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 149
+    },
+    {
+      "id": "TreasureHunt_kokiri",
+      "name": "Walton's Treasure Hunt",
+      "type": "side",
+      "giver": "Walton",
+      "location": "Korok Forest",
+      "position": {
+        "x": 419,
+        "y": 0,
+        "z": -2140
+      },
+      "locationKind": "area",
+      "hash": 2474010437,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 150
+    },
+    {
+      "id": "AmberCollector",
+      "name": "Amber Dealer",
+      "type": "side",
+      "giver": "Ramella",
+      "location": "Goron City",
+      "position": {
+        "x": 1657.252,
+        "y": 445.63025,
+        "z": -2440
+      },
+      "locationKind": "area",
+      "hash": 2902632809,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "SellAmbers",
+        "Complete"
+      ],
+      "order": 151
+    },
+    {
+      "id": "CarryGoronKid1",
+      "name": "The Ancient City Gorondia!",
+      "type": "side",
+      "giver": "Dugby",
+      "location": "Goron City",
+      "position": {
+        "x": 1657.252,
+        "y": 445.63025,
+        "z": -2440
+      },
+      "locationKind": "area",
+      "hash": 2554966990,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Reach",
+        "Complete"
+      ],
+      "order": 152
+    },
+    {
+      "id": "CarryGoronKid2",
+      "name": "The Ancient City Gorondia?",
+      "type": "side",
+      "giver": "Dugby",
+      "location": "Goron City",
+      "position": {
+        "x": 1657.252,
+        "y": 445.63025,
+        "z": -2440
+      },
+      "locationKind": "area",
+      "hash": 3249217974,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "ToStation",
+        "Carry",
+        "Reach",
+        "Complete"
+      ],
+      "order": 153
+    },
+    {
+      "id": "MakeAChampionsWeapon_Goron",
+      "name": "Soul of the Gorons",
+      "type": "side",
+      "giver": "Fugo",
+      "location": "Goron City",
+      "position": {
+        "x": 1657.252,
+        "y": 445.63025,
+        "z": -2440
+      },
+      "locationKind": "area",
+      "hash": 1981278529,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MakeWeapon",
+        "Complete"
+      ],
+      "order": 154
+    },
+    {
+      "id": "GoronReturntoNature",
+      "name": "Moon-Gazing Gorons",
+      "type": "side",
+      "giver": "Tray",
+      "location": "Goron City",
+      "position": {
+        "x": 1657.252,
+        "y": 445.63025,
+        "z": -2440
+      },
+      "locationKind": "area",
+      "hash": 3315650248,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "FindGraveyard",
+        "Complete"
+      ],
+      "order": 155
+    },
+    {
+      "id": "GoronPond",
+      "name": "The Hidden Treasure at Lizard Lakes",
+      "type": "side",
+      "giver": "Bludo",
+      "location": "Goron City",
+      "position": {
+        "x": 1657.252,
+        "y": 445.63025,
+        "z": -2440
+      },
+      "locationKind": "area",
+      "hash": 3555055342,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "FindThePond",
+        "Complete"
+      ],
+      "order": 156
+    },
+    {
+      "id": "HotSpringEgg",
+      "name": "Simmerstone Springs",
+      "type": "side",
+      "giver": "Kima",
+      "location": "Goron City",
+      "position": {
+        "x": 1657.252,
+        "y": 445.63025,
+        "z": -2440
+      },
+      "locationKind": "area",
+      "hash": 1955848762,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "FindHotSpring",
+        "Complete"
+      ],
+      "order": 157
+    },
+    {
+      "id": "FullyRipenedFlintstones",
+      "name": "Cash In on Ripened Flint",
+      "type": "side",
+      "giver": "Gomo",
+      "location": "Bedrock Bistro",
+      "position": {
+        "x": 1750.5,
+        "y": 390.5,
+        "z": -1549
+      },
+      "locationKind": "area",
+      "hash": 1442850199,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetFlintstones",
+        "Complete"
+      ],
+      "order": 158
+    },
+    {
+      "id": "ResearchEldin",
+      "name": "Meat for Meat",
+      "type": "side",
+      "giver": "Mezer",
+      "location": "Bedrock Bistro",
+      "position": {
+        "x": 1750.5,
+        "y": 390.5,
+        "z": -1549
+      },
+      "locationKind": "area",
+      "hash": 923590666,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "SolveAProblem",
+        "Reward",
+        "Complete"
+      ],
+      "order": 159
+    },
+    {
+      "id": "MeatRock",
+      "name": "Rock Roast or Dust",
+      "type": "side",
+      "giver": "Cooke",
+      "location": "Bedrock Bistro",
+      "position": {
+        "x": 1750.5,
+        "y": 390.5,
+        "z": -1549
+      },
+      "locationKind": "area",
+      "hash": 3349265861,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CarryARock",
+        "Reward",
+        "Complete"
+      ],
+      "order": 160
+    },
+    {
+      "id": "Goron_MiniGame_Tutorial_01",
+      "name": "Mine-Cart Land: Open for Business!",
+      "type": "side",
+      "giver": "Bayge",
+      "location": "Southern Mine",
+      "position": {
+        "x": 1800.9548,
+        "y": 425.91513,
+        "z": -1983.3522
+      },
+      "locationKind": "area",
+      "hash": 2024805948,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "BeforeGame",
+        "Craft",
+        "Playing",
+        "Finish",
+        "Retire",
+        "PlayerOut",
+        "Complete"
+      ],
+      "order": 161
+    },
+    {
+      "id": "Goron_MiniGame_Tutorial_02",
+      "name": "Mine-Cart Land: Quickshot Course",
+      "type": "side",
+      "giver": "Heehl",
+      "location": "Southern Mine",
+      "position": {
+        "x": 1800.9548,
+        "y": 425.91513,
+        "z": -1983.3522
+      },
+      "locationKind": "area",
+      "hash": 275949554,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "BeforeGame",
+        "Craft",
+        "Playing",
+        "TimeOver",
+        "Retire",
+        "Finish",
+        "PlayerOut",
+        "Complete"
+      ],
+      "order": 162
+    },
+    {
+      "id": "Goron_MiniGame_Tutorial_03",
+      "name": "Mine-Cart Land: Death Mountain",
+      "type": "side",
+      "giver": "Kabetta",
+      "location": "Southern Mine",
+      "position": {
+        "x": 1800.9548,
+        "y": 425.91513,
+        "z": -1983.3522
+      },
+      "locationKind": "area",
+      "hash": 1572276121,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "BeforeGame",
+        "Craft",
+        "Playing",
+        "Retire",
+        "CourseOut",
+        "Finish",
+        "Complete"
+      ],
+      "order": 163
+    },
+    {
+      "id": "PhotoSpot_Challenge_02",
+      "name": "A Picture for Woodland Stable",
+      "type": "side",
+      "giver": "Kish",
+      "location": "Woodland Stable",
+      "position": {
+        "x": 1062.303,
+        "y": 171.95836,
+        "z": -1135.3392
+      },
+      "locationKind": "area",
+      "hash": 1657229148,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 164
+    },
+    {
+      "id": "PhotoSpot_Challenge_08",
+      "name": "A Picture for Foothill Stable",
+      "type": "side",
+      "giver": "Ozunda",
+      "location": "Foothill Stable",
+      "position": {
+        "x": 2613.332,
+        "y": 253.78871,
+        "z": -1143.5127
+      },
+      "locationKind": "area",
+      "hash": 3431818420,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 165
+    },
+    {
+      "id": "RescueWell",
+      "name": "Fell into a Well!",
+      "type": "side",
+      "giver": "Dillie",
+      "location": "Rebonae Bridge Well",
+      "position": {
+        "x": 786.9977,
+        "y": 120.7050299999999,
+        "z": -7.592865
+      },
+      "locationKind": "area",
+      "hash": 234156755,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Repair",
+        "Complete"
+      ],
+      "order": 166
+    },
+    {
+      "id": "RescueVehicle01",
+      "name": "The Abandoned Laborer",
+      "type": "side",
+      "giver": "Mota",
+      "location": "Death Mountain West Tunnel",
+      "position": {
+        "x": 2238.6052,
+        "y": 626.0185,
+        "z": -2682.3765
+      },
+      "locationKind": "area",
+      "hash": 290586908,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Carry",
+        "Reach",
+        "Complete"
+      ],
+      "order": 167
+    },
+    {
+      "id": "Our_Treasure",
+      "name": "The Treasure Hunters",
+      "type": "side",
+      "giver": "Domidak",
+      "location": "Rauru Hillside",
+      "position": {
+        "x": 497.74777,
+        "y": 0,
+        "z": -1537.6544
+      },
+      "locationKind": "area",
+      "hash": 901515717,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Craft",
+        "Complete"
+      ],
+      "order": 168
+    },
+    {
+      "id": "TreasureOfLambda",
+      "name": "Misko's Cave of Chests",
+      "type": "side",
+      "giver": "Domidak",
+      "location": "Cephla Lake Cave",
+      "position": {
+        "x": 2593.6472,
+        "y": 256.45193,
+        "z": -1330.4476
+      },
+      "locationKind": "area",
+      "hash": 2314096306,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "OpenTreasure",
+        "Complete"
+      ],
+      "order": 169
+    },
+    {
+      "id": "TreasureOfLamda_FierceDeity",
+      "name": "Misko's Treasure: The Fierce Deity",
+      "type": "side",
+      "giver": "Misko's Letter",
+      "location": "Cephla Lake Cave",
+      "position": {
+        "x": 2593.6472,
+        "y": 256.45193,
+        "z": -1330.4476
+      },
+      "locationKind": "area",
+      "hash": 491121240,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetOneTreaure",
+        "GetTwoTreasure",
+        "GetThreeTreasure",
+        "GetSword",
+        "Complete"
+      ],
+      "order": 170
+    },
+    {
+      "id": "TreasureOfLamda_DuelPeak",
+      "name": "Misko's Treasure: Twins Manuscript",
+      "type": "side",
+      "giver": "Domidak",
+      "location": "Cephla Lake Cave",
+      "position": {
+        "x": 2593.6472,
+        "y": 256.45193,
+        "z": -1330.4476
+      },
+      "locationKind": "area",
+      "hash": 1848177855,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetTreasure",
+        "Complete"
+      ],
+      "order": 171
+    },
+    {
+      "id": "TreasureOfLamda_Pirate",
+      "name": "Misko's Treasure: Pirate Manuscript",
+      "type": "side",
+      "giver": "Domidak",
+      "location": "Cephla Lake Cave",
+      "position": {
+        "x": 2593.6472,
+        "y": 256.45193,
+        "z": -1330.4476
+      },
+      "locationKind": "area",
+      "hash": 906397653,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetTreasure",
+        "Complete"
+      ],
+      "order": 172
+    },
+    {
+      "id": "TreasureOfLamda_Gerudo",
+      "name": "Misko's Treasure: Heroines Manuscript",
+      "type": "side",
+      "giver": "Domidak",
+      "location": "Cephla Lake Cave",
+      "position": {
+        "x": 2593.6472,
+        "y": 256.45193,
+        "z": -1330.4476
+      },
+      "locationKind": "area",
+      "hash": 1886305582,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetTreasure",
+        "Complete"
+      ],
+      "order": 173
+    },
+    {
+      "id": "TreasureOfLamda_Dream",
+      "name": "Misko's Treasure of Awakening I",
+      "type": "side",
+      "giver": "Misko's Letter",
+      "location": "Goronbi River Cave",
+      "position": {
+        "x": 1423.078,
+        "y": 389.93216,
+        "z": -2102.7288
+      },
+      "locationKind": "area",
+      "hash": 3281021537,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetTreasure",
+        "Complete"
+      ],
+      "order": 174
+    },
+    {
+      "id": "TreasureOfLamda_Dream2",
+      "name": "Misko's Treasure of Awakening II",
+      "type": "side",
+      "giver": "Misko's Letter",
+      "location": "Ancient Columns Cave",
+      "position": {
+        "x": -3465.1208,
+        "y": 359.573429999999,
+        "z": -449.46014
+      },
+      "locationKind": "area",
+      "hash": 4200328786,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetTreasure",
+        "Complete"
+      ],
+      "order": 175
+    },
+    {
+      "id": "TreasureOfLamda_Dream3",
+      "name": "Misko's Treasure of Awakening III",
+      "type": "side",
+      "giver": "Misko's Letter",
+      "location": "Coliseum Ruins Cave",
+      "position": {
+        "x": -1167.1548,
+        "y": 127.7493439999999,
+        "z": 1310.9766
+      },
+      "locationKind": "area",
+      "hash": 457052153,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GetTreasure",
+        "Complete"
+      ],
+      "order": 176
+    },
+    {
+      "id": "Circuit_Ichikara",
+      "name": "The Tarrey Town Race Is On!",
+      "type": "side",
+      "giver": "Fernison",
+      "location": "Hudson Construction Site",
+      "position": {
+        "x": 3723.7278,
+        "y": 219.23093,
+        "z": -1611.9355
+      },
+      "locationKind": "area",
+      "hash": 1551164468,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Craft",
+        "Retry",
+        "TimeOver",
+        "Playing",
+        "Finish",
+        "Complete"
+      ],
+      "order": 177
+    },
+    {
+      "id": "HorseInnChallenge003",
+      "name": "Secrets Within",
+      "type": "side",
+      "giver": "Pulcho",
+      "location": "Tarrey Town",
+      "position": {
+        "x": 3965.6387,
+        "y": 233.23712,
+        "z": -1611.1797
+      },
+      "locationKind": "area",
+      "hash": 2770596001,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CupsuleDrop",
+        "Complete"
+      ],
+      "order": 178
+    },
+    {
+      "id": "IchikaraCircuit_Tutorial",
+      "name": "Master the Vehicle Prototype",
+      "type": "side",
+      "giver": "Fernison",
+      "location": "Hudson Construction Site",
+      "position": {
+        "x": 3723.7278,
+        "y": 219.23093,
+        "z": -1611.9355
+      },
+      "locationKind": "area",
+      "hash": 2417535087,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Craft",
+        "Retry",
+        "TimeOver",
+        "Playing",
+        "Complete"
+      ],
+      "order": 179
+    },
+    {
+      "id": "BuildHouse",
+      "name": "Home on Arrange",
+      "type": "side",
+      "giver": "Rhondson",
+      "location": "Tarrey Town",
+      "position": {
+        "x": 3965.6387,
+        "y": 233.23712,
+        "z": -1611.1797
+      },
+      "locationKind": "area",
+      "hash": 3628007699,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Build",
+        "Finish",
+        "Complete"
+      ],
+      "order": 180
+    },
+    {
+      "id": "TheStrongestWeapon",
+      "name": "Strongest in the World",
+      "type": "side",
+      "giver": "Chabi",
+      "location": "East Akkala Stable",
+      "position": {
+        "x": 4230.5225,
+        "y": 275.28958,
+        "z": -2745.643
+      },
+      "locationKind": "area",
+      "hash": 3722854754,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 181
+    },
+    {
+      "id": "Tribune01",
+      "name": "The Gathering Pirates",
+      "type": "side",
+      "giver": "Aya",
+      "location": "East Akkala Stable",
+      "position": {
+        "x": 4230.5225,
+        "y": 275.28958,
+        "z": -2745.643
+      },
+      "locationKind": "area",
+      "hash": 4178270969,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Exterminate",
+        "Report",
+        "Complete"
+      ],
+      "order": 182
+    },
+    {
+      "id": "PhotoSpot_Challenge_12",
+      "name": "A Picture for East Akkala Stable",
+      "type": "side",
+      "giver": "Rudi",
+      "location": "East Akkala Stable",
+      "position": {
+        "x": 4230.5225,
+        "y": 275.28958,
+        "z": -2745.643
+      },
+      "locationKind": "area",
+      "hash": 3606960412,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 183
+    },
+    {
+      "id": "ExcavateFossil1",
+      "name": "Eldin's Colossal Fossil",
+      "type": "side",
+      "giver": "Loone",
+      "location": "East Akkala Stable",
+      "position": {
+        "x": 4230.5225,
+        "y": 275.28958,
+        "z": -2745.643
+      },
+      "locationKind": "area",
+      "hash": 476485412,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "LightPoint",
+        "GoFossil",
+        "Excavate",
+        "NextLightPoint",
+        "Complete"
+      ],
+      "order": 184
+    },
+    {
+      "id": "ExcavateFossil2",
+      "name": "Hebra's Colossal Fossil",
+      "type": "side",
+      "giver": "Loone",
+      "location": "Eldin Great Skeleton",
+      "position": {
+        "x": 1502.24,
+        "y": 209.03924999999998,
+        "z": -3762.9666
+      },
+      "locationKind": "area",
+      "hash": 3301396081,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GoFossil",
+        "Excavate",
+        "NextLightPoint",
+        "Complete"
+      ],
+      "order": 185
+    },
+    {
+      "id": "ExcavateFossil3",
+      "name": "Gerudo's Colossal Fossil",
+      "type": "side",
+      "giver": "Loone",
+      "location": "Hebra Great Skeleton",
+      "position": {
+        "x": -3814.6094,
+        "y": 360.5,
+        "z": -3595.4834
+      },
+      "locationKind": "area",
+      "hash": 13118809,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GoFossil",
+        "Excavate",
+        "Complete"
+      ],
+      "order": 186
+    },
+    {
+      "id": "HourseInnChallenge004",
+      "name": "One-Hit Wonder!",
+      "type": "side",
+      "giver": "Parcy",
+      "location": "South Akkala Stable",
+      "position": {
+        "x": 3148.6758,
+        "y": 338.639799999999,
+        "z": -1691.4481
+      },
+      "locationKind": "area",
+      "hash": 2832669010,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "TryToDestroy",
+        "Complete"
+      ],
+      "order": 187
+    },
+    {
+      "id": "PhotoSpot_Challenge_13",
+      "name": "A Picture for South Akkala Stable",
+      "type": "side",
+      "giver": "Dmitri",
+      "location": "South Akkala Stable",
+      "position": {
+        "x": 3148.6758,
+        "y": 338.639799999999,
+        "z": -1691.4481
+      },
+      "locationKind": "area",
+      "hash": 3598096271,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 188
+    },
+    {
+      "id": "Zora_MessageBottle",
+      "name": "True Treasure",
+      "type": "side",
+      "giver": "Kodah",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 2551006282,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step0",
+        "Step1",
+        "Step2",
+        "GetPrize",
+        "Complete"
+      ],
+      "order": 189
+    },
+    {
+      "id": "Zora_RuttaTreasure",
+      "name": "Secret Treasure under the Great Fish",
+      "type": "side",
+      "giver": "Sidon",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 2356894109,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "TreasureHunt",
+        "Complete"
+      ],
+      "order": 190
+    },
+    {
+      "id": "Createshinguard",
+      "name": "The Never-Ending Lecture",
+      "type": "side",
+      "giver": "Chroma",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 2074955975,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "GatherItem",
+        "Complete"
+      ],
+      "order": 191
+    },
+    {
+      "id": "ZoraStatue_Picture",
+      "name": "The Moonlit Princess",
+      "type": "side",
+      "giver": "Seggin",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 3247816240,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "TakePhoto",
+        "GetPrize",
+        "Complete"
+      ],
+      "order": 192
+    },
+    {
+      "id": "Zora_Enemy_hunt",
+      "name": "The Fort at Ja'Abu Ridge",
+      "type": "side",
+      "giver": "Gaddison",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 371909333,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step2",
+        "Complete"
+      ],
+      "order": 193
+    },
+    {
+      "id": "GeniusWeapon_Zora",
+      "name": "Glory of the Zora",
+      "type": "side",
+      "giver": "Dento",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 402397786,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 194
+    },
+    {
+      "id": "gather_Insect_Z",
+      "name": "A Crabulous Deal",
+      "type": "side",
+      "giver": "Cleff",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 2760902520,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 195
+    },
+    {
+      "id": "HuntSalmon",
+      "name": "A Wife Wafted Away",
+      "type": "side",
+      "giver": "Fronk",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 4042159588,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Report",
+        "GetPrize",
+        "Complete"
+      ],
+      "order": 196
+    },
+    {
+      "id": "CreateArmor",
+      "name": "A Token of Friendship",
+      "type": "side",
+      "giver": "Yona",
+      "location": "Zora's Domain",
+      "position": {
+        "x": 3330.607,
+        "y": 242.662,
+        "z": -545.1057
+      },
+      "locationKind": "area",
+      "hash": 2750167102,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 197
+    },
+    {
+      "id": "PhotoSpot_Challenge_03",
+      "name": "A Picture for Wetland Stable",
+      "type": "side",
+      "giver": "Lawdon",
+      "location": "Wetland Stable",
+      "position": {
+        "x": 888.06165,
+        "y": 175.9657,
+        "z": 173.6723
+      },
+      "locationKind": "area",
+      "hash": 1042719677,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 198
+    },
+    {
+      "id": "HorseInnChallenge002",
+      "name": "An Uninvited Guest",
+      "type": "side",
+      "giver": "Ami",
+      "location": "Wetland Stable",
+      "position": {
+        "x": 888.06165,
+        "y": 175.9657,
+        "z": 173.6723
+      },
+      "locationKind": "area",
+      "hash": 1667465231,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "step1",
+        "Report",
+        "Report2",
+        "Complete"
+      ],
+      "order": 199
+    },
+    {
+      "id": "CarryStone",
+      "name": "The Blue Stone",
+      "type": "side",
+      "giver": "Ledo",
+      "location": "East Reservoir Lake",
+      "position": {
+        "x": 3667.748,
+        "y": 324.32303,
+        "z": -179.84644
+      },
+      "locationKind": "area",
+      "hash": 1347690456,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CarryStone",
+        "Complete"
+      ],
+      "order": 200
+    },
+    {
+      "id": "RestaurantInTheWell",
+      "name": "The Ultimate Dish?",
+      "type": "side",
+      "giver": "Moza",
+      "location": "Rikoka Hills Well",
+      "position": {
+        "x": 1716.4476,
+        "y": 113.501114,
+        "z": 650.8704
+      },
+      "locationKind": "area",
+      "hash": 3344896183,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MakeFood",
+        "Complete"
+      ],
+      "order": 201
+    },
+    {
+      "id": "ResearchLanayru",
+      "name": "Mired in Muck",
+      "type": "side",
+      "giver": "Bazz",
+      "location": "Upland Zorana Skyview Tower",
+      "position": {
+        "x": 2866.0615,
+        "y": 478.33115,
+        "z": -581.1915
+      },
+      "locationKind": "area",
+      "hash": 1585925051,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CleanMessenger",
+        "GetPresent",
+        "GetPresent_Village",
+        "Complete"
+      ],
+      "order": 202
+    },
+    {
+      "id": "InnNeverReturns",
+      "name": "Out of the Inn",
+      "type": "side",
+      "giver": "Dai",
+      "location": "Kakariko Village",
+      "position": {
+        "x": 1817.4299,
+        "y": 224.45522,
+        "z": 988.03906
+      },
+      "locationKind": "area",
+      "hash": 1089907528,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Report",
+        "Complete"
+      ],
+      "order": 203
+    },
+    {
+      "id": "KokkoGuidePost",
+      "name": "Follow the Cuccos",
+      "type": "side",
+      "giver": "Trissa",
+      "location": "Kakariko Village",
+      "position": {
+        "x": 1817.4299,
+        "y": 224.45522,
+        "z": 988.03906
+      },
+      "locationKind": "area",
+      "hash": 617065058,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "step1",
+        "Complete"
+      ],
+      "order": 204
+    },
+    {
+      "id": "Know_FourStonePlates",
+      "name": "A Trip through History",
+      "type": "side",
+      "giver": "Bugut",
+      "location": "Kakariko Village",
+      "position": {
+        "x": 1817.4299,
+        "y": 224.45522,
+        "z": 988.03906
+      },
+      "locationKind": "area",
+      "hash": 845906035,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 205
+    },
+    {
+      "id": "WhichIsStronger",
+      "name": "Codgers' Quarrel",
+      "type": "side",
+      "giver": "Trissa",
+      "location": "Kakariko Village",
+      "position": {
+        "x": 1817.4299,
+        "y": 224.45522,
+        "z": 988.03906
+      },
+      "locationKind": "area",
+      "hash": 3090358445,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Step03",
+        "Step04",
+        "Complete"
+      ],
+      "order": 206
+    },
+    {
+      "id": "IllnessStartsWithFeelings",
+      "name": "Gloom-Borne Illness",
+      "type": "side",
+      "giver": "Lasli",
+      "location": "Kakariko Village",
+      "position": {
+        "x": 1817.4299,
+        "y": 224.45522,
+        "z": 988.03906
+      },
+      "locationKind": "area",
+      "hash": 1066342769,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Finale",
+        "Complete"
+      ],
+      "order": 207
+    },
+    {
+      "id": "Hateno_NewCostume",
+      "name": "A New Champion's Tunic",
+      "type": "side",
+      "giver": "Zelda's Diary",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 4036301855,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 208
+    },
+    {
+      "id": "Hateno_TellMeTeacher01",
+      "name": "Teach Me a Lesson I",
+      "type": "side",
+      "giver": "Symin",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 2976019258,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "TakeAPicture",
+        "Complete"
+      ],
+      "order": 209
+    },
+    {
+      "id": "Hateno_TellMeTeacher02",
+      "name": "Teach Me a Lesson II",
+      "type": "side",
+      "giver": "Symin",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 4293595653,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 210
+    },
+    {
+      "id": "Hateno_FreshMilk",
+      "name": "Dantz's Prize Cows",
+      "type": "side",
+      "giver": "Dantz",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 1380620218,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 211
+    },
+    {
+      "id": "Hateno_NewSpecialty",
+      "name": "Homegrown in Hateno",
+      "type": "side",
+      "giver": "Reede",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 437941435,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "ReChallenge",
+        "Step02",
+        "Complete"
+      ],
+      "order": 212
+    },
+    {
+      "id": "Parasail_ChuchuDesign",
+      "name": "Photographing a Chuchu",
+      "type": "side",
+      "giver": "Sayge",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 149894473,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 213
+    },
+    {
+      "id": "Hateno_WhatToPlant",
+      "name": "Uma's Garden",
+      "type": "side",
+      "giver": "Uma",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 1619101992,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Choice",
+        "Report",
+        "Complete"
+      ],
+      "order": 214
+    },
+    {
+      "id": "Hateno_CoolGuy",
+      "name": "Manny's Beloved",
+      "type": "side",
+      "giver": "Manny",
+      "location": "Hateno Village",
+      "position": {
+        "x": 3545.0286,
+        "y": 337.0344,
+        "z": 2089.9172
+      },
+      "locationKind": "area",
+      "hash": 1746490029,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Report",
+        "Finish",
+        "Complete"
+      ],
+      "order": 215
+    },
+    {
+      "id": "Uotori_ResortPlan",
+      "name": "Lurelin Resort Project",
+      "type": "side",
+      "giver": "Rozel",
+      "location": "Lurelin Village",
+      "position": {
+        "x": 3007.3096,
+        "y": 142.49794,
+        "z": 3473.6292
+      },
+      "locationKind": "area",
+      "hash": 3070150271,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Contact",
+        "Challenge",
+        "Report",
+        "Complete"
+      ],
+      "order": 216
+    },
+    {
+      "id": "Uotori_WhiteLineGame",
+      "name": "Dad's Blue Shirt",
+      "type": "side",
+      "giver": "Zuta",
+      "location": "Lurelin Village",
+      "position": {
+        "x": 3007.3096,
+        "y": 142.49794,
+        "z": 3473.6292
+      },
+      "locationKind": "area",
+      "hash": 2604079278,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Complete"
+      ],
+      "order": 217
+    },
+    {
+      "id": "WashedAwayBusinessTools",
+      "name": "A Way to Trade, Washed Away",
+      "type": "side",
+      "giver": "Garini",
+      "location": "Lurelin Village",
+      "position": {
+        "x": 3007.3096,
+        "y": 142.49794,
+        "z": 3473.6292
+      },
+      "locationKind": "area",
+      "hash": 3280939129,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Reward",
+        "Complete"
+      ],
+      "order": 218
+    },
+    {
+      "id": "Uotori_Designer",
+      "name": "Rattled Ralera",
+      "type": "side",
+      "giver": "Ralera",
+      "location": "Lurelin Village",
+      "position": {
+        "x": 3007.3096,
+        "y": 142.49794,
+        "z": 3473.6292
+      },
+      "locationKind": "area",
+      "hash": 959409223,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 219
+    },
+    {
+      "id": "PhotoSpot_Challenge_06",
+      "name": "A Picture for Dueling Peaks Stable",
+      "type": "side",
+      "giver": "Tasseren",
+      "location": "Dueling Peaks Stable",
+      "position": {
+        "x": 1760.7805,
+        "y": 131.2842699999999,
+        "z": 1925.3597
+      },
+      "locationKind": "area",
+      "hash": 607485037,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 220
+    },
+    {
+      "id": "MessageBottle_SOS",
+      "name": "A Bottled Cry for Help",
+      "type": "side",
+      "giver": "Bottled Letter",
+      "location": "Hateno Beach",
+      "position": {
+        "x": 4016.5518,
+        "y": 0,
+        "z": 2314.7
+      },
+      "locationKind": "area",
+      "hash": 3233139976,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "MessageBottle_SOS_01",
+        "MessageBottle_SOS_02",
+        "Complete"
+      ],
+      "order": 221
+    },
+    {
+      "id": "SaihateSubjugation",
+      "name": "Seeking the Pirate Hideout",
+      "type": "side",
+      "giver": "Sesami",
+      "location": "Eventide Island",
+      "position": {
+        "x": 4586.1587,
+        "y": 140.42606,
+        "z": 3629.8577
+      },
+      "locationKind": "area",
+      "hash": 554522168,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step2",
+        "Step3",
+        "Step4",
+        "Step5",
+        "Step6",
+        "Step7",
+        "Complete"
+      ],
+      "order": 222
+    },
+    {
+      "id": "HorseInnChallenge007",
+      "name": "Ousting the Giants",
+      "type": "side",
+      "giver": "Kampo",
+      "location": "Lakeside Stable",
+      "position": {
+        "x": 1552.0227,
+        "y": 210.56248,
+        "z": 3537.839
+      },
+      "locationKind": "area",
+      "hash": 2392834217,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step2",
+        "Step3",
+        "AfterDefeat",
+        "GetReward",
+        "Complete"
+      ],
+      "order": 223
+    },
+    {
+      "id": "PhotoSpot_Challenge_10",
+      "name": "A Picture for Lakeside Stable",
+      "type": "side",
+      "giver": "Anly",
+      "location": "Lakeside Stable",
+      "position": {
+        "x": 1552.0227,
+        "y": 210.56248,
+        "z": 3537.839
+      },
+      "locationKind": "area",
+      "hash": 3486900445,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 224
+    },
+    {
+      "id": "PhotoSpot_Challenge_11",
+      "name": "A Picture for Highland Stable",
+      "type": "side",
+      "giver": "Padok",
+      "location": "Highland Stable",
+      "position": {
+        "x": 529.6001,
+        "y": 200.5581,
+        "z": 3450.8826
+      },
+      "locationKind": "area",
+      "hash": 2570179665,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 225
+    },
+    {
+      "id": "EightHeroStatues",
+      "name": "The Heroines' Secret",
+      "type": "side",
+      "giver": "Rotana",
+      "location": "Gerudo Shelter",
+      "position": {
+        "x": -3844.5,
+        "y": 149.16890999999998,
+        "z": 2926.1965
+      },
+      "locationKind": "area",
+      "hash": 17430747,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 226
+    },
+    {
+      "id": "GerudoDesertTreasure",
+      "name": "Treasure of the Gerudo Desert",
+      "type": "side",
+      "giver": "Riju",
+      "location": "Gerudo Town",
+      "position": {
+        "x": -3844.5,
+        "y": 149.16890999999998,
+        "z": 2926.1965
+      },
+      "locationKind": "area",
+      "hash": 547418996,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 227
+    },
+    {
+      "id": "Gerudo_UrbosaWeapon",
+      "name": "Pride of the Gerudo",
+      "type": "side",
+      "giver": "Isha",
+      "location": "Gerudo Town",
+      "position": {
+        "x": -3844.5,
+        "y": 149.16890999999998,
+        "z": 2926.1965
+      },
+      "locationKind": "area",
+      "hash": 1528103968,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 228
+    },
+    {
+      "id": "FindSunaNui",
+      "name": "Dalia's Game",
+      "type": "side",
+      "giver": "Dalia",
+      "location": "Gerudo Town",
+      "position": {
+        "x": -3844.5,
+        "y": 149.16890999999998,
+        "z": 2926.1965
+      },
+      "locationKind": "area",
+      "hash": 125138809,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "SetUp",
+        "Playing",
+        "Result",
+        "TimeOver",
+        "Complete"
+      ],
+      "order": 229
+    },
+    {
+      "id": "EightHeroStatues_After",
+      "name": "The Mysterious Eighth",
+      "type": "side",
+      "giver": "Rotana",
+      "location": "Gerudo Shelter",
+      "position": {
+        "x": -3844.5,
+        "y": 149.16890999999998,
+        "z": 2926.1965
+      },
+      "locationKind": "area",
+      "hash": 4010368911,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step1_GoRoom",
+        "Step2",
+        "Step3",
+        "Step4",
+        "Complete"
+      ],
+      "order": 230
+    },
+    {
+      "id": "AisyaRescue",
+      "name": "The Missing Owner",
+      "type": "side",
+      "giver": "Cara",
+      "location": "Gerudo Town",
+      "position": {
+        "x": -3844.5,
+        "y": 149.16890999999998,
+        "z": 2926.1965
+      },
+      "locationKind": "area",
+      "hash": 3770829533,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step1a",
+        "Step2",
+        "Complete"
+      ],
+      "order": 231
+    },
+    {
+      "id": "JobSunazarashi",
+      "name": "To the Ruins!",
+      "type": "side",
+      "giver": "Pokki",
+      "location": "Gerudo Town",
+      "position": {
+        "x": -3844.5,
+        "y": 149.16890999999998,
+        "z": 2926.1965
+      },
+      "locationKind": "area",
+      "hash": 2434644236,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Drive1",
+        "Arrival",
+        "Complete"
+      ],
+      "order": 232
+    },
+    {
+      "id": "MakeChemicalWeapon",
+      "name": "Decorate with Passion",
+      "type": "side",
+      "giver": "Boraa",
+      "location": "Kara Kara Bazaar",
+      "position": {
+        "x": -3225,
+        "y": 0,
+        "z": 2540
+      },
+      "locationKind": "area",
+      "hash": 2869070400,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step2",
+        "Complete"
+      ],
+      "order": 233
+    },
+    {
+      "id": "SearchCaravan",
+      "name": "Lost in the Dunes",
+      "type": "side",
+      "giver": "Benja",
+      "location": "Kara Kara Bazaar",
+      "position": {
+        "x": -3225,
+        "y": 0,
+        "z": 2540
+      },
+      "locationKind": "area",
+      "hash": 3554895170,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step1a",
+        "Step2",
+        "Complete"
+      ],
+      "order": 234
+    },
+    {
+      "id": "PhotoSpot_Challenge_09",
+      "name": "A Picture for the Closed Stable I",
+      "type": "side",
+      "giver": "Piaffe",
+      "location": "Gerudo Canyon Stable",
+      "position": {
+        "x": -2803.8118,
+        "y": 178.5857399999999,
+        "z": 2225.7651
+      },
+      "locationKind": "area",
+      "hash": 3792909090,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 235
+    },
+    {
+      "id": "PhotoSpot_Challenge_09_2",
+      "name": "A Picture for the Closed Stable II",
+      "type": "side",
+      "giver": "Piaffe",
+      "location": "Gerudo Canyon Stable",
+      "position": {
+        "x": -2803.8118,
+        "y": 178.5857399999999,
+        "z": 2225.7651
+      },
+      "locationKind": "area",
+      "hash": 1116377458,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step01",
+        "Step02",
+        "Complete"
+      ],
+      "order": 236
+    },
+    {
+      "id": "RescueHost",
+      "name": "Piaffe, Packed Away",
+      "type": "side",
+      "giver": "Piaffe",
+      "location": "Gerudo Canyon Stable",
+      "position": {
+        "x": -2803.8118,
+        "y": 178.5857399999999,
+        "z": 2225.7651
+      },
+      "locationKind": "area",
+      "hash": 4094838196,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Reward",
+        "Complete"
+      ],
+      "order": 237
+    },
+    {
+      "id": "GerudoCanyon_GleeokLiver",
+      "name": "Gleeok Guts",
+      "type": "side",
+      "giver": "Malena",
+      "location": "Gerudo Canyon",
+      "position": {
+        "x": -2308.2344,
+        "y": 0,
+        "z": 2216.004
+      },
+      "locationKind": "area",
+      "hash": 1930698492,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Complete"
+      ],
+      "order": 238
+    },
+    {
+      "id": "NewCanyonMissingPersonsCase",
+      "name": "Disaster in Gerudo Canyon",
+      "type": "side",
+      "giver": "Quince",
+      "location": "Gerudo Canyon Pass",
+      "position": {
+        "x": -1665,
+        "y": 80,
+        "z": 2028
+      },
+      "locationKind": "area",
+      "hash": 3747822017,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step0",
+        "Step1",
+        "Step2",
+        "Report",
+        "Complete"
+      ],
+      "order": 239
+    },
+    {
+      "id": "GerudoCanyon_TumbleweedSweep",
+      "name": "The Great Tumbleweed Purge",
+      "type": "side",
+      "giver": "Barles",
+      "location": "Gerudo Canyon",
+      "position": {
+        "x": -2308.2344,
+        "y": 0,
+        "z": 2216.004
+      },
+      "locationKind": "area",
+      "hash": 3835473068,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Report",
+        "Complete"
+      ],
+      "order": 240
+    },
+    {
+      "id": "GerudoCanyon_24hEnduranceComparison",
+      "name": "Heat-Endurance Contest!",
+      "type": "side",
+      "giver": "Rahdo",
+      "location": "Gerudo Canyon",
+      "position": {
+        "x": -2308.2344,
+        "y": 0,
+        "z": 2216.004
+      },
+      "locationKind": "area",
+      "hash": 2741110054,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Prepare",
+        "Comparison",
+        "Complete"
+      ],
+      "order": 241
+    },
+    {
+      "id": "GerudoCanyon_ColdEnduranceComparison",
+      "name": "Cold-Endurance Contest!",
+      "type": "side",
+      "giver": "Rahdo",
+      "location": "Gerudo Canyon",
+      "position": {
+        "x": -2308.2344,
+        "y": 0,
+        "z": 2216.004
+      },
+      "locationKind": "area",
+      "hash": 4144864649,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Prepare",
+        "Comparison",
+        "Complete"
+      ],
+      "order": 242
+    },
+    {
+      "id": "TakeOfIce",
+      "name": "The Iceless Icehouse",
+      "type": "side",
+      "giver": "Anche",
+      "location": "Northern Icehouse",
+      "position": {
+        "x": -3748.944,
+        "y": 131.81853999999998,
+        "z": 2290.9067
+      },
+      "locationKind": "area",
+      "hash": 3254589481,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Step1",
+        "Step2",
+        "Complete"
+      ],
+      "order": 243
+    },
+    {
+      "id": "WellCollection",
+      "name": "Where Are the Wells?",
+      "type": "side",
+      "giver": "Fera",
+      "location": "-",
+      "position": null,
+      "locationKind": "area",
+      "hash": 2859075096,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Search",
+        "Complete"
+      ],
+      "order": 244
+    },
+    {
+      "id": "Zonau_GeniusWeapon",
+      "name": "Ancient Blades Below",
+      "type": "side",
+      "giver": "Mining Construct",
+      "location": "Spirit Temple",
+      "position": null,
+      "locationKind": "area",
+      "hash": 2479284541,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Exchange",
+        "Complete"
+      ],
+      "order": 245
+    },
+    {
+      "id": "Connect_TabantaMaze",
+      "name": "The North Lomei Prophecy",
+      "type": "side",
+      "giver": "Mysterious Voice",
+      "location": "North Lomei Labyrinth",
+      "position": {
+        "x": -824.2593,
+        "y": 342.14477999999997,
+        "z": -3407.2078
+      },
+      "locationKind": "area",
+      "hash": 11853878,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Land",
+        "Land2",
+        "Sky",
+        "Sky1st",
+        "Sky2nd",
+        "Sky3rd",
+        "SkyAll",
+        "Minus",
+        "Complete"
+      ],
+      "order": 246
+    },
+    {
+      "id": "Connect_AkkareMaze",
+      "name": "The Lomei Labyrinth Island Prophecy",
+      "type": "side",
+      "giver": "Mysterious Voice",
+      "location": "Lomei Labyrinth Island",
+      "position": {
+        "x": 4655.4453,
+        "y": 156.88916,
+        "z": -3527.4072
+      },
+      "locationKind": "area",
+      "hash": 1942113042,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Land",
+        "Land2",
+        "Sky",
+        "Sky1st",
+        "Sky2nd",
+        "Sky3rd",
+        "SkyAll",
+        "Minus",
+        "Complete"
+      ],
+      "order": 247
+    },
+    {
+      "id": "Connect_GerudoMaze",
+      "name": "The South Lomei Prophecy",
+      "type": "side",
+      "giver": "Mysterious Voice",
+      "location": "South Lomei Labyrinth",
+      "position": {
+        "x": -1794.9999,
+        "y": 191.11765,
+        "z": 3541
+      },
+      "locationKind": "area",
+      "hash": 1035644687,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "Land",
+        "Land2",
+        "Sky",
+        "Sky1st",
+        "Sky2nd",
+        "Sky3rd",
+        "SkyAll",
+        "Minus",
+        "Complete"
+      ],
+      "order": 248
+    },
+    {
+      "id": "Raise_GoddesStatue_Wisdom",
+      "name": "Goddess Statue of Wisdom",
+      "type": "side",
+      "giver": "Goddess Statue",
+      "location": "Spring of Wisdom",
+      "position": {
+        "x": 3926.4417,
+        "y": 555.9634999999989,
+        "z": 1335.4703
+      },
+      "locationKind": "area",
+      "hash": 564554926,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CheckGoddesStatue",
+        "Report",
+        "Altarage",
+        "SolvePouch",
+        "Complete"
+      ],
+      "order": 249
+    },
+    {
+      "id": "Raise_GoddesStatue_Power",
+      "name": "Goddess Statue of Power",
+      "type": "side",
+      "giver": "Goddess Statue",
+      "location": "Spring of Power",
+      "position": {
+        "x": 3756.1265,
+        "y": 101.19505,
+        "z": -2672.1367
+      },
+      "locationKind": "area",
+      "hash": 84904555,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CheckGoddesStatue",
+        "Report",
+        "Altarage",
+        "SolvePouch",
+        "Complete"
+      ],
+      "order": 250
+    },
+    {
+      "id": "Raise_GoddesStatue_Courage",
+      "name": "Goddess Statue of Courage",
+      "type": "side",
+      "giver": "Goddess Statue",
+      "location": "Spring of Courage",
+      "position": {
+        "x": 879.5,
+        "y": 103,
+        "z": 2371.8196
+      },
+      "locationKind": "area",
+      "hash": 1201044440,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "CheckGoddesStatue",
+        "Report",
+        "Altarage",
+        "SolvePouch",
+        "Complete"
+      ],
+      "order": 251
+    },
+    {
+      "id": "Raise_GoddesStatue",
+      "name": "The Mother Goddess Statue",
+      "type": "side",
+      "giver": "Goddess Statue",
+      "location": "Forgotten Temple",
+      "position": {
+        "x": -1578.4408,
+        "y": 0,
+        "z": -2106.54
+      },
+      "locationKind": "area",
+      "hash": 2787325644,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "ToGoal",
+        "Complete"
+      ],
+      "order": 252
+    },
+    {
+      "id": "CDungeon_AllDone",
+      "name": "The Shrine Explorer",
+      "type": "side",
+      "giver": "Rauru",
+      "location": "Shrine of Light",
+      "position": null,
+      "locationKind": "area",
+      "hash": 1411305151,
+      "steps": [
+        "NotReady",
+        "Ready",
+        "RewardAppeared",
+        "Complete"
+      ],
+      "order": 253
+    }
+  ]
+}

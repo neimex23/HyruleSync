@@ -36,3 +36,22 @@ El catálogo incluye 15 atalayas adicionales: el completado exige activación, y
 «Guardados» permite consultar los slots de la carpeta actual o un archivo elegido manualmente. Muestra fecha de modificación, tiempo jugado, formato, ubicación y progreso por categoría. «Ver en el mapa» abre una instantánea fija; Autosync sigue leyendo la carpeta en segundo plano. Usa «Volver al seguimiento» para mostrar el último guardado observado. No hay comparación, backups, restauración ni edición de saves. Las consultas no cambian el origen observado.
 
 «Ver cambios», en el aviso de actualización y en «Acerca de», muestra las notas de la última Release estable disponible, con enlace a GitHub. Requiere una consulta de actualizaciones exitosa durante la sesión; si faltan notas se indica expresamente.
+
+
+## Guías externas
+
+Cada punto tiene un botón **Ver guía** que abre Zelda Dungeon en otra pestaña. Los lugares con nombre abren su ficha; los coleccionables sin nombre y las demás categorías abren el mapa externo en sus coordenadas y capa, donde puedes seleccionar el icono correspondiente para consultar la ayuda. Las páginas externas pueden cambiar o tener información incompleta. No se guarda una colección de referencias ni contenido de guías descargado.
+
+
+## Inventario
+
+Abre **Inventario**, junto a Mapa, para consultar vida guardada, corazones/stamina/batería máximos, rupias y puntos del establo. Las nueve bolsas permiten buscar equipo, armaduras, flechas, materiales, comida, dispositivos zonnan y objetos importantes. Incluyen cantidades, capacidad disponible y detalles: durabilidad, fusiones, bonificaciones, tintes, efectos e ingredientes. Los nombres siguen el idioma elegido y se conserva el ID original. Los datos ausentes aparecen como no disponibles. Inventario usa el mismo guardado en vivo o consultado que el mapa. La partida sigue siendo de solo lectura.
+
+
+## Misiones
+
+La pestaña **Misiones** incluye las 253 entradas del diario: hechas, en curso, por hacer y sin verificar. Usa el mismo guardado en seguimiento o consulta temporal que Mapa e Inventario. Permite buscar por nombre, personaje o lugar y filtrar por tipo/estado. **Ver en el mapa** elige la capa y resalta el marcador. **Misiones en el mapa** permite ocultarlos; los filtros de Misiones también se aplican a sus marcadores, independientemente de los filtros de coleccionables. Los marcadores compartidos se separan visualmente para poder elegir cada uno. Indican una zona de referencia o el santuario asociado, no la posición exacta del personaje ni el objetivo actual; cinco misiones no tienen ubicación fija. Los nombres y lugares se muestran en inglés. No hay marcado manual ni edición del guardado.
+
+Usa **Mostrar misiones en el mapa**, en la pestaña Misiones o en los filtros laterales, para mostrar u ocultar todos los marcadores. Cada misión también tiene su casilla **Mostrar en el mapa**: ocultarla conserva la misión en la lista y su preferencia al alternar el interruptor general. **Ver en el mapa** vuelve a mostrar esa misión.
+
+Cada misión y marcador incluye **Ver guía · Zelda Dungeon**, con la ficha correspondiente en otra pestaña. **Verificar contra el guardado** permite consultar ID, campo Step, etapa, enum leído y revisión del save. El estado siempre procede del guardado; las casillas de visibilidad solo afectan al mapa. Prueba opcional del seguimiento: `node tests/quest-autosync.cjs <save-de-entrada-solo-lectura> <directorio-app>`; modifica únicamente copias privadas de prueba.

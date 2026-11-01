@@ -31,6 +31,8 @@ public class PlayerContext {
 }
 
 public class Snapshot {
+    public QuestProgress[] quests;
+    public Inventory inventory;
     public string revision, file, savedAt, format;
     public uint playtime;
     public int[] states, visited;

@@ -95,6 +95,11 @@ function malformedPost(length, body = '') {
         assert.equal(missingFolder.reason, 'Bad Request');
 
         for (const [target, file, mime] of [
+            ['inventory.js', 'web/inventory.js', 'application/javascript; charset=utf-8'],
+            ['inventory-icons.svg', 'web/inventory-icons.svg', 'image/svg+xml'],
+            ['inventory-data.json', 'web/inventory-data.json', 'application/json; charset=utf-8'],
+            ['quests.js', 'web/quests.js', 'application/javascript; charset=utf-8'],
+            ['quest-data.json', 'web/quest-data.json', 'application/json; charset=utf-8'],
             ['', 'web/index.html', 'text/html; charset=utf-8'],
             ['index.html', 'web/index.html', 'text/html; charset=utf-8'],
             ['app.js', 'web/app.js', 'application/javascript; charset=utf-8'],

@@ -124,6 +124,64 @@ public static class ReaderTests {
         string raw;
         return new SaveReader(bytes).State(new MapPoint { category=category,hash=hash,guid=guid }, out raw);
     }
+    static void CheckInventory(int length, uint header, uint metadata) {
+        var data = Fixture(length, header, metadata);
+        int table = 40, cursor = 2048;
+        Action<string, uint> scalar = (key, value) => { Put(data, table, InventoryReader.Hash(key)); Put(data, table + 4, value); table += 8; };
+        Action<string, string[]> strings = (key, values) => {
+            scalar(key, (uint)cursor); Put(data, cursor, (uint)values.Length); cursor += 4;
+            foreach (var value in values) { var text = System.Text.Encoding.ASCII.GetBytes(value); Array.Copy(text, 0, data, cursor, text.Length); cursor += 64; }
+        };
+        Action<string, uint[]> numbers = (key, values) => {
+            scalar(key, (uint)cursor); Put(data, cursor, (uint)values.Length); cursor += 4;
+            foreach (uint value in values) { Put(data, cursor, value); cursor += 4; }
+        };
+        Assert(InventoryReader.Hash("PlayerStatus.MaxLife") == 0xfbe01da1, "Inventory hashes match independent known key");
+        Assert(InventoryReader.Hash("PlayerStatus.MaxStamina") == 0xf9212c74, "Stamina hash matches known key");
+        scalar("PlayerStatus.Life", 17); scalar("PlayerStatus.MaxLife", 40);
+        scalar("PlayerStatus.MaxStamina", 1157234688); scalar("PlayerStatus.CurrentRupee", 0);
+        scalar("PlayerStatus.MaxEnergy", BitConverter.ToUInt32(BitConverter.GetBytes(6000f), 0));
+        int weaponEntry = table + 4;
+        strings("Pouch.Weapon.Content.Name", new[]{"Weapon_Sword_001", "", "Weapon_Sword_002"});
+        numbers("Pouch.Weapon.Content.Life", new uint[]{0, 10, 23});
+        numbers("Pouch.Weapon.ValidNum", new uint[]{3}); numbers("Pouch.Weapon.EquipIndex", new uint[]{2});
+        strings("Pouch.Weapon.Content.Combined.Name", new[]{"Item_Fruit_A", "", ""});
+        strings("Pouch.KeyItem.Content.Name", new[]{"Parasail"}); numbers("Pouch.KeyItem.Content.StockNum", new uint[]{UInt32.MaxValue});
+        strings("Pouch.Food.Content.Name", new[]{"Item_Cook_A_01"});
+        numbers("Pouch.Food.Content.LifeRecover", new uint[]{12});
+        strings("Pouch.Food.Content.MaterialName", new[]{"Item_Fruit_A", "Item_Fruit_A", "", "", ""});
+        strings("Pouch.Material.Content.Name", new string[0]);
+        Put(data,table,0xa3db7114); Put(data,table+4,1024);
+        var inv=InventoryReader.Read(new SaveReader(data));
+        Assert(inv.life==17&&inv.maxLife==40&&inv.stamina==2000&&inv.energy==6000&&inv.rupees==0&&inv.ponyPoints==null,"Stats preserve float units, zero and missing values");
+        Assert(inv.groups.Length==9&&inv.groups[0].available&&inv.groups[0].capacity==3,"Nine inventory pouches with unlocked capacity");
+        Assert(inv.groups[0].items.Count==2&&inv.groups[0].items[1].slot==2,"Empty slot does not hide later items");
+        Assert((int)inv.groups[0].items[0].details["durability"]==0&&inv.groups[0].items[0].equipped==false&&inv.groups[0].items[1].equipped==true,"Durability zero and equipped slot preserved");
+        Assert((string)inv.groups[0].items[0].details["fuseId"]=="Item_Fruit_A","Fuse identity preserved");
+        Assert(inv.groups[1].available==false&&inv.groups[5].available&&inv.groups[5].items.Count==0,"Missing pouch differs from empty pouch");
+        Assert((int)inv.groups[8].items[0].details["quantity"]==-1,"Unique key item sentinel remains signed");
+        Assert(((string[])inv.groups[6].items[0].details["recipe"])[1]=="Item_Fruit_A","Recipe partition retains repeated ingredients");
+        Put(data,weaponEntry,(uint)(data.Length-4)); Put(data,data.Length-4,UInt32.MaxValue);
+        Assert(!InventoryReader.Read(new SaveReader(data)).groups[0].available,"Corrupt oversized array is unavailable without losing other pouches");
+        Put(data,weaponEntry,44);Assert(!InventoryReader.Read(new SaveReader(data)).groups[0].available,"Inventory pointers cannot target hash table");
+    }
+    static void CheckQuests(int length, uint header, uint metadata) {
+        var data = Fixture(length, header, metadata);
+        var definitions = new[] { new QuestDefinition { id = "test", hash = 123,
+            steps = new[] { "NotReady", "Ready", "GoToLightSpotOfPurahPad", "Complete" } },
+            new QuestDefinition { id = "missing", hash = 124, steps = new[] { "Complete" } } };
+        foreach (var step in definitions[0].steps) {
+            Put(data, 44, InventoryReader.Hash(step));
+            var quests = QuestReader.Read(new SaveReader(data), definitions);
+            Assert(quests[0].state == (step == "NotReady" ? "todo" : step == "Complete" ? "done" : "active"), "Quest enum " + step);
+            Assert(quests[0].step == step && quests[0].raw == InventoryReader.Hash(step), "Quest retains raw enum");
+            Assert(quests[1].state == "unknown" && quests[1].raw == null, "Missing quest is unknown");
+        }
+        Put(data, 44, 0);
+        Assert(QuestReader.Read(new SaveReader(data), definitions)[0].state == "unknown", "Unknown quest enum is not treated as incomplete");
+        Put(data, 44, 1654019904);
+        Assert(QuestReader.Read(new SaveReader(data), definitions)[0].state == "unknown", "Shrine Clear is not quest Complete");
+    }
     public static int Main() {
         try {
             Assert(Locale.Resolve("es-UY")=="es", "Spanish Windows locale");
@@ -145,6 +203,12 @@ public static class ReaderTests {
             CheckUpdates();
             CheckPageLifetime();
             CheckProgressCounts();
+            CheckQuests(2307552,0x46c3c8,0x3c050);
+            CheckQuests(2307656,0x47e0f4,0x3c088);
+            CheckQuests(2307856,0x49e946,0x3c138);
+            CheckInventory(2307552,0x46c3c8,0x3c050);
+            CheckInventory(2307656,0x47e0f4,0x3c088);
+            CheckInventory(2307856,0x49e946,0x3c138);
             CheckContext(2307552,0x46c3c8,0x3c050);
             CheckContext(2307656,0x47e0f4,0x3c088);
             CheckContext(2307856,0x49e946,0x3c138);

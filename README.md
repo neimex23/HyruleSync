@@ -58,6 +58,7 @@ The Windows .NET Framework C# compiler is required. No NuGet packages, Python or
 python tests/autosync.py --save 'D:\your-account\slot_00\progress.sav'
 # Optional interface translation checks (requires Node):
 node tests/i18n.cjs
+node tests/inventory.cjs
 node tests/map-tracking.cjs
 node tests/map-rendering.cjs
 node tests/page-lifetime.cjs
@@ -112,3 +113,22 @@ The catalog includes 15 additional Skyview Towers: activation is required for co
 **Saves** lets you inspect slots in the current folder or a manually selected file, showing modification time, playtime, format, location and progress by category. **View on map** opens a fixed snapshot while Autosync continues reading the watched folder. **Return to live tracking** shows the latest observed save. There is no comparison, backup, restore or save editing. Inspection never changes the watched source.
 
 **View changes**, in the update notice and About, displays the latest available stable Release notes with a GitHub link. It requires a successful update check during the session; missing notes are reported explicitly.
+
+
+## External guides
+
+Each point has a **View guide** button that opens Zelda Dungeon in a new tab. Named locations open their wiki entry; unnamed collectibles and other categories open the external map at their coordinates and layer, where you can select the relevant icon for help. Third-party pages may change or be incomplete. No reference collection or downloaded guide content is stored locally.
+
+
+## Inventory
+
+Open **Inventory** next to Map for saved health, maximum hearts/stamina/battery, rupees and pony points. Nine searchable pouches show equipment, armor, arrows, materials, food, Zonai devices and key items, with quantities, available capacity and item details (durability, fusions, bonuses, dyes, food effects and ingredients). Names follow the selected language; original IDs remain visible. Missing data is shown as unavailable. Inventory follows the same live or inspected snapshot as the map. Saves remain read-only.
+
+
+## Quests
+
+Open **Quests** for all 253 Adventure Log entries: completed, in progress, not started and unknown. Progress follows the same live or inspected save as Map and Inventory. Search by name, character or location and filter by quest type/status. **View on map** selects the relevant layer and highlights a marker. **Quests on the map** toggles quest markers independently of collectible filters; quest search/type/status filters also apply to markers. Shared locations fan out so each marker is clickable. Markers indicate a reference area or associated shrine, not the NPC’s exact position or current quest objective; five entries have no fixed location. Names and locations are currently English in both interface languages. No manual overrides or save editing.
+
+Use **Show quests on the map** in the Quests tab or map sidebar to toggle all quest markers. Each mission also has a **Show on the map** checkbox; hiding its marker keeps it in the list. Individual choices survive the global toggle. **View on map** makes that mission visible again.
+
+Each quest card and map popup includes **View guide · Zelda Dungeon**, opening its associated wiki entry in another tab. **Verify against the save** shows the quest ID, Step field, stage, raw enum and save revision. Quest status is always read from the save; visibility controls only affect markers. An optional watcher integration test is available: `node tests/quest-autosync.cjs <read-only-save-input> <application-directory>`. It writes only private fixture copies.

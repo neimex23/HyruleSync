@@ -1,0 +1,43 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'..'),nodes=new Map();
+const node=id=>{if(!nodes.has(id))nodes.set(id,{value:'',innerHTML:'',textContent:'',hidden:false,checked:true,setAttribute(){},classList:{toggle(){}}});return nodes.get(id);};
+const context={window:{},document:{getElementById:node},localStorage:{getItem:()=>null},setTimeout,clearTimeout};
+vm.createContext(context);
+vm.runInContext(fs.readFileSync(path.join(root,'web/i18n.js'),'utf8'),context);context.I18N=context.window.I18N;context.I18N.setLanguage('es');
+vm.runInContext(fs.readFileSync(path.join(root,'web/app.js'),'utf8').replace(/start\(\);\s*$/,''),context);
+vm.runInContext(fs.readFileSync(path.join(root,'web/quests.js'),'utf8'),context);
+const run=s=>vm.runInContext(s,context);
+const data=JSON.parse(fs.readFileSync(path.join(root,'web/quest-data.json'),'utf8'));
+assert.equal(data.quests.length,253);assert.equal(new Set(data.quests.map(q=>q.id)).size,253);
+assert.deepEqual(data.quests.reduce((counts,q)=>(counts[q.type]=(counts[q.type]||0)+1,counts),{}),{main:23,adventure:60,shrine:31,side:139});
+for(const q of data.quests){assert.ok(q.steps.includes('Complete'));assert.ok(q.steps.includes('NotReady'));assert.ok(Number.isInteger(q.hash)&&q.hash>0);if(q.position)for(const n of Object.values(q.position))assert.ok(Number.isFinite(n));}
+assert.equal(data.quests.find(q=>q.id==='MainChallenge').hash,0x3ee80d28);
+context.definitions=data.quests;
+assert.equal(run('questGuideLink(definitions.find(q=>q.id==="MainChallenge"))'),'https://www.zeldadungeon.net/wiki/Find_Princess_Zelda');
+assert.equal(run('questGuideLink(definitions.find(q=>q.id==="GerudoCanyon_GleeokLiver"))'),'https://www.zeldadungeon.net/wiki/Gleeok_Guts_(Side_Quest)');
+assert.match(run('questGuideLink({name:"The Ancient City Gorondia?"})'),/Gorondia%3F$/);
+assert.match(run('questGuideLink({name:"Presenting: Sensor +!"})'),/Presenting%3A_Sensor_%2B!$/);
+for(const q of data.quests){context.definition=q;assert.equal(new URL(run('questGuideLink(definition)')).hostname,'www.zeldadungeon.net');}
+assert.match(run('questSaveDetails(definitions[0],{step:"GoToDeepHole",raw:1066970150})'),/Step_DefeatGanondorf/);
+assert.match(run('questSaveDetails(definitions[0],{step:"GoToDeepHole",raw:1066970150})'),/GoToDeepHole/);
+assert.match(run('questSaveDetails(definitions[0],{raw:0})'),/0x00000000/);
+const sample=data.quests.slice(0,4).map((q,i)=>({...q,name:i===0?'<script>':'Misión '+i,searchText:i===0?'arbol':'misión '+i}));
+context.sample=sample;context.progress={file:'test.sav',savedAt:'2026-11-01T12:00:00Z',quests:sample.map((q,i)=>({id:q.id,state:['done','active','todo','unknown'][i]}))};
+run('questView=true;questData=sample;snapshot=progress;renderQuests()');
+assert.match(node('questList').innerHTML,/&lt;script&gt;/);assert.doesNotMatch(node('questList').innerHTML,/<script>/);
+assert.equal((node('questList').innerHTML.match(/<article class="quest-card/g)||[]).length,4);
+for(const state of ['done','active','todo','unknown']){node('questState').value=state;assert.equal(run('filteredQuests().length'),1);assert.equal(run('questProgress().get(filteredQuests()[0].id).state'),state);}
+node('questState').value='';node('questSearch').value='ÁRBOL';assert.equal(run('filteredQuests().length'),1);
+node('questSearch').value='missing';run('renderQuests()');assert.match(node('questList').innerHTML,/No hay misiones/);
+node('questSearch').value='';run('snapshot=null;renderQuests()');assert.match(node('questSource').textContent,/Carga una partida/);assert.equal(run('questProgress().size'),0);
+run('selectedQuest=sample[0].id;setQuestVisible(sample[0].id,false);renderQuests()');
+assert.equal(run('hiddenQuests.has(sample[0].id)'),true);assert.equal(run('selectedQuest'),null);
+assert.match(node('questList').innerHTML,new RegExp('data-quest-visible="'+sample[0].id+'">'),'Hidden mission checkbox is unchecked');
+assert.equal(run('filteredQuests().length'),4,'Hiding a marker keeps the mission in the list');
+run('setQuestMapVisible(false)');for(const id of ['showQuests','showQuestsSidebar','showQuestsList'])assert.equal(node(id).checked,false);
+run('setQuestMapVisible(true)');for(const id of ['showQuests','showQuestsSidebar','showQuestsList'])assert.equal(node(id).checked,true);
+assert.equal(run('hiddenQuests.has(sample[0].id)'),true,'Global toggle preserves individual visibility');
+run('setQuestVisible(sample[0].id,true);renderQuests()');assert.equal(run('hiddenQuests.size'),0);
+for(const label of [...Object.values(run('questTypes')),...Object.values(run('questStates'))])assert.ok(context.I18N.translations[label]);
+console.log('253 quest definitions, categories, enum coverage, states, accent-insensitive search, empty state and escaping passed.');

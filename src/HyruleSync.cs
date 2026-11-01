@@ -39,7 +39,7 @@ public static partial class Program {
    visited[i]=reader.BooleanState(catalog.points[i].visitHash);
   }
   var position=reader.PlayerPosition();
-  return new Snapshot{revision=Sha(data),file=path,savedAt=(File.Exists(path)?File.GetLastWriteTimeUtc(path):DateTime.UtcNow).ToString("o"),format=reader.format,playtime=reader.playtime,states=states,visited=visited,values=values,tableEnd=reader.tableEnd,guidStart=reader.guidStart,playerPosition=position,playerContext=SaveReader.ResolveContext(reader.CurrentMap(),position,catalog.points)};
+  return new Snapshot{quests=QuestReader.Read(reader),inventory=InventoryReader.Read(reader),revision=Sha(data),file=path,savedAt=(File.Exists(path)?File.GetLastWriteTimeUtc(path):DateTime.UtcNow).ToString("o"),format=reader.format,playtime=reader.playtime,states=states,visited=visited,values=values,tableEnd=reader.tableEnd,guidStart=reader.guidStart,playerPosition=position,playerContext=SaveReader.ResolveContext(reader.CurrentMap(),position,catalog.points)};
  }
  static Snapshot InspectFile(string path){
   path=Path.GetFullPath(path);var before=new FileInfo(path);long ticks=before.LastWriteTimeUtc.Ticks,size=before.Length;
