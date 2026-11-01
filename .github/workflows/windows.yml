@@ -1,0 +1,25 @@
+name: Build Windows
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build standalone executable
+        shell: powershell
+        run: ./scripts/build.ps1
+      - name: Test save reader with synthetic fixtures
+        shell: powershell
+        run: ./scripts/test.ps1
+      - uses: actions/upload-artifact@v7
+        with:
+          name: HyruleSync-Windows
+          path: |
+            outputs/HyruleSync-v*-windows.zip
+            outputs/HyruleSync-v*-windows.zip.sha256
+          if-no-files-found: error

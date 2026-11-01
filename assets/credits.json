@@ -1,0 +1,15 @@
+{
+  "author": "Neimex23",
+  "ai": { "tool": "Codex", "model": "GPT-6.1 SOL", "reasoning": "High" },
+  "license": "MIT",
+  "version": "0.3.0",
+  "resourcesCommit": "a68ffbb083ac220c77f2e4ec3ce60d29924c1213",
+  "references": [
+    { "name": "TotK Unexplored", "url": "https://github.com/lud99/totk-unexplored", "kind": "resources" },
+    { "name": "Leaflet", "url": "https://github.com/Leaflet/Leaflet", "kind": "library" },
+    { "name": "Savegame Editors · Marc Robledo", "url": "https://github.com/marcrobledo/savegame-editors", "kind": "upstream" },
+    { "name": "ZeldaMods · objmap-totk", "url": "https://github.com/zeldamods/objmap-totk", "kind": "upstream" },
+    { "name": "ZeldaMods · radar-totk", "url": "https://github.com/zeldamods/radar-totk", "kind": "upstream" },
+    { "name": "Zelda Dungeon", "url": "https://zeldadungeon.net", "kind": "upstream" }
+  ]
+}

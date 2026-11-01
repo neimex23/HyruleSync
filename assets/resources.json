@@ -1,0 +1,222 @@
+{
+  "repository": "lud99/totk-unexplored",
+  "commit": "a68ffbb083ac220c77f2e4ec3ce60d29924c1213",
+  "files": [
+    {
+      "path": "map_data.json",
+      "source": "romfs/map_data.json",
+      "sha256": "25e21585f9c7b8c330147c3e103a3fabc0b344feea88470ecf0b8de27070cff2",
+      "size": 776477
+    },
+    {
+      "path": "assets/map/depths-medium.png",
+      "source": "romfs/map/depths-medium.png",
+      "sha256": "81e7e4c9fc3bbdf7777484461cb6cc2ded1844699d13ef252e4ed8aaf050d592",
+      "size": 16234622
+    },
+    {
+      "path": "assets/map/sky-medium.png",
+      "source": "romfs/map/sky-medium.png",
+      "sha256": "9954a03496c8fcd223d63e2db2784d6228e0baadbec7babfdf1b6ece445ba522",
+      "size": 10948611
+    },
+    {
+      "path": "assets/map/surface-medium.png",
+      "source": "romfs/map/surface-medium.png",
+      "sha256": "6c2515b295c64eb5e4cf8e967048d95a10d340d3c5e06635f612c0ecd342486d",
+      "size": 16968296
+    },
+    {
+      "path": "assets/icons/addison_sign.png",
+      "source": "romfs/icons/addison_sign.png",
+      "sha256": "dd58ace4fe6dc85533eb495535bf88527f5ac18d938510ade77cba92eaad2df7",
+      "size": 3784
+    },
+    {
+      "path": "assets/icons/arrow.png",
+      "source": "romfs/icons/arrow.png",
+      "sha256": "418f937a425cb83169923de680049e31acb6f3e7574194615236e8e0835d504c",
+      "size": 733
+    },
+    {
+      "path": "assets/icons/bubbul.png",
+      "source": "romfs/icons/bubbul.png",
+      "sha256": "3e0f421cb801cce0ba83eb1e6e0b956e96a2eb091bbb85c8062fe0d5efae9d54",
+      "size": 5529
+    },
+    {
+      "path": "assets/icons/cave.png",
+      "source": "romfs/icons/cave.png",
+      "sha256": "8140e89f13c3b521d9588d011d29473714c09e5eff2dba5e14db3d169fbb4531",
+      "size": 5659
+    },
+    {
+      "path": "assets/icons/chasm.png",
+      "source": "romfs/icons/chasm.png",
+      "sha256": "b8f290b80fd830b5b9458097c33b213c0c4341002b4125bd3a5f592f8e00bd62",
+      "size": 7003
+    },
+    {
+      "path": "assets/icons/cursor.png",
+      "source": "romfs/icons/cursor.png",
+      "sha256": "eec79b8907482e1bcf9083a2aceb7d9e40366562b1e0687bc188cec66f4c6b1e",
+      "size": 201
+    },
+    {
+      "path": "assets/icons/depths.png",
+      "source": "romfs/icons/depths.png",
+      "sha256": "a54c94b1dc563239f58822988507ecab9336cdcf3c5f49bbc10a81c65fef717d",
+      "size": 1177
+    },
+    {
+      "path": "assets/icons/dpad-up.png",
+      "source": "romfs/icons/dpad-up.png",
+      "sha256": "1a16bd9777dde9c01505c75eed8c2501bc265b438d9611ffab5318a69f1c54c4",
+      "size": 1046
+    },
+    {
+      "path": "assets/icons/eye.png",
+      "source": "romfs/icons/eye.png",
+      "sha256": "856ef0f8c6af060e929a03debef9bc487451e8f55aff7c3919bcf7bcef8c8ae0",
+      "size": 6016
+    },
+    {
+      "path": "assets/icons/flux_construct.png",
+      "source": "romfs/icons/flux_construct.png",
+      "sha256": "e7d0c681c959d815273fec341854f0854219a9adf893f4c4b724513255a983d2",
+      "size": 6423
+    },
+    {
+      "path": "assets/icons/frox.png",
+      "source": "romfs/icons/frox.png",
+      "sha256": "e80d09414974247cf0c6e6c93ec515c416e22ba2710e0694c448a401b344674f",
+      "size": 5135
+    },
+    {
+      "path": "assets/icons/gleeok.png",
+      "source": "romfs/icons/gleeok.png",
+      "sha256": "6fc67f88c19b860a6102b88645d445429063541c03a6a81ef4ea1a42bc3b5fa6",
+      "size": 4498
+    },
+    {
+      "path": "assets/icons/hinox.png",
+      "source": "romfs/icons/hinox.png",
+      "sha256": "b33d4b1f7e1dc341a4164ba8acc14fd43e743affbfd307bd0256220295000890",
+      "size": 5529
+    },
+    {
+      "path": "assets/icons/korok_carry.png",
+      "source": "romfs/icons/korok_carry.png",
+      "sha256": "c2216f848be62d3decb5851016e10be8e0dc015f2a1d827bfc24b92c1f2b5d5a",
+      "size": 8738
+    },
+    {
+      "path": "assets/icons/korok_hidden.png",
+      "source": "romfs/icons/korok_hidden.png",
+      "sha256": "269317f9c8cfbb2c9207e3a5af0eb7cbd721d1da88da67f5bb16d11396bc711a",
+      "size": 6817
+    },
+    {
+      "path": "assets/icons/korok_hidden_start.png",
+      "source": "romfs/icons/korok_hidden_start.png",
+      "sha256": "073489a95900c6093b804bf75b7acbfd1ce477b1b5cd5c8f69b88f9edf308cad",
+      "size": 6416
+    },
+    {
+      "path": "assets/icons/leaf.png",
+      "source": "romfs/icons/leaf.png",
+      "sha256": "375c8c2772fc0e02139547ed713390feddd9626e4ae24c1391569c185262580b",
+      "size": 2013
+    },
+    {
+      "path": "assets/icons/lightroot.png",
+      "source": "romfs/icons/lightroot.png",
+      "sha256": "bced0df2006ba98b99e22014faf2987b2afea0284de9b499b2bd6b11b6b43b06",
+      "size": 4879
+    },
+    {
+      "path": "assets/icons/location.png",
+      "source": "romfs/icons/location.png",
+      "sha256": "43d9ac2a5439ef87caa6c65aa12675f51caf04c8937f963fc9bbddaa6344367f",
+      "size": 3983
+    },
+    {
+      "path": "assets/icons/molduga.png",
+      "source": "romfs/icons/molduga.png",
+      "sha256": "4c630df17428a1698dd9c39c4798c681ac1746b630455c1460f9b2f106475e7c",
+      "size": 3466
+    },
+    {
+      "path": "assets/icons/old_map.png",
+      "source": "romfs/icons/old_map.png",
+      "sha256": "16426f2ae1fa524813ee314ecce4897001e3521a5e914c7811e6c734e89f02b3",
+      "size": 5517
+    },
+    {
+      "path": "assets/icons/sages_will.png",
+      "source": "romfs/icons/sages_will.png",
+      "sha256": "efe1b3083cae7874108a8c739201372cb18f9353246bc69c635e72d705466fca",
+      "size": 5166
+    },
+    {
+      "path": "assets/icons/schema_stone.png",
+      "source": "romfs/icons/schema_stone.png",
+      "sha256": "30d9b9c503b4e3206d5de4bed4b85ef9609754f4aee3010dbe6e1d558965e265",
+      "size": 5213
+    },
+    {
+      "path": "assets/icons/shrine.png",
+      "source": "romfs/icons/shrine.png",
+      "sha256": "b0498e454cf33c359fc8db3bc680166550ee0ed548675061ce8dd129477cd6bc",
+      "size": 4919
+    },
+    {
+      "path": "assets/icons/sky.png",
+      "source": "romfs/icons/sky.png",
+      "sha256": "86c2e79c4ce9c0152b6cf4e72be34756818b92e78387f370dd697792d808bfa6",
+      "size": 1061
+    },
+    {
+      "path": "assets/icons/surface.png",
+      "source": "romfs/icons/surface.png",
+      "sha256": "e2d38cda98b6a245a086a9c738ca8d7bd59c2dbfbaf3e7ee3b826c30205a33ce",
+      "size": 1238
+    },
+    {
+      "path": "assets/icons/sword.png",
+      "source": "romfs/icons/sword.png",
+      "sha256": "ab83b3e8cc0c1c97d7e5476c4a25c2f432eb6f072332fb5b4b6d8ab0b38c3777",
+      "size": 5048
+    },
+    {
+      "path": "assets/icons/talus.png",
+      "source": "romfs/icons/talus.png",
+      "sha256": "633dba81396c6081b02713d5a2fc8dbf55009f39f93dddae519543fd9bccccd9",
+      "size": 5044
+    },
+    {
+      "path": "assets/icons/up-down.png",
+      "source": "romfs/icons/up-down.png",
+      "sha256": "d2e7855698e6d96ca82fe342b7edb682caaad18dd07a219bdd19cd26f8674c2f",
+      "size": 2886
+    },
+    {
+      "path": "assets/icons/well.png",
+      "source": "romfs/icons/well.png",
+      "sha256": "07859f65016f1398dd20fd78d0ed4ab3f2402fe4d27cea88b9b83824f2fed928",
+      "size": 6033
+    },
+    {
+      "path": "assets/icons/Y.png",
+      "source": "romfs/icons/Y.png",
+      "sha256": "2bebc097191674fb674c7b5e19b17b968a46101d44ccca373919374d4f3b337c",
+      "size": 2313
+    },
+    {
+      "path": "assets/icons/yiga_schematic.png",
+      "source": "romfs/icons/yiga_schematic.png",
+      "sha256": "fbc7f59816d12ddc3123289868bc086453bc84b6ae592a742349697be552b86c",
+      "size": 4987
+    }
+  ]
+}
