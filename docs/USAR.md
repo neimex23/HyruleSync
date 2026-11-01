@@ -13,7 +13,7 @@ Cerrar la última pestaña cierra también HyruleSync tras unos cinco segundos. 
 
 **Centrar en Link** muestra su última posición guardada y acerca la vista si hace falta, conservando un zoom más cercano. Activa **Seguir a Link al actualizar** para centrar la vista y cambiar a su capa con cada nuevo guardado leído, conservando el zoom. La opción empieza desactivada y se recuerda al reiniciar. La posición cambia al guardar la partida; si no se puede leer, se indica en pantalla.
 
-La app busca actualizaciones estables de GitHub al abrir la interfaz y una vez por hora. Puedes reintentar desde **Acerca de → Buscar actualizaciones**. Si hay una versión nueva con paquete Windows, aparece **Descargar actualización**. Descarga el ZIP, cierra HyruleSync y reemplaza los ejecutables conservando `.data/` y `.state/`. Los errores de conexión no interrumpen el seguimiento. **Reportar problema** abre un nuevo issue del repositorio para que lo completes y envíes.
+La app busca actualizaciones estables de GitHub al abrir la interfaz y una vez por hora. Puedes reintentar desde **Acerca de → Buscar actualizaciones**. Si hay una versión nueva con paquete Windows, aparece **Descargar actualización** tanto en Acerca de como en el panel lateral; pulsa ese enlace para descargar el ZIP. Cierra HyruleSync y reemplaza los ejecutables conservando `.data/` y `.state/`. Los errores de conexión no interrumpen el seguimiento. **Reportar problema** abre un nuevo issue del repositorio para que lo completes y envíes.
 
 HyruleSync solo lee los guardados. Sus preferencias están en `.state/` y los mapas descargados en `.data/`, junto al ejecutable. Conserva esas carpetas para evitar configurar o descargar de nuevo. No compartas `.state/` ni tus partidas.
 

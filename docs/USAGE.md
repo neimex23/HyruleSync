@@ -15,7 +15,7 @@ Closing the last tab exits HyruleSync after about five seconds. Reloading or ano
 
 **Center on Link** shows his last saved position and zooms in when needed, preserving a closer zoom. Enable **Follow Link on updates** to center the map and select his layer whenever a new save is read, keeping your zoom. This option is off by default and remembered across restarts. Position is taken from the save, so it changes when you save the game. An unavailable position is shown explicitly.
 
-HyruleSync checks GitHub Releases for stable updates on startup and once per hour while the interface is open. **About → Check for updates** retries manually. When a newer Windows package is available, **Download update** opens the ZIP download. Close HyruleSync before replacing the executables; keep `.data/` and `.state/`. Offline checks do not stop monitoring. **Report a problem** opens a new issue in the repository; you submit the report yourself.
+HyruleSync checks GitHub Releases for stable updates on startup and once per hour while the interface is open. **About → Check for updates** retries manually. When a newer Windows package is available, **Download update** appears in both About and the sidebar; click it to download the ZIP. Close HyruleSync before replacing the executables; keep `.data/` and `.state/`. Offline checks do not stop monitoring. **Report a problem** opens a new issue in the repository; you submit the report yourself.
 
 Saves are read-only. Settings are in `.state/` and maps in `.data/`, beside the EXE. Keep those folders to avoid repeated setup. Do not share `.state/` or saves.
 

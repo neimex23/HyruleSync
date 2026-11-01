@@ -63,15 +63,23 @@ zoom=-4;
  view=null;context.next={...context.next,revision:'6',playerPosition:{x:90,y:-400,z:100}};await run('poll()');
  assert.equal(run('snapshot.revision'),'old');assert.equal(run('liveSnapshot.revision'),'6');assert.equal(view,null);assert.equal(node('previewBanner').hidden,false);
  run('returnToLive()');assert.equal(run('snapshot.revision'),'6');assert.equal(node('previewBanner').hidden,true);assert.deepEqual(Array.from(view.position),[-100,90]);assert.equal(view.zoom,-4);
- // The update UI offers a direct ZIP link and clears it when no update is available.
+ // Downloads remain reachable while the modal About dialog covers the sidebar.
+ const html=fs.readFileSync(require('node:path').join(__dirname,'../web/index.html'),'utf8');
+ const about=html.match(/<dialog id="aboutDialog">([\s\S]*?)<\/dialog>/)[1];
+ assert.match(about,/<a id="aboutDownloadUpdate"[^>]*hidden>Descargar actualización<\/a>/);
+ assert.match(about,/id="aboutUpdateInstructions" hidden/);
  node('changesDialog').showModal=()=>{};
  let update={currentVersion:'0.4.0',latestVersion:'0.5.0',available:true,releaseUrl:'https://github.com/neimex23/HyruleSync/releases/tag/v0.5.0',releaseNotes:'## Changes\n<script>bad()</script>',downloadUrl:'https://github.com/neimex23/HyruleSync/releases/download/v0.5.0/HyruleSync-v0.5.0-windows.zip'};
  context.fetch=async()=>({ok:true,json:async()=>update});await run('checkUpdates()');
  assert.equal(node('updateNotice').hidden,false);assert.equal(node('downloadUpdate').href,update.downloadUrl);
+ assert.equal(node('aboutDownloadUpdate').href,update.downloadUrl);assert.equal(node('aboutDownloadUpdate').hidden,false);
+ assert.equal(node('aboutUpdateInstructions').hidden,false);
  run('showChanges()');assert.equal(node('changesText').textContent,update.releaseNotes);assert.equal(node('changesLink').href,update.releaseUrl);
  update={...update,releaseNotes:null};await run('checkUpdates()');run('showChanges()');assert.equal(node('changesText').textContent,'Esta versión no tiene notas de cambios.');
  update={currentVersion:'0.4.0',latestVersion:'0.4.0',available:false};await run('checkUpdates()');
  assert.equal(node('updateNotice').hidden,true);assert.equal(node('downloadUpdate').href,undefined);
+ assert.equal(node('aboutDownloadUpdate').href,undefined);assert.equal(node('aboutDownloadUpdate').hidden,true);
+ assert.equal(node('aboutUpdateInstructions').hidden,true);
  assert.equal(node('updateStatus').textContent,'Tienes la última versión.');
  update={currentVersion:'0.4.0',available:false,error:'Offline'};await run('checkUpdates()');assert.equal(node('updateStatus').textContent,'Offline');
  context.fetch=async()=>{throw Error('Disconnected');};await run('checkUpdates()');assert.equal(node('checkUpdates').disabled,false);

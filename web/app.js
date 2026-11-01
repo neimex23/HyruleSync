@@ -262,8 +262,12 @@ async function checkUpdates(manual=false){
   $('updateNotice').hidden=!state.available;
   $('updateMessage').textContent=state.available?t('Nueva versión disponible: v{version}',{version:state.latestVersion}):'';
   // The server accepts only this repository's exact Windows release asset.
-  const download=$('downloadUpdate');download.removeAttribute('href');
-  if(state.available&&state.downloadUrl)download.href=state.downloadUrl;
+  const canDownload=Boolean(state.available&&state.downloadUrl);
+  for(const id of ['downloadUpdate','aboutDownloadUpdate']){
+   const download=$(id);download.hidden=!canDownload;download.removeAttribute('href');
+   if(canDownload)download.href=state.downloadUrl;
+  }
+  $('aboutUpdateInstructions').hidden=!canDownload;
   $('updateStatus').textContent=state.busy?t('Buscando actualizaciones…'):state.error|| (state.available?t('Nueva versión disponible: v{version}',{version:state.latestVersion}):state.latestVersion?t('Tienes la última versión.'):t('Todavía no hay versiones publicadas.'));
   updateTimer=setTimeout(()=>checkUpdates(),state.busy?1000:60000);
  }catch{$('updateStatus').textContent=t('No se pudieron buscar actualizaciones. Puedes reintentar.');updateTimer=setTimeout(()=>checkUpdates(),60000);}
