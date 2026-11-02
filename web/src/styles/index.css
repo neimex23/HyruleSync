@@ -1,0 +1,9 @@
+/* Keep the cascade explicit: shared rules precede panel and map overrides. */
+@import "./base.css";
+@import "./sidebar.css";
+@import "./map.css";
+@import "./dialogs.css";
+@import "./workspace.css";
+@import "./inventory.css";
+@import "./quests.css";
+@import "./map-quality.css";

@@ -25,7 +25,7 @@ try:
  for _ in range(100):
   if urlfile.exists():break
   time.sleep(.1)
- url=urlfile.read_text();origin=url.split('/',3)[0]+'//'+url.split('/')[2]
+ url=urlfile.read_text().replace('hyrulesync.localhost','127.0.0.1');origin=url.split('/',3)[0]+'//'+url.split('/')[2]
  def request(path,body=None,headers=None):
   req=urllib.request.Request(url+path,data=body,headers=headers if headers is not None else {'Origin':origin})
   try:
@@ -92,7 +92,7 @@ try:
  for _ in range(100):
   if urlfile.exists():break
   time.sleep(.1)
- url=urlfile.read_text();origin=url.split('/',3)[0]+'//'+url.split('/')[2]
+ url=urlfile.read_text().replace('hyrulesync.localhost','127.0.0.1');origin=url.split('/',3)[0]+'//'+url.split('/')[2]
  s=until(lambda s:s['status']=='ok');assert s['auto'] and s['mode']=='folder' and s['snapshot']['playtime']==2002
  assert s['showLink'] and s['followLink'] and s['linkOrder']=='below'
  assert s['linkOpacity']==35

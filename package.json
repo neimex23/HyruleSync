@@ -1,0 +1,38 @@
+{
+  "name": "hyrulesync-web",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "lint": "eslint web/src vite.config.js eslint.config.js tests/web",
+    "test": "vitest run",
+    "test:integration": "node tests/language.cjs && node tests/http-server.cjs && node tests/page-lifetime.cjs",
+    "check": "npm run lint && npm test && npm run build",
+    "format": "prettier --write web/src vite.config.js eslint.config.js tests/web"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.9.10",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "overrides": {
+    "minimatch": "11.0.1"
+  }
+}

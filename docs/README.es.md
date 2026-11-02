@@ -42,7 +42,9 @@ Windows con .NET Framework 4.x y un navegador moderno. Compilación probada en e
 .\scripts\test.ps1
 ```
 
-El compilador C# de .NET Framework debe estar disponible en Windows. No hay dependencias de NuGet ni instalaciones de paquetes para compilar. La salida queda en `outputs/HyruleSync/`; el ZIP público se genera en `outputs/`. El código de interfaz y Leaflet quedan embebidos en el EXE; mapas y datos no se incluyen en el paquete público.
+Para compilar necesitas el compilador C# de .NET Framework en Windows y Node.js 22.12 o posterior (CI usa Node 24). `build.cmd` instala las dependencias fijadas en `package-lock.json`, compila React con Vite e incorpora el resultado al EXE. No requiere NuGet ni Python. El usuario final sigue sin necesitar Node. La salida queda en `outputs/HyruleSync/`; el ZIP público se genera en `outputs/`. Los mapas externos se descargan por separado.
+
+Para trabajar en la interfaz: `npm ci` y `npm run check` ejecutan ESLint, las pruebas React y la compilación web. Consulta [Desarrollo web](WEB.es.md) para usar el servidor de desarrollo con recarga automática.
 
 Para usar una copia local del repositorio de recursos, evitando la descarga:
 
@@ -54,10 +56,13 @@ Los recursos deben coincidir con el commit fijado en `assets/resources.json`. El
 
 ## Organización
 
+La app abre automáticamente `http://hyrulesync.localhost:<puerto>/<sesión>/`. Los navegadores modernos de Windows resuelven ese nombre localmente, sin configurar DNS ni pedir permisos de administrador. Usa la URL completa que abre el programa; el puerto y la ruta privada de sesión cambian al iniciar. El servidor solo escucha en este equipo.
+
 | Ruta | Contenido |
 |---|---|
 | `src/` | Aplicación Windows, lector de guardados, catálogo, modelos, servidor HTTP local y recursos |
-| `web/` | Interfaz local embebida y Leaflet |
+| `web/src/` | Componentes React, traducciones, adaptador del mapa y módulos JavaScript |
+| `web/public/` | Iconos y datos de inventario y misiones |
 | `assets/` | Icono propio y manifiesto de procedencia de recursos |
 | `scripts/` | Compilación, pruebas, importación y empaquetado |
 | `tests/` | Pruebas del lector y seguimiento |
@@ -70,9 +75,11 @@ Los recursos deben coincidir con el commit fijado en `assets/resources.json`. El
 
 Sube el código de esta raíz, respetando `.gitignore`. No subas `.local/`, `.data/`, `.state/`, partidas ni los mapas descargados. El ZIP generado usa una lista explícita de archivos y excluye esos datos.
 
-La acción **Build Windows** compila, prueba y adjunta un paquete a cada ejecución. **Publish Windows release** publica automáticamente la Release, ZIP y SHA-256 al subir un tag estable `vX.Y.Z`: primero sube el commit y luego ejecuta `git tag v0.4.0` y `git push origin v0.4.0`. Usa un tag nuevo para cada versión y deja que el workflow cree la Release. La versión del tag se incorpora en ambos ejecutables, créditos y nombre del ZIP; no necesitas editarla a mano para publicar. Para reproducirlo localmente: `scripts/build.ps1 -Version v0.4.0`.
+La única versión de la aplicación se edita en `AssemblyVersion("X.Y.Z.0")`, dentro de `src/AssemblyInfo.cs`; deja el último componente en `0`. Al ejecutar `scripts/build.ps1`, ambos ejecutables, sus detalles de archivo de Windows, los créditos, el comprobador de actualizaciones y el nombre del ZIP toman automáticamente esa versión. El paquete web privado no tiene una versión propia de la aplicación.
 
-La interfaz busca la última Release estable al abrirse y una vez por hora; también puedes usar «Acerca de → Buscar actualizaciones». Solo ofrece versiones numéricamente mayores con el paquete Windows esperado. Descarga el ZIP, cierra HyruleSync y reemplaza los ejecutables conservando `.data/` y `.state/`. La consulta no envía guardados ni rutas locales y sus errores no interrumpen Autosync.
+La acción **Build Windows** compila, prueba y adjunta un paquete a cada ejecución. **Publish Windows release** publica automáticamente la Release, ZIP y SHA-256 al subir un tag estable `vX.Y.Z` que coincida con `AssemblyVersion`: por ejemplo, después de cambiarla a `0.6.1.0`, sube el commit y ejecuta `git tag v0.6.1` y `git push origin v0.6.1`. Usa un tag nuevo para cada versión y deja que el workflow cree la Release. Si el tag no coincide, la compilación falla sin reemplazar la versión del código. El argumento opcional `scripts/build.ps1 -Version vX.Y.Z` solo comprueba la versión esperada.
+
+La interfaz busca la última Release estable al abrirse y una vez por hora; también puedes usar «Acerca de → Buscar actualizaciones». Solo ofrece versiones numéricamente mayores con el paquete Windows esperado. Descarga el ZIP, cierra HyruleSync y reemplaza solo `HyruleSync.exe` y `HyruleSync.Stop.exe`, conservando las carpetas `.data/` y `.state/` (contienen tus mapas descargados y preferencias; no las borres ni las sobrescribas). La consulta no envía guardados ni rutas locales y sus errores no interrumpen Autosync.
 
 Este directorio queda preparado para Git; no se crea un repositorio remoto ni se publica contenido automáticamente.
 
@@ -88,7 +95,7 @@ Autoría: **Neimex23**. Proyecto fuertemente impulsado por IA, desarrollado con 
 
 Puedes elegir **Idioma → Español / English / Automático (Windows)** desde la barra lateral o la pantalla inicial. La elección se guarda en `.state/settings.json` y la página se recarga para aplicarla a la interfaz, categorías y menú del icono. En automático se usa español si Windows está en español; inglés en los demás casos. Incorpora una sección «Acerca de, licencias y créditos». **HyruleSync.Stop.exe** cierra las instancias de HyruleSync de tu sesión sin tocar el juego ni el navegador.
 
-Ahora basta ejecutar `build.cmd`: compila ambos ejecutables y genera automáticamente el ZIP y SHA-256 en `outputs/`. No es necesario ejecutar `package.ps1` después. Las instrucciones de compilación anteriores equivalen a pasos separados, pero el empaquetado ya está integrado.
+Ahora basta ejecutar `build.cmd`: reemplaza los archivos del programa en `outputs/HyruleSync/` aunque cambie la versión o siga siendo la misma, conservando `.data/`, `.state/`, partidas y otros archivos personales. Ambos ejecutables se compilan antes de reemplazar los instalados. Tras generar correctamente el paquete, en `outputs/` quedan solo el ZIP y SHA-256 actuales. Cierra las copias abiertas desde esa carpeta antes de recompilar. No es necesario ejecutar `package.ps1` después; el empaquetado ya está integrado.
 
 Las referencias relativas de esta traducción se consultan desde la raíz del repositorio. La documentación principal actualizada está en [README.md](../README.md).
 
@@ -115,8 +122,17 @@ Abre **Inventario**, junto a Mapa, para consultar vida guardada, corazones/stami
 
 ## Misiones
 
-La pestaña **Misiones** incluye las 253 entradas del diario: hechas, en curso, por hacer y sin verificar. Usa el mismo guardado en seguimiento o consulta temporal que Mapa e Inventario. Permite buscar por nombre, personaje o lugar y filtrar por tipo/estado. **Ver en el mapa** elige la capa y resalta el marcador. **Misiones en el mapa** permite ocultarlos; los filtros de Misiones también se aplican a sus marcadores, independientemente de los filtros de coleccionables. Los marcadores compartidos se separan visualmente para poder elegir cada uno. Indican una zona de referencia o el santuario asociado, no la posición exacta del personaje ni el objetivo actual; cinco misiones no tienen ubicación fija. Los nombres y lugares se muestran en inglés. No hay marcado manual ni edición del guardado.
+La pestaña **Misiones** incluye las 253 entradas del diario: hechas, en curso, por hacer y sin verificar. Usa el mismo guardado en seguimiento o consulta temporal que Mapa e Inventario. Permite buscar por nombre, personaje o lugar y filtrar por tipo/estado. **Ver en el mapa** elige la capa y resalta el marcador. La categoría **Misiones** de los filtros laterales permite mostrarlos u ocultarlos; los filtros de Misiones también se aplican a sus marcadores, independientemente de los filtros de coleccionables. Los marcadores compartidos se separan visualmente para poder elegir cada uno. Indican una zona de referencia o el santuario asociado, no la posición exacta del personaje ni el objetivo actual; cinco misiones no tienen ubicación fija. Los nombres y lugares se muestran en inglés. No hay marcado manual ni edición del guardado.
 
-Usa **Mostrar misiones en el mapa**, en la pestaña Misiones o en los filtros laterales, para mostrar u ocultar todos los marcadores. Cada misión también tiene su casilla **Mostrar en el mapa**: ocultarla conserva la misión en la lista y su preferencia al alternar el interruptor general. **Ver en el mapa** vuelve a mostrar esa misión.
+La categoría **Misiones** de los filtros laterales, con su propio icono y desactivada por defecto, muestra u oculta todos los marcadores. Cada misión también tiene su casilla **Mostrar en el mapa**: ocultarla conserva la misión en la lista y su preferencia al activar o desactivar la categoría. **Ver en el mapa** vuelve a mostrar esa misión.
 
 Cada misión y marcador incluye **Ver guía · Zelda Dungeon**, con la ficha correspondiente en otra pestaña. **Verificar contra el guardado** permite consultar ID, campo Step, etapa, enum leído y revisión del save. El estado siempre procede del guardado; las casillas de visibilidad solo afectan al mapa. Prueba opcional del seguimiento: `node tests/quest-autosync.cjs <save-de-entrada-solo-lectura> <directorio-app>`; modifica únicamente copias privadas de prueba.
+
+
+## Mapas de alta resolución
+
+**HD** es la calidad por defecto: el control **Mapa: HD** de los controles superiores izquierdos del mapa muestra el detalle opcional de ZeldaMods en superficie, cielo y subsuelo. Los mosaicos se descargan al explorar y se guardan en `.data/hd-map/zeldamods-v1/` (hasta 512 MB). La elección se recuerda entre reinicios. Las zonas descargadas funcionan sin conexión; donde falte detalle HD se muestra el fondo estándar. **Reintentar HD** vuelve a intentar las zonas no disponibles. El modo **SD** no solicita mosaicos HD y conserva los mapas originales sin conexión. No hay descarga anticipada del mapa completo. Usa **Descargar mapa HD completo** en la barra lateral para bajar todos los mosaicos (≈80–120 MB) y tener el mapa entero sin conexión.
+
+Las imágenes HD son externas y no se incluyen en el ZIP. Las solicitudes pasan por la aplicación local hacia ZeldaMods y contienen solo capa/zoom/coordenadas del mosaico, sin partidas ni rutas locales. Consulta los avisos de terceros para conocer su procedencia.
+
+El servidor actual de ZeldaMods exige TLS 1.3 para descargar. Se necesita Windows 11 o posterior con una instalación compatible de .NET Framework; en Windows anteriores se conserva el mapa estándar y se pueden usar mosaicos HD ya guardados. Consulta el [soporte TLS de Microsoft](https://learn.microsoft.com/en-us/dotnet/framework/network-programming/tls).

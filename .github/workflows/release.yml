@@ -13,7 +13,16 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Build the version from the tag
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Lint and test React interface
+        run: |
+          npm ci
+          npm run lint
+          npm test
+      - name: Build AssemblyVersion and verify the release tag
         shell: powershell
         env:
           RELEASE_TAG: ${{ github.ref_name }}
@@ -22,13 +31,7 @@ jobs:
         shell: powershell
         run: ./scripts/test.ps1
       - name: Test interface
-        run: |
-          node tests/i18n.cjs
-          node tests/map-tracking.cjs
-          node tests/map-rendering.cjs
-          node tests/page-lifetime.cjs
-          node tests/language.cjs
-          node tests/http-server.cjs
+        run: npm run test:integration
       - name: Publish ZIP and checksum
         shell: pwsh
         env:

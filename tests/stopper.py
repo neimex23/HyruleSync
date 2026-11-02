@@ -20,7 +20,7 @@ try:
         for _ in range(100):
             if urlfile.exists(): break
             time.sleep(.05)
-        url = urlfile.read_text()
+        url = urlfile.read_text().replace('hyrulesync.localhost','127.0.0.1')
         def read(path):
             with urllib.request.urlopen(url + path, timeout=5) as response:
                 return response.read()

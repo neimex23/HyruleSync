@@ -4,6 +4,30 @@ using System.IO;
 // Fixtures are synthesized here; no user's save files are required or included.
 public static class ReaderTests {
     static int passed;
+    static void CheckHDMap() {
+        string relative, remote;
+        Assert(HDMapTiles.TryTile("map-tiles/surface/7/93/78.webp", out relative, out remote), "Last native surface tile is in bounds");
+        Assert(remote == "https://objmap-totk.zeldamods.org/game_files/map/Ground/maptex/7/93/78.webp", "Surface maps to the fixed Ground endpoint");
+        Assert(HDMapTiles.TryTile("map-tiles/depths/0/0/0.webp", out relative, out remote) && remote.Contains("/Depths/"), "Low zoom depth tile accepted");
+        Assert(HDMapTiles.TryTile("map-tiles/sky/6/46/39.webp", out relative, out remote) && relative == "sky/6/46/39.webp", "Sky and lower zoom use their own cache keys");
+        foreach (string path in new[] { "map-tiles/surface/8/0/0.webp", "map-tiles/surface/7/94/0.webp", "map-tiles/sky/7/0/79.webp", "map-tiles/sky/0/2/0.webp", "map-tiles/sky/1/-1/0.webp", "map-tiles/../1/0/0.webp", "map-tiles/sky/7/0/0.webp/extra", "map-tiles/sky/7/0/0.png", "map-tiles/Sky/7/0/0.webp" })
+            Assert(!HDMapTiles.TryTile(path, out relative, out remote), "Reject invalid HD tile: " + path);
+        byte[] tile = new byte[30];
+        Array.Copy(System.Text.Encoding.ASCII.GetBytes("RIFF"), 0, tile, 0, 4); Put(tile, 4, 22);
+        Array.Copy(System.Text.Encoding.ASCII.GetBytes("WEBPVP8 "), 0, tile, 8, 8);
+        tile[23] = 0x9d; tile[24] = 1; tile[25] = 0x2a; tile[27] = tile[29] = 1;
+        Assert(HDMapTiles.ValidImage(tile), "Validate bounded 256px VP8 container");
+        Assert(!HDMapTiles.ValidImage(null) && !HDMapTiles.ValidImage(new byte[29]), "Reject missing or truncated image");
+        tile[29] = 2; Assert(!HDMapTiles.ValidImage(tile), "Reject unexpected tile dimensions"); tile[29] = 1;
+        tile[4] = 23; Assert(!HDMapTiles.ValidImage(tile), "Reject truncated RIFF container"); tile[4] = 22;
+        string cache = Path.Combine(HDMapTiles.Root, "surface/7/93/78.webp");
+        Directory.CreateDirectory(Path.GetDirectoryName(cache)); File.WriteAllBytes(cache, tile);
+        HDMapTiles.Initialize();
+        Assert(HDMapTiles.Read("map-tiles/surface/7/93/78.webp", false).Length == tile.Length, "Cached imagery works without downloads");
+        Assert(HDMapTiles.Read("map-tiles/surface/7/92/78.webp", false) == null, "Uncached offline area falls back without network");
+        File.WriteAllText(cache, "corrupt");
+        Assert(HDMapTiles.Read("map-tiles/surface/7/93/78.webp", false) == null && !File.Exists(cache), "Discard corrupt cached imagery");
+    }
     static void Assert(bool ok, string name) {
         if (!ok) throw new Exception("FAIL: " + name);
         passed++;
@@ -194,6 +218,12 @@ public static class ReaderTests {
             Locale.Configure(new[]{"--language","es"},"en");Assert(Locale.Language=="es","Command line overrides saved preference");
             Locale.Configure(new string[0],"invalid");Assert(Locale.Language==Locale.Resolve(Locale.WindowsCulture),"Invalid preference falls back to Windows");
             Assert(Locale.Preference(null)=="auto","Older settings without language use automatic mode");
+            Assert(new Settings().mapQuality=="high","HD is the default map quality");
+            Settings legacy=new Settings{mapQuality="standard"};
+            Assert(legacy.Upgrade()&&legacy.version==2&&legacy.mapQuality=="high","Legacy settings upgrade to HD once");
+            Assert(!legacy.Upgrade()&&legacy.mapQuality=="high","The settings upgrade runs only once");
+            Settings chosen=new Settings{version=2,mapQuality="standard"};
+            Assert(!chosen.Upgrade()&&chosen.mapQuality=="standard","An explicit SD choice survives the upgrade");
             Locale.Language="en";Assert(Locale.T("Salir","Exit")=="Exit", "English native strings");
             Locale.Language="es";Assert(Locale.T("Salir","Exit")=="Salir", "Spanish native strings");
             Locale.Language=previousLanguage;
@@ -201,6 +231,7 @@ public static class ReaderTests {
             CheckPosition(2307656,0x47e0f4,0x3c088);
             CheckPosition(2307856,0x49e946,0x3c138);
             CheckUpdates();
+            CheckHDMap();
             CheckPageLifetime();
             CheckProgressCounts();
             CheckQuests(2307552,0x46c3c8,0x3c050);

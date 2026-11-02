@@ -35,6 +35,8 @@ public static partial class Program {
 
     static readonly Dictionary<string, PostRoute> PostRoutes = new Dictionary<string, PostRoute> {
         { "api/prepare-map", Command(body => MapResources.StartDownload()) },
+        { "api/map-quality", Command(SetMapQuality, requiresMap: true) },
+        { "api/download-hd-map", Command(body => HDMapTiles.StartDownloadAll()) },
         { "api/language", Command(body => SetLanguage(BodyText(body))) },
         { "api/check-updates", Command(body => Updates.Check(true)) },
         { "api/follow-on", Command(body => UpdateSettings(s => s.followLink = true)) },
@@ -120,6 +122,13 @@ public static partial class Program {
         if (!Int32.TryParse(BodyText(body), out opacity) || opacity < 0 || opacity > 100)
             throw new InvalidDataException(Locale.T("La opacidad debe estar entre 0 y 100.", "Opacity must be between 0 and 100."));
         UpdateSettings(s => s.linkOpacity = opacity);
+    }
+
+    static void SetMapQuality(byte[] body) {
+        string quality = BodyText(body);
+        if (quality != "standard" && quality != "high")
+            throw new InvalidDataException(Locale.T("Calidad del mapa inválida.", "Invalid map quality."));
+        UpdateSettings(s => s.mapQuality = quality);
     }
 
     static object InspectionResult(Snapshot snapshot) {

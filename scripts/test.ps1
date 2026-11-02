@@ -9,3 +9,4 @@ $sources += Join-Path $projectRoot 'tests/ReaderTests.cs'
 if ($LASTEXITCODE -ne 0) { throw 'Test compilation failed.' }
 & (Join-Path $testDirectory 'ReaderTests.exe')
 if ($LASTEXITCODE -ne 0) { throw 'Save reader tests failed.' }
+& (Join-Path $projectRoot 'tests/build.ps1')

@@ -10,7 +10,7 @@ async function start(){
  const urlfile=path.join(work,'url.txt');fs.rmSync(urlfile,{force:true});
  child=cp.spawn(path.join(work,'HyruleSync.exe'),['--no-browser','--url-file',urlfile],{windowsHide:true});exited=new Promise(resolve=>child.once('exit',resolve));
  for(let i=0;i<100&&!fs.existsSync(urlfile);i++)await pause(100);
- assert.ok(fs.existsSync(urlfile),'App starts');url=fs.readFileSync(urlfile,'utf8');origin=new URL(url).origin;
+ assert.ok(fs.existsSync(urlfile),'App starts');url=fs.readFileSync(urlfile,'utf8').replace('hyrulesync.localhost','127.0.0.1');origin=new URL(url).origin;
 }
 async function command(action,body=''){const response=await fetch(url+'api/'+action,{method:'POST',headers:{Origin:origin},body});assert.equal(response.status,200);return response.json();}
 function connect(id){return new Promise((resolve,reject)=>{

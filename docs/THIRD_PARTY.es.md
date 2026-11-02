@@ -20,6 +20,10 @@ Antes de incluirlos directamente en una Release, confirmar los permisos correspo
 
 Los elementos visuales de The Legend of Zelda pertenecen a sus titulares; HyruleSync no es oficial ni está afiliado a Nintendo.
 
+## React y React DOM 19.3.1
+
+React, React DOM y Scheduler se incluyen en la interfaz local. Licencia MIT, Copyright (c) Meta Platforms, Inc. and affiliates. Texto original en `licenses/React.txt` y **Acerca de → Ver licencia de React**. Código: https://github.com/facebook/react. Vite y ESLint son herramientas de desarrollo y compilación; no se necesitan para ejecutar el programa distribuido.
+
 ## Leaflet 1.9.4
 
 https://leafletjs.com/ · Copyright Vladimir Agafonkin y colaboradores.
@@ -36,7 +40,7 @@ La aplicación permite consultar estos avisos y los textos originales de las lic
 
 ## Datos y referencias del inventario
 
-Los campos de las bolsas, unidades de atributos, traducciones de objetos y metadatos de mejora de armaduras proceden de Savegame Editors de Marc Robledo, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`. Se incluyen datos seleccionados en `web/inventory-data.json`, sin ilustraciones de objetos. MIT, Copyright (c) 2017-2023 Marc Robledo; licencia original en `licenses/SavegameEditors.txt`. Investigación y nombres: Echocolat, Exincracci, HylianLZ, Karlos007 y ApacheThunder; nombres traducidos compilados por tingod. La lectura del inventario es una implementación propia de solo lectura. Archivos de referencia y detalles en `THIRD_PARTY.md`.
+Los campos de las bolsas, unidades de atributos, traducciones de objetos y metadatos de mejora de armaduras proceden de Savegame Editors de Marc Robledo, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`. Se incluyen datos seleccionados en `web/public/inventory-data.json`, sin ilustraciones de objetos. MIT, Copyright (c) 2017-2023 Marc Robledo; licencia original en `licenses/SavegameEditors.txt`. Investigación y nombres: Echocolat, Exincracci, HylianLZ, Karlos007 y ApacheThunder; nombres traducidos compilados por tingod. La lectura del inventario es una implementación propia de solo lectura. Archivos de referencia y detalles en `THIRD_PARTY.md`.
 
 ## Datos adicionales de atalayas
 
@@ -45,6 +49,13 @@ Las coordenadas y hashes de visita y activación de las 15 atalayas proceden de 
 
 ## Catálogo de misiones y enums del guardado
 
-Los metadatos fácticos y coordenadas de referencia seleccionados de `web/quest-data.json` proceden de la planilla TotK Data Collection publicada en JSON por Ignacio9172 (`spreadsheet_totk_json`, commit `f20920ea28c0fa9aa9357ebf640c222c7de64a31`): https://github.com/Ignacio9172/spreadsheet_totk_json. Solo se conservan IDs, nombres, clasificación, personaje/lugar y coordenadas; se excluyen descripciones, textos del diario y diálogos. Los hashes y enums conocidos de los 253 campos `Step_*` proceden de `zelda-totk.hashes.csv` de Marc Robledo, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`: https://github.com/marcrobledo/savegame-editors (MIT; licencia original en `licenses/SavegameEditors.txt`). El lector y los marcadores son código original de HyruleSync.
+Los metadatos fácticos y coordenadas de referencia seleccionados de `web/public/quest-data.json` proceden de la planilla TotK Data Collection publicada en JSON por Ignacio9172 (`spreadsheet_totk_json`, commit `f20920ea28c0fa9aa9357ebf640c222c7de64a31`): https://github.com/Ignacio9172/spreadsheet_totk_json. Solo se conservan IDs, nombres, clasificación, personaje/lugar y coordenadas; se excluyen descripciones, textos del diario y diálogos. Los hashes y enums conocidos de los 253 campos `Step_*` proceden de `zelda-totk.hashes.csv` de Marc Robledo, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`: https://github.com/marcrobledo/savegame-editors (MIT; licencia original en `licenses/SavegameEditors.txt`). El lector y los marcadores son código original de HyruleSync.
 
 Los enlaces de ayuda de las misiones remiten a los cuatro índices de Zelda Dungeon Wiki para Tears of the Kingdom (Main Quests, Side Adventures, Shrine Quests y Side Quests), contrastados el 1 de noviembre de 2026: https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Main_Quests, https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Side_Adventures, https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Shrine_Quests y https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Side_Quests. Solo se ofrecen referencias externas; no se distribuye texto ni arte de las guías. El detalle y disponibilidad de las fichas pueden cambiar.
+
+
+## ZeldaMods · fondos HD opcionales
+
+Los fondos HD de superficie, cielo y subsuelo se obtienen bajo demanda desde `https://objmap-totk.zeldamods.org/game_files/map/{Ground|Sky|Depths}/maptex/{z}/{x}/{y}.webp`. Configuración de origen: https://github.com/zeldamods/objmap-totk/blob/3c37e5317c5fce3b4edf1bb2daf49c5607871a8f/src/MapBase.ts y `src/util/map.ts`. Comprobado el 1 de noviembre de 2026. El origen usa un lienzo de coordenadas de 24000 × 20000 y niveles nativos hasta 7.
+
+HyruleSync implementa de forma independiente las coordenadas y la caché opcional; no incorpora código de la aplicación de ZeldaMods. El proyecto de origen indica GPL-3.0, que no se considera una autorización sobre las imágenes de Nintendo. No se ha establecido permiso para redistribuir esas imágenes. Los mosaicos se excluyen del código y de los ZIP públicos, y solo se solicitan después de seleccionar HD. Los endpoints son vivos, sin fijar a un commit ni verificar contra un manifiesto de hashes de origen. Se limita el tamaño y se valida el contenedor WebP de 256 × 256; los mosaicos descargados se conservan localmente. No se envían partidas ni rutas locales.

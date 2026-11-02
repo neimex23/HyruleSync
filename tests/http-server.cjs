@@ -35,7 +35,11 @@ async function start() {
 function request(target, { method = 'GET', headers = {}, body = '' } = {}) {
     return new Promise((resolve, reject) => {
         if (method === 'POST') headers = { 'Content-Length': Buffer.byteLength(body), ...headers };
-        const req = http.request(new URL(target, url), { method, headers }, response => {
+        // Node uses Windows DNS, unlike browsers' built-in *.localhost resolution.
+        const req = http.request(new URL(target, url), {
+            method, headers, lookup: (_hostname, options, done) => options.all
+                ? done(null, [{ address: '127.0.0.1', family: 4 }]) : done(null, '127.0.0.1', 4)
+        }, response => {
             const chunks = [];
             response.on('data', chunk => chunks.push(chunk));
             response.once('end', () => resolve({
@@ -64,7 +68,7 @@ function post(action, body = '') {
 function malformedPost(length, body = '') {
     return new Promise((resolve, reject) => {
         const address = new URL(url);
-        const socket = net.createConnection({ host: address.hostname, port: Number(address.port) });
+        const socket = net.createConnection({ host: '127.0.0.1', port: Number(address.port) });
         let received = '';
         socket.setTimeout(5000, () => socket.destroy(Error('Malformed request timed out')));
         socket.once('error', reject);
@@ -81,8 +85,17 @@ function malformedPost(length, body = '') {
 (async () => {
     try {
         await start();
+        const address = new URL(url);
+        assert.equal(address.hostname, 'hyrulesync.localhost', 'Friendly local name requires no DNS setup');
+        assert.equal(json(await request('api/config', { headers: { Host: address.host.toUpperCase() } })).language, 'en');
+        const ipOrigin = 'http://127.0.0.1:' + address.port;
+        assert.equal(json(await request('api/config', { headers: { Host: '127.0.0.1:' + address.port, Origin: ipOrigin } })).language, 'en');
+        assert.equal((await request('api/config', { headers: { Origin: ipOrigin } })).status, 403, 'Origin must match the requested host');
         assert.equal(json(await request('api/config')).language, 'en');
-        assert.ok(json(await request('api/credits')).version);
+        const credits = json(await request('api/credits'));
+        const updates = json(await request('api/updates'));
+        assert.match(credits.version, /^\d+\.\d+\.\d+$/);
+        assert.equal(credits.version, updates.currentVersion, 'Credits and update checks use the compiled assembly version');
         assert.equal(json(await request('api/setup')).ready, false);
         assert.deepEqual(json(await request('catalog.json')), {});
         assert.deepEqual(json(await request('api/saves')).slots, []);
@@ -94,21 +107,18 @@ function malformedPost(length, body = '') {
         assert.ok(json(missingFolder, 400).error);
         assert.equal(missingFolder.reason, 'Bad Request');
 
+        const page = await request('');
+        const html = page.body.toString('utf8');
+        assert.match(html, /<script[^>]+type="module"[^>]+src="\.\/app\.js"/);
+        assert.doesNotMatch(html, /src\/main\.jsx/, 'The executable serves the compiled interface');
+        const generatedAssets = [...html.matchAll(/(?:src|href)="\.\/([^"]+\.(?:js|css))"/g)].map(match => match[1]);
+        assert.ok(generatedAssets.some(file => file.endsWith('.css')), 'The bundled stylesheet is linked');
         for (const [target, file, mime] of [
-            ['inventory.js', 'web/inventory.js', 'application/javascript; charset=utf-8'],
-            ['inventory-icons.svg', 'web/inventory-icons.svg', 'image/svg+xml'],
-            ['inventory-data.json', 'web/inventory-data.json', 'application/json; charset=utf-8'],
-            ['quests.js', 'web/quests.js', 'application/javascript; charset=utf-8'],
-            ['quest-data.json', 'web/quest-data.json', 'application/json; charset=utf-8'],
-            ['', 'web/index.html', 'text/html; charset=utf-8'],
-            ['index.html', 'web/index.html', 'text/html; charset=utf-8'],
-            ['app.js', 'web/app.js', 'application/javascript; charset=utf-8'],
-            ['i18n.js', 'web/i18n.js', 'application/javascript; charset=utf-8'],
-            ['style.css', 'web/style.css', 'text/css; charset=utf-8'],
-            ['vendor/leaflet.js', 'web/vendor/leaflet.js', 'application/javascript; charset=utf-8'],
-            ['vendor/leaflet.css', 'web/vendor/leaflet.css', 'text/css; charset=utf-8'],
-            ['app-icon.png', 'web/app-icon.png', 'image/png'],
-            ['tower.svg', 'web/tower.svg', 'image/svg+xml'],
+            ...generatedAssets.map(file => [file, null, file.endsWith('.js') ? 'application/javascript; charset=utf-8' : 'text/css; charset=utf-8']),
+            ...fs.readdirSync(path.join(root,'web/public')).map(file => [file, 'web/public/'+file, {'.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png'}[path.extname(file)]]),
+            ['', null, 'text/html; charset=utf-8'],
+            ['index.html', null, 'text/html; charset=utf-8'],
+            ['legal/react.txt','licenses/React.txt','text/plain; charset=utf-8'],
             ['legal/app.txt', 'LICENSE', 'text/plain; charset=utf-8'],
             ['legal/leaflet.txt', 'licenses/Leaflet.txt', 'text/plain; charset=utf-8'],
             ['legal/savegame-editors.txt', 'licenses/SavegameEditors.txt', 'text/plain; charset=utf-8'],
@@ -118,17 +128,38 @@ function malformedPost(length, body = '') {
             const response = await request(target);
             assert.equal(response.status, 200, target);
             assert.equal(response.headers['content-type'], mime, target);
-            assert.deepEqual(response.body, fs.readFileSync(path.join(root, file)), target);
+            if (file) assert.deepEqual(response.body, fs.readFileSync(path.join(root, file)), target);
+            else if (!target || target === 'index.html') assert.deepEqual(response.body, page.body, target);
+            else assert.ok(response.body.length > 0, target + ' is embedded and served after intermediate cleanup');
             assert.equal(Number(response.headers['content-length']), response.body.length);
-            assert.equal(response.headers['cache-control'], mime === 'image/png' ? 'private, max-age=3600' : 'no-store');
+            assert.equal(response.headers['cache-control'], mime === 'image/png' ? 'private, max-age=86400' : 'no-store');
             assert.equal(response.headers['x-content-type-options'], 'nosniff');
             assert.equal(response.headers['referrer-policy'], 'no-referrer');
             assert.ok(response.headers['content-security-policy'].includes("frame-ancestors 'none'"));
         }
 
-        for (const target of ['missing', 'api/missing', 'src/HttpServer.cs', '.state/settings.json', 'vendor/missing.js'])
+        // HD tiles are immutable per coordinate and can stay in the browser cache.
+        const tile = Buffer.alloc(30);
+        tile.write('RIFF', 0, 'ascii'); tile.writeUInt32LE(22, 4);
+        tile.write('WEBPVP8 ', 8, 'ascii');
+        tile[23] = 0x9d; tile[24] = 1; tile[25] = 0x2a; tile[27] = 1; tile[29] = 1;
+        const tileDirectory = path.join(work, '.data/hd-map/zeldamods-v1/surface/7/93');
+        fs.mkdirSync(tileDirectory, { recursive: true });
+        fs.writeFileSync(path.join(tileDirectory, '78.webp'), tile);
+        for (let i = 0; i < 2; i++) {
+            const cachedTile = await request('map-tiles/surface/7/93/78.webp');
+            assert.equal(cachedTile.status, 200);
+            assert.equal(cachedTile.headers['content-type'], 'image/webp');
+            assert.equal(cachedTile.headers['cache-control'], 'private, max-age=31536000, immutable');
+            assert.deepEqual(cachedTile.body, tile);
+        }
+
+        for (const target of ['missing', 'api/missing', 'src/HttpServer.cs', '.state/settings.json', 'vendor/missing.js', 'src/main.jsx', 'src/controller.js', 'package.json'])
             assert.equal((await request(target)).status, 404, target);
-        for (const headers of [{ Host: 'example.invalid' }, { Origin: 'https://example.invalid' }])
+        assert.equal((await request('../package.json')).status, 403, 'Traversal outside the private session is rejected');
+        for (const headers of [{ Host: 'example.invalid' }, { Host: address.hostname + ':1' },
+            { Host: 'hyrulesync:' + address.port }, { Host: 'other.localhost:' + address.port },
+            { Origin: 'https://example.invalid' }, { Origin: 'http://hyrulesync.localhost:1' }])
             assert.equal((await request('api/config', { headers })).status, 403);
         assert.equal((await request(origin + '/invalid-token/api/config')).status, 403);
         for (const method of ['PUT', 'DELETE', 'OPTIONS'])

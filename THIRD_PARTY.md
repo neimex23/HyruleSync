@@ -31,6 +31,10 @@ These upstream acknowledgements preserve the provenance of the downloaded catalo
 - ZeldaMods radar data: https://github.com/zeldamods/radar-totk — object data used upstream for Korok routes.
 - Zelda Dungeon: https://zeldadungeon.net — interactive map reference acknowledged upstream.
 
+## React and React DOM 19.3.1
+
+React, React DOM and Scheduler are bundled into the local web interface. MIT License, Copyright (c) Meta Platforms, Inc. and affiliates. The original text is in `licenses/React.txt` and **About → View React license**. Source: https://github.com/facebook/react. Vite and ESLint are build/development tools; they are not runtime requirements for the packaged application.
+
 ## Leaflet 1.9.4
 
 https://github.com/Leaflet/Leaflet · https://leafletjs.com/
@@ -45,7 +49,7 @@ Canonical MIT and Leaflet license texts remain in English. Spanish documentation
 
 ## Inventory data and format references
 
-Inventory array field names, stat units, item translations (English/Spanish) and armor upgrade metadata reference Marc Robledo's Savegame Editors at commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`: `zelda-totk.js`, `zelda-totk.variables.js`, `zelda-totk.class.pouch.js`, `zelda-totk.class.armor.js` and `locale/zelda-totk.locale.{en,es}.js`. The selected data is bundled in `web/inventory-data.json`; no Nintendo item artwork is bundled. The generic pictograms in `web/inventory-icons.svg` are original HyruleSync artwork, MIT licensed. MIT, Copyright (c) 2017-2023 Marc Robledo; original license in `licenses/SavegameEditors.txt`. Item-name research credits: Echocolat, Exincracci, HylianLZ, Karlos007, ApacheThunder; translated names compiled by tingod. Inventory parsing is an independent read-only implementation.
+Inventory array field names, stat units, item translations (English/Spanish) and armor upgrade metadata reference Marc Robledo's Savegame Editors at commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`: `zelda-totk.js`, `zelda-totk.variables.js`, `zelda-totk.class.pouch.js`, `zelda-totk.class.armor.js` and `locale/zelda-totk.locale.{en,es}.js`. The selected data is bundled in `web/public/inventory-data.json`; no Nintendo item artwork is bundled. The generic pictograms in `web/public/inventory-icons.svg` are original HyruleSync artwork, MIT licensed. MIT, Copyright (c) 2017-2023 Marc Robledo; original license in `licenses/SavegameEditors.txt`. Item-name research credits: Echocolat, Exincracci, HylianLZ, Karlos007, ApacheThunder; translated names compiled by tingod. Inventory parsing is an independent read-only implementation.
 
 ## Additional Skyview Tower data
 
@@ -54,6 +58,13 @@ The 15 tower coordinates and visit/activation hashes are derived from Marc Roble
 
 ## Quest catalog and save enums
 
-The selected factual quest metadata and reference coordinates in `web/quest-data.json` derive from the TotK Data Collection spreadsheet published as JSON by Ignacio9172 (`spreadsheet_totk_json`, commit `f20920ea28c0fa9aa9357ebf640c222c7de64a31`): https://github.com/Ignacio9172/spreadsheet_totk_json. Only IDs, names, classification, giver/location and coordinate facts are retained; quest descriptions, captions and dialogue are excluded. The 253 `Step_*` field hashes and their known enum names reference Marc Robledo’s MIT-licensed `zelda-totk.hashes.csv`, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`: https://github.com/marcrobledo/savegame-editors. The original MIT license is in `licenses/SavegameEditors.txt`. Read-only parsing and marker artwork are original HyruleSync code.
+The selected factual quest metadata and reference coordinates in `web/public/quest-data.json` derive from the TotK Data Collection spreadsheet published as JSON by Ignacio9172 (`spreadsheet_totk_json`, commit `f20920ea28c0fa9aa9357ebf640c222c7de64a31`): https://github.com/Ignacio9172/spreadsheet_totk_json. Only IDs, names, classification, giver/location and coordinate facts are retained; quest descriptions, captions and dialogue are excluded. The 253 `Step_*` field hashes and their known enum names reference Marc Robledo’s MIT-licensed `zelda-totk.hashes.csv`, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`: https://github.com/marcrobledo/savegame-editors. The original MIT license is in `licenses/SavegameEditors.txt`. Read-only parsing and marker artwork are original HyruleSync code.
 
 Quest guide links refer to Zelda Dungeon Wiki’s four Tears of the Kingdom quest indexes (Main Quests, Side Adventures, Shrine Quests and Side Quests), checked November 1, 2026: https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Main_Quests, https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Side_Adventures, https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Shrine_Quests and https://www.zeldadungeon.net/wiki/Tears_of_the_Kingdom_Side_Quests. Only external references are provided; no guide text or artwork is bundled. Article detail and availability may change.
+
+
+## ZeldaMods · optional HD background tiles
+
+Surface, Sky and Depths HD backgrounds are retrieved on demand from `https://objmap-totk.zeldamods.org/game_files/map/{Ground|Sky|Depths}/maptex/{z}/{x}/{y}.webp`. Source configuration: https://github.com/zeldamods/objmap-totk/blob/3c37e5317c5fce3b4edf1bb2daf49c5607871a8f/src/MapBase.ts and `src/util/map.ts`. Checked November 1, 2026. The source uses a 24000 × 20000 coordinate canvas and native tile levels through 7.
+
+HyruleSync independently implements the coordinate mapping and optional local cache; no ZeldaMods application code is bundled. The upstream application lists GPL-3.0, which is not treated as a license grant for Nintendo artwork. Redistribution permission for the imagery has not been established. Tiles are excluded from source and release archives and are fetched only after selecting HD. These live endpoints are not commit-pinned or verified against an upstream checksum manifest. Responses are bounded and validated as 256 × 256 WebP containers; downloaded tiles are retained locally. No saves or local paths are sent.

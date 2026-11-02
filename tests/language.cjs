@@ -13,7 +13,7 @@ async function start(args=[]){
  child=cp.spawn(path.join(work,'HyruleSync.exe'),['--no-browser','--url-file',urlFile,...args],{windowsHide:true});
  exited=new Promise(resolve=>child.once('exit',resolve));
  for(let i=0;i<100&&!fs.existsSync(urlFile);i++)await pause(100);
- assert.ok(fs.existsSync(urlFile),'App starts');url=fs.readFileSync(urlFile,'utf8');
+ assert.ok(fs.existsSync(urlFile),'App starts');url=fs.readFileSync(urlFile,'utf8').replace('hyrulesync.localhost','127.0.0.1');
 }
 async function stop(){if(child&&child.exitCode===null){child.kill();await exited;}}
 async function config(){return(await fetch(url+'api/config')).json();}

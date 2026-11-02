@@ -26,7 +26,7 @@ foreach ($size in @(16, 24, 32, 48, 64, 128, 256)) {
     $stream = New-Object System.IO.MemoryStream
     $bitmap.Save($stream, [System.Drawing.Imaging.ImageFormat]::Png)
     $images += ,@{ size = $size; bytes = $stream.ToArray() }
-    if ($size -eq 64) { [IO.File]::WriteAllBytes((Join-Path $projectRoot 'web/app-icon.png'), $stream.ToArray()) }
+    if ($size -eq 64) { [IO.File]::WriteAllBytes((Join-Path $projectRoot 'web/public/app-icon.png'), $stream.ToArray()) }
     $stream.Dispose(); $check.Dispose(); $ring.Dispose(); $shape.Dispose(); $white.Dispose(); $gold.Dispose(); $bg.Dispose(); $g.Dispose(); $bitmap.Dispose()
 }
 $file = [IO.File]::Create((Join-Path $projectRoot 'assets/hyrulesync.ico'))

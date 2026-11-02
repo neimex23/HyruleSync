@@ -35,18 +35,24 @@ public static partial class Program {
     }
 
     static readonly HashSet<string> LegalFiles = new HashSet<string> {
-        "legal/app.txt", "legal/leaflet.txt", "legal/savegame-editors.txt",
+        "legal/app.txt", "legal/leaflet.txt", "legal/react.txt", "legal/savegame-editors.txt",
         "legal/third-party.en.md", "legal/third-party.es.md"
     };
-    static readonly Dictionary<string, string> WebFiles = new Dictionary<string, string> {
-        { "", "index.html" }, { "index.html", "index.html" },
-        { "app.js", "app.js" }, { "i18n.js", "i18n.js" }, { "style.css", "style.css" },
-        { "inventory.js", "inventory.js" }, { "inventory-data.json", "inventory-data.json" },
-        { "inventory-icons.svg", "inventory-icons.svg" },
-        { "quests.js", "quests.js" }, { "quest-data.json", "quest-data.json" },
-        { "vendor/leaflet.js", "vendor/leaflet.js" }, { "vendor/leaflet.css", "vendor/leaflet.css" },
-        { "app-icon.png", "app-icon.png" }, { "tower.svg", "tower.svg" }
-    };
+    // Only files emitted by Vite are embedded. Derive the allowlist from those
+    // resources so hashed CSS/chunks work without exposing source or disk paths.
+    static readonly Dictionary<string, string> WebFiles = EmbeddedWebFiles();
+
+    static Dictionary<string, string> EmbeddedWebFiles() {
+        const string prefix = "hyrulesync/web/";
+        var files = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (string name in typeof(Program).Assembly.GetManifestResourceNames()) {
+            if (!name.StartsWith(prefix, StringComparison.Ordinal)) continue;
+            string relative = name.Substring(prefix.Length);
+            files.Add(relative, relative);
+        }
+        files.Add("", "index.html");
+        return files;
+    }
 
     static HttpResponse TextResponse(string text, int statusCode) {
         return new HttpResponse(Encoding.UTF8.GetBytes(text), "text/plain; charset=utf-8", statusCode);
@@ -59,6 +65,7 @@ public static partial class Program {
     static string ContentType(string path) {
         switch (Path.GetExtension(path)) {
             case ".png": return "image/png";
+            case ".webp": return "image/webp";
             case ".svg": return "image/svg+xml";
             case ".js": return "application/javascript; charset=utf-8";
             case ".json": return "application/json; charset=utf-8";
@@ -69,6 +76,12 @@ public static partial class Program {
     }
 
     static HttpResponse Asset(string path) {
+        if (path.StartsWith("map-tiles/", StringComparison.Ordinal)) {
+            bool enabled;
+            lock (Gate) enabled = MapResources.Ready && settings.mapQuality == "high";
+            byte[] tile = HDMapTiles.Read(path, enabled);
+            return tile == null ? TextResponse("Map tile unavailable.", 404) : new HttpResponse(tile, "image/webp");
+        }
         if (LegalFiles.Contains(path))
             return new HttpResponse(MapResources.Embedded(path), ContentType(path));
 
@@ -104,10 +117,13 @@ public static partial class Program {
     }
 
     static bool Authorized(HttpRequest request) {
-        string host = "127.0.0.1:" + ((IPEndPoint)listener.LocalEndpoint).Port;
+        string host = request.Header("Host");
+        string port = ":" + ((IPEndPoint)listener.LocalEndpoint).Port;
         string origin = request.Header("Origin");
-        return String.Equals(request.Header("Host"), host, StringComparison.OrdinalIgnoreCase)
-            && (origin == null || origin == new Uri(url).GetLeftPart(UriPartial.Authority))
+        // Browsers resolve *.localhost directly; retain the IP for local non-browser clients.
+        return (String.Equals(host, "hyrulesync.localhost" + port, StringComparison.OrdinalIgnoreCase)
+                || String.Equals(host, "127.0.0.1" + port, StringComparison.OrdinalIgnoreCase))
+            && (origin == null || String.Equals(origin, "http://" + host, StringComparison.OrdinalIgnoreCase))
             && request.Uri.AbsolutePath.StartsWith("/" + token + "/", StringComparison.Ordinal);
     }
 
@@ -147,14 +163,22 @@ public static partial class Program {
         }
     }
 
+    static string CacheControl(string contentType) {
+        // HD tiles are immutable per layer/zoom/coordinate, so the browser can
+        // reuse them without revalidating on every pan, zoom or page reload.
+        if (contentType == "image/webp") return "private, max-age=31536000, immutable";
+        if (contentType == "image/png") return "private, max-age=86400";
+        return "no-store";
+    }
+
     static void WriteResponse(Stream stream, HttpResponse response) {
         string header = "HTTP/1.1 " + response.StatusCode + " " + ReasonPhrase(response.StatusCode)
             + "\r\nContent-Type: " + response.ContentType
             + "\r\nContent-Length: " + response.Body.Length
-            + "\r\nCache-Control: " + (response.ContentType == "image/png" ? "private, max-age=3600" : "no-store")
+            + "\r\nCache-Control: " + CacheControl(response.ContentType)
             + "\r\nX-Content-Type-Options: nosniff"
             + "\r\nReferrer-Policy: no-referrer"
-            + "\r\nContent-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'"
+            + "\r\nContent-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://raw.githubusercontent.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'"
             + "\r\nConnection: close\r\n\r\n";
         byte[] bytes = Encoding.ASCII.GetBytes(header);
         stream.Write(bytes, 0, bytes.Length);

@@ -1,5 +1,7 @@
 # HyruleSync · quick start
 
+The app automatically opens `http://hyrulesync.localhost:<port>/<session>/`. Modern Windows browsers resolve this name locally without DNS setup or administrator permissions. Use the full URL opened by the app; the port and private session path change on launch. Access remains limited to this PC.
+
 By **Neimex23**. A project strongly driven by AI, developed with extensive assistance from **Codex · GPT-6.1 · High reasoning**.
 
 1. Extract the ZIP and open **HyruleSync.exe**.
@@ -15,7 +17,7 @@ Closing the last tab exits HyruleSync after about five seconds. Reloading or ano
 
 **Center on Link** shows his last saved position and zooms in when needed, preserving a closer zoom. Enable **Follow Link on updates** to center the map and select his layer whenever a new save is read, keeping your zoom. This option is off by default and remembered across restarts. Position is taken from the save, so it changes when you save the game. An unavailable position is shown explicitly.
 
-HyruleSync checks GitHub Releases for stable updates on startup and once per hour while the interface is open. **About → Check for updates** retries manually. When a newer Windows package is available, **Download update** appears in both About and the sidebar; click it to download the ZIP. Close HyruleSync before replacing the executables; keep `.data/` and `.state/`. Offline checks do not stop monitoring. **Report a problem** opens a new issue in the repository; you submit the report yourself.
+HyruleSync checks GitHub Releases for stable updates on startup and once per hour while the interface is open. **About → Check for updates** retries manually. When a newer Windows package is available, **Download update** appears in both About and the sidebar; click it to download the ZIP. Close HyruleSync before replacing only `HyruleSync.exe` and `HyruleSync.Stop.exe`; keep the `.data/` and `.state/` folders intact (they hold your downloaded maps and settings; do not delete or overwrite them). Offline checks do not stop monitoring. **Report a problem** opens a new issue in the repository; you submit the report yourself.
 
 Saves are read-only. Settings are in `.state/` and maps in `.data/`, beside the EXE. Keep those folders to avoid repeated setup. Do not share `.state/` or saves.
 
@@ -44,8 +46,17 @@ Open **Inventory** next to Map for saved health, maximum hearts/stamina/battery,
 
 ## Quests
 
-Open **Quests** for all 253 Adventure Log entries: completed, in progress, not started and unknown. Progress follows the same live or inspected save as Map and Inventory. Search by name, character or location and filter by quest type/status. **View on map** selects the relevant layer and highlights a marker. **Quests on the map** toggles quest markers independently of collectible filters; quest search/type/status filters also apply to markers. Shared locations fan out so each marker is clickable. Markers indicate a reference area or associated shrine, not the NPC’s exact position or current quest objective; five entries have no fixed location. Names and locations are currently English in both interface languages. No manual overrides or save editing.
+Open **Quests** for all 253 Adventure Log entries: completed, in progress, not started and unknown. Progress follows the same live or inspected save as Map and Inventory. Search by name, character or location and filter by quest type/status. **View on map** selects the relevant layer and highlights a marker. The **Quests** category in the sidebar filters toggles quest markers independently of collectible filters; quest search/type/status filters also apply to markers. Shared locations fan out so each marker is clickable. Markers indicate a reference area or associated shrine, not the NPC’s exact position or current quest objective; five entries have no fixed location. Names and locations are currently English in both interface languages. No manual overrides or save editing.
 
-Use **Show quests on the map** in the Quests tab or map sidebar to toggle all quest markers. Each mission also has a **Show on the map** checkbox; hiding its marker keeps it in the list. Individual choices survive the global toggle. **View on map** makes that mission visible again.
+The **Quests** category in the sidebar filters, with its own icon and disabled by default, toggles all quest markers. Each mission also has a **Show on the map** checkbox; hiding its marker keeps it in the list. Individual choices survive toggling the category. **View on map** makes that mission visible again.
 
 Each quest card and map popup includes **View guide · Zelda Dungeon**, opening its associated wiki entry in another tab. **Verify against the save** shows the quest ID, Step field, stage, raw enum and save revision. Quest status is always read from the save; visibility controls only affect markers. An optional watcher integration test is available: `node tests/quest-autosync.cjs <read-only-save-input> <application-directory>`. It writes only private fixture copies.
+
+
+## High-resolution maps
+
+**HD** is the default quality: the **Map: HD** control in the map's top-left shows optional ZeldaMods detail on Surface, Sky and Depths. Tiles download as you explore and are cached in `.data/hd-map/zeldamods-v1/` (up to 512 MB). The choice survives restarts. Downloaded areas work offline; areas without cached HD detail show the standard background. **Retry HD** retries unavailable areas. Switching to **SD** makes no HD requests and retains the original offline maps. There is no full-map preload. Use **Download full HD map** in the sidebar to fetch every tile (≈80–120 MB) so the whole map works offline.
+
+HD imagery is external and is excluded from the ZIP. Tile requests go through the local app to ZeldaMods and contain only layer/zoom/tile coordinates, with no saves or local paths. See the third-party notices for provenance.
+
+The current ZeldaMods server requires TLS 1.3 for downloads. This requires Windows 11 or later with a compatible .NET Framework installation; older Windows systems retain the standard map and can use existing cached HD tiles. See [Microsoft TLS support](https://learn.microsoft.com/en-us/dotnet/framework/network-programming/tls).

@@ -5,7 +5,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const root=path.resolve(__dirname,'..'),savePath=process.argv[2],app=path.resolve(process.argv[3]||path.join(root,'outputs/HyruleSync'));
 if(!savePath)throw Error('Provide a read-only save input.');
 const original=fs.readFileSync(savePath),digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
-const definitions=JSON.parse(fs.readFileSync(path.join(root,'web/quest-data.json'),'utf8')).quests;
+const definitions=JSON.parse(fs.readFileSync(path.join(root,'web/public/quest-data.json'),'utf8')).quests;
 const quest=definitions.find(q=>q.id==='DefeatGanondorf'),offsets=new Map();
 for(let at=40;at<Math.min(original.length-8,0x60000);at+=8){const hash=original.readUInt32LE(at);if(hash===0xa3db7114)break;offsets.set(hash,at+4);}
 assert.ok(offsets.has(quest.hash),'Input contains the reference quest field');
@@ -25,7 +25,7 @@ function write(value){const bytes=Buffer.from(original);bytes.writeUInt32LE(valu
  const exited=new Promise(resolve=>child.once('exit',resolve));
  try{
   for(let count=0;count<100&&!fs.existsSync(urlFile);count++)await pause(100);
-  assert.ok(fs.existsSync(urlFile),'Application starts');url=fs.readFileSync(urlFile,'utf8');
+  assert.ok(fs.existsSync(urlFile),'Application starts');url=fs.readFileSync(urlFile,'utf8').replace('hyrulesync.localhost','127.0.0.1');
   const progress=s=>s.snapshot?.quests?.find(q=>q.id===quest.id);
   await until(s=>progress(s)?.state==='unknown');
   for(const [raw,expected,step] of [[1471695344,'todo','NotReady'],[398436934,'active','Ready'],[1066970150,'active','GoToDeepHole'],[1275749364,'done','Complete'],[0,'unknown',null]]){

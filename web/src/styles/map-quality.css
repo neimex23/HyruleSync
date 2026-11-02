@@ -1,0 +1,251 @@
+.map-quality-control {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  font-size: 11px;
+  color: #c7d1c8;
+}
+
+.map-quality-control > summary {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid #71807888;
+  border-radius: 6px;
+  background: #17262ae8;
+  box-shadow: 0 6px 25px #0004;
+  backdrop-filter: blur(8px);
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.map-quality-control > summary::-webkit-details-marker {
+  display: none;
+}
+
+.map-quality-control > summary:hover,
+.map-quality-control[open] > summary {
+  border-color: #c7b78499;
+  background: #213135f5;
+}
+
+.map-quality-badge {
+  color: #e7d6a1;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.map-quality-chevron {
+  color: #a3b0b6;
+}
+
+.map-quality-control[open] .map-quality-chevron {
+  transform: rotate(180deg);
+}
+
+.map-quality-activity {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d7b77a;
+}
+
+.map-quality-activity[data-state="downloading"] {
+  background: #9bc3b7;
+}
+
+.hd-download-summary {
+  color: #9bc3b7;
+  font-variant-numeric: tabular-nums;
+}
+
+.map-quality-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 170px);
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid #71807888;
+  border-radius: 8px;
+  background: #17262af7;
+  box-shadow: 0 12px 36px #0006;
+  backdrop-filter: blur(12px);
+}
+
+.map-quality-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.map-quality-row label {
+  flex: 1;
+  color: #e7e6ce;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.map-quality-row select {
+  flex: none;
+  width: auto;
+  max-width: 65%;
+  padding: 8px;
+  border: 1px solid #71807888;
+  border-radius: 5px;
+  background: #101d22;
+  color: #e7e6ce;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.map-quality-hint {
+  margin: 10px 0 0;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #a3b0b6;
+}
+
+.map-hd-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hd-status {
+  flex: 1;
+  margin-top: 10px;
+  font-size: 10px;
+  line-height: 1.6;
+  color: #d7c48f;
+}
+
+.map-quality-control .hd-retry {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid #71807888;
+  color: #e7e6ce;
+  font-size: 16px;
+}
+
+.map-offline-download {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #71807844;
+}
+
+.map-offline-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.map-offline-heading strong {
+  font-size: 11px;
+  font-weight: 600;
+  color: #e7e6ce;
+}
+
+.map-offline-heading span {
+  font-size: 10px;
+  color: #a3b0b6;
+  white-space: nowrap;
+}
+
+.map-offline-download .map-quality-hint {
+  margin-top: 6px;
+}
+
+.hd-download-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: #d8c59016;
+  border: 1px solid #c7b78466;
+  color: #e7d6a1;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.hd-download-button svg {
+  flex: none;
+}
+
+.hd-download-button:hover {
+  background: #d8c59025;
+}
+
+#hdDownloadProgress {
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  accent-color: #9bc3b7;
+  background: #71807833;
+}
+
+#hdDownloadProgress::-webkit-progress-bar {
+  background: #71807833;
+}
+
+#hdDownloadProgress::-webkit-progress-value {
+  background: #9bc3b7;
+}
+
+#hdDownloadProgress::-moz-progress-bar {
+  background: #9bc3b7;
+}
+
+#root {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+/* Keep map controls reachable when the sidebar leaves a narrow map viewport. */
+.topbar {
+  flex-wrap: wrap;
+}
+
+@media (min-width: 681px) and (max-width: 1200px) {
+  .topbar {
+    gap: 8px;
+  }
+
+  .map-controls {
+    top: 145px;
+  }
+}
+
+@media (max-width: 680px) {
+  .map-quality-control > summary {
+    min-height: 36px;
+    gap: 7px;
+    padding: 0 9px;
+  }
+
+  .map-quality-menu {
+    width: 300px;
+    padding: 14px;
+  }
+}

@@ -48,9 +48,11 @@ Recognized formats: 1.0, 1.1/1.2 and 1.4. Tested with TOTK Recomp 1.4.3; future 
 build.cmd
 ```
 
-**One command builds both executables and creates the Windows ZIP and SHA-256 file.** Outputs go in `outputs/`. Close copies running from that folder before rebuilding. `scripts/package.ps1` can also repackage a build.
+**One command builds both executables and creates the Windows ZIP and SHA-256 file.** Every build replaces the app files in `outputs/HyruleSync/`, whether the version changes or stays the same, preserving `.data/`, `.state/`, saves and other personal files. Both executables compile before the installed files are replaced. After packaging succeeds, `outputs/` keeps only the current generated ZIP and SHA-256 file. Close copies running from that folder before rebuilding. `scripts/package.ps1` can also repackage a build.
 
-The Windows .NET Framework C# compiler is required. No NuGet packages, Python or Node are needed to compile. UI, credits and license texts are embedded. Third-party map resources are downloaded separately and excluded from the public ZIP.
+Building requires the Windows .NET Framework C# compiler and Node.js 22.12+ (Node 24 is used in CI). `build.cmd` installs the locked npm dependencies, builds React with Vite, then embeds the generated UI, credits and license texts in the executables. No NuGet packages or Python are needed. End users still do not need Node. Third-party map resources are downloaded separately and excluded from the public ZIP.
+
+For UI development, run `npm ci`, then `npm run check` for ESLint, React tests and the production build. Live development and the local API proxy are described in [Web development](docs/WEB.md).
 
 ```powershell
 .\scripts\test.ps1
@@ -61,6 +63,7 @@ node tests/i18n.cjs
 node tests/inventory.cjs
 node tests/map-tracking.cjs
 node tests/map-rendering.cjs
+node tests/map-quality.cjs
 node tests/page-lifetime.cjs
 node tests/language.cjs
 node tests/http-server.cjs
@@ -76,31 +79,36 @@ Imports are checked against the pinned manifest. Regenerate the original HyruleS
 
 ## Repository layout
 
+The app automatically opens `http://hyrulesync.localhost:<port>/<session>/`. Modern Windows browsers resolve this name locally, with no DNS setup or administrator permissions. Use the full URL opened by the app; the port and private session path change on launch. The server listens only on this PC.
+
 | Path | Content |
 |---|---|
 | `src/` | Windows app, save reader, catalog, data models, local HTTP server, locale and resources |
 | `tools/` | HyruleSync process stopper |
-| `web/` | Embedded interface, translations and Leaflet |
+| `web/src/` | React components, translations, map adapter and JavaScript modules |
+| `web/public/` | Static icons and inventory/quest datasets |
 | `assets/` | Original icon, credits and resource manifest |
 | `scripts/` | Build, package, tests and resource import |
 | `tests/` | Reader, localization and monitoring checks |
 | `docs/` | English/Spanish guides and save format notes |
 | `licenses/` | Original redistributed dependency licenses |
-| `outputs/` | Generated executables/ZIPs; ignored by Git |
+| `outputs/` | Generated executables and ZIPs; ignored by Git |
 | `.local/` | Prior versions and private test files; ignored by Git |
 
 ## Sharing and credits
 
-Respect `.gitignore`. Do not commit `.local/`, `.data/`, `.state/`, saves or downloaded maps. The ZIP uses an explicit allowlist. GitHub **Build Windows** builds, tests and attaches a download. **Publish Windows release** publishes a stable Release when you push a tag such as `v0.4.0`:
+Respect `.gitignore`. Do not commit `.local/`, `.data/`, `.state/`, saves or downloaded maps. The ZIP uses an explicit allowlist. The only app version to edit is `AssemblyVersion("X.Y.Z.0")` in `src/AssemblyInfo.cs`; keep the last component at `0`. Building automatically applies it to both executables, Windows file details, credits, update checks and the ZIP name. The private web package has no separate app version.
+
+GitHub **Build Windows** builds, tests and attaches a download. To publish, commit the version change and push a matching `vX.Y.Z` tag. For example, after setting `AssemblyVersion("0.6.1.0")`:
 
 ```sh
-git tag v0.4.0
-git push origin v0.4.0
+git tag v0.6.1
+git push origin v0.6.1
 ```
 
-Push the commit containing the changes first, then tag that commit. Use a new `vX.Y.Z` tag for every release (for example `v0.4.1`); prerelease or named tags are not supported. The workflow builds both executables, embeds the tag version in the EXEs and credits, tests, then publishes `HyruleSync-vX.Y.Z-windows.zip` and its SHA-256 file. Let the workflow create the Release; do not publish one manually for the same tag. A local tagged build can be reproduced with `scripts/build.ps1 -Version v0.4.0`.
+Push the commit containing the changes first, then tag that commit. Use a new `vX.Y.Z` tag for every release; prerelease or named tags are not supported. **Publish Windows release** checks that the tag matches `AssemblyVersion`, builds and tests, then publishes `HyruleSync-vX.Y.Z-windows.zip` and its SHA-256 file. A mismatched tag fails instead of changing the compiled version. Let the workflow create the Release; do not publish one manually for the same tag. Build locally with `scripts/build.ps1`; the optional `-Version vX.Y.Z` argument only validates the expected version.
 
-While the interface is open, HyruleSync checks GitHub's latest stable Release on startup and at most once per hour. **About → Check for updates** allows a manual retry (at most once per minute). Only a newer numeric version with the expected uploaded Windows package is offered. Offline or failed checks do not interrupt save monitoring. Update checks send no saves or local paths. The user downloads the ZIP, closes HyruleSync and replaces the executables, keeping `.data/` and `.state/`.
+While the interface is open, HyruleSync checks GitHub's latest stable Release on startup and at most once per hour. **About → Check for updates** allows a manual retry (at most once per minute). Only a newer numeric version with the expected uploaded Windows package is offered. Offline or failed checks do not interrupt save monitoring. Update checks send no saves or local paths. The user downloads the ZIP, closes HyruleSync and replaces only `HyruleSync.exe` and `HyruleSync.Stop.exe`, keeping the `.data/` and `.state/` folders intact (they contain your downloaded maps and settings; do not delete or overwrite them).
 
 HyruleSync runs independently of the Unexplored app. Its current catalog and artwork still originate from that project. See [THIRD_PARTY.md](THIRD_PARTY.md). New HyruleSync code is MIT licensed; this does not license third-party maps, data or artwork. This is an unofficial Nintendo-related project.
 
@@ -127,8 +135,17 @@ Open **Inventory** next to Map for saved health, maximum hearts/stamina/battery,
 
 ## Quests
 
-Open **Quests** for all 253 Adventure Log entries: completed, in progress, not started and unknown. Progress follows the same live or inspected save as Map and Inventory. Search by name, character or location and filter by quest type/status. **View on map** selects the relevant layer and highlights a marker. **Quests on the map** toggles quest markers independently of collectible filters; quest search/type/status filters also apply to markers. Shared locations fan out so each marker is clickable. Markers indicate a reference area or associated shrine, not the NPC’s exact position or current quest objective; five entries have no fixed location. Names and locations are currently English in both interface languages. No manual overrides or save editing.
+Open **Quests** for all 253 Adventure Log entries: completed, in progress, not started and unknown. Progress follows the same live or inspected save as Map and Inventory. Search by name, character or location and filter by quest type/status. **View on map** selects the relevant layer and highlights a marker. The **Quests** category in the sidebar filters toggles quest markers independently of collectible filters; quest search/type/status filters also apply to markers. Shared locations fan out so each marker is clickable. Markers indicate a reference area or associated shrine, not the NPC’s exact position or current quest objective; five entries have no fixed location. Names and locations are currently English in both interface languages. No manual overrides or save editing.
 
-Use **Show quests on the map** in the Quests tab or map sidebar to toggle all quest markers. Each mission also has a **Show on the map** checkbox; hiding its marker keeps it in the list. Individual choices survive the global toggle. **View on map** makes that mission visible again.
+The **Quests** category in the sidebar filters, with its own icon and disabled by default, toggles all quest markers. Each mission also has a **Show on the map** checkbox; hiding its marker keeps it in the list. Individual choices survive toggling the category. **View on map** makes that mission visible again.
 
 Each quest card and map popup includes **View guide · Zelda Dungeon**, opening its associated wiki entry in another tab. **Verify against the save** shows the quest ID, Step field, stage, raw enum and save revision. Quest status is always read from the save; visibility controls only affect markers. An optional watcher integration test is available: `node tests/quest-autosync.cjs <read-only-save-input> <application-directory>`. It writes only private fixture copies.
+
+
+## High-resolution maps
+
+**HD** is the default quality: the **Map: HD** control in the map's top-left shows optional ZeldaMods detail on Surface, Sky and Depths. Tiles download as you explore and are cached in `.data/hd-map/zeldamods-v1/` (up to 512 MB). The choice survives restarts. Downloaded areas work offline; areas without cached HD detail show the standard background. **Retry HD** retries unavailable areas. Switching to **SD** makes no HD requests and retains the original offline maps. There is no full-map preload. Use **Download full HD map** in the sidebar to fetch every tile (≈80–120 MB) so the whole map works offline.
+
+HD imagery is external and is excluded from the ZIP. Tile requests go through the local app to ZeldaMods and contain only layer/zoom/tile coordinates, with no saves or local paths. See the third-party notices for provenance.
+
+The current ZeldaMods server requires TLS 1.3 for downloads. This requires Windows 11 or later with a compatible .NET Framework installation; older Windows systems retain the standard map and can use existing cached HD tiles. See [Microsoft TLS support](https://learn.microsoft.com/en-us/dotnet/framework/network-programming/tls).

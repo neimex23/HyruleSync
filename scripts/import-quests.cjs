@@ -27,6 +27,6 @@ async function fetchText(url){const response=await fetch(url);if(!response.ok)th
    locationKind:shrine?'shrine':'area',hash:parseInt(hashLine.split(';')[0],16),steps,order:q['Menu Order']};
  });
  assert.equal(quests.length,253);assert.equal(new Set(quests.map(q=>q.id)).size,253);
- fs.writeFileSync(path.resolve(__dirname,'../web/quest-data.json'),JSON.stringify({source,commit,hashSource,hashCommit,quests},null,2)+'\n');
+ fs.writeFileSync(path.resolve(__dirname,'../web/public/quest-data.json'),JSON.stringify({source,commit,hashSource,hashCommit,quests},null,2)+'\n');
  console.log(`${quests.length} quests; ${quests.filter(q=>q.position).length} reference locations.`);
 })().catch(error=>{console.error(error);process.exitCode=1;});

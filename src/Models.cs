@@ -59,7 +59,15 @@ public class Cached {
 }
 
 public class Settings {
-    public string source = "", mode = "file", linkOrder = "below", language = "auto";
+    // Version 2 made HD the default map quality. Configs written before it
+    // keep their implicit standard value until Upgrade() runs once.
+    public int version;
+    public string source = "", mode = "file", linkOrder = "below", language = "auto", mapQuality = "high";
     public bool auto = true, followLink = false, showLink = true, runInBackground = false;
     public int linkOpacity = 45;
+    public bool Upgrade() {
+        if (version >= 2) return false;
+        version = 2; mapQuality = "high";
+        return true;
+    }
 }
