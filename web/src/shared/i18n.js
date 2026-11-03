@@ -1,7 +1,140 @@
+import { collectionTranslations } from "./collection-i18n.js";
+
 // Spanish source strings and their English translations. The app supplies the selected locale.
 export const I18N = (() => {
   let language = "en";
   const en = {
+    ...collectionTranslations,
+    Resumen: "Summary",
+    "TU AVENTURA · DE UN VISTAZO": "YOUR ADVENTURE · AT A GLANCE",
+    "Resumen de {file} · {time}": "Summary of {file} · {time}",
+    "Carga una partida para ver el resumen de tu aventura.":
+      "Load a save to see your adventure summary.",
+    "Abrir {section}": "Open {section}",
+    "Progreso por categoría": "Progress by category",
+    "Todas las capas": "All layers",
+    "El total es el del catálogo y no representa el porcentaje oficial del mapa.":
+      "The total covers the catalog and does not represent the official map percentage.",
+    Recetario: "Recipe book",
+    "{n} recetas": "{n} recipes",
+    "Una selección de platos y elixires para tus aventuras. Consulta ingredientes y preparación sin cargar una partida.":
+      "A selection of meals and elixirs for your adventures. Browse ingredients and preparation without loading a save.",
+    "Usa una cacerola encendida y un máximo de cinco ingredientes. Los efectos y su duración dependen de los ingredientes; evita mezclar efectos distintos.":
+      "Use a lit cooking pot and up to five ingredients. Effects and their duration depend on the ingredients; avoid mixing different effects.",
+    "Buscar recetas": "Search recipes",
+    "Buscar plato o ingrediente…": "Search dish or ingredient…",
+    "Tipo de receta": "Recipe type",
+    "Efecto de la receta": "Recipe effect",
+    "Todos los efectos": "All effects",
+    "{shown} de {total} recetas": "{shown} of {total} recipes",
+    Platos: "Meals",
+    Postres: "Desserts",
+    Elixires: "Elixirs",
+    "Recupera corazones": "Restores hearts",
+    "Recuperación total y corazones extra": "Full recovery and bonus hearts",
+    "Recupera vigor": "Restores stamina",
+    "Resistencia al frío": "Cold resistance",
+    "Resistencia al calor": "Heat resistance",
+    "Aumenta el ataque": "Attack up",
+    "Aumenta la defensa": "Defense up",
+    "Aumenta la velocidad": "Speed up",
+    "Aumenta el sigilo": "Stealth up",
+    "Resistencia al fuego": "Flame resistance",
+    "Reduce los resbalones": "Slip resistance",
+    "Emite luz": "Glow",
+    "Restaura corazones dañados por el aura maligna":
+      "Restores gloom-damaged hearts",
+    Preparación: "Preparation",
+    "Cocina juntos el animal y la parte de monstruo en una cacerola encendida.":
+      "Cook the critter and monster part together in a lit cooking pot.",
+    "Sostén los ingredientes indicados y cocínalos juntos en una cacerola encendida.":
+      "Hold the listed ingredients and cook them together in a lit cooking pot.",
+    "No hay recetas con estos filtros.": "No recipes match these filters.",
+    "Prueba con otro plato, ingrediente o efecto.":
+      "Try another dish, ingredient or effect.",
+    "Limpiar filtros": "Clear filters",
+    "Cada ficha muestra una combinación de ejemplo. El efecto indicado corresponde a esos ingredientes.":
+      "Each card shows an example combination. The listed effect applies to those ingredients.",
+    "Referencias de cocina": "Cooking references",
+    "Mostrar imagen de {name}": "Reveal image of {name}",
+    "Difuminar imagen de {name}": "Blur image of {name}",
+    "Mostrar retrato de {name}": "Reveal portrait of {name}",
+    "Difuminar retrato de {name}": "Blur portrait of {name}",
+    "Clic para revelar": "Click to reveal",
+    "Volver a difuminar": "Blur again",
+    "Cargando partida…": "Loading save…",
+    "Reconociendo el guardado configurado…": "Checking the configured save…",
+    "Las imágenes de referencia requieren conexión.":
+      "Reference images require an internet connection.",
+    Descubierto: "Discovered",
+    "Por descubrir": "Undiscovered",
+    "Retrato de {name}": "Portrait of {name}",
+    "Estado de descubrimiento": "Discovery status",
+    "Todos los personajes": "All characters",
+    "Personajes descubiertos": "Discovered characters",
+    "Progreso de personajes": "Character progress",
+    "Perfiles de {file} · {time}": "Profiles from {file} · {time}",
+    "Carga una partida para saber qué personajes te faltan por descubrir.":
+      "Load a save to see which characters you have yet to discover.",
+    "Compara los 22 perfiles con tu guardado y filtra los que te faltan por descubrir. Las fichas incluyen encuentros del final de la historia.":
+      "Compare all 22 profiles with your save and filter those you have yet to discover. Cards include encounters from the end of the story.",
+    HyruleWorld: "HyruleWorld",
+    "Tu álbum": "Your album",
+    "Enciclopedia hyliana": "Hyrule Compendium",
+    "Guía de personajes": "Character guide",
+    Fauna: "Creatures",
+    Monstruos: "Monsters",
+    Equipo: "Equipment",
+    Tesoros: "Treasure",
+    Fotografiada: "Photographed",
+    Comprada: "Purchased",
+    "Sin registrar": "Unregistered",
+    "Sin deteriorar": "Pristine",
+    "Dónde conseguirlo": "Where to find it",
+    "Lugares habituales": "Common locations",
+    "Sin zona habitual registrada. Consulta la guía para este caso especial.":
+      "No common location recorded. Check the guide for this special case.",
+    "Fotografía el objetivo con la cámara para registrarlo. Rotver también vende imágenes en el laboratorio de Hatelia; algunas se habilitan al avanzar en la historia.":
+      "Photograph the subject with the camera to register it. Robbie also sells pictures at Hateno Ancient Tech Lab; some unlock as you progress through the story.",
+    "DESCUBRE · REGISTRA · EXPLORA": "DISCOVER · RECORD · EXPLORE",
+    "La vida, los tesoros y las historias de Hyrule.":
+      "The life, treasures and stories of Hyrule.",
+    "Secciones de HyruleWorld": "HyruleWorld sections",
+    "{n} perfiles completos": "{n} complete profiles",
+    "{n} entradas": "{n} entries",
+    "Los 22 perfiles están disponibles para consultar. Incluye personajes y encuentros del final de la historia.":
+      "All 22 profiles are available to browse, including characters and encounters from the end of the story.",
+    "Tus registros de la enciclopedia, leídos del guardado. Las imágenes son de referencia; las fotos de la cámara del juego no se incluyen en progress.sav.":
+      "Your compendium records, read from the save. Images are references; in-game camera photographs are not included in progress.sav.",
+    "Consulta todas las entradas, incluso las que todavía no has registrado. Abre una ficha para saber dónde encontrarla.":
+      "Browse every entry, including those you have yet to register. Open a card to learn where to find it.",
+    "Registros de {file} · {time}": "Records from {file} · {time}",
+    "Carga una partida para ver tu álbum y el progreso de la enciclopedia.":
+      "Load a save to see your album and compendium progress.",
+    "Entradas registradas": "Registered entries",
+    "Progreso de la enciclopedia": "Compendium progress",
+    "Buscar personajes": "Search characters",
+    "Todas las categorías": "All categories",
+    "Buscar en HyruleWorld": "Search HyruleWorld",
+    "Buscar personaje o lugar…": "Search character or location…",
+    "Buscar nombre, número o lugar…": "Search name, number or location…",
+    "Categoría de la enciclopedia": "Compendium category",
+    "Estado del registro": "Registration status",
+    "{shown} de {total} personajes": "{shown} of {total} characters",
+    "Dónde encontrarlo": "Where to meet them",
+    "Cómo conocerlo": "How to meet them",
+    "No hay personajes con estos filtros.":
+      "No characters match these filters.",
+    "Cargando HyruleWorld…": "Loading HyruleWorld…",
+    "No se pudo cargar la enciclopedia.": "Could not load the compendium.",
+    "{shown} de {total} entradas": "{shown} of {total} entries",
+    "Tu álbum espera nuevas aventuras": "Your album awaits new adventures",
+    "No hay entradas con estos filtros.": "No entries match these filters.",
+    "Registra especies con la cámara o compra imágenes a Rotver. Aquí aparecerán con tu próximo guardado.":
+      "Register subjects with the camera or buy pictures from Robbie. They will appear here with your next save.",
+    "Prueba con otro nombre, lugar o categoría.":
+      "Try another name, location or category.",
+    "Explorar la enciclopedia": "Explore the compendium",
     "La descarga HD requiere Windows con TLS 1.3 (Windows 11 o posterior).":
       "HD downloads require Windows with TLS 1.3 (Windows 11 or later).",
     "Mapa:": "Map:",
@@ -62,8 +195,8 @@ export const I18N = (() => {
     "Estado de misión": "Quest status",
     "Todos los tipos": "All types",
     "Todos los estados": "All statuses",
-    "Estados del guardado: hechas, en curso y por hacer. Los nombres de misiones y lugares se muestran en inglés.":
-      "Save states: completed, in progress and not started. Quest and location names are shown in English.",
+    "Estados del guardado: hechas, en curso y por hacer. Puedes buscar misiones, personajes y lugares en español o inglés.":
+      "Save states: completed, in progress and not started. Search quests, characters and locations in Spanish or English.",
     "Los marcadores indican el santuario o la zona asociada, no el objetivo actual. Las misiones sin ubicación fija no tienen marcador. Los filtros de esta pestaña también se aplican a los marcadores de misiones.":
       "Markers show the associated shrine or area, rather than the current objective. Quests without a fixed location have no marker. Filters in this tab also apply to quest markers.",
     Reintentar: "Retry",
@@ -136,6 +269,8 @@ export const I18N = (() => {
     "Batería máxima": "Maximum battery",
     Rupias: "Rupees",
     "Puntos del establo": "Pony points",
+    "Horas de juego": "Play time",
+    "{h} h {m} min": "{h} h {m} min",
     "{n} corazones": "{n} hearts",
     "{n} ruedas": "{n} wheels",
     "{n} unidades de energía": "{n} energy units",
@@ -171,6 +306,19 @@ export const I18N = (() => {
     "Visitada: {state}": "Visited: {state}",
     "Activación de la atalaya": "Tower activation",
     "Hash de visita": "Visit hash",
+    "Hashes de cofres": "Chest hashes",
+    "Descubierto: {state}": "Discovered: {state}",
+    Descubiertos: "Discovered",
+    "Santuarios con cofres pendientes": "Shrines with unopened chests",
+    "Amarillo: santuario o atalaya descubierto sin completar.":
+      "Yellow: discovered shrine or tower awaiting completion.",
+    "Todos los cofres obtenidos · {opened}/{total}":
+      "All chests collected · {opened}/{total}",
+    "Cofres: sin verificar": "Chests: unverified",
+    "Cofres: {opened}/{total} · {unknown} sin verificar":
+      "Chests: {opened}/{total} · {unknown} unverified",
+    "Cofres: {opened}/{total} · quedan cofres pendientes":
+      "Chests: {opened}/{total} · unopened chests remain",
     Sí: "Yes",
     No: "No",
     Guardados: "Saves",

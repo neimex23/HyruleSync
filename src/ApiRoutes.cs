@@ -38,6 +38,7 @@ public static partial class Program {
         { "api/map-quality", Command(SetMapQuality, requiresMap: true) },
         { "api/download-hd-map", Command(body => HDMapTiles.StartDownloadAll()) },
         { "api/language", Command(body => SetLanguage(BodyText(body))) },
+        { "api/armor-plan", Command(SetArmorPlan) },
         { "api/check-updates", Command(body => Updates.Check(true)) },
         { "api/follow-on", Command(body => UpdateSettings(s => s.followLink = true)) },
         { "api/follow-off", Command(body => UpdateSettings(s => s.followLink = false)) },
@@ -83,7 +84,8 @@ public static partial class Program {
             language = Locale.Language,
             languagePreference = settings.language,
             windowsCulture = Locale.WindowsCulture,
-            runInBackground = settings.runInBackground
+            runInBackground = settings.runInBackground,
+            armorPlan = NormalizeArmorPlan(settings.armorPlan)
         });
     }
 
@@ -131,6 +133,32 @@ public static partial class Program {
         UpdateSettings(s => s.mapQuality = quality);
     }
 
+    static ArmorPlan NormalizeArmorPlan(ArmorPlan plan) {
+        var valid = new HashSet<string>(CollectionReader.ArmorIds());
+        return new ArmorPlan {
+            target = plan != null && plan.target >= 1 && plan.target <= 4 ? plan.target : 4,
+            selected = plan == null || plan.selected == null ? new string[0] : plan.selected.Where(id => id != null && valid.Contains(id)).Distinct().ToArray()
+        };
+    }
+
+    static void SetArmorPlan(byte[] body) {
+        ArmorPlan plan;
+        lock (JsonGate) plan = Json.Deserialize<ArmorPlan>(BodyText(body));
+        if (plan == null || plan.target < 1 || plan.target > 4 || plan.selected == null || plan.selected.Length > 135)
+            throw new InvalidDataException(Locale.T("Plan de armaduras inválido.", "Invalid armor plan."));
+        var normalized = NormalizeArmorPlan(plan);
+        if (normalized.selected.Length != plan.selected.Length)
+            throw new InvalidDataException(Locale.T("El plan contiene piezas inválidas o repetidas.", "The plan contains invalid or duplicate pieces."));
+        lock (Gate) {
+            var previous = settings.armorPlan;
+            settings.armorPlan = normalized;
+            if (!SaveSettings()) {
+                settings.armorPlan = previous;
+                throw new IOException(Locale.T("No se pudo guardar el plan de armaduras.", "The armor plan could not be saved."));
+            }
+        }
+    }
+
     static object InspectionResult(Snapshot snapshot) {
         return new { ok = true, snapshot, summary = SaveSummary(snapshot) };
     }
@@ -140,6 +168,8 @@ public static partial class Program {
         lock (Gate) {
             imported = next;
             cache.Clear();
+            lastValid = null;
+            sourceNotice = "";
             settings.source = "";
             settings.mode = "memory";
             settings.auto = false;

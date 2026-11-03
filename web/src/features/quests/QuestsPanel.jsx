@@ -64,7 +64,7 @@ export function QuestsPanel({ store }) {
 
       <p className="quest-note">
         {t(
-          "Estados del guardado: hechas, en curso y por hacer. Los nombres de misiones y lugares se muestran en inglés.",
+          "Estados del guardado: hechas, en curso y por hacer. Puedes buscar misiones, personajes y lugares en español o inglés.",
         )}
       </p>
 

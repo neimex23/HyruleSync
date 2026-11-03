@@ -1,0 +1,730 @@
+{
+  "sources": [
+    "https://www.pockettactics.com/zelda-tears-of-the-kingdom/recipe",
+    "https://ragequit.gg/zelda/totk/recipes/",
+    "https://play.nintendo.com/news-tips/tips-tricks/tips-to-stay-warm-in-loz-totk/"
+  ],
+  "nameSource": "inventory-data.json (existing localized item names)",
+  "names": {
+    "en": {
+      "Item_Cook_A_01": "Mushroom Skewer",
+      "Item_Mushroom_E": "Hylian Shroom",
+      "Item_Cook_B_02": "Simmered Fruits",
+      "Item_Fruit_A": "Apple",
+      "Item_Cook_B_06": "Meat Skewer",
+      "Item_Meat_01": "Raw Meat",
+      "Item_Cook_B_05": "Fish Skewer",
+      "Item_FishGet_A": "Hyrule Bass",
+      "Item_Cook_B_21": "Sautéed Peppers",
+      "Item_Fruit_I": "Spicy Pepper",
+      "Item_Cook_Q_01": "Simmered Tomato",
+      "Item_Fruit_M": "Hylian Tomato",
+      "Item_Cook_Q_04": "Tomato Mushroom Stew",
+      "Item_Cook_Q_06": "Cooked Stambulb",
+      "Item_PlantGet_S": "Stambulb",
+      "Item_Cook_Q_07": "Buttered Stambulb",
+      "Item_Material_06": "Goat Butter",
+      "Item_Cook_D_04": "Salt-Grilled Meat",
+      "Item_Ore_H": "Rock Salt",
+      "Item_Cook_D_03": "Salt-Grilled Fish",
+      "Item_Cook_G_04": "Mushroom Rice Balls",
+      "Item_Material_03": "Hylian Rice",
+      "Item_Cook_J_01": "Curry Rice",
+      "Item_Material_02": "Goron Spice",
+      "Item_Cook_E_04": "Fried Egg and Rice",
+      "Item_Material_04": "Bird Egg",
+      "Item_Cook_A_10": "Omelet",
+      "Item_Cook_M_01": "Wheat Bread",
+      "Item_Material_07": "Tabantha Wheat",
+      "Item_Cook_R_04": "Hylian Tomato Pizza",
+      "Item_Material_10": "Hateno Cheese",
+      "Item_Cook_S_10": "Cheesy Tomato",
+      "Item_Cook_R_09": "Melty Cheesy Bread",
+      "Item_Cook_S_01": "Cheesy Curry",
+      "Item_Cook_I_02": "Apple Pie",
+      "Item_Material_01": "Cane Sugar",
+      "Item_Cook_I_14": "Egg Pudding",
+      "Item_Material_05": "Fresh Milk",
+      "Item_Cook_K_03": "Pumpkin Stew",
+      "Item_Fruit_J": "Fortified Pumpkin",
+      "Item_Cook_K_08": "Carrot Stew",
+      "Item_PlantGet_M": "Swift Carrot",
+      "Item_Cook_B_01": "Fried Wild Greens",
+      "Item_PlantGet_B": "Hearty Radish",
+      "Item_PlantGet_R": "Sundelion",
+      "Item_Fruit_H": "Mighty Bananas",
+      "Item_Fruit_F": "Hydromelon",
+      "Item_Cook_C_17": "Elixir",
+      "Animal_Insect_H": "Restless Cricket",
+      "Item_Enemy_01": "Bokoblin Fang",
+      "Animal_Insect_X": "Fireproof Lizard",
+      "Animal_Insect_AG": "Sticky Frog",
+      "Animal_Insect_AI": "Deep Firefly",
+      "Animal_Insect_G": "Bladed Rhino Beetle",
+      "Animal_Insect_E": "Sunset Firefly",
+      "Animal_Insect_Q": "Summerwing Butterfly",
+      "Animal_Insect_C": "Cold Darner"
+    },
+    "es": {
+      "Item_Cook_A_01": "Brocheta de setas",
+      "Item_Mushroom_E": "Seta de Hyrule",
+      "Item_Cook_B_02": "Frutas pochadas",
+      "Item_Fruit_A": "Manzana",
+      "Item_Cook_B_06": "Brocheta de carne",
+      "Item_Meat_01": "Carne de caza",
+      "Item_Cook_B_05": "Brocheta de pescado",
+      "Item_FishGet_A": "Lubina de Hyrule",
+      "Item_Cook_B_21": "Bayas salteadas",
+      "Item_Fruit_I": "Baya ígnea",
+      "Item_Cook_Q_01": "Tomates pochados",
+      "Item_Fruit_M": "Tomates hylianos",
+      "Item_Cook_Q_04": "Guiso de tomate y setas",
+      "Item_Cook_Q_06": "Asado vegetal",
+      "Item_PlantGet_S": "Planta de vigor",
+      "Item_Cook_Q_07": "Salteado a la mantequilla",
+      "Item_Material_06": "Manteca de cabra",
+      "Item_Cook_D_04": "Carne a la parrilla",
+      "Item_Ore_H": "Halita",
+      "Item_Cook_D_03": "Pescado a la parrilla",
+      "Item_Cook_G_04": "Bolas de arroz con setas",
+      "Item_Material_03": "Arroz de Hyrule",
+      "Item_Cook_J_01": "Arroz especiado",
+      "Item_Material_02": "Especias goron",
+      "Item_Cook_E_04": "Arroz con huevo frito",
+      "Item_Material_04": "Huevo de ave",
+      "Item_Cook_A_10": "Tortilla",
+      "Item_Cook_M_01": "Pan de trigo",
+      "Item_Material_07": "Trigo de Tabanta",
+      "Item_Cook_R_04": "Pizza de tomate",
+      "Item_Material_10": "Queso de Hatelia",
+      "Item_Cook_S_10": "Tomates con queso",
+      "Item_Cook_R_09": "Pan gratinado",
+      "Item_Cook_S_01": "Arroz especiado con queso",
+      "Item_Cook_I_02": "Tarta de manzana",
+      "Item_Material_01": "Caña de azúcar",
+      "Item_Cook_I_14": "Flan de huevo",
+      "Item_Material_05": "Leche fresca",
+      "Item_Cook_K_03": "Guiso de calabaza",
+      "Item_Fruit_J": "Calabaza robusta",
+      "Item_Cook_K_08": "Guiso de zanahoria",
+      "Item_PlantGet_M": "Zanahoria rauda",
+      "Item_Cook_B_01": "Salteado de montaña",
+      "Item_PlantGet_B": "Rábano vivaz",
+      "Item_PlantGet_R": "Solirio",
+      "Item_Fruit_H": "Plátanos recios",
+      "Item_Fruit_F": "Sandía gélida",
+      "Item_Cook_C_17": "Elixir",
+      "Animal_Insect_H": "Grillo vigoroso",
+      "Item_Enemy_01": "Colmillo de bokoblin",
+      "Animal_Insect_X": "Lagarto ignífugo",
+      "Animal_Insect_AG": "Rana adherente",
+      "Animal_Insect_AI": "Luciérnaga de las tinieblas",
+      "Animal_Insect_G": "Escarabajo recio",
+      "Animal_Insect_E": "Luciérnaga sigilosa",
+      "Animal_Insect_Q": "Mariposa ígnea",
+      "Animal_Insect_C": "Libélula gélida"
+    }
+  },
+  "recipes": [
+    {
+      "id": "Item_Cook_A_01-recovery",
+      "itemId": "Item_Cook_A_01",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Mushroom_E",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_B_02-recovery",
+      "itemId": "Item_Cook_B_02",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_A",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_B_06-recovery",
+      "itemId": "Item_Cook_B_06",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Meat_01",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_B_05-recovery",
+      "itemId": "Item_Cook_B_05",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_FishGet_A",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_B_21-cold",
+      "itemId": "Item_Cook_B_21",
+      "category": "meals",
+      "effect": "cold",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_I",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_Q_01-recovery",
+      "itemId": "Item_Cook_Q_01",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_M",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_Q_04-recovery",
+      "itemId": "Item_Cook_Q_04",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_M",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Mushroom_E",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_Q_06-stamina",
+      "itemId": "Item_Cook_Q_06",
+      "category": "meals",
+      "effect": "stamina",
+      "ingredients": [
+        {
+          "id": "Item_PlantGet_S",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_Q_07-stamina",
+      "itemId": "Item_Cook_Q_07",
+      "category": "meals",
+      "effect": "stamina",
+      "ingredients": [
+        {
+          "id": "Item_PlantGet_S",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_06",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_D_04-recovery",
+      "itemId": "Item_Cook_D_04",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Meat_01",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Ore_H",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_D_03-recovery",
+      "itemId": "Item_Cook_D_03",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_FishGet_A",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Ore_H",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_G_04-recovery",
+      "itemId": "Item_Cook_G_04",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Mushroom_E",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_03",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_J_01-recovery",
+      "itemId": "Item_Cook_J_01",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Material_03",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_02",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_E_04-recovery",
+      "itemId": "Item_Cook_E_04",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Material_04",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_03",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_A_10-recovery",
+      "itemId": "Item_Cook_A_10",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Material_04",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_M_01-recovery",
+      "itemId": "Item_Cook_M_01",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Material_07",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Ore_H",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_R_04-recovery",
+      "itemId": "Item_Cook_R_04",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_M",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_10",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_07",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_S_10-recovery",
+      "itemId": "Item_Cook_S_10",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_M",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_10",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_R_09-recovery",
+      "itemId": "Item_Cook_R_09",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Material_07",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_10",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Ore_H",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_S_01-recovery",
+      "itemId": "Item_Cook_S_01",
+      "category": "meals",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Material_03",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_10",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_02",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_I_02-recovery",
+      "itemId": "Item_Cook_I_02",
+      "category": "desserts",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_A",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_07",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_01",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_06",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_I_14-recovery",
+      "itemId": "Item_Cook_I_14",
+      "category": "desserts",
+      "effect": "recovery",
+      "ingredients": [
+        {
+          "id": "Item_Material_04",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_05",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_01",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_K_03-defense",
+      "itemId": "Item_Cook_K_03",
+      "category": "meals",
+      "effect": "defense",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_J",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_07",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_05",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_06",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_K_08-speed",
+      "itemId": "Item_Cook_K_08",
+      "category": "meals",
+      "effect": "speed",
+      "ingredients": [
+        {
+          "id": "Item_PlantGet_M",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_07",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_05",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Material_06",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_B_01-hearty",
+      "itemId": "Item_Cook_B_01",
+      "category": "meals",
+      "effect": "hearty",
+      "ingredients": [
+        {
+          "id": "Item_PlantGet_B",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_B_01-sunny",
+      "itemId": "Item_Cook_B_01",
+      "category": "meals",
+      "effect": "sunny",
+      "ingredients": [
+        {
+          "id": "Item_PlantGet_R",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_B_02-attack",
+      "itemId": "Item_Cook_B_02",
+      "category": "meals",
+      "effect": "attack",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_H",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_B_02-heat",
+      "itemId": "Item_Cook_B_02",
+      "category": "meals",
+      "effect": "heat",
+      "ingredients": [
+        {
+          "id": "Item_Fruit_F",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_C_17-stamina",
+      "itemId": "Item_Cook_C_17",
+      "category": "elixirs",
+      "effect": "stamina",
+      "name": {
+        "es": "Elixir vigorizante",
+        "en": "Energizing Elixir"
+      },
+      "ingredients": [
+        {
+          "id": "Animal_Insect_H",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Enemy_01",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_C_17-fireproof",
+      "itemId": "Item_Cook_C_17",
+      "category": "elixirs",
+      "effect": "fireproof",
+      "name": {
+        "es": "Elixir ignífugo",
+        "en": "Fireproof Elixir"
+      },
+      "ingredients": [
+        {
+          "id": "Animal_Insect_X",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Enemy_01",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_C_17-sticky",
+      "itemId": "Item_Cook_C_17",
+      "category": "elixirs",
+      "effect": "sticky",
+      "name": {
+        "es": "Elixir adherente",
+        "en": "Sticky Elixir"
+      },
+      "ingredients": [
+        {
+          "id": "Animal_Insect_AG",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Enemy_01",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_C_17-glow",
+      "itemId": "Item_Cook_C_17",
+      "category": "elixirs",
+      "effect": "glow",
+      "name": {
+        "es": "Elixir luminoso",
+        "en": "Bright Elixir"
+      },
+      "ingredients": [
+        {
+          "id": "Animal_Insect_AI",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Enemy_01",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_C_17-attack",
+      "itemId": "Item_Cook_C_17",
+      "category": "elixirs",
+      "effect": "attack",
+      "name": {
+        "es": "Elixir recio",
+        "en": "Mighty Elixir"
+      },
+      "ingredients": [
+        {
+          "id": "Animal_Insect_G",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Enemy_01",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_C_17-stealth",
+      "itemId": "Item_Cook_C_17",
+      "category": "elixirs",
+      "effect": "stealth",
+      "name": {
+        "es": "Elixir sigiloso",
+        "en": "Sneaky Elixir"
+      },
+      "ingredients": [
+        {
+          "id": "Animal_Insect_E",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Enemy_01",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_C_17-cold",
+      "itemId": "Item_Cook_C_17",
+      "category": "elixirs",
+      "effect": "cold",
+      "name": {
+        "es": "Elixir picante",
+        "en": "Spicy Elixir"
+      },
+      "ingredients": [
+        {
+          "id": "Animal_Insect_Q",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Enemy_01",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "Item_Cook_C_17-heat",
+      "itemId": "Item_Cook_C_17",
+      "category": "elixirs",
+      "effect": "heat",
+      "name": {
+        "es": "Elixir gélido",
+        "en": "Chilly Elixir"
+      },
+      "ingredients": [
+        {
+          "id": "Animal_Insect_C",
+          "quantity": 1
+        },
+        {
+          "id": "Item_Enemy_01",
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}

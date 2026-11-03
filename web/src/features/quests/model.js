@@ -15,19 +15,31 @@ export const questStates = {
   unknown: "Sin verificar",
 };
 
-export function prepareQuests(quests) {
-  return quests.map((quest) => ({
-    ...quest,
-    searchText: norm(
-      [
-        quest.name,
-        quest.id,
-        quest.giver,
-        quest.location,
-        I18N.t(questTypes[quest.type]),
-      ].join(" "),
-    ),
-  }));
+export function prepareQuests(quests, language = I18N.language) {
+  return quests.map((quest) => {
+    const localized = (field) =>
+      (language === "es" && quest[field + "Es"]) || quest[field];
+
+    return {
+      ...quest,
+      nameEn: quest.name,
+      name: localized("name"),
+      giver: localized("giver"),
+      location: localized("location"),
+      searchText: norm(
+        [
+          quest.name,
+          quest.nameEs,
+          quest.id,
+          quest.giver,
+          quest.giverEs,
+          quest.location,
+          quest.locationEs,
+          I18N.t(questTypes[quest.type]),
+        ].join(" "),
+      ),
+    };
+  });
 }
 
 export function questProgress(snapshot) {
@@ -47,7 +59,7 @@ export function questGuideLink(quest) {
   const title =
     quest.id === "GerudoCanyon_GleeokLiver"
       ? "Gleeok Guts (Side Quest)"
-      : quest.name;
+      : quest.nameEn || quest.name;
 
   return (
     "https://www.zeldadungeon.net/wiki/" +

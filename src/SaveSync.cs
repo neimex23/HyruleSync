@@ -13,6 +13,8 @@ public static partial class Program {
     static string warning = "";
     static bool force = true;
     static Snapshot imported;
+    static Snapshot lastValid;
+    static string sourceNotice = "";
     static string checkedAt = "", changedAt = "", lastRevision = "";
     static int updateCount;
     const bool picking = false;
@@ -20,7 +22,8 @@ public static partial class Program {
     static void LoadCatalog() {
         lock (Gate) {
             catalog = Catalog.Load(File.ReadAllText(Path.Combine(MapResources.Root, "map_data.json"), Encoding.UTF8),
-                Encoding.UTF8.GetString(MapResources.Embedded("towers.json")));
+                Encoding.UTF8.GetString(MapResources.Embedded("towers.json")),
+                Encoding.UTF8.GetString(MapResources.Embedded("shrines.json")));
             catalogBytes = Encoding.UTF8.GetBytes(Serialize(catalog));
         }
     }
@@ -43,16 +46,21 @@ public static partial class Program {
         var reader = new SaveReader(data);
         int[] states = new int[catalog.points.Count];
         int[] visited = new int[states.Length];
+        var shrineChests = new ChestProgress[states.Length];
         string[] values = new string[states.Length];
         for (int i = 0; i < states.Length; i++) {
             states[i] = reader.State(catalog.points[i], out values[i]);
             visited[i] = reader.BooleanState(catalog.points[i].visitHash);
+            shrineChests[i] = reader.ReadChests(catalog.points[i]);
         }
 
         var position = reader.PlayerPosition();
         return new Snapshot {
+            compendium = WorldReader.Read(reader),
+            characterProfiles = WorldReader.ReadCharacters(reader),
             quests = QuestReader.Read(reader),
             inventory = InventoryReader.Read(reader),
+            collections = CollectionReader.Read(reader),
             revision = Sha(data),
             file = path,
             savedAt = (File.Exists(path) ? File.GetLastWriteTimeUtc(path) : DateTime.UtcNow).ToString("o"),
@@ -60,6 +68,7 @@ public static partial class Program {
             playtime = reader.playtime,
             states = states,
             visited = visited,
+            shrineChests = shrineChests,
             values = values,
             tableEnd = reader.tableEnd,
             guidStart = reader.guidStart,
@@ -107,8 +116,9 @@ public static partial class Program {
     static object SaveSlots() {
         lock (Gate) return new {
             slots = cache
-                .OrderByDescending(item => item.Value.snapshot == null ? 0 : item.Value.snapshot.playtime)
-                .ThenBy(item => item.Key)
+                .OrderByDescending(item => item.Value.snapshot == null ? "" : item.Value.snapshot.savedAt, StringComparer.Ordinal)
+                .ThenByDescending(item => item.Value.snapshot == null ? 0 : item.Value.snapshot.playtime)
+                .ThenBy(item => item.Key, StringComparer.OrdinalIgnoreCase)
                 .Select(item => new {
                     file = item.Key,
                     status = item.Value.error != "" ? "error" : item.Value.observed != DateTime.MaxValue ? "reading" : "ok",
@@ -145,6 +155,8 @@ public static partial class Program {
             force = true;
             cache.Clear();
             imported = null;
+            lastValid = null;
+            sourceNotice = "";
             warning = "";
             SaveSettings();
         }
@@ -176,12 +188,18 @@ public static partial class Program {
     }
 
     static string[] FindSavePaths() {
+        sourceNotice = "";
         if (settings.mode != "folder")
             return File.Exists(settings.source) ? new[] { settings.source } : new string[0];
 
-        if (!Directory.Exists(settings.source))
+        string folder = ResolveSaveFolder(settings.source);
+        if (!String.Equals(folder, settings.source, StringComparison.OrdinalIgnoreCase))
+            sourceNotice = Locale.T(
+                "Siguiendo el último guardado terminado en el buffer. Se volverá a la carpeta habitual automáticamente cuando el juego pueda actualizarla.",
+                "Following the latest completed save in the buffer. Tracking will return to the usual folder automatically when the game can update it.");
+        if (!Directory.Exists(folder))
             throw new IOException(Locale.T("La carpeta seleccionada ya no existe.", "The selected folder no longer exists."));
-        return Directory.EnumerateFiles(settings.source, "progress.sav", SearchOption.AllDirectories).Take(48).ToArray();
+        return Directory.EnumerateFiles(folder, "progress.sav", SearchOption.AllDirectories).ToArray();
     }
 
     // Called under Gate. A pending save is retried once its metadata has settled.
@@ -207,6 +225,7 @@ public static partial class Program {
             var after = new FileInfo(path);
             if (after.LastWriteTimeUtc.Ticks != item.ticks || after.Length != item.size) return true;
             item.snapshot = Parse(data, path);
+            item.snapshot.savedAt = new DateTime(item.ticks, DateTimeKind.Utc).ToString("o");
             item.observed = DateTime.MaxValue;
             item.error = "";
             return false;
@@ -220,10 +239,12 @@ public static partial class Program {
         lock (Gate) {
             // UTC round-trip timestamps sort chronologically without reparsing every poll.
             var candidates = cache.Values.Where(item => item.snapshot != null)
-                .OrderByDescending(item => item.snapshot.playtime)
-                .ThenByDescending(item => item.snapshot.savedAt, StringComparer.Ordinal)
+                .OrderByDescending(item => item.snapshot.savedAt, StringComparer.Ordinal)
+                .ThenByDescending(item => item.snapshot.playtime)
+                .ThenBy(item => item.snapshot.file, StringComparer.OrdinalIgnoreCase)
                 .ToArray();
-            Snapshot selected = imported ?? (candidates.Length == 0 ? null : candidates[0].snapshot);
+            Snapshot selected = imported ?? (candidates.Length == 0 ? lastValid : candidates[0].snapshot);
+            if (imported == null && selected != null) lastValid = selected;
             if (selected != null && selected.revision != lastRevision) {
                 lastRevision = selected.revision;
                 changedAt = DateTime.UtcNow.ToString("o");
@@ -245,6 +266,7 @@ public static partial class Program {
                 picking = picking,
                 status = message != "" ? "error" : selected == null ? "empty" : force ? "reading" : "ok",
                 message = message,
+                sourceNotice = sourceNotice,
                 source = settings.source,
                 mode = settings.mode,
                 auto = settings.auto,

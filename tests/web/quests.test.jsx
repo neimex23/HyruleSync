@@ -2,7 +2,11 @@ import { afterEach, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render } from "@testing-library/react";
 import data from "../../web/public/quest-data.json";
 import { I18N } from "../../web/src/shared/i18n.js";
-import { questGuideLink } from "../../web/src/features/quests/model.js";
+import {
+  filterQuests,
+  prepareQuests,
+  questGuideLink,
+} from "../../web/src/features/quests/model.js";
 import { QuestDetails } from "../../web/src/features/quests/QuestCard.jsx";
 import { QuestsPanel } from "../../web/src/features/quests/QuestsPanel.jsx";
 import { createViewStore } from "../../web/src/app/store.js";
@@ -18,6 +22,9 @@ it("retains 253 unique quest definitions, valid enums, hashes and coordinates", 
     ),
   ).toEqual({ main: 23, adventure: 60, shrine: 31, side: 139 });
   for (const q of data.quests) {
+    expect(q.nameEs, q.id).toBeTruthy();
+    expect(q.giverEs, q.id).toBeTruthy();
+    expect(q.locationEs, q.id).toBeTruthy();
     expect(q.steps).toContain("Complete");
     expect(q.steps).toContain("NotReady");
     expect(Number.isInteger(q.hash) && q.hash > 0).toBe(true);
@@ -40,6 +47,85 @@ it("retains 253 unique quest definitions, valid enums, hashes and coordinates", 
     "Presenting%3A_Sensor_%2B!",
   );
 });
+it("localizes all quest metadata and keeps English guide targets in both languages", () => {
+  const original = structuredClone(data.quests);
+  const spanish = prepareQuests(data.quests, "es");
+  const english = prepareQuests(data.quests, "en");
+  expect(spanish[0]).toMatchObject({
+    name: "Derrota a Ganondorf",
+    giver: "Prunia",
+    location: "Fuerte vigía",
+  });
+  expect(english[0]).toMatchObject({
+    name: "Destroy Ganondorf",
+    giver: "Purah",
+    location: "Lookout Landing",
+  });
+  for (let i = 0; i < data.quests.length; i++) {
+    expect(questGuideLink(spanish[i])).toBe(questGuideLink(original[i]));
+    expect(questGuideLink(english[i])).toBe(questGuideLink(original[i]));
+  }
+  expect(data.quests).toEqual(original);
+});
+it("finds names, characters and locations in either language regardless of display language", () => {
+  for (const language of ["es", "en"]) {
+    const quests = prepareQuests(data.quests, language);
+    for (const query of [
+      "derrota a ganondorf",
+      "destroy ganondorf",
+      "PRUNIA",
+      "Purah",
+      "FUERTE VIGIA",
+      "Lookout Landing",
+      "DefeatGanondorf",
+    ])
+      expect(
+        filterQuests(quests, new Map(), query).map((q) => q.id),
+        `${language}: ${query}`,
+      ).toContain("DefeatGanondorf");
+  }
+});
+it("falls back to original metadata when a translation is unavailable", () => {
+  const [quest] = prepareQuests(
+    [
+      {
+        id: "future",
+        name: "New quest",
+        giver: "Link",
+        location: "-",
+        type: "main",
+      },
+    ],
+    "es",
+  );
+  expect(quest).toMatchObject({
+    name: "New quest",
+    giver: "Link",
+    location: "-",
+  });
+  expect(quest.searchText).not.toMatch(/undefined|null/);
+});
+it.each(["es", "en"])(
+  "renders localized quest cards in %s with working guide links",
+  (language) => {
+    I18N.setLanguage(language);
+    const store = createViewStore();
+    const quests = prepareQuests(data.quests, language).slice(0, 1);
+    store.update({ view: "quests", quests: { data: quests } });
+    const { container } = render(<QuestsPanel store={store} />);
+    const card = container.querySelector(".quest-card");
+    expect(card.querySelector("h2").textContent).toBe(quests[0].name);
+    expect(card.textContent).toContain(
+      quests[0].location + " · " + quests[0].giver,
+    );
+    expect(card.querySelector(".quest-guide").href).toBe(
+      "https://www.zeldadungeon.net/wiki/Destroy_Ganondorf",
+    );
+    expect(container.querySelector(".quest-note").textContent).toContain(
+      language === "es" ? "español o inglés" : "Spanish or English",
+    );
+  },
+);
 it("renders saved stages and hexadecimal zero values", () => {
   I18N.setLanguage("es");
   const { container } = render(

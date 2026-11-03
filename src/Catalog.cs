@@ -8,9 +8,10 @@ public class Catalog {
     public List<Category> categories = new List<Category>();
     public List<MapPoint> points = new List<MapPoint>();
 
-    public static Catalog Load(string mapData, string towerData) {
+    public static Catalog Load(string mapData, string towerData, string shrineData) {
         var json = new JavaScriptSerializer { MaxJsonLength = 12 * 1024 * 1024 };
         var data = json.Deserialize<Dictionary<string, Entry[]>>(mapData);
+        var shrines = json.Deserialize<ShrineCatalog>(shrineData).shrines.ToDictionary(shrine => shrine.id);
         // Keep each category's identity, localized name and icon together.
         var definitions = new[] {
             new Category { id = "hidden_koroks", name = Locale.T("Kologs ocultos", "Hidden Koroks"), icon = "korok_hidden" },
@@ -41,11 +42,15 @@ public class Catalog {
             catalog.categories.Add(category);
             for (int index = 0; index < entries.Length; index++) {
                 var entry = entries[index];
+                Shrine shrine = null;
+                if (category.id == "shrines" && entry.internal_name != null) shrines.TryGetValue(entry.internal_name, out shrine);
                 catalog.points.Add(new MapPoint {
                     id = category.id + ":" + index, category = category.id,
                     name = String.IsNullOrEmpty(entry.display_name) ? category.name + " " + (index + 1) : entry.display_name,
                     internalName = entry.internal_name, korokType = entry.type, position = entry.position,
-                    path = entry.path, hash = entry.completion_hash.ToString(), guid = entry.guid_hash
+                    path = entry.path, hash = entry.completion_hash.ToString(), guid = entry.guid_hash,
+                    visitHash = shrine == null ? null : shrine.visitHash,
+                    chestHashes = shrine == null ? null : shrine.chestHashes
                 });
             }
         }

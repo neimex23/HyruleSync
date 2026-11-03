@@ -1,6 +1,17 @@
 // Each mounted app gets its own store, so async work cannot update a replacement UI.
 export function createViewStore() {
-  let state = { view: "map", inventory: {}, quests: {} };
+  let state = {
+    view: "map",
+    inventory: {},
+    quests: {},
+    world: {},
+    summary: {},
+    inventorySection: "pouches",
+    worldSection: "album",
+    collectionGroup: "memories",
+    armorPlan: { target: 4, selected: [] },
+    armorPlanStatus: "",
+  };
   const listeners = new Set();
 
   return {

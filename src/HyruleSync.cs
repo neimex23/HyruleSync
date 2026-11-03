@@ -99,13 +99,15 @@ public static partial class Program {
         settings.language = Locale.Preference(settings.language);
     }
 
-    static void SaveSettings() {
+    static bool SaveSettings() {
         try {
             string stateDir = Path.Combine(Home, ".state");
             Directory.CreateDirectory(stateDir);
             File.WriteAllText(Path.Combine(stateDir, "settings.json"), Serialize(settings), Encoding.UTF8);
+            return true;
         } catch {
             // Keep running with the in-memory preferences if they cannot be saved.
+            return false;
         }
     }
 

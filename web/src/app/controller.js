@@ -7,6 +7,9 @@ import {
   inLayer as pointInLayer,
   prepareMapCatalog,
   createMapPointFilter,
+  hasDiscoveryState,
+  mapPointState,
+  shrineChestState,
 } from "../features/map/model.js";
 import { createUpdateController } from "../features/settings/updates.js";
 import { createQuestController } from "../features/quests/controller.js";
@@ -16,6 +19,7 @@ import { fmt, esc } from "../shared/utils.js";
 import { createControllerScope } from "./controller-scope.js";
 import { createSaveController } from "../features/saves/controller.js";
 import { createMapBackground } from "../features/map/background.js";
+import { normalizeArmorPlan } from "../features/inventory/collections.js";
 
 export function createAppController(store, config = {}) {
   const scope = createControllerScope();
@@ -33,9 +37,20 @@ export function createAppController(store, config = {}) {
   document.getElementById("categories").replaceChildren();
   document.getElementById("detail").hidden = true;
   document.getElementById("previewBanner").hidden = true;
-  document.getElementById("welcome").hidden = false;
+  document.getElementById("welcome").hidden = true;
+  document.getElementById("startupLoading").hidden = false;
   document.body.classList.remove("inventory-view");
-  store.update({ view: "map", inventory: {}, quests: {} });
+  store.update({
+    view: "map",
+    inventory: {},
+    quests: {},
+    world: {},
+    summary: {},
+  });
+  store.update({
+    armorPlan: normalizeArmorPlan(config.armorPlan),
+    armorPlanStatus: "",
+  });
   const nodes = new Map(
     [...document.querySelectorAll("[id]")].map((node) => [node.id, node]),
   );
@@ -70,6 +85,8 @@ export function createAppController(store, config = {}) {
     points = [];
 
   let polling = false,
+    starting = true,
+    startupDeadline = null,
     source = "",
     sourceMode = "file",
     toastTimer;
@@ -130,12 +147,29 @@ export function createAppController(store, config = {}) {
     } catch {}
   }
 
-  function showState(s) {
-    return s === 1
+  function showState(p) {
+    const state = mapPointState(p, snapshot);
+
+    return state === "found"
       ? t("Completado")
-      : s === 0
-        ? t("Pendiente")
-        : t("Sin verificar · no hay datos suficientes");
+      : state === "discovered"
+        ? t("Descubierto")
+        : state === "missing"
+          ? t("Pendiente")
+          : t("Sin verificar · no hay datos suficientes");
+  }
+
+  function chestLabel(p) {
+    const progress = snapshot?.shrineChests?.[p.index];
+    const state = shrineChestState(progress);
+
+    if (state === "found")
+      return t("Todos los cofres obtenidos · {opened}/{total}", progress);
+    if (!progress?.total) return t("Cofres: sin verificar");
+
+    return state === "unknown"
+      ? t("Cofres: {opened}/{total} · {unknown} sin verificar", progress)
+      : t("Cofres: {opened}/{total} · quedan cofres pendientes", progress);
   }
 
   function prepareCatalog(data) {
@@ -364,16 +398,23 @@ export function createAppController(store, config = {}) {
           ).addTo(routes);
     }
     for (const p of visible) {
-      const s = pointState(p),
+      const state = mapPointState(p, snapshot),
         textLabel = p.category === "locations" && map.getZoom() >= -2.5,
         size = map.getZoom() < -3 ? 15 : map.getZoom() < -1.5 ? 20 : 27;
       const css =
         (textLabel ? "location-label" : "point-icon") +
-        (s === 1 ? " found" : s === -1 ? " unknown" : "") +
+        " " +
+        state +
         (selected?.id === p.id ? " selected" : "");
       const icon = L.divIcon({
         className: css,
-        html: textLabel ? esc(p.name) : `<img alt="" src="${pointIcon(p)}">`,
+        html: textLabel
+          ? esc(p.name)
+          : `<img alt="" src="${pointIcon(p)}">` +
+            (p.category === "shrines" &&
+            shrineChestState(snapshot?.shrineChests?.[p.index]) === "found"
+              ? '<span class="shrine-chests-badge" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7V5a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v9H2ZM2 7h12M7 6h2v4H7Z"/></svg></span>'
+              : ""),
         iconSize: textLabel ? [150, 24] : [size, size],
         iconAnchor: textLabel ? [75, 12] : [size / 2, size / 2],
       });
@@ -385,7 +426,11 @@ export function createAppController(store, config = {}) {
           selected?.id === p.id ? 1000 : p.category === "locations" ? -100 : 0,
       });
       marker.bindTooltip(
-        esc(p.name) + "<br><small>" + esc(showState(s)) + "</small>",
+        esc(p.name) +
+          "<br><small>" +
+          esc(showState(p)) +
+          (p.category === "shrines" ? "<br>" + esc(chestLabel(p)) : "") +
+          "</small>",
         { direction: "top" },
       );
       marker.on("click", () => detail(p, false));
@@ -430,22 +475,32 @@ export function createAppController(store, config = {}) {
   function detail(p, pan) {
     selected = p;
     $("detailIcon").src = pointIcon(p);
+    const state = mapPointState(p, snapshot);
+    $("detailIcon").dataset.state = state;
     $("detailCategory").textContent = categories[p.category].name.toUpperCase();
     $("detailName").textContent = p.name;
-    $("detailState").textContent =
-      p.category === "towers"
-        ? t("Activada: {state}", { state: booleanLabel(pointState(p)) })
-        : showState(pointState(p));
+    $("detailState").textContent = showState(p);
+    $("detailState").dataset.state = state;
+    $("detailChests").hidden = p.category !== "shrines";
+    $("detailChests").textContent =
+      p.category === "shrines" ? chestLabel(p) : "";
+    $("detailChests").dataset.state = shrineChestState(
+      snapshot?.shrineChests?.[p.index],
+    );
     $("detailCoords").textContent = coordinateString(p.position);
     $("korokInfo").textContent =
       p.category === "towers"
-        ? t("Visitada: {state}", {
-            state: booleanLabel(snapshot?.visited?.[p.index] ?? -1),
+        ? t("Activada: {state}", {
+            state: booleanLabel(pointState(p)),
           })
-        : p.korokType
-          ? t("Tipo original: {type}", { type: p.korokType }) +
-            (p.path ? t(" · La ruta está dibujada en el mapa.") : "")
-          : "";
+        : hasDiscoveryState(p)
+          ? t("Descubierto: {state}", {
+              state: booleanLabel(snapshot?.visited?.[p.index] ?? -1),
+            })
+          : p.korokType
+            ? t("Tipo original: {type}", { type: p.korokType }) +
+              (p.path ? t(" · La ruta está dibujada en el mapa.") : "")
+            : "";
     const rule =
       p.category === "towers"
         ? t("Activación de la atalaya")
@@ -470,6 +525,13 @@ export function createAppController(store, config = {}) {
       rows.push([
         t("Hash de visita"),
         "0x" + Number(p.visitHash).toString(16).padStart(8, "0"),
+      ]);
+    if (p.chestHashes?.length)
+      rows.push([
+        t("Hashes de cofres"),
+        p.chestHashes
+          .map((hash) => "0x" + Number(hash).toString(16).padStart(8, "0"))
+          .join(", "),
       ]);
     $("diagnostics").replaceChildren();
     for (const [key, value] of rows) {
@@ -506,7 +568,7 @@ export function createAppController(store, config = {}) {
 
   function displaySnapshot(next) {
     snapshot = next;
-    $("welcome").hidden = !!next;
+    $("welcome").hidden = starting || !!next;
     $("saveInfo").textContent = next
       ? t("{file} · {h} h {m} min · formato {format}", {
           file: next.file.split(/[\\/]/).slice(-2).join(" / "),
@@ -526,6 +588,8 @@ export function createAppController(store, config = {}) {
     render();
     renderInventory();
     renderQuests();
+    renderWorld();
+    renderSummary();
   }
 
   function returnToLive() {
@@ -585,6 +649,19 @@ export function createAppController(store, config = {}) {
       if (scope.disposed) return;
       source = state.source;
       sourceMode = state.mode;
+      // Give the initial stable-write scan time to restore the remembered save.
+      // End immediately for a loaded save, no configured source or an error.
+      if (starting) {
+        startupDeadline ??= Date.now() + 3000;
+        starting =
+          !!source &&
+          !state.snapshot &&
+          state.status !== "error" &&
+          !state.message &&
+          Date.now() < startupDeadline;
+      }
+      $("startupLoading").hidden = !starting;
+      $("welcome").hidden = starting || !!(previewSnapshot || state.snapshot);
       if (state.language && state.language !== I18N.language) {
         location.reload();
 
@@ -595,13 +672,15 @@ export function createAppController(store, config = {}) {
         state.status === "ok" ? "ok" : state.status === "error" ? "error" : "";
       $("statusTitle").textContent = state.picking
         ? t("Selecciona en la ventana de Windows")
-        : state.status === "error"
-          ? t("Revisa el guardado")
-          : state.status === "reading"
-            ? t("Leyendo guardado…")
-            : state.snapshot
-              ? t("Partida cargada")
-              : t("Sin partida cargada");
+        : starting
+          ? t("Cargando partida…")
+          : state.status === "error"
+            ? t("Revisa el guardado")
+            : state.status === "reading"
+              ? t("Leyendo guardado…")
+              : state.snapshot
+                ? t("Partida cargada")
+                : t("Sin partida cargada");
       $("sourceName").textContent = source
         ? (sourceMode === "folder" ? t("Carpeta: ") : t("Archivo: ")) +
           source.split(/[\\/]/).filter(Boolean).slice(-2).join(" / ")
@@ -628,8 +707,8 @@ export function createAppController(store, config = {}) {
             ? t("Autosync en pausa · puedes actualizar manualmente")
             : t("Elige una carpeta para seguir tu partida automáticamente.");
       $("liveStatus").classList.toggle("live", state.auto && !!source);
-      $("openSave").disabled = state.picking;
-      $("openFolder").disabled = state.picking;
+      $("openSave").disabled = state.picking || starting;
+      $("openFolder").disabled = state.picking || starting;
       $("refresh").disabled = !source;
       const wasFollowing = showLink && followLink,
         previousShow = showLink,
@@ -654,7 +733,8 @@ export function createAppController(store, config = {}) {
       if (!previewSnapshot) {
         const changed =
           next?.revision !== snapshot?.revision ||
-          next?.file !== snapshot?.file;
+          next?.file !== snapshot?.file ||
+          next?.savedAt !== snapshot?.savedAt;
 
         if (changed) {
           const previous = !!snapshot;
@@ -672,6 +752,11 @@ export function createAppController(store, config = {}) {
         render();
     } catch (e) {
       if (scope.disposed) return;
+      starting = false;
+      $("startupLoading").hidden = true;
+      $("welcome").hidden = !!snapshot;
+      $("openSave").disabled = false;
+      $("openFolder").disabled = false;
       $("statusDot").className = "error";
       $("statusTitle").textContent = t("Ejecutable desconectado");
       $("error").hidden = false;
@@ -696,9 +781,14 @@ export function createAppController(store, config = {}) {
       active = new Set(
         prefs.active.filter((c) => categories[c] || c === "quests"),
       );
-    $("showMode").value = ["missing", "found", "all", "unknown"].includes(
-      prefs.mode,
-    )
+    $("showMode").value = [
+      "missing",
+      "discovered",
+      "found",
+      "chests",
+      "all",
+      "unknown",
+    ].includes(prefs.mode)
       ? prefs.mode
       : "missing";
     $("showPaths").checked = prefs.paths !== false;
@@ -1083,6 +1173,64 @@ export function createAppController(store, config = {}) {
   let inventoryData = null,
     inventoryLoading = false,
     inventoryFailed = false;
+  let collectionData = null,
+    collectionLoading = false,
+    collectionFailed = false;
+  let armorPlanWrite = Promise.resolve(),
+    armorPlanVersion = 0;
+
+  function saveArmorPlan(plan) {
+    const next = normalizeArmorPlan(plan);
+    const version = ++armorPlanVersion;
+    publish({ armorPlan: next, armorPlanStatus: "saving" });
+    // Serialize writes so a slower earlier request cannot replace a newer plan.
+    armorPlanWrite = armorPlanWrite
+      .then(async () => {
+        await request("api/armor-plan", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(next),
+          keepalive: true,
+        });
+        if (version === armorPlanVersion) publish({ armorPlanStatus: "saved" });
+      })
+      .catch(() => {
+        if (version === armorPlanVersion)
+          publish({ armorPlanStatus: "failed" });
+      });
+
+    return armorPlanWrite;
+  }
+
+  async function loadCollections() {
+    if (collectionData || collectionLoading) return;
+    collectionLoading = true;
+    collectionFailed = false;
+    renderInventory();
+    renderSummary();
+
+    try {
+      const response = await fetch("collection-data.json");
+
+      if (!response.ok) throw Error();
+
+      const data = await response.json();
+
+      if (
+        !Array.isArray(data.armor) ||
+        !Array.isArray(data.entries) ||
+        !Array.isArray(data.medals)
+      )
+        throw Error();
+      collectionData = data;
+    } catch {
+      collectionFailed = true;
+    } finally {
+      collectionLoading = false;
+      renderInventory();
+      renderSummary();
+    }
+  }
 
   async function loadInventoryNames() {
     if (inventoryData || inventoryLoading) return;
@@ -1111,12 +1259,68 @@ export function createAppController(store, config = {}) {
         data: inventoryData,
         loading: inventoryLoading,
         failed: inventoryFailed,
+        collectionData,
+        collectionLoading,
+        collectionFailed,
+        catalog,
       },
     });
   }
 
+  function renderSummary() {
+    if (store.getSnapshot().view === "summary")
+      publish({
+        summary: {
+          snapshot,
+          catalog,
+          collectionData,
+          collectionLoading,
+          collectionFailed,
+        },
+      });
+  }
+
   function initInventory() {
     $("inventorySidebar").onclick = () => $("sidebar").classList.toggle("open");
+  }
+
+  let worldData = null,
+    worldLoading = false,
+    worldFailed = false;
+
+  function renderWorld() {
+    if (store.getSnapshot().view !== "world") return;
+    publish({
+      world: {
+        snapshot,
+        data: worldData,
+        loading: worldLoading,
+        failed: worldFailed,
+      },
+    });
+  }
+
+  async function loadWorldData() {
+    if (worldData || worldLoading) return;
+    worldLoading = true;
+    worldFailed = false;
+    renderWorld();
+
+    try {
+      const response = await fetch("world-data.json");
+
+      if (!response.ok) throw Error();
+
+      const data = await response.json();
+
+      if (!Array.isArray(data.entries) || !data.entries.length) throw Error();
+      worldData = data;
+    } catch {
+      worldFailed = true;
+    } finally {
+      worldLoading = false;
+      renderWorld();
+    }
   }
 
   const { updateMapLayer, updateMapQuality, initMapQuality } =
@@ -1222,9 +1426,52 @@ export function createAppController(store, config = {}) {
   });
 
   Object.assign(store.actions, {
+    loadCollections,
+    saveArmorPlan,
+    showCollectionBossOnMap: (id) => {
+      const point = catalog?.points.find((point) => point.id === id);
+
+      if (!point || !map) return;
+      active.add(point.category);
+      const checkbox = $("category-" + point.category);
+
+      if (checkbox) checkbox.checked = true;
+      $("showMode").value = "all";
+      $("search").value = "";
+      setSaveView("map");
+      switchLayer(playerLayer(point.position));
+      detail(point, true);
+      savePrefs();
+      render();
+    },
     setQuestVisible,
     showQuestOnMap,
-    setSaveView,
+    setSaveView: (view, { section, collectionGroup } = {}) => {
+      if (
+        view === "inventory" &&
+        ["pouches", "armor", "collections", "medals"].includes(section)
+      )
+        publish({ inventorySection: section });
+      if (
+        view === "inventory" &&
+        ["memories", "fabrics", "horses", "rewards"].includes(collectionGroup)
+      )
+        publish({ collectionGroup });
+      if (
+        view === "world" &&
+        ["album", "encyclopedia", "characters", "recipes"].includes(section)
+      )
+        publish({ worldSection: section });
+      setSaveView(view);
+      if (view === "summary") {
+        renderSummary();
+      }
+      if (view === "world") {
+        renderWorld();
+        loadWorldData();
+      }
+    },
+    loadWorldData,
     setQuestFilters,
     refreshMapSize: () => {
       if (!scope.disposed && map) {

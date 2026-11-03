@@ -23,7 +23,7 @@ export function InventoryIcon({ icon }) {
   );
 }
 
-function ItemImage({ item, group, model }) {
+export function ItemImage({ item, group, model }) {
   const [failed, setFailed] = useState(false);
   const url = model.inventoryItemIconUrl(item, group);
 

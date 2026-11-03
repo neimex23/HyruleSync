@@ -43,16 +43,16 @@ export function Sidebar() {
       <section className="source">
         <div className="source-heading">
           <i id="statusDot"></i>
-          <strong id="statusTitle">{t("Sin partida cargada")}</strong>
+          <strong id="statusTitle">{t("Cargando partida…")}</strong>
           <span className="badge">{t("SOLO LECTURA")}</span>
         </div>
-        <p id="sourceName">
-          {t("Elige tu carpeta de guardados de TOTK Recomp.")}
-        </p>
+        <p id="sourceName">{t("Reconociendo el guardado configurado…")}</p>
 
         <div className="load-buttons">
-          <button id="openFolder">{t("Seguir carpeta")}</button>
-          <button id="openSave" className="secondary">
+          <button id="openFolder" disabled>
+            {t("Seguir carpeta")}
+          </button>
+          <button id="openSave" className="secondary" disabled>
             {t("Cargar .sav")}
           </button>
         </div>
@@ -185,11 +185,20 @@ export function Sidebar() {
         <label htmlFor="showMode">{t("Ver")}</label>
         <select id="showMode">
           <option value="missing">{t("Pendientes")}</option>
+          <option value="discovered">{t("Descubiertos")}</option>
           <option value="found">{t("Completados")}</option>
+          <option value="chests">
+            {t("Santuarios con cofres pendientes")}
+          </option>
           <option value="all">{t("Todos")}</option>
           <option value="unknown">{t("Sin verificar")}</option>
         </select>
       </div>
+
+      <p className="map-state-legend">
+        <i aria-hidden="true"></i>
+        {t("Amarillo: santuario o atalaya descubierto sin completar.")}
+      </p>
 
       <div className="category-title">
         <h2>{t("Categorías")}</h2>

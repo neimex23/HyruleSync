@@ -21,6 +21,25 @@ export const coordinateString = (position) =>
     })
     .join("  ");
 
+export const hasDiscoveryState = (point) =>
+  point.category === "shrines" || point.category === "towers";
+
+export function mapPointState(point, snapshot) {
+  const state = snapshot?.states?.[point.index] ?? -1;
+
+  if (state === 1) return "found";
+  if (hasDiscoveryState(point) && snapshot?.visited?.[point.index] === 1)
+    return "discovered";
+
+  return state === 0 ? "missing" : "unknown";
+}
+
+export function shrineChestState(progress) {
+  if (!progress?.total || progress.unknown) return "unknown";
+
+  return progress.opened === progress.total ? "found" : "missing";
+}
+
 export function prepareMapCatalog(data) {
   const categories = Object.fromEntries(
     data.categories.map((category) => [category.id, category]),
@@ -64,8 +83,14 @@ export function filterMapPoints(
       active.has(point.category) &&
       (!search || numeric || point.searchText.includes(search)) &&
       (mode === "all" ||
-        (snapshot?.states[point.index] ?? -1) ===
-          (mode === "missing" ? 0 : mode === "found" ? 1 : -1)),
+        (mode === "discovered"
+          ? mapPointState(point, snapshot) === "discovered"
+          : mode === "chests"
+            ? point.category === "shrines" &&
+              shrineChestState(snapshot?.shrineChests?.[point.index]) ===
+                "missing"
+            : (snapshot?.states[point.index] ?? -1) ===
+              (mode === "missing" ? 0 : mode === "found" ? 1 : -1))),
   );
 }
 

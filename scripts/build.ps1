@@ -36,6 +36,7 @@ if (-not (Test-Path -LiteralPath $compiler)) { throw '.NET Framework 4.x on Wind
 $arguments = @('/nologo', '/target:winexe', '/main:Program', '/optimize+', '/utf8output', "/out:$buildDirectory/HyruleSync.exe", "/win32icon:$projectRoot/assets/hyrulesync.ico", '/reference:System.Web.Extensions.dll', '/reference:System.Windows.Forms.dll', '/reference:System.Drawing.dll')
 $arguments += "/resource:$projectRoot/assets/resources.json,hyrulesync/resources.json"
 $arguments += "/resource:$projectRoot/assets/towers.json,hyrulesync/towers.json"
+$arguments += "/resource:$projectRoot/assets/shrines.json,hyrulesync/shrines.json"
 $arguments += "/resource:$projectRoot/licenses/SavegameEditors.txt,hyrulesync/legal/savegame-editors.txt"
 $arguments += "/resource:$creditsPath,hyrulesync/credits.json"
 $arguments += "/resource:$projectRoot/LICENSE,hyrulesync/legal/app.txt"

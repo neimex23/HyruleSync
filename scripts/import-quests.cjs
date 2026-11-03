@@ -4,6 +4,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const source='Ignacio9172/spreadsheet_totk_json',commit='f20920ea28c0fa9aa9357ebf640c222c7de64a31';
 const hashSource='marcrobledo/savegame-editors',hashCommit='b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d';
+const spanish=require('../assets/quest-locales.es.json');
 async function fetchText(url){const response=await fetch(url);if(!response.ok)throw Error(`${response.status}: ${url}`);return response.text();}
 (async()=>{
  const [spreadsheet,csv]=await Promise.all([
@@ -23,10 +24,11 @@ async function fetchText(url){const response=await fetch(url);if(!response.ok)th
   assert.ok(hashLine&&enumLine&&types[q.Type],q.ID);
   const steps=enumLine.split(';')[2].split(',');assert.ok(steps.includes('NotReady')&&steps.includes('Complete'),q.ID);
   if(position)assert.ok(Object.values(position).every(Number.isFinite),q.ID);
-  return {id:q.ID,name:q.Name,type:types[q.Type],giver:q.Giver,location:q.Location,position,
+  assert.ok(spanish.names[q.ID]&&spanish.givers[q.Giver]&&spanish.locations[q.Location],`Missing Spanish metadata: ${q.ID}`);
+  return {id:q.ID,name:q.Name,nameEs:spanish.names[q.ID],type:types[q.Type],giver:q.Giver,giverEs:spanish.givers[q.Giver],location:q.Location,locationEs:spanish.locations[q.Location],position,
    locationKind:shrine?'shrine':'area',hash:parseInt(hashLine.split(';')[0],16),steps,order:q['Menu Order']};
  });
  assert.equal(quests.length,253);assert.equal(new Set(quests.map(q=>q.id)).size,253);
- fs.writeFileSync(path.resolve(__dirname,'../web/public/quest-data.json'),JSON.stringify({source,commit,hashSource,hashCommit,quests},null,2)+'\n');
+ fs.writeFileSync(path.resolve(__dirname,'../web/public/quest-data.json'),JSON.stringify({source,commit,hashSource,hashCommit,localization:{language:'es',sources:spanish.sources,checked:spanish.checked},quests},null,2)+'\n');
  console.log(`${quests.length} quests; ${quests.filter(q=>q.position).length} reference locations.`);
 })().catch(error=>{console.error(error);process.exitCode=1;});

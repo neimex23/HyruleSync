@@ -1,0 +1,1088 @@
+{
+  "sources": {
+    "hashes": "https://raw.githubusercontent.com/marcrobledo/savegame-editors/b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d/zelda-totk/zelda-totk.hashes.csv",
+    "hashesSHA256": "808decdf4a1925769d870da362a24c6f1658e77c9a3c8a6a03a00fd28d13cf99",
+    "chests": "https://radar-totk.zeldamods.org/objs/SmallDungeon/?q=actor%3A%5E%22TBox_%22&withMapNames=true&limit=-1",
+    "chestsSHA256": "47343a7eb78b588f7a7fd123db96d275dfc1102d6e4e2a7b7d31fb0f3ed9ea00"
+  },
+  "shrines": [
+    {
+      "id": "Dungeon000",
+      "visitHash": "2760359969",
+      "chestHashes": [
+        "27857515"
+      ]
+    },
+    {
+      "id": "Dungeon001",
+      "visitHash": "2871533238",
+      "chestHashes": [
+        "524194986",
+        "2178137460"
+      ]
+    },
+    {
+      "id": "Dungeon002",
+      "visitHash": "3660440743",
+      "chestHashes": [
+        "2705695214"
+      ]
+    },
+    {
+      "id": "Dungeon003",
+      "visitHash": "1310954665",
+      "chestHashes": [
+        "1372754268"
+      ]
+    },
+    {
+      "id": "Dungeon004",
+      "visitHash": "1019989385",
+      "chestHashes": [
+        "949772725"
+      ]
+    },
+    {
+      "id": "Dungeon005",
+      "visitHash": "4147552838",
+      "chestHashes": [
+        "1217105728"
+      ]
+    },
+    {
+      "id": "Dungeon006",
+      "visitHash": "2627607656",
+      "chestHashes": [
+        "923558359"
+      ]
+    },
+    {
+      "id": "Dungeon007",
+      "visitHash": "2693898326",
+      "chestHashes": [
+        "2163951188"
+      ]
+    },
+    {
+      "id": "Dungeon008",
+      "visitHash": "967823384",
+      "chestHashes": [
+        "4071708006"
+      ]
+    },
+    {
+      "id": "Dungeon009",
+      "visitHash": "403552243",
+      "chestHashes": [
+        "1390060312"
+      ]
+    },
+    {
+      "id": "Dungeon010",
+      "visitHash": "969527764",
+      "chestHashes": [
+        "1160620072"
+      ]
+    },
+    {
+      "id": "Dungeon011",
+      "visitHash": "332176343",
+      "chestHashes": [
+        "1771148773",
+        "3650238654"
+      ]
+    },
+    {
+      "id": "Dungeon012",
+      "visitHash": "2772487378",
+      "chestHashes": [
+        "1683641010"
+      ]
+    },
+    {
+      "id": "Dungeon013",
+      "visitHash": "31262101",
+      "chestHashes": [
+        "3751769236"
+      ]
+    },
+    {
+      "id": "Dungeon014",
+      "visitHash": "3581987718",
+      "chestHashes": [
+        "788348696"
+      ]
+    },
+    {
+      "id": "Dungeon015",
+      "visitHash": "1740847024",
+      "chestHashes": [
+        "2493384917"
+      ]
+    },
+    {
+      "id": "Dungeon016",
+      "visitHash": "276665897",
+      "chestHashes": [
+        "2209729650",
+        "2263446080"
+      ]
+    },
+    {
+      "id": "Dungeon017",
+      "visitHash": "3773038424",
+      "chestHashes": [
+        "1443787737"
+      ]
+    },
+    {
+      "id": "Dungeon018",
+      "visitHash": "1057206017",
+      "chestHashes": [
+        "1066111201"
+      ]
+    },
+    {
+      "id": "Dungeon019",
+      "visitHash": "3069998381",
+      "chestHashes": [
+        "1570378767",
+        "3140844653"
+      ]
+    },
+    {
+      "id": "Dungeon020",
+      "visitHash": "1323627071",
+      "chestHashes": [
+        "2721193308"
+      ]
+    },
+    {
+      "id": "Dungeon021",
+      "visitHash": "976602177",
+      "chestHashes": [
+        "776082755"
+      ]
+    },
+    {
+      "id": "Dungeon022",
+      "visitHash": "1917530680",
+      "chestHashes": [
+        "1461321896"
+      ]
+    },
+    {
+      "id": "Dungeon023",
+      "visitHash": "1452748998",
+      "chestHashes": [
+        "1906477401"
+      ]
+    },
+    {
+      "id": "Dungeon024",
+      "visitHash": "1582502024",
+      "chestHashes": [
+        "3237634267"
+      ]
+    },
+    {
+      "id": "Dungeon025",
+      "visitHash": "2093109252",
+      "chestHashes": [
+        "234620881"
+      ]
+    },
+    {
+      "id": "Dungeon026",
+      "visitHash": "1573511169",
+      "chestHashes": [
+        "3432363375"
+      ]
+    },
+    {
+      "id": "Dungeon027",
+      "visitHash": "2228456508",
+      "chestHashes": [
+        "1437169616"
+      ]
+    },
+    {
+      "id": "Dungeon028",
+      "visitHash": "3241738797",
+      "chestHashes": [
+        "401828899"
+      ]
+    },
+    {
+      "id": "Dungeon029",
+      "visitHash": "779882725",
+      "chestHashes": [
+        "1343462848"
+      ]
+    },
+    {
+      "id": "Dungeon030",
+      "visitHash": "697167012",
+      "chestHashes": [
+        "2477298015"
+      ]
+    },
+    {
+      "id": "Dungeon031",
+      "visitHash": "2802741465",
+      "chestHashes": [
+        "2927594649"
+      ]
+    },
+    {
+      "id": "Dungeon032",
+      "visitHash": "2928936694",
+      "chestHashes": [
+        "1495969845"
+      ]
+    },
+    {
+      "id": "Dungeon033",
+      "visitHash": "2528756765",
+      "chestHashes": [
+        "2645840348"
+      ]
+    },
+    {
+      "id": "Dungeon034",
+      "visitHash": "2802775106",
+      "chestHashes": [
+        "1162392771"
+      ]
+    },
+    {
+      "id": "Dungeon035",
+      "visitHash": "3959980649",
+      "chestHashes": [
+        "351964775"
+      ]
+    },
+    {
+      "id": "Dungeon036",
+      "visitHash": "702954788",
+      "chestHashes": [
+        "1800131905"
+      ]
+    },
+    {
+      "id": "Dungeon037",
+      "visitHash": "1222222495",
+      "chestHashes": [
+        "2434361729",
+        "4082281377"
+      ]
+    },
+    {
+      "id": "Dungeon038",
+      "visitHash": "275839908",
+      "chestHashes": [
+        "2378456963"
+      ]
+    },
+    {
+      "id": "Dungeon039",
+      "visitHash": "1345611176",
+      "chestHashes": [
+        "1536545312"
+      ]
+    },
+    {
+      "id": "Dungeon040",
+      "visitHash": "3422165185",
+      "chestHashes": [
+        "4061108426"
+      ]
+    },
+    {
+      "id": "Dungeon041",
+      "visitHash": "2182370256",
+      "chestHashes": [
+        "3710332327"
+      ]
+    },
+    {
+      "id": "Dungeon042",
+      "visitHash": "3361091820",
+      "chestHashes": [
+        "355966281"
+      ]
+    },
+    {
+      "id": "Dungeon043",
+      "visitHash": "2439361607",
+      "chestHashes": [
+        "1768704635"
+      ]
+    },
+    {
+      "id": "Dungeon044",
+      "visitHash": "1861264412",
+      "chestHashes": [
+        "480536548"
+      ]
+    },
+    {
+      "id": "Dungeon045",
+      "visitHash": "2275025295",
+      "chestHashes": [
+        "1653180706"
+      ]
+    },
+    {
+      "id": "Dungeon046",
+      "visitHash": "1524456480",
+      "chestHashes": [
+        "1513920950"
+      ]
+    },
+    {
+      "id": "Dungeon047",
+      "visitHash": "4204277182",
+      "chestHashes": [
+        "494523994"
+      ]
+    },
+    {
+      "id": "Dungeon048",
+      "visitHash": "4214631298",
+      "chestHashes": [
+        "3348436699"
+      ]
+    },
+    {
+      "id": "Dungeon049",
+      "visitHash": "1279487296",
+      "chestHashes": [
+        "1856375285"
+      ]
+    },
+    {
+      "id": "Dungeon050",
+      "visitHash": "2996896151",
+      "chestHashes": [
+        "918702796"
+      ]
+    },
+    {
+      "id": "Dungeon051",
+      "visitHash": "3820884581",
+      "chestHashes": [
+        "3008112706",
+        "3920357455",
+        "4067068365"
+      ]
+    },
+    {
+      "id": "Dungeon052",
+      "visitHash": "2850922025",
+      "chestHashes": [
+        "3020291400"
+      ]
+    },
+    {
+      "id": "Dungeon053",
+      "visitHash": "117721816",
+      "chestHashes": [
+        "421733623",
+        "857417302",
+        "2069675249",
+        "2970991370",
+        "3389951164"
+      ]
+    },
+    {
+      "id": "Dungeon054",
+      "visitHash": "2340169407",
+      "chestHashes": [
+        "1269477396"
+      ]
+    },
+    {
+      "id": "Dungeon055",
+      "visitHash": "4275938556",
+      "chestHashes": [
+        "2111660535"
+      ]
+    },
+    {
+      "id": "Dungeon056",
+      "visitHash": "3506364796",
+      "chestHashes": [
+        "1192359928"
+      ]
+    },
+    {
+      "id": "Dungeon057",
+      "visitHash": "2082551325",
+      "chestHashes": [
+        "2280596250"
+      ]
+    },
+    {
+      "id": "Dungeon058",
+      "visitHash": "1998404815",
+      "chestHashes": [
+        "1979928108"
+      ]
+    },
+    {
+      "id": "Dungeon059",
+      "visitHash": "971037596",
+      "chestHashes": [
+        "3653690723"
+      ]
+    },
+    {
+      "id": "Dungeon060",
+      "visitHash": "1600225495",
+      "chestHashes": [
+        "522443123"
+      ]
+    },
+    {
+      "id": "Dungeon061",
+      "visitHash": "2706891791",
+      "chestHashes": [
+        "1098661538",
+        "1389851450"
+      ]
+    },
+    {
+      "id": "Dungeon062",
+      "visitHash": "3746798928",
+      "chestHashes": [
+        "1424055388",
+        "3350290299"
+      ]
+    },
+    {
+      "id": "Dungeon063",
+      "visitHash": "1776282120",
+      "chestHashes": [
+        "2979377555"
+      ]
+    },
+    {
+      "id": "Dungeon064",
+      "visitHash": "1531352464",
+      "chestHashes": [
+        "3003332744"
+      ]
+    },
+    {
+      "id": "Dungeon065",
+      "visitHash": "1315575352",
+      "chestHashes": [
+        "1797025762"
+      ]
+    },
+    {
+      "id": "Dungeon066",
+      "visitHash": "3580266996",
+      "chestHashes": [
+        "1095207"
+      ]
+    },
+    {
+      "id": "Dungeon067",
+      "visitHash": "4147460865",
+      "chestHashes": [
+        "4264401794"
+      ]
+    },
+    {
+      "id": "Dungeon068",
+      "visitHash": "2856360238",
+      "chestHashes": [
+        "2233134702"
+      ]
+    },
+    {
+      "id": "Dungeon069",
+      "visitHash": "1199200549",
+      "chestHashes": [
+        "2940002562"
+      ]
+    },
+    {
+      "id": "Dungeon070",
+      "visitHash": "1267105532",
+      "chestHashes": [
+        "608812753"
+      ]
+    },
+    {
+      "id": "Dungeon071",
+      "visitHash": "1955799701",
+      "chestHashes": [
+        "1385098034"
+      ]
+    },
+    {
+      "id": "Dungeon072",
+      "visitHash": "2377550398",
+      "chestHashes": [
+        "1523674874"
+      ]
+    },
+    {
+      "id": "Dungeon073",
+      "visitHash": "1294170628",
+      "chestHashes": [
+        "1380011337"
+      ]
+    },
+    {
+      "id": "Dungeon074",
+      "visitHash": "2317741309",
+      "chestHashes": [
+        "4074782900"
+      ]
+    },
+    {
+      "id": "Dungeon075",
+      "visitHash": "1969123257",
+      "chestHashes": [
+        "1332659761"
+      ]
+    },
+    {
+      "id": "Dungeon076",
+      "visitHash": "1521748812",
+      "chestHashes": [
+        "3232945367"
+      ]
+    },
+    {
+      "id": "Dungeon077",
+      "visitHash": "3521963464",
+      "chestHashes": [
+        "2266741640"
+      ]
+    },
+    {
+      "id": "Dungeon078",
+      "visitHash": "1113955866",
+      "chestHashes": [
+        "1272764547"
+      ]
+    },
+    {
+      "id": "Dungeon079",
+      "visitHash": "3103226810",
+      "chestHashes": [
+        "4147919358"
+      ]
+    },
+    {
+      "id": "Dungeon080",
+      "visitHash": "334473519",
+      "chestHashes": [
+        "2812138340"
+      ]
+    },
+    {
+      "id": "Dungeon081",
+      "visitHash": "2206863483",
+      "chestHashes": [
+        "609950652"
+      ]
+    },
+    {
+      "id": "Dungeon082",
+      "visitHash": "1333464828",
+      "chestHashes": [
+        "3286344502"
+      ]
+    },
+    {
+      "id": "Dungeon083",
+      "visitHash": "4256592182",
+      "chestHashes": [
+        "2183635765"
+      ]
+    },
+    {
+      "id": "Dungeon084",
+      "visitHash": "2681849148",
+      "chestHashes": [
+        "2242865188"
+      ]
+    },
+    {
+      "id": "Dungeon085",
+      "visitHash": "1201882743",
+      "chestHashes": [
+        "2726491527"
+      ]
+    },
+    {
+      "id": "Dungeon086",
+      "visitHash": "1655251450",
+      "chestHashes": [
+        "3649771906"
+      ]
+    },
+    {
+      "id": "Dungeon087",
+      "visitHash": "3345865103",
+      "chestHashes": [
+        "3415458019"
+      ]
+    },
+    {
+      "id": "Dungeon088",
+      "visitHash": "3907861692",
+      "chestHashes": [
+        "136753077"
+      ]
+    },
+    {
+      "id": "Dungeon089",
+      "visitHash": "3881976087",
+      "chestHashes": [
+        "3629226488"
+      ]
+    },
+    {
+      "id": "Dungeon090",
+      "visitHash": "832693018",
+      "chestHashes": [
+        "2952570915"
+      ]
+    },
+    {
+      "id": "Dungeon091",
+      "visitHash": "4290320562",
+      "chestHashes": [
+        "394031241"
+      ]
+    },
+    {
+      "id": "Dungeon092",
+      "visitHash": "1426854190",
+      "chestHashes": [
+        "2078480398"
+      ]
+    },
+    {
+      "id": "Dungeon093",
+      "visitHash": "2281230054",
+      "chestHashes": [
+        "4263743156"
+      ]
+    },
+    {
+      "id": "Dungeon094",
+      "visitHash": "2078822327",
+      "chestHashes": [
+        "2064778127"
+      ]
+    },
+    {
+      "id": "Dungeon095",
+      "visitHash": "3620676583",
+      "chestHashes": [
+        "3259942801"
+      ]
+    },
+    {
+      "id": "Dungeon096",
+      "visitHash": "3863491336",
+      "chestHashes": [
+        "1811802180"
+      ]
+    },
+    {
+      "id": "Dungeon097",
+      "visitHash": "3116820481",
+      "chestHashes": [
+        "3485897180"
+      ]
+    },
+    {
+      "id": "Dungeon098",
+      "visitHash": "4011830133",
+      "chestHashes": [
+        "104313959"
+      ]
+    },
+    {
+      "id": "Dungeon099",
+      "visitHash": "1857785079",
+      "chestHashes": [
+        "1371518550"
+      ]
+    },
+    {
+      "id": "Dungeon100",
+      "visitHash": "1633758150",
+      "chestHashes": [
+        "3704410745"
+      ]
+    },
+    {
+      "id": "Dungeon101",
+      "visitHash": "1692847798",
+      "chestHashes": [
+        "700220489"
+      ]
+    },
+    {
+      "id": "Dungeon102",
+      "visitHash": "1138250217",
+      "chestHashes": [
+        "1209830807"
+      ]
+    },
+    {
+      "id": "Dungeon103",
+      "visitHash": "1455060732",
+      "chestHashes": [
+        "3559338294"
+      ]
+    },
+    {
+      "id": "Dungeon104",
+      "visitHash": "2104693225",
+      "chestHashes": [
+        "912854982"
+      ]
+    },
+    {
+      "id": "Dungeon105",
+      "visitHash": "2473044850",
+      "chestHashes": [
+        "2566862911"
+      ]
+    },
+    {
+      "id": "Dungeon106",
+      "visitHash": "4254620914",
+      "chestHashes": [
+        "1901237081"
+      ]
+    },
+    {
+      "id": "Dungeon107",
+      "visitHash": "795506814",
+      "chestHashes": [
+        "3744898564"
+      ]
+    },
+    {
+      "id": "Dungeon108",
+      "visitHash": "606890700",
+      "chestHashes": [
+        "1488662974"
+      ]
+    },
+    {
+      "id": "Dungeon109",
+      "visitHash": "164434920",
+      "chestHashes": [
+        "1699460147"
+      ]
+    },
+    {
+      "id": "Dungeon110",
+      "visitHash": "3354805237",
+      "chestHashes": [
+        "3264031527"
+      ]
+    },
+    {
+      "id": "Dungeon111",
+      "visitHash": "888080210",
+      "chestHashes": [
+        "3810049109"
+      ]
+    },
+    {
+      "id": "Dungeon112",
+      "visitHash": "3213791660",
+      "chestHashes": [
+        "3551184969"
+      ]
+    },
+    {
+      "id": "Dungeon113",
+      "visitHash": "3853265433",
+      "chestHashes": [
+        "2714343942"
+      ]
+    },
+    {
+      "id": "Dungeon114",
+      "visitHash": "3691537230",
+      "chestHashes": [
+        "1485077321"
+      ]
+    },
+    {
+      "id": "Dungeon115",
+      "visitHash": "3776869969",
+      "chestHashes": [
+        "724955516"
+      ]
+    },
+    {
+      "id": "Dungeon116",
+      "visitHash": "4293502448",
+      "chestHashes": [
+        "1364310139"
+      ]
+    },
+    {
+      "id": "Dungeon117",
+      "visitHash": "369713184",
+      "chestHashes": [
+        "801003189"
+      ]
+    },
+    {
+      "id": "Dungeon118",
+      "visitHash": "861110725",
+      "chestHashes": [
+        "4025534811"
+      ]
+    },
+    {
+      "id": "Dungeon119",
+      "visitHash": "2851335419",
+      "chestHashes": [
+        "597491637"
+      ]
+    },
+    {
+      "id": "Dungeon120",
+      "visitHash": "2720233355",
+      "chestHashes": [
+        "1662386997"
+      ]
+    },
+    {
+      "id": "Dungeon121",
+      "visitHash": "84147763",
+      "chestHashes": [
+        "1648315320"
+      ]
+    },
+    {
+      "id": "Dungeon122",
+      "visitHash": "1142752717",
+      "chestHashes": [
+        "2404582545"
+      ]
+    },
+    {
+      "id": "Dungeon123",
+      "visitHash": "3490637777",
+      "chestHashes": [
+        "3039261176"
+      ]
+    },
+    {
+      "id": "Dungeon124",
+      "visitHash": "370170878",
+      "chestHashes": [
+        "3168704488"
+      ]
+    },
+    {
+      "id": "Dungeon125",
+      "visitHash": "3124125099",
+      "chestHashes": [
+        "121562867"
+      ]
+    },
+    {
+      "id": "Dungeon126",
+      "visitHash": "170454756",
+      "chestHashes": [
+        "2301214609"
+      ]
+    },
+    {
+      "id": "Dungeon127",
+      "visitHash": "2355276703",
+      "chestHashes": [
+        "644544794"
+      ]
+    },
+    {
+      "id": "Dungeon128",
+      "visitHash": "959119636",
+      "chestHashes": [
+        "272104801"
+      ]
+    },
+    {
+      "id": "Dungeon129",
+      "visitHash": "3703153343",
+      "chestHashes": [
+        "1655732326"
+      ]
+    },
+    {
+      "id": "Dungeon130",
+      "visitHash": "575424357",
+      "chestHashes": [
+        "2077586489"
+      ]
+    },
+    {
+      "id": "Dungeon131",
+      "visitHash": "1422377224",
+      "chestHashes": [
+        "3881597804"
+      ]
+    },
+    {
+      "id": "Dungeon132",
+      "visitHash": "1333252255",
+      "chestHashes": [
+        "324378963"
+      ]
+    },
+    {
+      "id": "Dungeon133",
+      "visitHash": "2146215291",
+      "chestHashes": [
+        "1391654513"
+      ]
+    },
+    {
+      "id": "Dungeon134",
+      "visitHash": "35304304",
+      "chestHashes": [
+        "4041531636"
+      ]
+    },
+    {
+      "id": "Dungeon135",
+      "visitHash": "61856699",
+      "chestHashes": [
+        "3130446544"
+      ]
+    },
+    {
+      "id": "Dungeon136",
+      "visitHash": "2835899513",
+      "chestHashes": [
+        "2944025133"
+      ]
+    },
+    {
+      "id": "Dungeon137",
+      "visitHash": "2543173161",
+      "chestHashes": [
+        "1171893308"
+      ]
+    },
+    {
+      "id": "Dungeon138",
+      "visitHash": "3458230053",
+      "chestHashes": [
+        "1152322841"
+      ]
+    },
+    {
+      "id": "Dungeon139",
+      "visitHash": "1754108706",
+      "chestHashes": [
+        "3864934088"
+      ]
+    },
+    {
+      "id": "Dungeon140",
+      "visitHash": "3811202382",
+      "chestHashes": [
+        "1649648872",
+        "1971476403"
+      ]
+    },
+    {
+      "id": "Dungeon141",
+      "visitHash": "3895309251",
+      "chestHashes": [
+        "557191174"
+      ]
+    },
+    {
+      "id": "Dungeon142",
+      "visitHash": "3719981619",
+      "chestHashes": [
+        "1133863998"
+      ]
+    },
+    {
+      "id": "Dungeon143",
+      "visitHash": "863586812",
+      "chestHashes": [
+        "1722133510"
+      ]
+    },
+    {
+      "id": "Dungeon144",
+      "visitHash": "4249993935",
+      "chestHashes": [
+        "2928095270"
+      ]
+    },
+    {
+      "id": "Dungeon145",
+      "visitHash": "2323375522",
+      "chestHashes": [
+        "911138832"
+      ]
+    },
+    {
+      "id": "Dungeon146",
+      "visitHash": "2253930893",
+      "chestHashes": [
+        "1117707921"
+      ]
+    },
+    {
+      "id": "Dungeon147",
+      "visitHash": "1486564833",
+      "chestHashes": [
+        "123050517"
+      ]
+    },
+    {
+      "id": "Dungeon148",
+      "visitHash": "3948516820",
+      "chestHashes": [
+        "3338723997"
+      ]
+    },
+    {
+      "id": "Dungeon149",
+      "visitHash": "3635905160",
+      "chestHashes": [
+        "4291619010"
+      ]
+    },
+    {
+      "id": "Dungeon150",
+      "visitHash": "3943685147",
+      "chestHashes": [
+        "268352915"
+      ]
+    },
+    {
+      "id": "Dungeon151",
+      "visitHash": "1893494565",
+      "chestHashes": [
+        "2994294224"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,11 @@
 # Procedencia de componentes y recursos
 
+## Colecciones e imágenes de referencia
+
+`web/public/collection-data.json` selecciona las fuentes y los materiales de mejora de `Ignacio9172/spreadsheet_totk_json`, revisión `f20920ea28c0fa9aa9357ebf640c222c7de64a31`. Los campos de adquisición proceden de la investigación de Marc Robledo en `450752f98876755944ea22eb457f4dc1468d79ea`, incluidas las nuevas telas 1.4. Los títulos de recuerdos proceden de `StaticMsg/DragonMemory.csv` en `zoalasaurusrawr/totk-resources`, revisión `2bc9ea5e0c2eb2e24fcaaff3f7162660559eb082`. Se excluyen diálogos, descripciones y códigos de formato. Los costes de rupias, incluida la excepción del Espíritu del héroe ancestral, se contrastaron con las fichas de Zelda Dungeon indicadas en el aviso en inglés. El catálogo puede regenerarse con `scripts/import-collections.cjs`.
+
+Las imágenes de armaduras, telas, equipo de caballo, recompensas, medallas y recuerdos se solicitan directamente a `TOTKSheet/TOTKImages`, revisión `e0467418215e76bd93c3ec8b55bbf321e4cc43ae`. No se redistribuyen en el código ni en el ZIP. Las ilustraciones de Nintendo conservan su titularidad; las licencias de código o datos no se interpretan como permisos sobre las imágenes. Las solicitudes solo contienen rutas de imágenes, sin datos de partidas ni nombres de archivos locales. Si una imagen falla se utiliza un pictograma local.
+
 ## Código y marca HyruleSync
 
 El ejecutable Windows, servidor local, interfaz, seguimiento, scripts e icono de brújula con confirmación son la implementación de HyruleSync. El formato del guardado y los criterios de completado se implementaron tomando como referencia el comportamiento de TotK Unexplored. La licencia MIT de esta raíz cubre el código nuevo de HyruleSync; no vuelve a licenciar recursos externos.
@@ -38,9 +44,23 @@ TotK Unexplored reconoce también estas referencias para sus datos, nombres y ru
 
 La aplicación permite consultar estos avisos y los textos originales de las licencias desde «Acerca de, licencias y créditos».
 
+## Catálogo de HyruleWorld
+
+El registro de personajes se lee de `CharaDirectory_IsInstantTipsDisplayed.<actor>` y `CharaDirectory_IsNew.<actor>`, según los hashes fijados de Savegame Editors. Cualquier marca positiva confirma el descubrimiento; ambas presentes en cero indican que falta. Los campos ausentes o no reconocidos quedan sin verificar. Así, quitar la insignia de nuevo no pierde un perfil ya registrado. `assets/character-profiles.json` documenta los actores y fuentes de retratos, generados en el catálogo compartido. Se comprobaron las 23 URL de retratos PNG el 2 de noviembre de 2026: arte de perfiles de Zelda Dungeon y el retrato de Dorphan del CDN de Zelda Wiki. Las imágenes de Nintendo se solicitan externamente, no se incluyen en repositorio ni ZIP y tienen iniciales de respaldo. Las solicitudes no envían partidas ni rutas locales.
+
+Los 509 números y zonas habituales de `web/public/world-data.json` usan datos de [Hyrule Compendium API](https://github.com/gadhagod/Hyrule-Compendium-API), Copyright 2020 Aarav Borthakur, MIT; licencia original en `licenses/HyruleCompendium.txt`. El catálogo registra el SHA-256 de la respuesta de origen. Los nombres y lugares en inglés/español proceden de campos seleccionados de [totk-resources](https://github.com/zoalasaurusrawr/totk-resources), revisión `2bc9ea5e0c2eb2e24fcaaff3f7162660559eb082`, y de la tabla del inventario. No se incluyen descripciones, textos de guía ni diálogos del juego. Los hashes y enums se basan en la investigación MIT de Marc Robledo, en la revisión del importador de misiones. `scripts/import-world.cjs` valida las 509 entradas, incluidas las armas deterioradas y sin deteriorar.
+
+Las ilustraciones de referencia se solicitan a GitHub, revisión `7d5c566dd1563ef6087335cc4ca0ec47e79bb392` de Hyrule Compendium API. Están excluidas del repositorio y del ZIP. La licencia MIT de la API no concede derechos sobre ilustraciones de Nintendo. Si no hay conexión, se muestran pictogramas locales. Las solicitudes no incluyen partidas ni rutas locales.
+
+Las notas de los 22 personajes son resúmenes originales. Se comprobaron los nombres y miembros contra `ActorMsg/CharaDirectory`, [Thonky](https://www.thonky.com/zelda-tears-of-the-kingdom/character-profiles) y [Zelda Wiki](https://zelda.fandom.com/wiki/Character_Profiles). Los lugares pueden cambiar con la historia. Las guías abren Zelda Dungeon y todos los perfiles se pueden consultar desde el principio. El álbum refleja registros de la enciclopedia, incluidas imágenes compradas; no extrae fotos personales de `progress.sav`.
+
 ## Datos y referencias del inventario
 
 Los campos de las bolsas, unidades de atributos, traducciones de objetos y metadatos de mejora de armaduras proceden de Savegame Editors de Marc Robledo, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`. Se incluyen datos seleccionados en `web/public/inventory-data.json`, sin ilustraciones de objetos. MIT, Copyright (c) 2017-2023 Marc Robledo; licencia original en `licenses/SavegameEditors.txt`. Investigación y nombres: Echocolat, Exincracci, HylianLZ, Karlos007 y ApacheThunder; nombres traducidos compilados por tingod. La lectura del inventario es una implementación propia de solo lectura. Archivos de referencia y detalles en `THIRD_PARTY.md`.
+
+## Descubrimiento de santuarios y cofres
+
+`assets/shrines.json` contiene hashes seleccionados de las visitas a 152 santuarios y sus 166 cofres. Los hashes de visita e `IsTreasureBoxOpen` proceden de `zelda-totk.hashes.csv` de Marc Robledo, revisión `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d` (MIT; aviso original en `licenses/SavegameEditors.txt`). La asociación de cofres y santuarios procede de [ZeldaMods radar](https://radar-totk.zeldamods.org/), con la consulta SmallDungeon de cofres que usa [Object Map](https://github.com/zeldamods/objmap-totk/blob/main/src/components/AppMapDetailsDungeon.ts). Solo se incluyen identificadores y hashes seleccionados, sin coordenadas de objetos, textos ni ilustraciones. El archivo registra las URLs y los SHA-256 de las respuestas; se regenera con `scripts/import-shrines.cjs`. El lector, los estados y la insignia de cofre son código propio de HyruleSync.
 
 ## Datos adicionales de atalayas
 
@@ -48,6 +68,8 @@ Las coordenadas y hashes de visita y activación de las 15 atalayas proceden de 
 
 
 ## Catálogo de misiones y enums del guardado
+
+Los títulos de misiones en español y nombres seleccionados de personajes de `assets/quest-locales.es.json` se contrastaron con los índices españoles del diario y personajes de Kiranico el 2 de noviembre de 2026: https://zelda.kiranico.com/es/totk/data/quests y https://zelda.kiranico.com/es/totk/data/non_player_characters. Los lugares asociados y alias restantes se contrastaron con la lista española de misiones secundarias de https://www.latecnosfera.com/2023/05/lista-misiones-secundarias-zelda-totk.html y las tablas de lugares de Zelda Wiki en https://zeldawiki.wiki/wiki/Tears_of_the_Kingdom_Translations/Locations (incluidas sus páginas de superficie, cielo y subsuelo). El archivo local registra las URLs concretas y la fecha de consulta. Solo se conservan nombres seleccionados, sin descripciones de misiones, diálogos, textos de guías ni imágenes. `scripts/import-quests.cjs` combina esta tabla local con el catálogo de revisión fija; la aplicación no necesita servicios de traducción ni descargas adicionales para traducir. Los enlaces de las guías mantienen los nombres originales en inglés.
 
 Los metadatos fácticos y coordenadas de referencia seleccionados de `web/public/quest-data.json` proceden de la planilla TotK Data Collection publicada en JSON por Ignacio9172 (`spreadsheet_totk_json`, commit `f20920ea28c0fa9aa9357ebf640c222c7de64a31`): https://github.com/Ignacio9172/spreadsheet_totk_json. Solo se conservan IDs, nombres, clasificación, personaje/lugar y coordenadas; se excluyen descripciones, textos del diario y diálogos. Los hashes y enums conocidos de los 253 campos `Step_*` proceden de `zelda-totk.hashes.csv` de Marc Robledo, commit `b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d`: https://github.com/marcrobledo/savegame-editors (MIT; licencia original en `licenses/SavegameEditors.txt`). El lector y los marcadores son código original de HyruleSync.
 

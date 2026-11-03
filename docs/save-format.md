@@ -10,7 +10,7 @@ Esta versión conserva datos y reglas del repositorio proporcionado y sustituye 
 | `SavefileIO.cpp`: raíces | Valor `404286466` (`Open`) |
 | Resto de objetos con hash | Valor distinto de cero |
 | Voluntades de sabios y carteles | GUID UInt64 presente; se compara en C#, sin redondeo JavaScript |
-| Selección de slot | Mayor `Playtime`, hash `0xe573f564`; fecha como desempate |
+| Selección de slot | Fecha de modificación UTC más reciente entre guardados válidos; `Playtime`, hash `0xe573f564`, solo como desempate |
 | Posición de Link | `PlayerStatus.SavePos`, hash `0xc884818d`: su valor es un puntero a tres float32 little-endian x, y, z |
 | `MapObject.cpp`: capas | Subsuelo y ≤ −50; superficie −50 ≤ y ≤ 750; cielo y ≥ 750 |
 | `ObjectInfo.cpp`: coordenadas | x, −z, y−105, truncadas y rellenadas a cuatro dígitos |
@@ -31,9 +31,17 @@ La verificación independiente compara todos los objetos con las condiciones del
 
 Las 15 atalayas de `assets/towers.json` se agregan al final del catálogo sin modificar los 2.399 registros originales ni sus índices. `IsActivateCannon.TowerXX` determina completado (booleano distinto de cero); `IsVisitLocation.TowerXX` se consulta por separado. Hash ausente significa sin verificar. Los datos proceden de los archivos de coordenadas y completismo de Savegame Editors de Marc Robledo; licencia y procedencia en los avisos de terceros.
 
+Santuarios y atalayas muestran «Descubierto» en amarillo cuando `IsVisitLocation.<internalName>` es positivo y no consta completado. `Snapshot.states` conserva su contrato de completado (−1/0/1), `visited` añade la visita de los santuarios y los contadores solo suman completados. El filtro «Pendientes» conserva los descubiertos sin completar; «Descubiertos» permite aislarlos. Completar tiene prioridad sobre la visita.
+
+`assets/shrines.json` asocia los 152 santuarios con sus hashes de visita y los 166 hashes `IsTreasureBoxOpen.<HashId>` de sus cofres. Los HashId se convierten con BigInt durante la importación y nunca pasan por Number. `Snapshot.shrineChests` mantiene los índices del catálogo: cada santuario contiene `{opened, total, unknown}`; las demás categorías contienen null. Todos los cofres exige `total > 0`, `opened == total` y `unknown == 0`; completar el santuario no implica obtener sus cofres. Hashes ausentes permanecen sin verificar. El detalle y la ayuda del marcador muestran el recuento, y la insignia de cofre aparece al obtenerlos todos. El filtro de cofres pendientes incluye santuarios completados con cofres sin abrir y excluye estados sin verificar. `scripts/import-shrines.cjs` registra las URLs y SHA-256 de los datos de ZeldaMods radar y del CSV de hashes de Marc Robledo; admite una carpeta de referencias locales como argumento para regenerar sin red.
+
 `GET api/saves` devuelve los slots observados, su estado/error y el último resumen válido. `POST api/inspect-file` recibe una ruta UTF-8 y verifica que tamaño y fecha no cambien durante la lectura. `POST api/inspect-upload` recibe el binario. Ambas respuestas incluyen `snapshot` y `summary` y no modifican configuración, caché ni origen. La vista temporal se conserva en memoria del navegador mientras el polling actualiza `liveSnapshot`. No se escribe en los archivos de partida.
 
 ## Inventario
+
+`Snapshot.collections` añade 100 registros `{id, state, raw}` definidos en `collection-data.json`: 18 recuerdos, 58 telas (incluida la inicial y las cinco telas de sabios 1.4), 11 objetos coleccionables de caballo, siete recompensas y seis medallas. `IsGetAdventureMemory.<demo>` comprueba recuerdos; `IsGet.<actor>` comprueba adquisición. Solo 0 y 1 son booleanos reconocidos; campos ausentes y valores ajenos quedan como `unknown`. Los IDs `reward:` permiten representar una recompensa también presente en otra colección sin colisiones. La presencia positiva de un objeto o variante mejorada en la bolsa también confirma posesión. Se prueban los tres formatos admitidos y que los bytes permanezcan intactos.
+
+Las armaduras se normalizan en 135 piezas obtenibles con variantes de mejora y la capucha bajada como alias. Se usa la copia de mayor nivel, sin sumar duplicados. El plan agrega las mejoras desde el nivel actual hasta el objetivo y resta el inventario una vez del total; una bolsa de materiales o cantidad ausente conserva un déficit desconocido. Los jefes reutilizan los índices/estados del catálogo del mapa. Solo se ofrece una medalla para reclamar cuando se confirma el conjunto completo de jefes y que su adquisición sigue pendiente.
 
 Cada instantánea incluye `inventory`, tanto en el seguimiento como en la consulta de archivos. Se leen nueve bolsas: armas, arcos, escudos, armaduras, flechas, materiales, comida, dispositivos zonnan y objetos importantes. Los hashes de las variables se calculan con MurmurHash3 x86_32 (semilla 0). `Pouch.<tipo>.Content.Name` apunta a un array con longitud UInt32 y entradas ASCII String64; los arrays paralelos contienen cantidades Int32, durabilidad, fusiones, modificadores, tintes y detalles de comida. Los ingredientes se agrupan de cinco en cinco. `ValidNum[0]` indica capacidad desbloqueada cuando existe; `EquipIndex` identifica casillas equipadas cuando está disponible. Los huecos no ocultan objetos posteriores. Una cantidad −1 se conserva como objeto único.
 
@@ -41,6 +49,10 @@ Cada instantánea incluye `inventory`, tanto en el seguimiento como en la consul
 
 Los nombres localizados, estrellas de mejora y nombres de enums proceden del editor de Marc Robledo; el ID original siempre se conserva y se muestra como alternativa si no hay traducción. No se infiere daño, defensa ni durabilidad máxima del equipo a partir de su nombre. Referencia fijada y créditos en `THIRD_PARTY.md`. La pestaña usa la misma instantánea que el mapa, incluidos los guardados consultados temporalmente, y no escribe en el save.
 
+
+## Perfiles de personajes
+
+`Snapshot.characterProfiles` contiene los 22 registros `{id, state, notificationRaw, newRaw}`. Se leen los Bool escalares `CharaDirectory_IsInstantTipsDisplayed.<actor>` y `CharaDirectory_IsNew.<actor>` mediante hashes MurmurHash3. Un valor `1` en cualquiera confirma `discovered`; ambos valores presentes en `0` producen `missing`. Si faltan campos o contienen valores no reconocidos y no hay evidencia positiva, el estado es `unknown`. La notificación de registro permanece cuando se quita la insignia de nuevo: no se usa únicamente el estado de lectura, ni se infiere descubrimiento de misiones u objetos. El catálogo compartido `world-data.json` vincula los 22 IDs con actores, hashes y fuentes de retratos. Las pruebas cubren las tres familias de formato y comprueban que la lectura no modifica bytes. Los perfiles siguen la misma instantánea activa/inspeccionada que el mapa y el álbum.
 
 ## Misiones
 

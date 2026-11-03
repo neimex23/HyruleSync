@@ -1,0 +1,27 @@
+{
+  "checked": "2026-11-02",
+  "characters": [
+    { "id": "zelda", "actor": "Dm_Npc_Zelda_Search_Improve", "art": ["Zelda"] },
+    { "id": "purah", "actor": "Npc_AncientDoctor", "art": ["Purah"] },
+    { "id": "robbie", "actor": "Npc_AncientDoctor_Hateno", "art": ["Robbie"] },
+    { "id": "josha", "actor": "Npc_BaseCamp_Assistant", "art": ["Josha"] },
+    { "id": "rauru", "actor": "Dm_Npc_Raul", "art": ["Rauru"] },
+    { "id": "tulin", "actor": "Npc_HighMountain001", "art": ["Tulin Sage"] },
+    { "id": "teba", "actor": "Npc_ValleyVillage010", "art": ["Teba"] },
+    { "id": "yunobo", "actor": "Npc_Goron020", "art": ["Yunobo Sage"] },
+    { "id": "sidon", "actor": "Npc_ZoraB001", "art": ["Sidon Sage"] },
+    { "id": "yona", "actor": "Npc_ZoraFencer", "art": ["Yona"] },
+    { "id": "dorephan", "actor": "Npc_Zora003", "art": [], "images": [{ "url": "https://cdn.wikimg.net/en/zeldawiki/images/6/69/TotK_Dorephan_Artwork.png", "page": "https://zeldawiki.wiki/wiki/File:TotK_Dorephan_Artwork.png" }] },
+    { "id": "riju", "actor": "Npc_oasis003", "art": ["Riju Sage"] },
+    { "id": "buliara", "actor": "Npc_oasis007", "art": ["Buliara"] },
+    { "id": "paya", "actor": "Npc_Kakariko002", "art": ["Paya"] },
+    { "id": "tauro", "actor": "Npc_AncientAssistant003_K1", "art": ["Tauro"] },
+    { "id": "impa", "actor": "Npc_Wanderer", "art": ["Impa"] },
+    { "id": "hestu", "actor": "Npc_OldKorok", "art": ["Hestu"] },
+    { "id": "deku", "actor": "TwnObj_Village_Korok_DekuTree_A_01", "art": ["Great Deku Tree"] },
+    { "id": "hudson", "actor": "Npc_HatenoVillage031", "art": ["Hudson", "Rhondson"] },
+    { "id": "mineru", "actor": "Dm_Npc_Raumi", "art": ["Mineru"] },
+    { "id": "kohga", "actor": "Enemy_Assassin_Senior", "art": ["Master Kohga"] },
+    { "id": "ganondorf", "actor": "Enemy_Ganondorf", "art": ["Ganondorf"] }
+  ]
+}

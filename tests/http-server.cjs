@@ -17,9 +17,11 @@ let child, exited, url, origin;
 
 async function start() {
     fs.copyFileSync(path.join(app, 'HyruleSync.exe'), path.join(work, 'HyruleSync.exe'));
-    fs.mkdirSync(path.join(work, '.state'));
-    fs.writeFileSync(path.join(work, '.state/settings.json'), JSON.stringify({ runInBackground: true }));
+    fs.mkdirSync(path.join(work, '.state'), { recursive: true });
+    if (!fs.existsSync(path.join(work, '.state/settings.json')))
+        fs.writeFileSync(path.join(work, '.state/settings.json'), JSON.stringify({ runInBackground: true }));
     const urlFile = path.join(work, 'url.txt');
+    if (fs.existsSync(urlFile)) fs.unlinkSync(urlFile);
     child = cp.spawn(path.join(work, 'HyruleSync.exe'),
         ['--no-browser', '--language', 'en', '--url-file', urlFile], { windowsHide: true });
     let startError;
@@ -48,7 +50,7 @@ function request(target, { method = 'GET', headers = {}, body = '' } = {}) {
             }));
         });
         req.setTimeout(5000, () => req.destroy(Error('HTTP request timed out')));
-        req.once('error', reject);
+        req.once('error', error => reject(new Error(method + ' ' + target + ': ' + error.message)));
         req.end(body);
     });
 }
@@ -108,6 +110,17 @@ function malformedPost(length, body = '') {
         assert.equal(missingFolder.reason, 'Bad Request');
 
         const page = await request('');
+        // Check the compiled server's policy against the actual portrait catalog.
+        // Serving the React app without these headers hides image-blocking regressions.
+        const imageSources = page.headers['content-security-policy'].split(';')
+            .map(directive => directive.trim().split(/\s+/)).find(parts => parts[0] === 'img-src').slice(1);
+        assert.deepEqual(new Set(imageSources), new Set([
+            "'self'", 'data:', 'https://raw.githubusercontent.com',
+            'https://www.zeldadungeon.net', 'https://cdn.wikimg.net'
+        ]), 'Images use explicit permitted hosts');
+        const world = json(await request('world-data.json'));
+        for (const image of world.characters.flatMap(character => character.images))
+            assert.ok(imageSources.includes(new URL(image.url).origin), 'Server permits portrait ' + image.url);
         const html = page.body.toString('utf8');
         assert.match(html, /<script[^>]+type="module"[^>]+src="\.\/app\.js"/);
         assert.doesNotMatch(html, /src\/main\.jsx/, 'The executable serves the compiled interface');
@@ -191,6 +204,25 @@ function malformedPost(length, body = '') {
         for (const value of ['0', '100', ' 35 ']) assert.equal(json(await post('link-opacity', value)).ok, true);
         for (const value of ['-1', '101', 'NaN', '0.5', '']) assert.equal(json(await post('link-opacity', value), 400).ok, false);
         assert.equal(json(await request('api/state')).linkOpacity, 35);
+        const armorPlan = { target: 3, selected: ['Armor_001_Head', 'Armor_001_Upper'] };
+        assert.deepEqual(json(await request('api/config')).armorPlan, { target: 4, selected: [] });
+        assert.equal((await request('api/armor-plan', { method: 'POST', headers: { Origin: 'https://example.invalid' } })).status, 403);
+        assert.equal(json(await post('armor-plan', JSON.stringify(armorPlan))).ok, true);
+        assert.deepEqual(json(await request('api/config')).armorPlan, armorPlan);
+        const settingsFile = path.join(work, '.state/settings.json');
+        assert.deepEqual(JSON.parse(fs.readFileSync(settingsFile, 'utf8').replace(/^\uFEFF/, '')).armorPlan, armorPlan);
+        for (const invalid of [null, { target: 0, selected: [] }, { target: 5, selected: [] }, { target: 2, selected: null }, { target: 2, selected: ['missing'] }, { target: 2, selected: ['Armor_001_Head', 'Armor_001_Head'] }])
+            assert.equal(json(await post('armor-plan', JSON.stringify(invalid)), 400).ok, false);
+        assert.deepEqual(json(await request('api/config')).armorPlan, armorPlan, 'Invalid plans leave the saved plan intact');
+        fs.renameSync(settingsFile, settingsFile + '.backup');
+        fs.mkdirSync(settingsFile);
+        try {
+            assert.equal(json(await post('armor-plan', JSON.stringify({ target: 1, selected: [] })), 400).ok, false);
+            assert.deepEqual(json(await request('api/config')).armorPlan, armorPlan, 'Failed disk writes roll back the in-memory plan');
+        } finally {
+            fs.rmdirSync(settingsFile);
+            fs.renameSync(settingsFile + '.backup', settingsFile);
+        }
         assert.equal(json(await post('page-close', 'a'.repeat(32))).ok, true);
         for (const id of ['a'.repeat(31), 'A'.repeat(32), ' ' + 'a'.repeat(32)])
             assert.equal(json(await post('page-close', id), 400).ok, false);
@@ -204,7 +236,11 @@ function malformedPost(length, body = '') {
             assert.equal(await malformedPost(length, length === '3' ? '1' : ''), '');
             assert.equal(json(await request('api/state')).linkOpacity, 35, 'Malformed request leaves the listener and state intact');
         }
-        console.log('HTTP routes, assets, settings, authorization, setup requirements and malformed requests passed.');
+        child.kill();
+        await exited;
+        await start();
+        assert.deepEqual(json(await request('api/config')).armorPlan, armorPlan, 'Armor plans survive a fresh app session and port');
+        console.log('HTTP routes, assets, settings, armor plan restart persistence, authorization, setup requirements and malformed requests passed.');
     } finally {
         if (child && child.exitCode === null && child.pid) {
             child.kill();

@@ -6,6 +6,8 @@ import { ViewTabs } from "./ViewTabs.jsx";
 import { I18N } from "../../shared/i18n.js";
 import { InventoryPanel } from "../../features/inventory/InventoryPanel.jsx";
 import { QuestsPanel } from "../../features/quests/QuestsPanel.jsx";
+import { WorldPanel } from "../../features/world/WorldPanel.jsx";
+import { SummaryPanel } from "../../features/summary/SummaryPanel.jsx";
 
 const t = (key, values) => I18N.t(key, values);
 
@@ -31,6 +33,8 @@ export function Workspace({ store }) {
       <InventoryPanel store={store} />
 
       <QuestsPanel store={store} />
+      <WorldPanel store={store} />
+      <SummaryPanel store={store} />
 
       <div id="toast" role="status" hidden></div>
     </main>

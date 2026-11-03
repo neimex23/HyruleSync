@@ -16,6 +16,7 @@ public class Category { public string id, name, icon; public int count; }
 
 public class MapPoint {
     public string id, category, name, internalName, korokType, hash, guid, visitHash, origin;
+    public string[] chestHashes;
     public Position position;
     public Route path;
 }
@@ -25,17 +26,25 @@ public class Tower {
     public Position position;
 }
 
+public class Shrine { public string id, visitHash; public string[] chestHashes; }
+public class ShrineCatalog { public Shrine[] shrines; }
+public class ChestProgress { public int opened, total, unknown; }
+
 public class PlayerContext {
     public string kind, mapId, shrineId, shrineName;
     public Position mapPosition;
 }
 
 public class Snapshot {
+    public CollectionProgress[] collections;
+    public CharacterProgress[] characterProfiles;
+    public CompendiumEntry[] compendium;
     public QuestProgress[] quests;
     public Inventory inventory;
     public string revision, file, savedAt, format;
     public uint playtime;
     public int[] states, visited;
+    public ChestProgress[] shrineChests;
     public string[] values;
     public int tableEnd, guidStart;
     public Position playerPosition;
@@ -59,6 +68,7 @@ public class Cached {
 }
 
 public class Settings {
+    public ArmorPlan armorPlan = new ArmorPlan();
     // Version 2 made HD the default map quality. Configs written before it
     // keep their implicit standard value until Upgrade() runs once.
     public int version;
@@ -70,4 +80,9 @@ public class Settings {
         version = 2; mapQuality = "high";
         return true;
     }
+}
+
+public class ArmorPlan {
+    public int target = 4;
+    public string[] selected = new string[0];
 }

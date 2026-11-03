@@ -3,13 +3,31 @@
   "commit": "f20920ea28c0fa9aa9357ebf640c222c7de64a31",
   "hashSource": "marcrobledo/savegame-editors",
   "hashCommit": "b4db8cd11157c6d5ae54a0a5edc88dba82aebe9d",
+  "localization": {
+    "language": "es",
+    "sources": [
+      "https://zelda.kiranico.com/es/totk/data/quests",
+      "https://zelda.kiranico.com/es/totk/data/non_player_characters",
+      "https://zelda.kiranico.com/es/totk/data/quests/Goron_MiniGame_Tutorial_01",
+      "https://zelda.kiranico.com/es/totk/data/quests/Goron_MiniGame_Tutorial_02",
+      "https://www.latecnosfera.com/2023/05/lista-misiones-secundarias-zelda-totk.html",
+      "https://zeldawiki.wiki/wiki/Tears_of_the_Kingdom_Translations/Locations",
+      "https://zeldawiki.wiki/wiki/Tears_of_the_Kingdom_Translations/Locations/Surface_(Akkala-Faron)",
+      "https://zeldawiki.wiki/wiki/Tears_of_the_Kingdom_Translations/Locations/Surface_(Gerudo-Necluda)",
+      "https://zeldawiki.wiki/wiki/Tears_of_the_Kingdom_Translations/Locations/Sky_and_Depths"
+    ],
+    "checked": "2026-11-02"
+  },
   "quests": [
     {
       "id": "DefeatGanondorf",
       "name": "Destroy Ganondorf",
+      "nameEs": "Derrota a Ganondorf",
       "type": "main",
       "giver": "Purah",
+      "giverEs": "Prunia",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -33,9 +51,12 @@
     {
       "id": "MainChallenge",
       "name": "Find Princess Zelda",
+      "nameEs": "En busca de Zelda",
       "type": "main",
       "giver": "Steward Construct",
+      "giverEs": "Gólem ayudante",
       "location": "Great Sky Island",
+      "locationEs": "Gran isla de los albores",
       "position": {
         "x": 394.477,
         "y": 1937.4567,
@@ -65,9 +86,12 @@
     {
       "id": "LookingForLightSpot",
       "name": "The Closed Door",
+      "nameEs": "La puerta cerrada",
       "type": "main",
       "giver": "Rauru",
+      "giverEs": "Rauru",
       "location": "Great Sky Island",
+      "locationEs": "Gran isla de los albores",
       "position": {
         "x": 394.477,
         "y": 1937.4567,
@@ -87,9 +111,12 @@
     {
       "id": "GOToTheCastleOfHyrule",
       "name": "To the Kingdom of Hyrule",
+      "nameEs": "¡Al reino de Hyrule!",
       "type": "main",
       "giver": "Zelda's Voice",
+      "giverEs": "Voz de Zelda",
       "location": "Temple of Time",
+      "locationEs": "Templo del Tiempo",
       "position": {
         "x": 453.45944,
         "y": 1661.5502,
@@ -108,9 +135,12 @@
     {
       "id": "SurveyOfFourVillages",
       "name": "Regional Phenomena",
+      "nameEs": "Investiga los extraños sucesos",
       "type": "main",
       "giver": "Purah",
+      "giverEs": "Prunia",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -138,9 +168,12 @@
     {
       "id": "ClueTotheSixthSage",
       "name": "Find the Fifth Sage",
+      "nameEs": "Los cinco sabios",
       "type": "main",
       "giver": "Purah",
+      "giverEs": "Prunia",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -162,9 +195,12 @@
     {
       "id": "HyruleCastleIncident",
       "name": "Crisis at Hyrule Castle",
+      "nameEs": "Los sucesos en el castillo de Hyrule",
       "type": "main",
       "giver": "Purah",
+      "giverEs": "Prunia",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -198,9 +234,12 @@
     {
       "id": "MasterSwordClues",
       "name": "Trail of the Master Sword",
+      "nameEs": "El rastro de la Espada Maestra",
       "type": "main",
       "giver": "Mineru",
+      "giverEs": "Mineru",
       "location": "Spirit Temple",
+      "locationEs": "Templo del Espíritu",
       "position": null,
       "locationKind": "area",
       "hash": 52456082,
@@ -216,9 +255,12 @@
     {
       "id": "GetMasterSword",
       "name": "Recovering the Hero's Sword",
+      "nameEs": "La espada desaparecida",
       "type": "main",
       "giver": "Deku Tree",
+      "giverEs": "Gran Árbol Deku",
       "location": "Korok Forest",
+      "locationEs": "Bosque Kolog",
       "position": {
         "x": 419,
         "y": 0,
@@ -237,9 +279,12 @@
     {
       "id": "SageOfWind",
       "name": "Tulin of Rito Village",
+      "nameEs": "Tureli, en el poblado orni",
       "type": "main",
       "giver": "Teba",
+      "giverEs": "Teba",
       "location": "Rito Village",
+      "locationEs": "Poblado orni",
       "position": {
         "x": -3620.765,
         "y": 208.672,
@@ -271,9 +316,12 @@
     {
       "id": "SageOfFire",
       "name": "Yunobo of Goron City",
+      "nameEs": "Yunobo, en Ciudad Goron",
       "type": "main",
       "giver": "Yunobo",
+      "giverEs": "Yunobo",
       "location": "Goron City",
+      "locationEs": "Ciudad Goron",
       "position": {
         "x": 1657.252,
         "y": 445.63025,
@@ -302,9 +350,12 @@
     {
       "id": "CleanStatue",
       "name": "The Sludge-Covered Statue",
+      "nameEs": "La estatua cubierta de fango",
       "type": "main",
       "giver": "Yona",
+      "giverEs": "Yona",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -323,9 +374,12 @@
     {
       "id": "DividedSlate",
       "name": "The Broken Slate",
+      "nameEs": "El monumento destruido",
       "type": "main",
       "giver": "Jiahto",
+      "giverEs": "Jaht",
       "location": "Toto Lake",
+      "locationEs": "Lago Toto",
       "position": {
         "x": 3478.03,
         "y": 515.1305,
@@ -344,9 +398,12 @@
     {
       "id": "RepairArmor",
       "name": "Restoring the Zora Armor",
+      "nameEs": "Reparando la armadura zora",
       "type": "main",
       "giver": "Yona",
+      "giverEs": "Yona",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -365,9 +422,12 @@
     {
       "id": "WaterBridgePlace",
       "name": "Clues to the Sky",
+      "nameEs": "Pistas hacia el cielo",
       "type": "main",
       "giver": "Jiahto",
+      "giverEs": "Jaht",
       "location": "Toto Lake",
+      "locationEs": "Lago Toto",
       "position": {
         "x": 3478.03,
         "y": 515.1305,
@@ -388,9 +448,12 @@
     {
       "id": "SageOfZora",
       "name": "Sidon of the Zora",
+      "nameEs": "Sidon, en la región de los zora",
       "type": "main",
       "giver": "Yona",
+      "giverEs": "Yona",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -426,9 +489,12 @@
     {
       "id": "SageOfGerudo",
       "name": "Riju of Gerudo Town",
+      "nameEs": "Riju, en la Ciudadela Gerudo",
       "type": "main",
       "giver": "Riju",
+      "giverEs": "Riju",
       "location": "Gerudo Town",
+      "locationEs": "Ciudadela Gerudo",
       "position": {
         "x": -3844.5,
         "y": 149.16890999999998,
@@ -459,9 +525,12 @@
     {
       "id": "GotoFironeZonauRemains",
       "name": "Secret of the Ring Ruins",
+      "nameEs": "El secreto de las ruinas anulares",
       "type": "main",
       "giver": "Tauro",
+      "giverEs": "Tauro",
       "location": "Kakariko Village",
+      "locationEs": "Aldea Kakariko",
       "position": {
         "x": 1817.4299,
         "y": 224.45522,
@@ -487,9 +556,12 @@
     {
       "id": "SageOfSoul",
       "name": "Guidance from Ages Past",
+      "nameEs": "Consejo de tiempos pretéritos",
       "type": "main",
       "giver": "Zonai Relic",
+      "giverEs": "Reliquia zonnan",
       "location": "Dragonhead Island",
+      "locationEs": "Isla Cabeza de Dragón",
       "position": {
         "x": 1460,
         "y": 2000,
@@ -517,9 +589,12 @@
     {
       "id": "GetCamera",
       "name": "Camera Work in the Depths",
+      "nameEs": "Los habitantes del subsuelo",
       "type": "main",
       "giver": "Josha",
+      "giverEs": "Josha",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -540,9 +615,12 @@
     {
       "id": "DeepHoleSurvey2",
       "name": "A Mystery in the Depths",
+      "nameEs": "El templo del subsuelo",
       "type": "main",
       "giver": "Josha",
+      "giverEs": "Josha",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -564,9 +642,12 @@
     {
       "id": "GroundPaintingAir01",
       "name": "Impa and the Geoglyphs",
+      "nameEs": "Impa y el geoglifo",
       "type": "main",
       "giver": "Cado",
+      "giverEs": "Wakat",
       "location": "New Serenne Stable",
+      "locationEs": "Nueva posta de Idilia",
       "position": {
         "x": -1361,
         "y": 191.5,
@@ -588,9 +669,12 @@
     {
       "id": "MemoryOfTheDragon",
       "name": "The Dragon's Tears",
+      "nameEs": "Las lágrimas de dragón",
       "type": "main",
       "giver": "Impa",
+      "giverEs": "Impa",
       "location": "New Serenne Stable",
+      "locationEs": "Nueva posta de Idilia",
       "position": {
         "x": -1361,
         "y": 191.5,
@@ -612,9 +696,12 @@
     {
       "id": "FindWithSensors",
       "name": "Hateno Village Research Lab",
+      "nameEs": "El laboratorio de Hatelia",
       "type": "adventure",
       "giver": "Robbie",
+      "giverEs": "Rotver",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -636,9 +723,12 @@
     {
       "id": "HatenoPurchasePicture",
       "name": "Filling Out the Compendium",
+      "nameEs": "Tu propia enciclopedia hyliana",
       "type": "adventure",
       "giver": "Robbie",
+      "giverEs": "Rotver",
       "location": "Hateno Ancient Tech Lab",
+      "locationEs": "Laboratorio de Hatelia",
       "position": {
         "x": 3777.70971679687,
         "y": 335.311096191406,
@@ -657,9 +747,12 @@
     {
       "id": "GetWarpMarker",
       "name": "Presenting: The Travel Medallion!",
+      "nameEs": "El teletransportador",
       "type": "adventure",
       "giver": "Robbie",
+      "giverEs": "Rotver",
       "location": "Hateno Ancient Tech Lab",
+      "locationEs": "Laboratorio de Hatelia",
       "position": {
         "x": 3777.70971679687,
         "y": 335.311096191406,
@@ -682,9 +775,12 @@
     {
       "id": "GetWalker",
       "name": "Presenting: Hero's Path Mode!",
+      "nameEs": "La Senda del héroe",
       "type": "adventure",
       "giver": "Robbie",
+      "giverEs": "Rotver",
       "location": "Hateno Ancient Tech Lab",
+      "locationEs": "Laboratorio de Hatelia",
       "position": {
         "x": 3777.70971679687,
         "y": 335.311096191406,
@@ -703,9 +799,12 @@
     {
       "id": "GetSensorPlus",
       "name": "Presenting: Sensor +!",
+      "nameEs": "El sensor enciclopédico",
       "type": "adventure",
       "giver": "Robbie",
+      "giverEs": "Rotver",
       "location": "Hateno Ancient Tech Lab",
+      "locationEs": "Laboratorio de Hatelia",
       "position": {
         "x": 3777.70971679687,
         "y": 335.311096191406,
@@ -724,9 +823,12 @@
     {
       "id": "IchikaraChallenge01",
       "name": "Mattison's Independence",
+      "nameEs": "Kariele se independiza",
       "type": "adventure",
       "giver": "Hudson",
+      "giverEs": "Karid",
       "location": "Tarrey Town",
+      "locationEs": "Aldea Arkadia",
       "position": {
         "x": 3965.6387,
         "y": 233.23712,
@@ -752,9 +854,12 @@
     {
       "id": "Hateno_Cheese",
       "name": "A Letter to Koyin",
+      "nameEs": "La carta de Orenne",
       "type": "adventure",
       "giver": "Koyin",
+      "giverEs": "Orenne",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -774,9 +879,12 @@
     {
       "id": "Hateno_RevitalizeByNewSpeciality",
       "name": "A New Signature Food",
+      "nameEs": "Nueva especialidad hateliana",
       "type": "adventure",
       "giver": "Reede",
+      "giverEs": "Rendell",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -795,9 +903,12 @@
     {
       "id": "Hateno_SecretLifeOfKusayoshi",
       "name": "Reede's Secret",
+      "nameEs": "El secreto de Rendell",
       "type": "adventure",
       "giver": "Clavia",
+      "giverEs": "Clavia",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -817,9 +928,12 @@
     {
       "id": "Hateno_SecretLifeOfSagono",
       "name": "Cece's Secret",
+      "nameEs": "El secreto de Sogene",
       "type": "adventure",
       "giver": "Sophie",
+      "giverEs": "Sofora",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -839,9 +953,12 @@
     {
       "id": "Hateno_VillageMayorElection",
       "name": "Team Cece or Team Reede?",
+      "nameEs": "¿Sogene o Rendell?",
       "type": "adventure",
       "giver": "Cece",
+      "giverEs": "Sogene",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -868,9 +985,12 @@
     {
       "id": "Hateno_LetUsElection",
       "name": "The Mayoral Election",
+      "nameEs": "Las elecciones a la alcaldía",
       "type": "adventure",
       "giver": "-",
+      "giverEs": "-",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -891,9 +1011,12 @@
     {
       "id": "TauraChallenge001",
       "name": "Ruffian-Infested Village",
+      "nameEs": "Invasión pirata",
       "type": "adventure",
       "giver": "Rozel",
+      "giverEs": "Rozel",
       "location": "Lurelin Village",
+      "locationEs": "Aldea Onaona",
       "position": {
         "x": 3007.3096,
         "y": 142.49794,
@@ -913,9 +1036,12 @@
     {
       "id": "Uotori_RevivePlan",
       "name": "Lurelin Village Restoration Project",
+      "nameEs": "La reconstrucción de Onaona",
       "type": "adventure",
       "giver": "Bolson",
+      "giverEs": "Karud",
       "location": "Lurelin Village",
+      "locationEs": "Aldea Onaona",
       "position": {
         "x": 3007.3096,
         "y": 142.49794,
@@ -936,9 +1062,12 @@
     {
       "id": "NewsPaper_Mitsuba",
       "name": "Potential Princess Sightings!",
+      "nameEs": "Los rumores sobre Zelda",
       "type": "adventure",
       "giver": "Traysi",
+      "giverEs": "Mirene",
       "location": "Lucky Clover Gazette",
+      "locationEs": "Gaceta El trébol",
       "position": {
         "x": -3255.8406,
         "y": 256.60177999999996,
@@ -958,9 +1087,12 @@
     {
       "id": "Tribune07",
       "name": "The Beckoning Woman",
+      "nameEs": "La mujer sospechosa",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Outskirt Stable",
+      "locationEs": "Posta de la llanura",
       "position": {
         "x": -1449.4932,
         "y": 181.41899,
@@ -983,9 +1115,12 @@
     {
       "id": "Tribune04",
       "name": "Gourmets Gone Missing",
+      "nameEs": "Los huéspedes desaparecidos",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Riverside Stable",
+      "locationEs": "Posta del río",
       "position": {
         "x": 339.23242,
         "y": 145.3124799999999,
@@ -1004,9 +1139,12 @@
     {
       "id": "Tribune06",
       "name": "The Beast and the Princess",
+      "nameEs": "La princesa y el monstruo",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "New Serenne Stable",
+      "locationEs": "Nueva posta de Idilia",
       "position": {
         "x": -1361,
         "y": 191.5,
@@ -1026,9 +1164,12 @@
     {
       "id": "Tribune09",
       "name": "Zelda's Golden Horse",
+      "nameEs": "El fiel caballo dorado de Zelda",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Snowfield Stable",
+      "locationEs": "Posta de la estepa",
       "position": {
         "x": -1654.23,
         "y": 347.93182,
@@ -1047,9 +1188,12 @@
     {
       "id": "Tribune03",
       "name": "White Goats Gone Missing",
+      "nameEs": "El drama de las cabras huidas",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Tabantha Bridge Stable",
+      "locationEs": "Posta de Tabanta",
       "position": {
         "x": -2931.5676,
         "y": 319.16226,
@@ -1069,9 +1213,12 @@
     {
       "id": "Tribune11",
       "name": "For Our Princess!",
+      "nameEs": "Las órdenes de la princesa",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Foothill Stable",
+      "locationEs": "Posta de la montaña",
       "position": {
         "x": 2613.332,
         "y": 253.78871,
@@ -1095,9 +1242,12 @@
     {
       "id": "Tribune10",
       "name": "The All-Clucking Cucco",
+      "nameEs": "Tal y como dijo el cuco vidente",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "South Akkala Stable",
+      "locationEs": "Posta de Akkala sur",
       "position": {
         "x": 3148.6758,
         "y": 338.639799999999,
@@ -1125,9 +1275,12 @@
     {
       "id": "Tribune05",
       "name": "The Missing Farm Tools",
+      "nameEs": "Los aperos desaparecidos",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Wetland Stable",
+      "locationEs": "Posta del pantano",
       "position": {
         "x": 888.06165,
         "y": 175.9657,
@@ -1148,9 +1301,12 @@
     {
       "id": "Tribune02",
       "name": "Princess Zelda Kidnapped?!",
+      "nameEs": "El misterioso secuestro",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Dueling Peaks Stable",
+      "locationEs": "Posta de Picos Gemelos",
       "position": {
         "x": 1760.7805,
         "y": 131.2842699999999,
@@ -1171,9 +1327,12 @@
     {
       "id": "Tribune13",
       "name": "An Eerie Voice",
+      "nameEs": "La voz inquietante",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Highland Stable",
+      "locationEs": "Posta de Farone",
       "position": {
         "x": 529.6001,
         "y": 200.5581,
@@ -1195,9 +1354,12 @@
     {
       "id": "Tribune14",
       "name": "The Blocked Well",
+      "nameEs": "El pozo sellado",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Gerudo Canyon Stable",
+      "locationEs": "Posta del cañón",
       "position": {
         "x": -2803.8118,
         "y": 178.5857399999999,
@@ -1218,9 +1380,12 @@
     {
       "id": "Orchestra03",
       "name": "The Flute Player's Plan",
+      "nameEs": "El deseo del flautista",
       "type": "adventure",
       "giver": "Pyper",
+      "giverEs": "Flauryn",
       "location": "Highland Stable",
+      "locationEs": "Posta de Farone",
       "position": {
         "x": 529.6001,
         "y": 200.5581,
@@ -1242,9 +1407,12 @@
     {
       "id": "Orchestra02",
       "name": "Honey, Bee Mine",
+      "nameEs": "Dulce como la miel",
       "type": "adventure",
       "giver": "Beetz",
+      "giverEs": "Perkuss",
       "location": "West Necluda",
+      "locationEs": "Necluda occidental",
       "position": {
         "x": 1297.487,
         "y": 0,
@@ -1263,9 +1431,12 @@
     {
       "id": "Orchestra04",
       "name": "The Hornist's Dramatic Escape",
+      "nameEs": "La dramática huida del instrumentista",
       "type": "adventure",
       "giver": "Eustus",
+      "giverEs": "Trompatt",
       "location": "Tabantha Frontier",
+      "locationEs": "Confines de Tabanta",
       "position": {
         "x": -3476.1707,
         "y": 0,
@@ -1285,9 +1456,12 @@
     {
       "id": "Tribune16",
       "name": "Serenade to a Great Fairy",
+      "nameEs": "Serenata para la gran hada",
       "type": "adventure",
       "giver": "Penn",
+      "giverEs": "Penn",
       "location": "Woodland Stable",
+      "locationEs": "Posta del bosque",
       "position": {
         "x": 1062.303,
         "y": 171.95836,
@@ -1307,9 +1481,12 @@
     {
       "id": "Fairy4",
       "name": "Serenade to Kaysa",
+      "nameEs": "Serenata para Laniah",
       "type": "adventure",
       "giver": "Mastro",
+      "giverEs": "Batulio",
       "location": "Outskirt Stable",
+      "locationEs": "Posta de la llanura",
       "position": {
         "x": -1449.4932,
         "y": 181.41899,
@@ -1330,9 +1507,12 @@
     {
       "id": "Fairy3",
       "name": "Serenade to Cotera",
+      "nameEs": "Serenata para Seddha",
       "type": "adventure",
       "giver": "Mastro",
+      "giverEs": "Batulio",
       "location": "Dueling Peaks Stable",
+      "locationEs": "Posta de Picos Gemelos",
       "position": {
         "x": 1760.7805,
         "y": 131.2842699999999,
@@ -1354,9 +1534,12 @@
     {
       "id": "Fairy2",
       "name": "Serenade to Mija",
+      "nameEs": "Serenata para Muarenn",
       "type": "adventure",
       "giver": "Mastro",
+      "giverEs": "Batulio",
       "location": "Snowfield Stable",
+      "locationEs": "Posta de la estepa",
       "position": {
         "x": -1654.23,
         "y": 347.93182,
@@ -1379,9 +1562,12 @@
     {
       "id": "MercenaryChallenge_HyrulePlain",
       "name": "Bring Peace to Hyrule Field!",
+      "nameEs": "¡Devuelve la paz a la llanura!",
       "type": "adventure",
       "giver": "Hoz",
+      "giverEs": "Hozlar",
       "location": "Central Hyrule",
+      "locationEs": "Centro de Hyrule",
       "position": {
         "x": -256.19678,
         "y": 0,
@@ -1402,9 +1588,12 @@
     {
       "id": "MercenaryChallenge_Hebra",
       "name": "Bring Peace to Necluda!",
+      "nameEs": "¡Devuelve la paz a Necluda!",
       "type": "adventure",
       "giver": "Hoz",
+      "giverEs": "Hozlar",
       "location": "Central Hyrule",
+      "locationEs": "Centro de Hyrule",
       "position": {
         "x": -256.19678,
         "y": 0,
@@ -1426,9 +1615,12 @@
     {
       "id": "MercenaryChallenge_Eldin",
       "name": "Bring Peace to Eldin!",
+      "nameEs": "¡Devuelve la paz a Eldin!",
       "type": "adventure",
       "giver": "Toren",
+      "giverEs": "Toren",
       "location": "Eldin Canyon",
+      "locationEs": "Valle de Eldin",
       "position": {
         "x": 1852.762,
         "y": 0,
@@ -1449,9 +1641,12 @@
     {
       "id": "MercenaryChallenge_Akkare",
       "name": "Bring Peace to Akkala!",
+      "nameEs": "¡Devuelve la paz a Akkala!",
       "type": "adventure",
       "giver": "Toren",
+      "giverEs": "Toren",
       "location": "Eldin Canyon",
+      "locationEs": "Valle de Eldin",
       "position": {
         "x": 1852.762,
         "y": 0,
@@ -1473,9 +1668,12 @@
     {
       "id": "MercenaryChallenge_Firone",
       "name": "Bring Peace to Faron!",
+      "nameEs": "¡Devuelve la paz a Farone!",
       "type": "adventure",
       "giver": "Flaxel",
+      "giverEs": "Olim",
       "location": "Faron Grasslands",
+      "locationEs": "Pradera de Farone",
       "position": {
         "x": -423.30347,
         "y": 0,
@@ -1496,9 +1694,12 @@
     {
       "id": "MercenaryChallenge_Hateru",
       "name": "Bring Peace to Hebra!",
+      "nameEs": "¡Devuelve la paz a Hebra!",
       "type": "adventure",
       "giver": "Flaxel",
+      "giverEs": "Olim",
       "location": "Faron Grasslands",
+      "locationEs": "Pradera de Farone",
       "position": {
         "x": -423.30347,
         "y": 0,
@@ -1520,9 +1721,12 @@
     {
       "id": "OldKorokHelp",
       "name": "Hestu's Concerns",
+      "nameEs": "Las cuitas de Obab",
       "type": "adventure",
       "giver": "Hestu",
+      "giverEs": "Obab",
       "location": "-",
+      "locationEs": "-",
       "position": null,
       "locationKind": "area",
       "hash": 3143164645,
@@ -1542,9 +1746,12 @@
     {
       "id": "NushiShop_Tutorial",
       "name": "The Hunt for Bubbul Gems!",
+      "nameEs": "¡A por emblemas de fantasmo!",
       "type": "adventure",
       "giver": "Koltin",
+      "giverEs": "Koltin",
       "location": "Eldin Canyon",
+      "locationEs": "Valle de Eldin",
       "position": {
         "x": 1852.762,
         "y": 0,
@@ -1563,9 +1770,12 @@
     {
       "id": "NushiShop_Challenge00",
       "name": "The Search for Koltin",
+      "nameEs": "¿Dónde está Koltin?",
       "type": "adventure",
       "giver": "Koltin",
+      "giverEs": "Koltin",
       "location": "Eldin Canyon",
+      "locationEs": "Valle de Eldin",
       "position": {
         "x": 1852.762,
         "y": 0,
@@ -1585,9 +1795,12 @@
     {
       "id": "MonsterFigures01",
       "name": "A Monstrous Collection I",
+      "nameEs": "Mi colección de monstruos",
       "type": "adventure",
       "giver": "Kilton",
+      "giverEs": "Kilton",
       "location": "Tarrey Town",
+      "locationEs": "Aldea Arkadia",
       "position": {
         "x": 3965.6387,
         "y": 233.23712,
@@ -1609,9 +1822,12 @@
     {
       "id": "MonsterFigures02",
       "name": "A Monstrous Collection II",
+      "nameEs": "Mi colección de monstruos 2",
       "type": "adventure",
       "giver": "Kilton",
+      "giverEs": "Kilton",
       "location": "Tarrey Town",
+      "locationEs": "Aldea Arkadia",
       "position": {
         "x": 3965.6387,
         "y": 233.23712,
@@ -1633,9 +1849,12 @@
     {
       "id": "MonsterFigures03",
       "name": "A Monstrous Collection III",
+      "nameEs": "Mi colección de monstruos 3",
       "type": "adventure",
       "giver": "Kilton",
+      "giverEs": "Kilton",
       "location": "Tarrey Town",
+      "locationEs": "Aldea Arkadia",
       "position": {
         "x": 3965.6387,
         "y": 233.23712,
@@ -1657,9 +1876,12 @@
     {
       "id": "MonsterFigures04",
       "name": "A Monstrous Collection IV",
+      "nameEs": "Mi colección de monstruos 4",
       "type": "adventure",
       "giver": "Kilton",
+      "giverEs": "Kilton",
       "location": "Tarrey Town",
+      "locationEs": "Aldea Arkadia",
       "position": {
         "x": 3965.6387,
         "y": 233.23712,
@@ -1681,9 +1903,12 @@
     {
       "id": "MonsterFigures05",
       "name": "A Monstrous Collection V",
+      "nameEs": "Mi colección de monstruos 5",
       "type": "adventure",
       "giver": "Kilton",
+      "giverEs": "Kilton",
       "location": "Tarrey Town",
+      "locationEs": "Aldea Arkadia",
       "position": {
         "x": 3965.6387,
         "y": 233.23712,
@@ -1705,9 +1930,12 @@
     {
       "id": "BlindRuinsTreasure",
       "name": "Investigate the Thyphlo Ruins",
+      "nameEs": "El misterio de las ruinas de Oumbra",
       "type": "adventure",
       "giver": "Kazul",
+      "giverEs": "Razul",
       "location": "Thyphlo Ruins",
+      "locationEs": "Ruinas de Oumbra",
       "position": {
         "x": 327.00436,
         "y": 0,
@@ -1729,9 +1957,12 @@
     {
       "id": "BlindRuinsTreasure_Rito",
       "name": "The Owl Protected by Dragons",
+      "nameEs": "El búho que custodian los dragones",
       "type": "adventure",
       "giver": "Kazul",
+      "giverEs": "Razul",
       "location": "Thyphlo Ruins",
+      "locationEs": "Ruinas de Oumbra",
       "position": {
         "x": 327.00436,
         "y": 0,
@@ -1750,9 +1981,12 @@
     {
       "id": "BlindRuinsTreasure_Goron",
       "name": "The Corridor between Two Dragons",
+      "nameEs": "El corredor entre los dos dragones",
       "type": "adventure",
       "giver": "Kazul",
+      "giverEs": "Razul",
       "location": "Thyphlo Ruins",
+      "locationEs": "Ruinas de Oumbra",
       "position": {
         "x": 327.00436,
         "y": 0,
@@ -1771,9 +2005,12 @@
     {
       "id": "BlindRuinsTreasure_Zora",
       "name": "The Six Dragons",
+      "nameEs": "En presencia de los seis dragones",
       "type": "adventure",
       "giver": "Kazul",
+      "giverEs": "Razul",
       "location": "Thyphlo Ruins",
+      "locationEs": "Ruinas de Oumbra",
       "position": {
         "x": 327.00436,
         "y": 0,
@@ -1792,9 +2029,12 @@
     {
       "id": "BlindRuinsTreasure_Gerudo",
       "name": "The Long Dragon",
+      "nameEs": "El dragón de cuerpo alargado",
       "type": "adventure",
       "giver": "Kazul",
+      "giverEs": "Razul",
       "location": "Thyphlo Ruins",
+      "locationEs": "Ruinas de Oumbra",
       "position": {
         "x": 327.00436,
         "y": 0,
@@ -1813,9 +2053,12 @@
     {
       "id": "FirstskyislandReturns",
       "name": "Legend of the Great Sky Island",
+      "nameEs": "Los albores de la isla",
       "type": "adventure",
       "giver": "Steward Construct",
+      "giverEs": "Gólem ayudante",
       "location": "Great Sky Island",
+      "locationEs": "Gran isla de los albores",
       "position": {
         "x": 394.477,
         "y": 1937.4567,
@@ -1839,9 +2082,12 @@
     {
       "id": "ZonauReliefSearch",
       "name": "Messages from an Ancient Era",
+      "nameEs": "Mensajes de tiempos pretéritos",
       "type": "adventure",
       "giver": "Wortsworth",
+      "giverEs": "Lekto",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -1861,9 +2107,12 @@
     {
       "id": "StatueDevilTutorial",
       "name": "A Deal With the Statue",
+      "nameEs": "Pacto con la estatua",
       "type": "adventure",
       "giver": "Horned Statue",
+      "giverEs": "Estatua maligna",
       "location": "Royal Hidden Passage",
+      "locationEs": "Pasadizo de la familia real",
       "position": {
         "x": -253.9667,
         "y": 132.89775,
@@ -1882,9 +2131,12 @@
     {
       "id": "LookingForTheVoiceLord",
       "name": "Who Goes There?",
+      "nameEs": "Averigua de quién es la voz",
       "type": "adventure",
       "giver": "Jerrin",
+      "giverEs": "Zheline",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -1904,9 +2156,12 @@
     {
       "id": "Connect_FirstIsland",
       "name": "A Call from the Depths",
+      "nameEs": "Una petición del subsuelo",
       "type": "adventure",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Temple of Time Ruins",
+      "locationEs": "Ruinas del Templo del Tiempo",
       "position": {
         "x": -818.08215,
         "y": 222.00029,
@@ -1936,9 +2191,12 @@
     {
       "id": "AssassinGerudoBase",
       "name": "Infiltrating the Yiga Clan",
+      "nameEs": "¡Infiltración en el clan Yiga!",
       "type": "adventure",
       "giver": "Mimos",
+      "giverEs": "Athon",
       "location": "Yiga Clan Hideout",
+      "locationEs": "Guarida del clan Yiga",
       "position": {
         "x": -3611.611,
         "y": 436.26855,
@@ -1958,9 +2216,12 @@
     {
       "id": "GerudoCanyon_Adventure",
       "name": "The Yiga Clan Exam",
+      "nameEs": "El examen del clan Yiga",
       "type": "adventure",
       "giver": "Yiga Blademaster",
+      "giverEs": "Oficial del clan Yiga",
       "location": "Yiga Blademaster Station",
+      "locationEs": "Puesto de oficiales del clan Yiga",
       "position": {
         "x": -2433.9128,
         "y": 251.23605,
@@ -1980,9 +2241,12 @@
     {
       "id": "MinusYiga",
       "name": "Master Kohga of the Yiga Clan",
+      "nameEs": "El plan del maestro Kogg",
       "type": "adventure",
       "giver": "Kohga",
+      "giverEs": "Kogg",
       "location": "Great Abandoned Central Mine",
+      "locationEs": "Gran mina abandonada central",
       "position": {
         "x": -732.69824,
         "y": -353.51144,
@@ -2004,9 +2268,12 @@
     {
       "id": "CarryToShrine09",
       "name": "The Satori Mountain Crystal",
+      "nameEs": "El santuario del monte Satoly",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Satori Mountain",
+      "locationEs": "Monte Satoly",
       "position": {
         "x": -2138.9785,
         "y": 212.67612,
@@ -2025,9 +2292,12 @@
     {
       "id": "Rito_ShadowCave",
       "name": "The White Bird's Guidance",
+      "nameEs": "El pájaro blanco lleva a la cueva",
       "type": "shrine",
       "giver": "Laissa",
+      "giverEs": "Zeli",
       "location": "Rito Village",
+      "locationEs": "Poblado orni",
       "position": {
         "x": -4058.435,
         "y": 302.437439999999,
@@ -2047,9 +2317,12 @@
     {
       "id": "CarryToShrine02",
       "name": "The Gisa Crater Crystal",
+      "nameEs": "El cristal del cráter de Ghissa",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Gisa Crater",
+      "locationEs": "Cráter de Ghissa",
       "position": {
         "x": -3951.0598,
         "y": 230.9,
@@ -2068,9 +2341,12 @@
     {
       "id": "CarryToShrine15",
       "name": "The North Hebra Mountains Crystal",
+      "nameEs": "El santuario del norte de Hebra",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Hebra Mountains",
+      "locationEs": "Cordillera de Hebra",
       "position": {
         "x": -2559.4434,
         "y": 364.04056,
@@ -2089,9 +2365,12 @@
     {
       "id": "CarryToShrine16",
       "name": "The Northwest Hebra Cave Crystal",
+      "nameEs": "El cristal del noroeste de Hebra",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Hebra Mountains Northwest Cave",
+      "locationEs": "Cueva noroeste de Hebra",
       "position": {
         "x": -2997.811,
         "y": 633.9293,
@@ -2110,9 +2389,12 @@
     {
       "id": "Korok_CarryToShrine",
       "name": "A Pretty Stone and Five Golden Apples",
+      "nameEs": "La piedra y las manzanas",
       "type": "shrine",
       "giver": "Damia",
+      "giverEs": "Romell",
       "location": "Korok Forest",
+      "locationEs": "Bosque Kolog",
       "position": {
         "x": 621.0962,
         "y": 283.770969999999,
@@ -2133,9 +2415,12 @@
     {
       "id": "NoTrespassing",
       "name": "None Shall Pass?",
+      "nameEs": "¿Prohibido el paso?",
       "type": "shrine",
       "giver": "Zooki",
+      "giverEs": "Magnoll",
       "location": "Korok Forest",
+      "locationEs": "Bosque Kolog",
       "position": {
         "x": 166.66013,
         "y": 298.1685,
@@ -2155,9 +2440,12 @@
     {
       "id": "InfiltrationFromTheSky",
       "name": "Maca's Special Place",
+      "nameEs": "El lugar especial de Otil",
       "type": "shrine",
       "giver": "Maca",
+      "giverEs": "Otil",
       "location": "Korok Forest",
+      "locationEs": "Bosque Kolog",
       "position": {
         "x": 354.6541,
         "y": 297.70821999999896,
@@ -2176,9 +2464,12 @@
     {
       "id": "CarryToShrine01",
       "name": "The Death Caldera Crystal",
+      "nameEs": "El santuario de la caldera",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Death Caldera",
+      "locationEs": "Caldera de la Muerte",
       "position": {
         "x": 2960.006,
         "y": 643.4725,
@@ -2197,9 +2488,12 @@
     {
       "id": "CarryToShrine03",
       "name": "The Lake Intenoch Cave Crystal",
+      "nameEs": "El cristal del lago Daron",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Lake Intenoch Cave",
+      "locationEs": "Cueva del lago Daron",
       "position": {
         "x": 2679.244,
         "y": 249.97745,
@@ -2218,9 +2512,12 @@
     {
       "id": "IchikaraChallenge03",
       "name": "Rock for Sale",
+      "nameEs": "El timo de Hagg",
       "type": "shrine",
       "giver": "Hagie",
+      "giverEs": "Hagg",
       "location": "Tarrey Town",
+      "locationEs": "Aldea Arkadia",
       "position": {
         "x": 3810.5168,
         "y": 209.673319999999,
@@ -2239,9 +2536,12 @@
     {
       "id": "CraftShadowPicture",
       "name": "Dyeing to Find It",
+      "nameEs": "Oculto en la oscuridad",
       "type": "shrine",
       "giver": "Steward Construct",
+      "giverEs": "Gólem ayudante",
       "location": "Lanayru Great Spring",
+      "locationEs": "Gran manantial de Lanayru",
       "position": {
         "x": 2361.2383,
         "y": 275.39499999999896,
@@ -2260,9 +2560,12 @@
     {
       "id": "SnowyMountain_Surfing",
       "name": "The High Spring and the Light Rings",
+      "nameEs": "La leyenda de la fuente y los anillos",
       "type": "shrine",
       "giver": "Nazbi",
+      "giverEs": "Nazob",
       "location": "Mount Lanayru",
+      "locationEs": "Monte Lanayru",
       "position": {
         "x": 3526.2231,
         "y": 286.85938,
@@ -2281,9 +2584,12 @@
     {
       "id": "CarryToShrine10",
       "name": "The Lanayru Road Crystal",
+      "nameEs": "El santuario del camino a Lanayru",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Lanayru Promenade",
+      "locationEs": "Paseo de Lanayru",
       "position": {
         "x": 2755.5327,
         "y": 219.20463999999998,
@@ -2302,9 +2608,12 @@
     {
       "id": "CarryToShrine08_Zora",
       "name": "The Ralis Channel Crystal",
+      "nameEs": "El santuario del canal de Ralis",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Ralis Channel",
+      "locationEs": "Canal de Ralis",
       "position": {
         "x": 2918.25,
         "y": 274.149999999999,
@@ -2323,9 +2632,12 @@
     {
       "id": "IceMaking",
       "name": "Keys Born of Water",
+      "nameEs": "Las llaves que nacen del agua",
       "type": "shrine",
       "giver": "Steward Construct",
+      "giverEs": "Gólem ayudante",
       "location": "West Necluda",
+      "locationEs": "Necluda occidental",
       "position": {
         "x": 930.8906,
         "y": 149.13925,
@@ -2344,9 +2656,12 @@
     {
       "id": "CarryToShrine13",
       "name": "The Oakle's Navel Cave Crystal",
+      "nameEs": "El cristal de la laguna Roblen",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Oakle's Navel Cave",
+      "locationEs": "Cueva de la laguna de Roblen",
       "position": {
         "x": 2304.06,
         "y": 90.0380300000001,
@@ -2365,9 +2680,12 @@
     {
       "id": "GiantHorse",
       "name": "Ride the Giant Horse",
+      "nameEs": "A lomos de un caballo gigante",
       "type": "shrine",
       "giver": "Baddek",
+      "giverEs": "Bemok",
       "location": "Faron Grasslands",
+      "locationEs": "Pradera de Farone",
       "position": {
         "x": -565,
         "y": 248.2,
@@ -2388,9 +2706,12 @@
     {
       "id": "CarryToShrine06",
       "name": "The Lake Hylia Crystal",
+      "nameEs": "El santuario del lago Hylia",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Lake Hylia",
+      "locationEs": "Lago Hylia",
       "position": {
         "x": 103.4143,
         "y": 30.973608,
@@ -2409,9 +2730,12 @@
     {
       "id": "DevoteSpring",
       "name": "Legend of the Soaring Spear",
+      "nameEs": "La leyenda de la lanza arrojadiza",
       "type": "shrine",
       "giver": "Tattered Notebook",
+      "giverEs": "Cuaderno desgastado",
       "location": "Tobio's Hollow Cave",
+      "locationEs": "Cueva del valle de Tubio",
       "position": {
         "x": 1218.442,
         "y": 215.77994,
@@ -2430,9 +2754,12 @@
     {
       "id": "CarryToShrine07",
       "name": "The Gerudo Canyon Crystal",
+      "nameEs": "El santuario del cañón de Gerudo",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Gerudo Canyon",
+      "locationEs": "Cañón de Gerudo",
       "position": {
         "x": -2036.9565,
         "y": 183.89724999999999,
@@ -2451,9 +2778,12 @@
     {
       "id": "CarryToShrine19",
       "name": "The North Hyrule Sky Crystal",
+      "nameEs": "El santuario celeste de Hyrule norte",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "North Hyrule Sky Archipelago",
+      "locationEs": "Archipiélago de Hyrule norte",
       "position": {
         "x": 340.39374,
         "y": 1939.9,
@@ -2472,9 +2802,12 @@
     {
       "id": "CarryToShrine11",
       "name": "The South Hyrule Sky Crystal",
+      "nameEs": "El santuario celeste de Hyrule sur",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "South Hyrule Sky Archipelago",
+      "locationEs": "Archipiélago de Hyrule sur",
       "position": {
         "x": -1257.2407,
         "y": 1127.1682,
@@ -2493,9 +2826,12 @@
     {
       "id": "CarryToShrine20",
       "name": "The Tabantha Sky Crystal",
+      "nameEs": "El santuario celeste de Tabanta",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Tabantha Sky Archipelago",
+      "locationEs": "Archipiélago de Tabanta",
       "position": {
         "x": -3369.6448,
         "y": 1814.482,
@@ -2514,9 +2850,12 @@
     {
       "id": "CarryToShrine21",
       "name": "The East Hebra Sky Crystal",
+      "nameEs": "El santuario celeste de Hebra este",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "East Hebra Sky Archipelago",
+      "locationEs": "Archipiélago de Hebra este",
       "position": {
         "x": -1802.017,
         "y": 1067.9,
@@ -2535,9 +2874,12 @@
     {
       "id": "CarryToShrine14",
       "name": "The Sky Mine Crystal",
+      "nameEs": "El santuario de la cantera celeste",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Sky Mine",
+      "locationEs": "Isla de la cantera",
       "position": {
         "x": 4505.997,
         "y": 1274.0215,
@@ -2556,9 +2898,12 @@
     {
       "id": "CarryToShrine17",
       "name": "The Sokkala Sky Crystal",
+      "nameEs": "El santuario celeste de Akkala sur",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Sokkala Sky Archipelago",
+      "locationEs": "Archipiélago de Akkala sur",
       "position": {
         "x": 3670.7004,
         "y": 1276.9001,
@@ -2577,9 +2922,12 @@
     {
       "id": "CarryToShrine23",
       "name": "The South Lanayru Sky Crystal",
+      "nameEs": "El santuario celeste de Lanayru sur",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "South Lanayru Sky Archipelago",
+      "locationEs": "Archipiélago de Lanayru sur",
       "position": {
         "x": 4613.314,
         "y": 1908.9,
@@ -2598,9 +2946,12 @@
     {
       "id": "CarryToShrine12",
       "name": "The North Necluda Sky Crystal",
+      "nameEs": "El santuario celeste de Necluda norte",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "North Necluda Sky Archipelago",
+      "locationEs": "Archipiélago de Necluda norte",
       "position": {
         "x": 1758.4888,
         "y": 1042.9652,
@@ -2619,9 +2970,12 @@
     {
       "id": "CarryToShrine22",
       "name": "The West Necluda Sky Crystal",
+      "nameEs": "El santuario celeste de Necluda oeste",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "West Necluda Sky Archipelago",
+      "locationEs": "Archipiélago de Necluda oeste",
       "position": {
         "x": 1468.6115,
         "y": 704.81323,
@@ -2640,9 +2994,12 @@
     {
       "id": "CarryToShrine05",
       "name": "The Necluda Sky Crystal",
+      "nameEs": "El santuario celeste de Necluda",
       "type": "shrine",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Necluda Sky Archipelago",
+      "locationEs": "Archipiélago de Necluda",
       "position": {
         "x": 2856.8481,
         "y": 1331.025,
@@ -2661,9 +3018,12 @@
     {
       "id": "FindWhiteHorse",
       "name": "Spotting Spot",
+      "nameEs": "¿Dónde estará mi caballo?",
       "type": "side",
       "giver": "Lester",
+      "giverEs": "Leif",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2682,9 +3042,12 @@
     {
       "id": "NowInTheVillageOfLurelin",
       "name": "Village Attacked by Pirates",
+      "nameEs": "La aldea asaltada por piratas",
       "type": "side",
       "giver": "Garini",
+      "giverEs": "Nikao",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2704,9 +3067,12 @@
     {
       "id": "CookAtBaseCamp",
       "name": "Today's Menu",
+      "nameEs": "El menú del día",
       "type": "side",
       "giver": "Burmano",
+      "giverEs": "Bonon",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2725,9 +3091,12 @@
     {
       "id": "BuildingMaterialsTutorial",
       "name": "The Incomplete Stable",
+      "nameEs": "El establo en construcción",
       "type": "side",
       "giver": "Karson",
+      "giverEs": "Karad",
       "location": "Lookout Landing",
+      "locationEs": "Fuerte vigía",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2746,9 +3115,12 @@
     {
       "id": "DefeatHugeEnemy_1",
       "name": "WANTED: Stone Talus",
+      "nameEs": "A la caza del petrarok",
       "type": "side",
       "giver": "Gralens",
+      "giverEs": "Glaren",
       "location": "Emergency Shelter",
+      "locationEs": "Refugio subterráneo",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2768,9 +3140,12 @@
     {
       "id": "DefeatHugeEnemy_2",
       "name": "WANTED: Molduga",
+      "nameEs": "A la caza del moldora",
       "type": "side",
       "giver": "Gralens",
+      "giverEs": "Glaren",
       "location": "Emergency Shelter",
+      "locationEs": "Refugio subterráneo",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2790,9 +3165,12 @@
     {
       "id": "DefeatHugeEnemy_3",
       "name": "WANTED: Hinox",
+      "nameEs": "A la caza del hinox",
       "type": "side",
       "giver": "Gralens",
+      "giverEs": "Glaren",
       "location": "Emergency Shelter",
+      "locationEs": "Refugio subterráneo",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2812,9 +3190,12 @@
     {
       "id": "DefeatHugeEnemy_4",
       "name": "Unknown Sky Giant",
+      "nameEs": "A la caza del gigante del cielo",
       "type": "side",
       "giver": "Gralens",
+      "giverEs": "Glaren",
       "location": "Emergency Shelter",
+      "locationEs": "Refugio subterráneo",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2834,9 +3215,12 @@
     {
       "id": "DefeatHugeEnemy_5",
       "name": "Unknown Three-Headed Monster",
+      "nameEs": "A la caza del monstruo de tres cabezas",
       "type": "side",
       "giver": "Gralens",
+      "giverEs": "Glaren",
       "location": "Emergency Shelter",
+      "locationEs": "Refugio subterráneo",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2856,9 +3240,12 @@
     {
       "id": "DefeatHugeEnemy_6",
       "name": "Unknown Huge Silhouette",
+      "nameEs": "A la caza de la silueta gigantesca",
       "type": "side",
       "giver": "Gralens",
+      "giverEs": "Glaren",
       "location": "Emergency Shelter",
+      "locationEs": "Refugio subterráneo",
       "position": {
         "x": -254.11993,
         "y": 123.4466599999999,
@@ -2879,9 +3266,12 @@
     {
       "id": "TakeAnimals",
       "name": "The Horse Guard's Request",
+      "nameEs": "La petición del cuidador de caballos",
       "type": "side",
       "giver": "Toffa",
+      "giverEs": "Tonfar",
       "location": "Outskirt Stable",
+      "locationEs": "Posta de la llanura",
       "position": {
         "x": -1449.4932,
         "y": 181.41899,
@@ -2901,9 +3291,12 @@
     {
       "id": "PhotoSpot_Challenge_04",
       "name": "A Picture for Outskirt Stable",
+      "nameEs": "El cuadro de la posta de la llanura",
       "type": "side",
       "giver": "Embry",
+      "giverEs": "Imbren",
       "location": "Outskirt Stable",
+      "locationEs": "Posta de la llanura",
       "position": {
         "x": -1449.4932,
         "y": 181.41899,
@@ -2923,9 +3316,12 @@
     {
       "id": "HorseInnChallenge005",
       "name": "Feathered Fugitives",
+      "nameEs": "Cucos a la fuga",
       "type": "side",
       "giver": "Teli",
+      "giverEs": "Jelor",
       "location": "Riverside Stable",
+      "locationEs": "Posta del río",
       "position": {
         "x": 339.23242,
         "y": 145.3124799999999,
@@ -2945,9 +3341,12 @@
     {
       "id": "PhotoSpot_Challenge_05",
       "name": "A Picture for Riverside Stable",
+      "nameEs": "El cuadro de la posta del río",
       "type": "side",
       "giver": "Ember",
+      "giverEs": "Makber",
       "location": "Riverside Stable",
+      "locationEs": "Posta del río",
       "position": {
         "x": 339.23242,
         "y": 145.3124799999999,
@@ -2967,9 +3366,12 @@
     {
       "id": "HorseInnChallenge001",
       "name": "Horse-Drawn Dreams",
+      "nameEs": "La carreta de mis sueños",
       "type": "side",
       "giver": "Zumi",
+      "giverEs": "Emmi",
       "location": "New Serenne Stable",
+      "locationEs": "Nueva posta de Idilia",
       "position": {
         "x": -1361,
         "y": 191.5,
@@ -2989,9 +3391,12 @@
     {
       "id": "PhotoSpot_Challenge_01",
       "name": "A Picture for New Serenne Stable",
+      "nameEs": "El cuadro de la nueva posta de Idilia",
       "type": "side",
       "giver": "Sprinn",
+      "giverEs": "Sprinn",
       "location": "New Serenne Stable",
+      "locationEs": "Nueva posta de Idilia",
       "position": {
         "x": -1361,
         "y": 191.5,
@@ -3011,9 +3416,12 @@
     {
       "id": "Genkos_Kitchen",
       "name": "Genli's Home Cooking",
+      "nameEs": "La receta de Genali",
       "type": "side",
       "giver": "Genli",
+      "giverEs": "Genali",
       "location": "Rito Village",
+      "locationEs": "Poblado orni",
       "position": {
         "x": -3620.765,
         "y": 208.672,
@@ -3033,9 +3441,12 @@
     {
       "id": "Rito_MedoArmor",
       "name": "Treasure of the Secret Springs",
+      "nameEs": "El tesoro oculto de las termas",
       "type": "side",
       "giver": "Tulin",
+      "giverEs": "Tureli",
       "location": "Rito Village",
+      "locationEs": "Poblado orni",
       "position": {
         "x": -3620.765,
         "y": 208.672,
@@ -3054,9 +3465,12 @@
     {
       "id": "ArrowMeister_Momo",
       "name": "Molli the Fletcher's Quest",
+      "nameEs": "Las flechas de Molli",
       "type": "side",
       "giver": "Molli",
+      "giverEs": "Molli",
       "location": "Rito Village",
+      "locationEs": "Poblado orni",
       "position": {
         "x": -3620.765,
         "y": 208.672,
@@ -3075,9 +3489,12 @@
     {
       "id": "Rito_RevaliWeapon",
       "name": "Legacy of the Rito",
+      "nameEs": "El famoso arco de águila orni",
       "type": "side",
       "giver": "Teba",
+      "giverEs": "Teba",
       "location": "Rito Village",
+      "locationEs": "Poblado orni",
       "position": {
         "x": -3620.765,
         "y": 208.672,
@@ -3096,9 +3513,12 @@
     {
       "id": "Rito_ItemExchange",
       "name": "Fish for Fletching",
+      "nameEs": "Intercambio orni",
       "type": "side",
       "giver": "Bedoli",
+      "giverEs": "Vedli",
       "location": "Rito Village",
+      "locationEs": "Poblado orni",
       "position": {
         "x": -3620.765,
         "y": 208.672,
@@ -3117,9 +3537,12 @@
     {
       "id": "RitoBridgeRepair",
       "name": "The Rito Rope Bridge",
+      "nameEs": "El puente colgante orni",
       "type": "side",
       "giver": "Gesane",
+      "giverEs": "Gizutt",
       "location": "Lucky Clover Gazette",
+      "locationEs": "Gaceta El trébol",
       "position": {
         "x": -3255.8406,
         "y": 256.60177999999996,
@@ -3140,9 +3563,12 @@
     {
       "id": "PhotoSpot_Challenge_07",
       "name": "A Picture for Tabantha Bridge Stable",
+      "nameEs": "El cuadro de la posta de Tabanta",
       "type": "side",
       "giver": "Dabi",
+      "giverEs": "Byder",
       "location": "Tabantha Bridge Stable",
+      "locationEs": "Posta de Tabanta",
       "position": {
         "x": -2931.5676,
         "y": 319.16226,
@@ -3162,9 +3588,12 @@
     {
       "id": "PhotoSpot_Challenge_14",
       "name": "A Picture for Snowfield Stable",
+      "nameEs": "El cuadro de la posta de la estepa",
       "type": "side",
       "giver": "Varke",
+      "giverEs": "Valke",
       "location": "Snowfield Stable",
+      "locationEs": "Posta de la estepa",
       "position": {
         "x": -1654.23,
         "y": 347.93182,
@@ -3184,9 +3613,12 @@
     {
       "id": "Neck_IceWaterCave",
       "name": "Crossing the Cold Pool",
+      "nameEs": "A través de las aguas gélidas",
       "type": "side",
       "giver": "Verla",
+      "giverEs": "Oneli",
       "location": "Hebra Mountains",
+      "locationEs": "Cordillera de Hebra",
       "position": {
         "x": -3079.067,
         "y": 0,
@@ -3205,9 +3637,12 @@
     {
       "id": "Lodge_Chemical001",
       "name": "Open the Door",
+      "nameEs": "La cabaña cerrada",
       "type": "side",
       "giver": "Jogo",
+      "giverEs": "Oggo",
       "location": "Tabantha Village Ruins",
+      "locationEs": "Aldea Tabanta",
       "position": {
         "x": -2324,
         "y": 277,
@@ -3228,9 +3663,12 @@
     {
       "id": "Hack_GuardGoods",
       "name": "Supply-Eyeing Fliers",
+      "nameEs": "Unas provisiones muy codiciadas",
       "type": "side",
       "giver": "Huck",
+      "giverEs": "Dhur",
       "location": "Tabantha Frontier",
+      "locationEs": "Confines de Tabanta",
       "position": {
         "x": -3476.1707,
         "y": 0,
@@ -3250,9 +3688,12 @@
     {
       "id": "Nazley_DigCave",
       "name": "The Blocked Cave",
+      "nameEs": "La cueva obstruida",
       "type": "side",
       "giver": "Mazli",
+      "giverEs": "Mazlett",
       "location": "Hebra Mountains",
+      "locationEs": "Cordillera de Hebra",
       "position": {
         "x": -3079.067,
         "y": 0,
@@ -3272,9 +3713,12 @@
     {
       "id": "GoneSnowQueen",
       "name": "The Duchess Who Disappeared",
+      "nameEs": "La campeona desaparecida",
       "type": "side",
       "giver": "Russ",
+      "giverEs": "Russ",
       "location": "Selmie's Spot",
+      "locationEs": "Cabaña de Selmie",
       "position": {
         "x": -2952.0266,
         "y": 656.19714,
@@ -3296,9 +3740,12 @@
     {
       "id": "Hebra_SkyRingChallenge",
       "name": "Kaneli's Flight Training",
+      "nameEs": "El nuevo entrenamiento orni",
       "type": "side",
       "giver": "Kaneli",
+      "giverEs": "Tyto",
       "location": "Flight Range",
+      "locationEs": "Zona de entrenamiento",
       "position": {
         "x": -3852.728,
         "y": 95.322754,
@@ -3320,9 +3767,12 @@
     {
       "id": "MushroomSisters_1",
       "name": "Cave Mushrooms That Glow",
+      "nameEs": "Las setas que brillan en la cueva",
       "type": "side",
       "giver": "Nat",
+      "giverEs": "Natts",
       "location": "Tabantha Frontier",
+      "locationEs": "Confines de Tabanta",
       "position": {
         "x": -3476.1707,
         "y": 0,
@@ -3342,9 +3792,12 @@
     {
       "id": "MushroomSisters_2",
       "name": "The Captured Tent",
+      "nameEs": "Invasión a la tienda de campaña",
       "type": "side",
       "giver": "Nat",
+      "giverEs": "Natts",
       "location": "Snowfield Stable",
+      "locationEs": "Posta de la estepa",
       "position": {
         "x": -1654.23,
         "y": 347.93182,
@@ -3365,9 +3818,12 @@
     {
       "id": "MushroomSisters_3",
       "name": "Who Finds the Haven?",
+      "nameEs": "¿Quién encontrará el paraíso?",
       "type": "side",
       "giver": "Nat",
+      "giverEs": "Natts",
       "location": "Snowfield Stable",
+      "locationEs": "Posta de la estepa",
       "position": {
         "x": -1654.23,
         "y": 347.93182,
@@ -3387,9 +3843,12 @@
     {
       "id": "Big_Rotate",
       "name": "Whirly Swirly Things",
+      "nameEs": "Círculos enormes que giran",
       "type": "side",
       "giver": "Kula",
+      "giverEs": "Kuoy",
       "location": "Korok Forest",
+      "locationEs": "Bosque Kolog",
       "position": {
         "x": 419,
         "y": 0,
@@ -3409,9 +3868,12 @@
     {
       "id": "Mack_SecretBase",
       "name": "The Secret Room",
+      "nameEs": "El escondite secreto",
       "type": "side",
       "giver": "Oaki",
+      "giverEs": "Acaz",
       "location": "Korok Forest",
+      "locationEs": "Bosque Kolog",
       "position": {
         "x": 419,
         "y": 0,
@@ -3430,9 +3892,12 @@
     {
       "id": "TreasureHunt_kokiri",
       "name": "Walton's Treasure Hunt",
+      "nameEs": "La búsqueda del tesoro de Ogal",
       "type": "side",
       "giver": "Walton",
+      "giverEs": "Ogal",
       "location": "Korok Forest",
+      "locationEs": "Bosque Kolog",
       "position": {
         "x": 419,
         "y": 0,
@@ -3452,9 +3917,12 @@
     {
       "id": "AmberCollector",
       "name": "Amber Dealer",
+      "nameEs": "Compradora de ámbar",
       "type": "side",
       "giver": "Ramella",
+      "giverEs": "Zameena",
       "location": "Goron City",
+      "locationEs": "Ciudad Goron",
       "position": {
         "x": 1657.252,
         "y": 445.63025,
@@ -3473,9 +3941,12 @@
     {
       "id": "CarryGoronKid1",
       "name": "The Ancient City Gorondia!",
+      "nameEs": "Gorontia, la ciudad primigenia",
       "type": "side",
       "giver": "Dugby",
+      "giverEs": "Gorun",
       "location": "Goron City",
+      "locationEs": "Ciudad Goron",
       "position": {
         "x": 1657.252,
         "y": 445.63025,
@@ -3495,9 +3966,12 @@
     {
       "id": "CarryGoronKid2",
       "name": "The Ancient City Gorondia?",
+      "nameEs": "En busca de la ciudad de Gorontia",
       "type": "side",
       "giver": "Dugby",
+      "giverEs": "Gorun",
       "location": "Goron City",
+      "locationEs": "Ciudad Goron",
       "position": {
         "x": 1657.252,
         "y": 445.63025,
@@ -3518,9 +3992,12 @@
     {
       "id": "MakeAChampionsWeapon_Goron",
       "name": "Soul of the Gorons",
+      "nameEs": "Machacarrocas: legado goron",
       "type": "side",
       "giver": "Fugo",
+      "giverEs": "Hugoro",
       "location": "Goron City",
+      "locationEs": "Ciudad Goron",
       "position": {
         "x": 1657.252,
         "y": 445.63025,
@@ -3539,9 +4016,12 @@
     {
       "id": "GoronReturntoNature",
       "name": "Moon-Gazing Gorons",
+      "nameEs": "Los goron y la luna",
       "type": "side",
       "giver": "Tray",
+      "giverEs": "Raigor",
       "location": "Goron City",
+      "locationEs": "Ciudad Goron",
       "position": {
         "x": 1657.252,
         "y": 445.63025,
@@ -3560,9 +4040,12 @@
     {
       "id": "GoronPond",
       "name": "The Hidden Treasure at Lizard Lakes",
+      "nameEs": "El tesoro de los lagos de los lagartos",
       "type": "side",
       "giver": "Bludo",
+      "giverEs": "Gorobu",
       "location": "Goron City",
+      "locationEs": "Ciudad Goron",
       "position": {
         "x": 1657.252,
         "y": 445.63025,
@@ -3581,9 +4064,12 @@
     {
       "id": "HotSpringEgg",
       "name": "Simmerstone Springs",
+      "nameEs": "Las termas magmáticas secretas",
       "type": "side",
       "giver": "Kima",
+      "giverEs": "Masatt",
       "location": "Goron City",
+      "locationEs": "Ciudad Goron",
       "position": {
         "x": 1657.252,
         "y": 445.63025,
@@ -3602,9 +4088,12 @@
     {
       "id": "FullyRipenedFlintstones",
       "name": "Cash In on Ripened Flint",
+      "nameEs": "¡Tan rico como el pedernal maduro!",
       "type": "side",
       "giver": "Gomo",
+      "giverEs": "Irton",
       "location": "Bedrock Bistro",
+      "locationEs": "Asador Piedra Abrasada",
       "position": {
         "x": 1750.5,
         "y": 390.5,
@@ -3623,9 +4112,12 @@
     {
       "id": "ResearchEldin",
       "name": "Meat for Meat",
+      "nameEs": "¡La comida no se desperdicia!",
       "type": "side",
       "giver": "Mezer",
+      "giverEs": "Bonto",
       "location": "Bedrock Bistro",
+      "locationEs": "Asador Piedra Abrasada",
       "position": {
         "x": 1750.5,
         "y": 390.5,
@@ -3645,9 +4137,12 @@
     {
       "id": "MeatRock",
       "name": "Rock Roast or Dust",
+      "nameEs": "¡O rocodillos o nada!",
       "type": "side",
       "giver": "Cooke",
+      "giverEs": "Bardar",
       "location": "Bedrock Bistro",
+      "locationEs": "Asador Piedra Abrasada",
       "position": {
         "x": 1750.5,
         "y": 390.5,
@@ -3667,9 +4162,12 @@
     {
       "id": "Goron_MiniGame_Tutorial_01",
       "name": "Mine-Cart Land: Open for Business!",
+      "nameEs": "¡Inauguración de Parque Vagoneta!",
       "type": "side",
       "giver": "Bayge",
+      "giverEs": "Bakoron",
       "location": "Southern Mine",
+      "locationEs": "Mina meridional",
       "position": {
         "x": 1800.9548,
         "y": 425.91513,
@@ -3693,9 +4191,12 @@
     {
       "id": "Goron_MiniGame_Tutorial_02",
       "name": "Mine-Cart Land: Quickshot Course",
+      "nameEs": "¡Disparos rápidos en vagoneta!",
       "type": "side",
       "giver": "Heehl",
+      "giverEs": "Rodunia",
       "location": "Southern Mine",
+      "locationEs": "Mina meridional",
       "position": {
         "x": 1800.9548,
         "y": 425.91513,
@@ -3720,9 +4221,12 @@
     {
       "id": "Goron_MiniGame_Tutorial_03",
       "name": "Mine-Cart Land: Death Mountain",
+      "nameEs": "¡Recorrido de alta dificultad!",
       "type": "side",
       "giver": "Kabetta",
+      "giverEs": "Enegoro",
       "location": "Southern Mine",
+      "locationEs": "Mina meridional",
       "position": {
         "x": 1800.9548,
         "y": 425.91513,
@@ -3746,9 +4250,12 @@
     {
       "id": "PhotoSpot_Challenge_02",
       "name": "A Picture for Woodland Stable",
+      "nameEs": "El cuadro de la posta del bosque",
       "type": "side",
       "giver": "Kish",
+      "giverEs": "Kish",
       "location": "Woodland Stable",
+      "locationEs": "Posta del bosque",
       "position": {
         "x": 1062.303,
         "y": 171.95836,
@@ -3768,9 +4275,12 @@
     {
       "id": "PhotoSpot_Challenge_08",
       "name": "A Picture for Foothill Stable",
+      "nameEs": "El cuadro de la posta de la montaña",
       "type": "side",
       "giver": "Ozunda",
+      "giverEs": "Ozen",
       "location": "Foothill Stable",
+      "locationEs": "Posta de la montaña",
       "position": {
         "x": 2613.332,
         "y": 253.78871,
@@ -3790,9 +4300,12 @@
     {
       "id": "RescueWell",
       "name": "Fell into a Well!",
+      "nameEs": "Rescate del pozo",
       "type": "side",
       "giver": "Dillie",
+      "giverEs": "Dillie",
       "location": "Rebonae Bridge Well",
+      "locationEs": "Pozo del puente de Rebonae",
       "position": {
         "x": 786.9977,
         "y": 120.7050299999999,
@@ -3811,9 +4324,12 @@
     {
       "id": "RescueVehicle01",
       "name": "The Abandoned Laborer",
+      "nameEs": "El minero olvidado",
       "type": "side",
       "giver": "Mota",
+      "giverEs": "Moltar",
       "location": "Death Mountain West Tunnel",
+      "locationEs": "Túnel oeste de la montaña",
       "position": {
         "x": 2238.6052,
         "y": 626.0185,
@@ -3833,9 +4349,12 @@
     {
       "id": "Our_Treasure",
       "name": "The Treasure Hunters",
+      "nameEs": "Ese tesoro es nuestro",
       "type": "side",
       "giver": "Domidak",
+      "giverEs": "Dondak",
       "location": "Rauru Hillside",
+      "locationEs": "Ladera de Rauru",
       "position": {
         "x": 497.74777,
         "y": 0,
@@ -3854,9 +4373,12 @@
     {
       "id": "TreasureOfLambda",
       "name": "Misko's Cave of Chests",
+      "nameEs": "A por el tesoro de Nambod",
       "type": "side",
       "giver": "Domidak",
+      "giverEs": "Dondak",
       "location": "Cephla Lake Cave",
+      "locationEs": "Cueva del lago Bachin",
       "position": {
         "x": 2593.6472,
         "y": 256.45193,
@@ -3875,9 +4397,12 @@
     {
       "id": "TreasureOfLamda_FierceDeity",
       "name": "Misko's Treasure: The Fierce Deity",
+      "nameEs": "El atuendo de la Fiera Deidad de Nambod",
       "type": "side",
       "giver": "Misko's Letter",
+      "giverEs": "Mensaje de Nambod",
       "location": "Cephla Lake Cave",
+      "locationEs": "Cueva del lago Bachin",
       "position": {
         "x": 2593.6472,
         "y": 256.45193,
@@ -3899,9 +4424,12 @@
     {
       "id": "TreasureOfLamda_DuelPeak",
       "name": "Misko's Treasure: Twins Manuscript",
+      "nameEs": "El tesoro de Nambod en los gemelos",
       "type": "side",
       "giver": "Domidak",
+      "giverEs": "Dondak",
       "location": "Cephla Lake Cave",
+      "locationEs": "Cueva del lago Bachin",
       "position": {
         "x": 2593.6472,
         "y": 256.45193,
@@ -3920,9 +4448,12 @@
     {
       "id": "TreasureOfLamda_Pirate",
       "name": "Misko's Treasure: Pirate Manuscript",
+      "nameEs": "El tesoro de Nambod en la cueva",
       "type": "side",
       "giver": "Domidak",
+      "giverEs": "Dondak",
       "location": "Cephla Lake Cave",
+      "locationEs": "Cueva del lago Bachin",
       "position": {
         "x": 2593.6472,
         "y": 256.45193,
@@ -3941,9 +4472,12 @@
     {
       "id": "TreasureOfLamda_Gerudo",
       "name": "Misko's Treasure: Heroines Manuscript",
+      "nameEs": "El tesoro de Nambod en las heroínas",
       "type": "side",
       "giver": "Domidak",
+      "giverEs": "Dondak",
       "location": "Cephla Lake Cave",
+      "locationEs": "Cueva del lago Bachin",
       "position": {
         "x": 2593.6472,
         "y": 256.45193,
@@ -3962,9 +4496,12 @@
     {
       "id": "TreasureOfLamda_Dream",
       "name": "Misko's Treasure of Awakening I",
+      "nameEs": "El atuendo del Despertar de Nambod 1",
       "type": "side",
       "giver": "Misko's Letter",
+      "giverEs": "Mensaje de Nambod",
       "location": "Goronbi River Cave",
+      "locationEs": "Cueva del río Gorobin",
       "position": {
         "x": 1423.078,
         "y": 389.93216,
@@ -3983,9 +4520,12 @@
     {
       "id": "TreasureOfLamda_Dream2",
       "name": "Misko's Treasure of Awakening II",
+      "nameEs": "El atuendo del Despertar de Nambod 2",
       "type": "side",
       "giver": "Misko's Letter",
+      "giverEs": "Mensaje de Nambod",
       "location": "Ancient Columns Cave",
+      "locationEs": "Cueva de los pilares ancestrales",
       "position": {
         "x": -3465.1208,
         "y": 359.573429999999,
@@ -4004,9 +4544,12 @@
     {
       "id": "TreasureOfLamda_Dream3",
       "name": "Misko's Treasure of Awakening III",
+      "nameEs": "El atuendo del Despertar de Nambod 3",
       "type": "side",
       "giver": "Misko's Letter",
+      "giverEs": "Mensaje de Nambod",
       "location": "Coliseum Ruins Cave",
+      "locationEs": "Cueva del coliseo",
       "position": {
         "x": -1167.1548,
         "y": 127.7493439999999,
@@ -4025,9 +4568,12 @@
     {
       "id": "Circuit_Ichikara",
       "name": "The Tarrey Town Race Is On!",
+      "nameEs": "El circuito de Arkadia",
       "type": "side",
       "giver": "Fernison",
+      "giverEs": "Kahelia",
       "location": "Hudson Construction Site",
+      "locationEs": "Zona de construcción",
       "position": {
         "x": 3723.7278,
         "y": 219.23093,
@@ -4050,9 +4596,12 @@
     {
       "id": "HorseInnChallenge003",
       "name": "Secrets Within",
+      "nameEs": "¿Qué hay dentro?",
       "type": "side",
       "giver": "Pulcho",
+      "giverEs": "Bigro",
       "location": "Tarrey Town",
+      "locationEs": "Aldea Arkadia",
       "position": {
         "x": 3965.6387,
         "y": 233.23712,
@@ -4071,9 +4620,12 @@
     {
       "id": "IchikaraCircuit_Tutorial",
       "name": "Master the Vehicle Prototype",
+      "nameEs": "Artilugios para conducir",
       "type": "side",
       "giver": "Fernison",
+      "giverEs": "Kahelia",
       "location": "Hudson Construction Site",
+      "locationEs": "Zona de construcción",
       "position": {
         "x": 3723.7278,
         "y": 219.23093,
@@ -4095,9 +4647,12 @@
     {
       "id": "BuildHouse",
       "name": "Home on Arrange",
+      "nameEs": "La casa de tus sueños",
       "type": "side",
       "giver": "Rhondson",
+      "giverEs": "Kaenne",
       "location": "Tarrey Town",
+      "locationEs": "Aldea Arkadia",
       "position": {
         "x": 3965.6387,
         "y": 233.23712,
@@ -4117,9 +4672,12 @@
     {
       "id": "TheStrongestWeapon",
       "name": "Strongest in the World",
+      "nameEs": "¡¿El arma más potente?!",
       "type": "side",
       "giver": "Chabi",
+      "giverEs": "Chaiba",
       "location": "East Akkala Stable",
+      "locationEs": "Posta de Akkala este",
       "position": {
         "x": 4230.5225,
         "y": 275.28958,
@@ -4138,9 +4696,12 @@
     {
       "id": "Tribune01",
       "name": "The Gathering Pirates",
+      "nameEs": "La amenaza pirata",
       "type": "side",
       "giver": "Aya",
+      "giverEs": "Aya",
       "location": "East Akkala Stable",
+      "locationEs": "Posta de Akkala este",
       "position": {
         "x": 4230.5225,
         "y": 275.28958,
@@ -4160,9 +4721,12 @@
     {
       "id": "PhotoSpot_Challenge_12",
       "name": "A Picture for East Akkala Stable",
+      "nameEs": "El cuadro de la posta de Akkala este",
       "type": "side",
       "giver": "Rudi",
+      "giverEs": "Rhindo",
       "location": "East Akkala Stable",
+      "locationEs": "Posta de Akkala este",
       "position": {
         "x": 4230.5225,
         "y": 275.28958,
@@ -4182,9 +4746,12 @@
     {
       "id": "ExcavateFossil1",
       "name": "Eldin's Colossal Fossil",
+      "nameEs": "El gran fósil de Eldin",
       "type": "side",
       "giver": "Loone",
+      "giverEs": "Lune",
       "location": "East Akkala Stable",
+      "locationEs": "Posta de Akkala este",
       "position": {
         "x": 4230.5225,
         "y": 275.28958,
@@ -4206,9 +4773,12 @@
     {
       "id": "ExcavateFossil2",
       "name": "Hebra's Colossal Fossil",
+      "nameEs": "El gran fósil de Hebra",
       "type": "side",
       "giver": "Loone",
+      "giverEs": "Lune",
       "location": "Eldin Great Skeleton",
+      "locationEs": "Gran fósil de Eldin",
       "position": {
         "x": 1502.24,
         "y": 209.03924999999998,
@@ -4229,9 +4799,12 @@
     {
       "id": "ExcavateFossil3",
       "name": "Gerudo's Colossal Fossil",
+      "nameEs": "El gran fósil de Gerudo",
       "type": "side",
       "giver": "Loone",
+      "giverEs": "Lune",
       "location": "Hebra Great Skeleton",
+      "locationEs": "Gran fósil de Hebra",
       "position": {
         "x": -3814.6094,
         "y": 360.5,
@@ -4251,9 +4824,12 @@
     {
       "id": "HourseInnChallenge004",
       "name": "One-Hit Wonder!",
+      "nameEs": "Golpe de efecto",
       "type": "side",
       "giver": "Parcy",
+      "giverEs": "Parcy",
       "location": "South Akkala Stable",
+      "locationEs": "Posta de Akkala sur",
       "position": {
         "x": 3148.6758,
         "y": 338.639799999999,
@@ -4272,9 +4848,12 @@
     {
       "id": "PhotoSpot_Challenge_13",
       "name": "A Picture for South Akkala Stable",
+      "nameEs": "El cuadro de la posta de Akkala sur",
       "type": "side",
       "giver": "Dmitri",
+      "giverEs": "Dikram",
       "location": "South Akkala Stable",
+      "locationEs": "Posta de Akkala sur",
       "position": {
         "x": 3148.6758,
         "y": 338.639799999999,
@@ -4294,9 +4873,12 @@
     {
       "id": "Zora_MessageBottle",
       "name": "True Treasure",
+      "nameEs": "La gratitud es un tesoro",
       "type": "side",
       "giver": "Kodah",
+      "giverEs": "Koldah",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -4318,9 +4900,12 @@
     {
       "id": "Zora_RuttaTreasure",
       "name": "Secret Treasure under the Great Fish",
+      "nameEs": "El tesoro oculto bajo el gran pez",
       "type": "side",
       "giver": "Sidon",
+      "giverEs": "Sidon",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -4339,9 +4924,12 @@
     {
       "id": "Createshinguard",
       "name": "The Never-Ending Lecture",
+      "nameEs": "El sermón interminable",
       "type": "side",
       "giver": "Chroma",
+      "giverEs": "Hiume",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -4360,9 +4948,12 @@
     {
       "id": "ZoraStatue_Picture",
       "name": "The Moonlit Princess",
+      "nameEs": "La princesa zora bajo la luna",
       "type": "side",
       "giver": "Seggin",
+      "giverEs": "Siggun",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -4382,9 +4973,12 @@
     {
       "id": "Zora_Enemy_hunt",
       "name": "The Fort at Ja'Abu Ridge",
+      "nameEs": "El campamento de la meseta de Jaabu",
       "type": "side",
       "giver": "Gaddison",
+      "giverEs": "Gya",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -4404,9 +4998,12 @@
     {
       "id": "GeniusWeapon_Zora",
       "name": "Glory of the Zora",
+      "nameEs": "El glorioso tridente de los zora",
       "type": "side",
       "giver": "Dento",
+      "giverEs": "Dagio",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -4425,9 +5022,12 @@
     {
       "id": "gather_Insect_Z",
       "name": "A Crabulous Deal",
+      "nameEs": "Trato cangrejero",
       "type": "side",
       "giver": "Cleff",
+      "giverEs": "Heran",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -4446,9 +5046,12 @@
     {
       "id": "HuntSalmon",
       "name": "A Wife Wafted Away",
+      "nameEs": "Esposa en las nubes",
       "type": "side",
       "giver": "Fronk",
+      "giverEs": "Ronk",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -4469,9 +5072,12 @@
     {
       "id": "CreateArmor",
       "name": "A Token of Friendship",
+      "nameEs": "Símbolo de amistad",
       "type": "side",
       "giver": "Yona",
+      "giverEs": "Yona",
       "location": "Zora's Domain",
+      "locationEs": "Región de los zora",
       "position": {
         "x": 3330.607,
         "y": 242.662,
@@ -4490,9 +5096,12 @@
     {
       "id": "PhotoSpot_Challenge_03",
       "name": "A Picture for Wetland Stable",
+      "nameEs": "El cuadro de la posta del pantano",
       "type": "side",
       "giver": "Lawdon",
+      "giverEs": "Herron",
       "location": "Wetland Stable",
+      "locationEs": "Posta del pantano",
       "position": {
         "x": 888.06165,
         "y": 175.9657,
@@ -4512,9 +5121,12 @@
     {
       "id": "HorseInnChallenge002",
       "name": "An Uninvited Guest",
+      "nameEs": "Terror nocturno",
       "type": "side",
       "giver": "Ami",
+      "giverEs": "Imiba",
       "location": "Wetland Stable",
+      "locationEs": "Posta del pantano",
       "position": {
         "x": 888.06165,
         "y": 175.9657,
@@ -4535,9 +5147,12 @@
     {
       "id": "CarryStone",
       "name": "The Blue Stone",
+      "nameEs": "La piedra azul",
       "type": "side",
       "giver": "Ledo",
+      "giverEs": "Redo",
       "location": "East Reservoir Lake",
+      "locationEs": "Embalse oriental",
       "position": {
         "x": 3667.748,
         "y": 324.32303,
@@ -4556,9 +5171,12 @@
     {
       "id": "RestaurantInTheWell",
       "name": "The Ultimate Dish?",
+      "nameEs": "¿La receta definitiva?",
       "type": "side",
       "giver": "Moza",
+      "giverEs": "Mimra",
       "location": "Rikoka Hills Well",
+      "locationEs": "Pozo de las colinas de Riokna",
       "position": {
         "x": 1716.4476,
         "y": 113.501114,
@@ -4577,9 +5195,12 @@
     {
       "id": "ResearchLanayru",
       "name": "Mired in Muck",
+      "nameEs": "Cubierto de fango",
       "type": "side",
       "giver": "Bazz",
+      "giverEs": "Basun",
       "location": "Upland Zorana Skyview Tower",
+      "locationEs": "Atalaya de la meseta de Zorana",
       "position": {
         "x": 2866.0615,
         "y": 478.33115,
@@ -4600,9 +5221,12 @@
     {
       "id": "InnNeverReturns",
       "name": "Out of the Inn",
+      "nameEs": "¿Y el dueño de la posada?",
       "type": "side",
       "giver": "Dai",
+      "giverEs": "Dain",
       "location": "Kakariko Village",
+      "locationEs": "Aldea Kakariko",
       "position": {
         "x": 1817.4299,
         "y": 224.45522,
@@ -4622,9 +5246,12 @@
     {
       "id": "KokkoGuidePost",
       "name": "Follow the Cuccos",
+      "nameEs": "En busca de los cucos",
       "type": "side",
       "giver": "Trissa",
+      "giverEs": "Itrea",
       "location": "Kakariko Village",
+      "locationEs": "Aldea Kakariko",
       "position": {
         "x": 1817.4299,
         "y": 224.45522,
@@ -4643,9 +5270,12 @@
     {
       "id": "Know_FourStonePlates",
       "name": "A Trip through History",
+      "nameEs": "Turismo de antaño",
       "type": "side",
       "giver": "Bugut",
+      "giverEs": "Bugin",
       "location": "Kakariko Village",
+      "locationEs": "Aldea Kakariko",
       "position": {
         "x": 1817.4299,
         "y": 224.45522,
@@ -4664,9 +5294,12 @@
     {
       "id": "WhichIsStronger",
       "name": "Codgers' Quarrel",
+      "nameEs": "La mejor estrategia",
       "type": "side",
       "giver": "Trissa",
+      "giverEs": "Itrea",
       "location": "Kakariko Village",
+      "locationEs": "Aldea Kakariko",
       "position": {
         "x": 1817.4299,
         "y": 224.45522,
@@ -4688,9 +5321,12 @@
     {
       "id": "IllnessStartsWithFeelings",
       "name": "Gloom-Borne Illness",
+      "nameEs": "Nada como el arroz cremoso",
       "type": "side",
       "giver": "Lasli",
+      "giverEs": "Lasli",
       "location": "Kakariko Village",
+      "locationEs": "Aldea Kakariko",
       "position": {
         "x": 1817.4299,
         "y": 224.45522,
@@ -4710,9 +5346,12 @@
     {
       "id": "Hateno_NewCostume",
       "name": "A New Champion's Tunic",
+      "nameEs": "Una nueva túnica del elegido",
       "type": "side",
       "giver": "Zelda's Diary",
+      "giverEs": "Diario de Zelda",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -4731,9 +5370,12 @@
     {
       "id": "Hateno_TellMeTeacher01",
       "name": "Teach Me a Lesson I",
+      "nameEs": "El saber no ocupa lugar",
       "type": "side",
       "giver": "Symin",
+      "giverEs": "Symon",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -4752,9 +5394,12 @@
     {
       "id": "Hateno_TellMeTeacher02",
       "name": "Teach Me a Lesson II",
+      "nameEs": "El saber no ocupa lugar 2",
       "type": "side",
       "giver": "Symin",
+      "giverEs": "Symon",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -4773,9 +5418,12 @@
     {
       "id": "Hateno_FreshMilk",
       "name": "Dantz's Prize Cows",
+      "nameEs": "Doan, el lechero minucioso",
       "type": "side",
       "giver": "Dantz",
+      "giverEs": "Doan",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -4794,9 +5442,12 @@
     {
       "id": "Hateno_NewSpecialty",
       "name": "Homegrown in Hateno",
+      "nameEs": "El orgullo de Hatelia",
       "type": "side",
       "giver": "Reede",
+      "giverEs": "Rendell",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -4817,9 +5468,12 @@
     {
       "id": "Parasail_ChuchuDesign",
       "name": "Photographing a Chuchu",
+      "nameEs": "Fotógrafo de chuchu",
       "type": "side",
       "giver": "Sayge",
+      "giverEs": "Matik",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -4838,9 +5492,12 @@
     {
       "id": "Hateno_WhatToPlant",
       "name": "Uma's Garden",
+      "nameEs": "El huerto de Cirelle",
       "type": "side",
       "giver": "Uma",
+      "giverEs": "Cirelle",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -4860,9 +5517,12 @@
     {
       "id": "Hateno_CoolGuy",
       "name": "Manny's Beloved",
+      "nameEs": "Los anhelos de Manzak",
       "type": "side",
       "giver": "Manny",
+      "giverEs": "Manzak",
       "location": "Hateno Village",
+      "locationEs": "Aldea Hatelia",
       "position": {
         "x": 3545.0286,
         "y": 337.0344,
@@ -4883,9 +5543,12 @@
     {
       "id": "Uotori_ResortPlan",
       "name": "Lurelin Resort Project",
+      "nameEs": "La nueva atracción de Onaona",
       "type": "side",
       "giver": "Rozel",
+      "giverEs": "Rozel",
       "location": "Lurelin Village",
+      "locationEs": "Aldea Onaona",
       "position": {
         "x": 3007.3096,
         "y": 142.49794,
@@ -4906,9 +5569,12 @@
     {
       "id": "Uotori_WhiteLineGame",
       "name": "Dad's Blue Shirt",
+      "nameEs": "La camiseta azul de papá",
       "type": "side",
       "giver": "Zuta",
+      "giverEs": "Hauke",
       "location": "Lurelin Village",
+      "locationEs": "Aldea Onaona",
       "position": {
         "x": 3007.3096,
         "y": 142.49794,
@@ -4927,9 +5593,12 @@
     {
       "id": "WashedAwayBusinessTools",
       "name": "A Way to Trade, Washed Away",
+      "nameEs": "¿Dónde estará mi bote?",
       "type": "side",
       "giver": "Garini",
+      "giverEs": "Nikao",
       "location": "Lurelin Village",
+      "locationEs": "Aldea Onaona",
       "position": {
         "x": 3007.3096,
         "y": 142.49794,
@@ -4949,9 +5618,12 @@
     {
       "id": "Uotori_Designer",
       "name": "Rattled Ralera",
+      "nameEs": "Las cavilaciones de Lorelle",
       "type": "side",
       "giver": "Ralera",
+      "giverEs": "Lorelle",
       "location": "Lurelin Village",
+      "locationEs": "Aldea Onaona",
       "position": {
         "x": 3007.3096,
         "y": 142.49794,
@@ -4971,9 +5643,12 @@
     {
       "id": "PhotoSpot_Challenge_06",
       "name": "A Picture for Dueling Peaks Stable",
+      "nameEs": "El cuadro de la posta de Picos Gemelos",
       "type": "side",
       "giver": "Tasseren",
+      "giverEs": "Tather",
       "location": "Dueling Peaks Stable",
+      "locationEs": "Posta de Picos Gemelos",
       "position": {
         "x": 1760.7805,
         "y": 131.2842699999999,
@@ -4993,9 +5668,12 @@
     {
       "id": "MessageBottle_SOS",
       "name": "A Bottled Cry for Help",
+      "nameEs": "Una petición de auxilio",
       "type": "side",
       "giver": "Bottled Letter",
+      "giverEs": "Frasco con mensaje",
       "location": "Hateno Beach",
+      "locationEs": "Playa de Hatelia",
       "position": {
         "x": 4016.5518,
         "y": 0,
@@ -5015,9 +5693,12 @@
     {
       "id": "SaihateSubjugation",
       "name": "Seeking the Pirate Hideout",
+      "nameEs": "En busca de la guarida pirata",
       "type": "side",
       "giver": "Sesami",
+      "giverEs": "Giann",
       "location": "Eventide Island",
+      "locationEs": "Isla Frontia",
       "position": {
         "x": 4586.1587,
         "y": 140.42606,
@@ -5042,9 +5723,12 @@
     {
       "id": "HorseInnChallenge007",
       "name": "Ousting the Giants",
+      "nameEs": "Tres cuevas para tres hermanos",
       "type": "side",
       "giver": "Kampo",
+      "giverEs": "Akamp",
       "location": "Lakeside Stable",
+      "locationEs": "Posta del lago",
       "position": {
         "x": 1552.0227,
         "y": 210.56248,
@@ -5067,9 +5751,12 @@
     {
       "id": "PhotoSpot_Challenge_10",
       "name": "A Picture for Lakeside Stable",
+      "nameEs": "El cuadro de la posta del lago",
       "type": "side",
       "giver": "Anly",
+      "giverEs": "Wanley",
       "location": "Lakeside Stable",
+      "locationEs": "Posta del lago",
       "position": {
         "x": 1552.0227,
         "y": 210.56248,
@@ -5089,9 +5776,12 @@
     {
       "id": "PhotoSpot_Challenge_11",
       "name": "A Picture for Highland Stable",
+      "nameEs": "El cuadro de la posta de Farone",
       "type": "side",
       "giver": "Padok",
+      "giverEs": "Paddon",
       "location": "Highland Stable",
+      "locationEs": "Posta de Farone",
       "position": {
         "x": 529.6001,
         "y": 200.5581,
@@ -5111,9 +5801,12 @@
     {
       "id": "EightHeroStatues",
       "name": "The Heroines' Secret",
+      "nameEs": "El secreto de las heroínas",
       "type": "side",
       "giver": "Rotana",
+      "giverEs": "Loteen",
       "location": "Gerudo Shelter",
+      "locationEs": "Catacumbas gerudo",
       "position": {
         "x": -3844.5,
         "y": 149.16890999999998,
@@ -5132,9 +5825,12 @@
     {
       "id": "GerudoDesertTreasure",
       "name": "Treasure of the Gerudo Desert",
+      "nameEs": "El tesoro oculto del desierto",
       "type": "side",
       "giver": "Riju",
+      "giverEs": "Riju",
       "location": "Gerudo Town",
+      "locationEs": "Ciudadela Gerudo",
       "position": {
         "x": -3844.5,
         "y": 149.16890999999998,
@@ -5153,9 +5849,12 @@
     {
       "id": "Gerudo_UrbosaWeapon",
       "name": "Pride of the Gerudo",
+      "nameEs": "Las armas de las siete",
       "type": "side",
       "giver": "Isha",
+      "giverEs": "Aisha",
       "location": "Gerudo Town",
+      "locationEs": "Ciudadela Gerudo",
       "position": {
         "x": -3844.5,
         "y": 149.16890999999998,
@@ -5174,9 +5873,12 @@
     {
       "id": "FindSunaNui",
       "name": "Dalia's Game",
+      "nameEs": "¡El reto de Tarya!",
       "type": "side",
       "giver": "Dalia",
+      "giverEs": "Tarya",
       "location": "Gerudo Town",
+      "locationEs": "Ciudadela Gerudo",
       "position": {
         "x": -3844.5,
         "y": 149.16890999999998,
@@ -5198,9 +5900,12 @@
     {
       "id": "EightHeroStatues_After",
       "name": "The Mysterious Eighth",
+      "nameEs": "La octava alma heroica",
       "type": "side",
       "giver": "Rotana",
+      "giverEs": "Loteen",
       "location": "Gerudo Shelter",
+      "locationEs": "Catacumbas gerudo",
       "position": {
         "x": -3844.5,
         "y": 149.16890999999998,
@@ -5223,9 +5928,12 @@
     {
       "id": "AisyaRescue",
       "name": "The Missing Owner",
+      "nameEs": "La dueña desaparecida",
       "type": "side",
       "giver": "Cara",
+      "giverEs": "Karah",
       "location": "Gerudo Town",
+      "locationEs": "Ciudadela Gerudo",
       "position": {
         "x": -3844.5,
         "y": 149.16890999999998,
@@ -5246,9 +5954,12 @@
     {
       "id": "JobSunazarashi",
       "name": "To the Ruins!",
+      "nameEs": "Rumbo a las ruinas",
       "type": "side",
       "giver": "Pokki",
+      "giverEs": "Sorenne",
       "location": "Gerudo Town",
+      "locationEs": "Ciudadela Gerudo",
       "position": {
         "x": -3844.5,
         "y": 149.16890999999998,
@@ -5269,9 +5980,12 @@
     {
       "id": "MakeChemicalWeapon",
       "name": "Decorate with Passion",
+      "nameEs": "Decoración con pasión",
       "type": "side",
       "giver": "Boraa",
+      "giverEs": "Basoor",
       "location": "Kara Kara Bazaar",
+      "locationEs": "Bazar Sekken",
       "position": {
         "x": -3225,
         "y": 0,
@@ -5291,9 +6005,12 @@
     {
       "id": "SearchCaravan",
       "name": "Lost in the Dunes",
+      "nameEs": "La caravana incompleta",
       "type": "side",
       "giver": "Benja",
+      "giverEs": "Benyo",
       "location": "Kara Kara Bazaar",
+      "locationEs": "Bazar Sekken",
       "position": {
         "x": -3225,
         "y": 0,
@@ -5314,9 +6031,12 @@
     {
       "id": "PhotoSpot_Challenge_09",
       "name": "A Picture for the Closed Stable I",
+      "nameEs": "Una última foto para la posta 1",
       "type": "side",
       "giver": "Piaffe",
+      "giverEs": "Saffe",
       "location": "Gerudo Canyon Stable",
+      "locationEs": "Posta del cañón",
       "position": {
         "x": -2803.8118,
         "y": 178.5857399999999,
@@ -5336,9 +6056,12 @@
     {
       "id": "PhotoSpot_Challenge_09_2",
       "name": "A Picture for the Closed Stable II",
+      "nameEs": "Una última foto para la posta 2",
       "type": "side",
       "giver": "Piaffe",
+      "giverEs": "Saffe",
       "location": "Gerudo Canyon Stable",
+      "locationEs": "Posta del cañón",
       "position": {
         "x": -2803.8118,
         "y": 178.5857399999999,
@@ -5358,9 +6081,12 @@
     {
       "id": "RescueHost",
       "name": "Piaffe, Packed Away",
+      "nameEs": "Las desgracias de Saffe",
       "type": "side",
       "giver": "Piaffe",
+      "giverEs": "Saffe",
       "location": "Gerudo Canyon Stable",
+      "locationEs": "Posta del cañón",
       "position": {
         "x": -2803.8118,
         "y": 178.5857399999999,
@@ -5380,9 +6106,12 @@
     {
       "id": "GerudoCanyon_GleeokLiver",
       "name": "Gleeok Guts",
+      "nameEs": "La víscera de griock",
       "type": "side",
       "giver": "Malena",
+      "giverEs": "Nereen",
       "location": "Gerudo Canyon",
+      "locationEs": "Cañón de Gerudo",
       "position": {
         "x": -2308.2344,
         "y": 0,
@@ -5401,9 +6130,12 @@
     {
       "id": "NewCanyonMissingPersonsCase",
       "name": "Disaster in Gerudo Canyon",
+      "nameEs": "Infortunio en el cañón de Gerudo",
       "type": "side",
       "giver": "Quince",
+      "giverEs": "Quint",
       "location": "Gerudo Canyon Pass",
+      "locationEs": "Entrada al cañón de Gerudo",
       "position": {
         "x": -1665,
         "y": 80,
@@ -5425,9 +6157,12 @@
     {
       "id": "GerudoCanyon_TumbleweedSweep",
       "name": "The Great Tumbleweed Purge",
+      "nameEs": "¡Adiós, plantas rodadoras!",
       "type": "side",
       "giver": "Barles",
+      "giverEs": "Muri",
       "location": "Gerudo Canyon",
+      "locationEs": "Cañón de Gerudo",
       "position": {
         "x": -2308.2344,
         "y": 0,
@@ -5447,9 +6182,12 @@
     {
       "id": "GerudoCanyon_24hEnduranceComparison",
       "name": "Heat-Endurance Contest!",
+      "nameEs": "¡A resistir el calor!",
       "type": "side",
       "giver": "Rahdo",
+      "giverEs": "Tarkon",
       "location": "Gerudo Canyon",
+      "locationEs": "Cañón de Gerudo",
       "position": {
         "x": -2308.2344,
         "y": 0,
@@ -5469,9 +6207,12 @@
     {
       "id": "GerudoCanyon_ColdEnduranceComparison",
       "name": "Cold-Endurance Contest!",
+      "nameEs": "¡A resistir el frío!",
       "type": "side",
       "giver": "Rahdo",
+      "giverEs": "Tarkon",
       "location": "Gerudo Canyon",
+      "locationEs": "Cañón de Gerudo",
       "position": {
         "x": -2308.2344,
         "y": 0,
@@ -5491,9 +6232,12 @@
     {
       "id": "TakeOfIce",
       "name": "The Iceless Icehouse",
+      "nameEs": "El almacén sin hielo",
       "type": "side",
       "giver": "Anche",
+      "giverEs": "Anere",
       "location": "Northern Icehouse",
+      "locationEs": "Almacén de hielo",
       "position": {
         "x": -3748.944,
         "y": 131.81853999999998,
@@ -5513,9 +6257,12 @@
     {
       "id": "WellCollection",
       "name": "Where Are the Wells?",
+      "nameEs": "Pasión por los pozos",
       "type": "side",
       "giver": "Fera",
+      "giverEs": "Fera",
       "location": "-",
+      "locationEs": "-",
       "position": null,
       "locationKind": "area",
       "hash": 2859075096,
@@ -5530,9 +6277,12 @@
     {
       "id": "Zonau_GeniusWeapon",
       "name": "Ancient Blades Below",
+      "nameEs": "Las hojas ancestrales del subsuelo",
       "type": "side",
       "giver": "Mining Construct",
+      "giverEs": "Gólem excavador",
       "location": "Spirit Temple",
+      "locationEs": "Templo del Espíritu",
       "position": null,
       "locationKind": "area",
       "hash": 2479284541,
@@ -5547,9 +6297,12 @@
     {
       "id": "Connect_TabantaMaze",
       "name": "The North Lomei Prophecy",
+      "nameEs": "La profecía de Lomei norte",
       "type": "side",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "North Lomei Labyrinth",
+      "locationEs": "Fortaleza de Lomei norte",
       "position": {
         "x": -824.2593,
         "y": 342.14477999999997,
@@ -5575,9 +6328,12 @@
     {
       "id": "Connect_AkkareMaze",
       "name": "The Lomei Labyrinth Island Prophecy",
+      "nameEs": "La profecía de la isla Lomei",
       "type": "side",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "Lomei Labyrinth Island",
+      "locationEs": "Isla Lomei",
       "position": {
         "x": 4655.4453,
         "y": 156.88916,
@@ -5603,9 +6359,12 @@
     {
       "id": "Connect_GerudoMaze",
       "name": "The South Lomei Prophecy",
+      "nameEs": "La profecía de Lomei sur",
       "type": "side",
       "giver": "Mysterious Voice",
+      "giverEs": "Voz misteriosa",
       "location": "South Lomei Labyrinth",
+      "locationEs": "Fortaleza de Lomei sur",
       "position": {
         "x": -1794.9999,
         "y": 191.11765,
@@ -5631,9 +6390,12 @@
     {
       "id": "Raise_GoddesStatue_Wisdom",
       "name": "Goddess Statue of Wisdom",
+      "nameEs": "La efigie de la Sabiduría",
       "type": "side",
       "giver": "Goddess Statue",
+      "giverEs": "Efigie de la Diosa",
       "location": "Spring of Wisdom",
+      "locationEs": "Fuente de la Sabiduría",
       "position": {
         "x": 3926.4417,
         "y": 555.9634999999989,
@@ -5655,9 +6417,12 @@
     {
       "id": "Raise_GoddesStatue_Power",
       "name": "Goddess Statue of Power",
+      "nameEs": "La efigie del Poder",
       "type": "side",
       "giver": "Goddess Statue",
+      "giverEs": "Efigie de la Diosa",
       "location": "Spring of Power",
+      "locationEs": "Fuente del Poder",
       "position": {
         "x": 3756.1265,
         "y": 101.19505,
@@ -5679,9 +6444,12 @@
     {
       "id": "Raise_GoddesStatue_Courage",
       "name": "Goddess Statue of Courage",
+      "nameEs": "La efigie del Valor",
       "type": "side",
       "giver": "Goddess Statue",
+      "giverEs": "Efigie de la Diosa",
       "location": "Spring of Courage",
+      "locationEs": "Fuente del Valor",
       "position": {
         "x": 879.5,
         "y": 103,
@@ -5703,9 +6471,12 @@
     {
       "id": "Raise_GoddesStatue",
       "name": "The Mother Goddess Statue",
+      "nameEs": "La gran efigie de la Diosa",
       "type": "side",
       "giver": "Goddess Statue",
+      "giverEs": "Efigie de la Diosa",
       "location": "Forgotten Temple",
+      "locationEs": "Templo olvidado",
       "position": {
         "x": -1578.4408,
         "y": 0,
@@ -5724,9 +6495,12 @@
     {
       "id": "CDungeon_AllDone",
       "name": "The Shrine Explorer",
+      "nameEs": "A la conquista de los santuarios",
       "type": "side",
       "giver": "Rauru",
+      "giverEs": "Rauru",
       "location": "Shrine of Light",
+      "locationEs": "Santuario de la luz",
       "position": null,
       "locationKind": "area",
       "hash": 1411305151,

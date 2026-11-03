@@ -10,6 +10,7 @@ main {
   background: #142329;
   border-bottom: 1px solid #53615c;
   flex-shrink: 0;
+  overflow-x: auto;
 }
 
 .view-tabs button {
@@ -17,6 +18,12 @@ main {
   color: var(--muted);
   border-color: transparent;
   padding: 10px 22px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.view-tabs .summary-tab {
+  margin-left: auto;
 }
 
 .view-tabs button[aria-selected="true"] {
@@ -29,6 +36,50 @@ main {
   position: relative;
   flex: 1;
   min-height: 0;
+}
+
+#startupLoading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 800;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 26px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel);
+  box-shadow: 0 15px 60px #0005;
+  white-space: nowrap;
+}
+
+#startupLoading p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.startup-spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--line);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: startup-spin 0.8s linear infinite;
+}
+
+@keyframes startup-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .startup-spinner {
+    animation: none;
+  }
 }
 
 #previewBanner {

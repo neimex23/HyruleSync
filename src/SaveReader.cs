@@ -100,6 +100,19 @@ public class SaveReader {
         return U32(entry) != 0 ? 1 : 0;
     }
 
+    public ChestProgress ReadChests(MapPoint point) {
+        if (point.category != "shrines") return null;
+        var result = new ChestProgress();
+        if (point.chestHashes == null) return result;
+        result.total = point.chestHashes.Length;
+        foreach (string hash in point.chestHashes) {
+            int state = BooleanState(hash);
+            if (state == 1) result.opened++;
+            else if (state == -1) result.unknown++;
+        }
+        return result;
+    }
+
     public static PlayerContext ResolveContext(string map, Position raw, IEnumerable<MapPoint> points) {
         var result = new PlayerContext { mapId = map ?? "", kind = "unknown" };
         if (String.IsNullOrEmpty(map)) return result;

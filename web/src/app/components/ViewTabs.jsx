@@ -1,9 +1,15 @@
 import { useStoreValue } from "../use-store.js";
 import { I18N } from "../../shared/i18n.js";
 
-const views = ["map", "inventory", "quests"];
+const views = ["map", "inventory", "quests", "world", "summary"];
 
-const labels = { map: "Mapa", inventory: "Inventario", quests: "Misiones" };
+const labels = {
+  map: "Mapa",
+  inventory: "Inventario",
+  quests: "Misiones",
+  world: "HyruleWorld",
+  summary: "Resumen",
+};
 
 export function ViewTabs({ store }) {
   const view = useStoreValue(store, "view");
@@ -33,6 +39,7 @@ export function ViewTabs({ store }) {
         <button
           key={name}
           id={name + "Tab"}
+          className={name === "summary" ? "summary-tab" : undefined}
           role="tab"
           aria-selected={view === name}
           aria-controls={name + "Panel"}

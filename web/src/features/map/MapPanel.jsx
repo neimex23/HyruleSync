@@ -47,7 +47,12 @@ export function MapPanel({ hidden }) {
         <span id="mouseCoords">{t("Este · Norte")}</span>
       </div>
 
-      <section id="welcome">
+      <section id="startupLoading" role="status" aria-live="polite">
+        <span className="startup-spinner" aria-hidden="true"></span>
+        <p>{t("Cargando partida…")}</p>
+      </section>
+
+      <section id="welcome" hidden>
         <div className="eyebrow">{t("TU PARTIDA, SIEMPRE AL DÍA")}</div>
         <h2>{t("¿Qué queda por explorar?")}</h2>
         <p>
@@ -79,6 +84,7 @@ export function MapPanel({ hidden }) {
         </div>
 
         <div id="detailState"></div>
+        <p id="detailChests" hidden></p>
 
         <div className="coords">
           <span>{t("ESTE · NORTE · ALTURA")}</span>

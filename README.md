@@ -33,7 +33,7 @@ The download badge totals GitHub Release asset downloads across all versions, in
 - Stable GitHub release notifications with a Windows ZIP download button, plus **Report a problem** to open GitHub Issues.
 - 2,414 catalog entries, Korok routes and cave connections.
 - Manual `progress.sav` loading and hash/GUID diagnostics.
-- Highest-playtime selection, stable-write delay and last-valid-state recovery.
+- Latest-modification selection across manual saves and autosaves, stable-write delay and last-valid-state recovery.
 - Remembered folder/Autosync settings; one instance per application folder.
 - Custom EXE, browser and tray icons.
 - In-app authorship, AI-development disclosure, repository references and original license texts.
@@ -128,14 +128,26 @@ The catalog includes 15 additional Skyview Towers: activation is required for co
 Each point has a **View guide** button that opens Zelda Dungeon in a new tab. Named locations open their wiki entry; unnamed collectibles and other categories open the external map at their coordinates and layer, where you can select the relevant icon for help. Third-party pages may change or be incomplete. No reference collection or downloaded guide content is stored locally.
 
 
+## HyruleWorld
+
+The **Recipe book** includes 36 example meals, desserts and elixirs with ingredient quantities, preparation steps and effects. Search dish or ingredient names in English or Spanish and filter by type or effect. Recipes are bundled for offline use and can be browsed without a save.
+
+Character cards include reference portraits, save-based **Discovered / Undiscovered / Unknown** states, a discovery counter and a status filter. Discovery follows Autosync and inspected snapshots. Absent flags remain unknown, and clearing the game's unread badge does not mark a character undiscovered. Portraits load from Zelda Dungeon/Zelda Wiki and require internet; unavailable images use initials.
+
+Open **HyruleWorld** for **Your album**, **Hyrule Compendium** and a complete **Character guide** with 22 profiles. The 509 compendium entries include bilingual search, category/status filters and expandable **Where to find it** cards with reference areas and Zelda Dungeon links. Your album includes photographed and purchased entries from the live or inspected save; unsupported fields remain unknown. Personal camera photographs are separate files and are not displayed. Reference portraits require internet and fall back to local pictograms; names, areas and character notes are bundled for offline use. No save editing.
+
 ## Inventory
+
+**Summary** brings together armor, upgrade tiers, memories, fabrics, horse equipment, rewards and medals with shortcuts to each exact section. The armor upgrade plan and target level are saved beside the executable in `.state/settings.json`, surviving app restarts and browser changes. Costs always follow the active or inspected save.
+
+Inventory has **Pouches**, **Armor**, **Other collections** and **Monster medals** subtabs. Illustrated armor cards cover all 135 obtainable pieces and a selectable upgrade plan that deducts owned materials and rupees once from the combined total. Memories, fabrics, collectible horse equipment and completion rewards follow acquisition flags. See the [collection guide](docs/COLLECTIONS.md) for the workflow and state meanings.
 
 Open **Inventory** next to Map for saved health, maximum hearts/stamina/battery, rupees and pony points. Nine searchable pouches show equipment, armor, arrows, materials, food, Zonai devices and key items, with quantities, available capacity and item details (durability, fusions, bonuses, dyes, food effects and ingredients). Names follow the selected language; original IDs remain visible. Missing data is shown as unavailable. Inventory follows the same live or inspected snapshot as the map. Saves remain read-only.
 
 
 ## Quests
 
-Open **Quests** for all 253 Adventure Log entries: completed, in progress, not started and unknown. Progress follows the same live or inspected save as Map and Inventory. Search by name, character or location and filter by quest type/status. **View on map** selects the relevant layer and highlights a marker. The **Quests** category in the sidebar filters toggles quest markers independently of collectible filters; quest search/type/status filters also apply to markers. Shared locations fan out so each marker is clickable. Markers indicate a reference area or associated shrine, not the NPC’s exact position or current quest objective; five entries have no fixed location. Names and locations are currently English in both interface languages. No manual overrides or save editing.
+Open **Quests** for all 253 Adventure Log entries: completed, in progress, not started and unknown. Progress follows the same live or inspected save as Map and Inventory. Search by name, character or location and filter by quest type/status. **View on map** selects the relevant layer and highlights a marker. The **Quests** category in the sidebar filters toggles quest markers independently of collectible filters; quest search/type/status filters also apply to markers. Shared locations fan out so each marker is clickable. Markers indicate a reference area or associated shrine, not the NPC’s exact position or current quest objective; five entries have no fixed location. Quest names, characters and associated locations follow the selected Spanish/English language in cards and map markers. Search accepts either language, and guide links keep their original English targets. No manual overrides or save editing.
 
 The **Quests** category in the sidebar filters, with its own icon and disabled by default, toggles all quest markers. Each mission also has a **Show on the map** checkbox; hiding its marker keeps it in the list. Individual choices survive toggling the category. **View on map** makes that mission visible again.
 

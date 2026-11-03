@@ -6,7 +6,7 @@ foreach ($directory in @('scripts', 'src', 'tools', 'assets', 'licenses', 'docs'
 }
 Copy-Item -LiteralPath (Join-Path $projectRoot 'scripts/build.ps1'), (Join-Path $projectRoot 'scripts/package.ps1') -Destination (Join-Path $fixture 'scripts')
 Copy-Item -LiteralPath (Join-Path $projectRoot 'assets/hyrulesync.ico') -Destination (Join-Path $fixture 'assets')
-foreach ($name in @('assets/resources.json', 'assets/towers.json', 'assets/credits.json')) {
+foreach ($name in @('assets/resources.json', 'assets/towers.json', 'assets/shrines.json', 'assets/credits.json')) {
     Set-Content -LiteralPath (Join-Path $fixture $name) -Value '{}' -Encoding UTF8
 }
 foreach ($name in @('LICENSE', 'THIRD_PARTY.md', 'docs/THIRD_PARTY.es.md', 'docs/USAGE.md', 'docs/USAR.md', 'licenses/Leaflet.txt', 'licenses/React.txt', 'licenses/SavegameEditors.txt')) {

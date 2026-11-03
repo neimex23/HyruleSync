@@ -16,6 +16,7 @@ def save(path,playtime,found):
 a=TEST/'account/slot_00/progress.sav';b=TEST/'account/slot_01/progress.sav'
 a.parent.mkdir(parents=True,exist_ok=True);b.parent.mkdir(parents=True,exist_ok=True)
 save(a,1000,0);save(b,900,0)
+now=time.time();os.utime(b,(now-2,now-2));os.utime(a,(now-1,now-1))
 urlfile=TEST/'url.txt';urlfile.unlink(missing_ok=True)
 (TEST/'.state').mkdir(exist_ok=True)
 (TEST/'.state/settings.json').write_text(json.dumps({'source':'','mode':'file','auto':True,'followLink':False,'showLink':True,'linkOrder':'above'}),encoding='utf-8')
@@ -70,7 +71,9 @@ try:
  assert state()['snapshot']==live['snapshot']
  results.append('Consulta de slots, ruta y carga binaria sin cambiar Autosync ni escribir saves; preferencias de Link')
  from urllib.parse import quote
- code,folders=request('api/folders?path='+quote(str(TEST/'account')));assert code==200 and {f['name'] for f in folders['folders']}=={'slot_00','slot_01'};assert request('api/folders?path='+quote(str(TEST/'missing')))[0]==400;results.append('Navegación de carpetas y error de ruta inexistente');results.append('Selecciona por Playtime, aunque otro slot tenga fecha posterior')
+ code,folders=request('api/folders?path='+quote(str(TEST/'account')));assert code==200 and {f['name'] for f in folders['folders']}=={'slot_00','slot_01'};assert request('api/folders?path='+quote(str(TEST/'missing')))[0]==400;results.append('Navegación de carpetas y error de ruta inexistente')
+ save(b,500,1);s=until(lambda s:s.get('snapshot',{}).get('file')==str(b));assert s['snapshot']['playtime']==500 and s['snapshot']['states'][0]==1
+ save(a,400,0);s=until(lambda s:s.get('snapshot',{}).get('file')==str(a));assert s['snapshot']['playtime']==400;results.append('Sigue el guardado más reciente al alternar slots con menor tiempo de juego')
  save(b,2000,1);s=until(lambda s:s.get('snapshot',{}).get('playtime')==2000);assert s['snapshot']['states'][0]==1;results.append('Autosync cambia de slot y actualiza los puntos al guardar')
  request('api/auto-off',b'');save(b,2001,0);time.sleep(1.7);assert state()['snapshot']['playtime']==2000
  request('api/refresh',b'');s=until(lambda s:s['snapshot']['playtime']==2001);assert s['snapshot']['states'][0]==0;results.append('Pausa Autosync y actualización manual')

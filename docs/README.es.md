@@ -25,7 +25,7 @@ El contador suma las descargas de archivos de GitHub Releases de todas las versi
 - Aviso de nuevas versiones con descarga del ZIP y botón «Reportar problema» que abre GitHub Issues.
 - Catálogo de 2.414 entradas; rutas de kologs y conexiones de cuevas.
 - Carga manual de `progress.sav`, consulta de coordenadas y diagnóstico por hash/GUID.
-- Elección del slot con mayor tiempo de juego, espera para evitar lecturas incompletas y conservación del último estado válido.
+- Elección del guardado más reciente por fecha de modificación entre slots manuales y automáticos, espera para evitar lecturas incompletas y conservación del último estado válido.
 - Preferencias de carpeta y Autosync guardadas localmente; una instancia por carpeta de aplicación.
 - Icono propio en el ejecutable, navegador y área de notificación.
 
@@ -115,14 +115,26 @@ El catálogo incluye 15 atalayas adicionales: el completado exige activación, y
 Cada punto tiene un botón **Ver guía** que abre Zelda Dungeon en otra pestaña. Los lugares con nombre abren su ficha; los coleccionables sin nombre y las demás categorías abren el mapa externo en sus coordenadas y capa, donde puedes seleccionar el icono correspondiente para consultar la ayuda. Las páginas externas pueden cambiar o tener información incompleta. No se guarda una colección de referencias ni contenido de guías descargado.
 
 
+## HyruleWorld
+
+El **Recetario** incluye 36 combinaciones de platos, postres y elixires con cantidades de ingredientes, preparación y efectos. Busca platos o ingredientes en español o inglés y filtra por tipo o efecto. Las recetas están incluidas para consultarlas sin conexión y sin cargar una partida.
+
+Las fichas de personajes incluyen retratos, estados **Descubierto / Por descubrir / Sin verificar**, contador y filtro según el guardado. Siguen Autosync y las partidas inspeccionadas. Los campos ausentes quedan sin verificar; leer el perfil y quitar su aviso de nuevo no pierde el descubrimiento. Los retratos proceden de Zelda Dungeon/Zelda Wiki y requieren conexión; si fallan, se muestran iniciales.
+
+Abre **HyruleWorld** para **Tu álbum**, la **Enciclopedia hyliana** y una **Guía de personajes** completa con 22 perfiles. Sus 509 entradas permiten buscar en español o inglés y filtrar por categoría/estado. Abre **Dónde conseguirlo** en cada ficha para consultar las zonas habituales y una guía de Zelda Dungeon. El álbum refleja registros fotografiados y comprados de la partida activa o inspeccionada; los campos desconocidos quedan sin verificar. Las fotos personales son archivos separados y no se muestran. Las ilustraciones de referencia requieren internet y tienen pictogramas locales de respaldo; nombres, lugares y notas funcionan sin conexión. No se editan partidas.
+
 ## Inventario
+
+**Resumen** reúne armaduras, niveles de mejora, recuerdos, telas, equipamiento de caballo, recompensas y medallas, con accesos a cada sección concreta. El plan de armaduras y el nivel objetivo se guardan junto al ejecutable en `.state/settings.json`, incluso al reiniciar la app o cambiar de navegador. Los costes se recalculan con la partida activa o consultada.
+
+Inventario incluye las subpestañas **Bolsas**, **Armaduras**, **Otras colecciones** y **Medallas de jefes**. Las fichas con imágenes cubren las 135 piezas obtenibles y un plan de mejoras que descuenta materiales y rupias una sola vez del total. Recuerdos, telas, equipo de caballo y recompensas se consultan desde el guardado. Consulta la [guía de colecciones](COLLECTIONS.es.md) para ver cómo usarlo e interpretar los estados.
 
 Abre **Inventario**, junto a Mapa, para consultar vida guardada, corazones/stamina/batería máximos, rupias y puntos del establo. Las nueve bolsas permiten buscar equipo, armaduras, flechas, materiales, comida, dispositivos zonnan y objetos importantes. Incluyen cantidades, capacidad disponible y detalles: durabilidad, fusiones, bonificaciones, tintes, efectos e ingredientes. Los nombres siguen el idioma elegido y se conserva el ID original. Los datos ausentes aparecen como no disponibles. Inventario usa el mismo guardado en vivo o consultado que el mapa. La partida sigue siendo de solo lectura.
 
 
 ## Misiones
 
-La pestaña **Misiones** incluye las 253 entradas del diario: hechas, en curso, por hacer y sin verificar. Usa el mismo guardado en seguimiento o consulta temporal que Mapa e Inventario. Permite buscar por nombre, personaje o lugar y filtrar por tipo/estado. **Ver en el mapa** elige la capa y resalta el marcador. La categoría **Misiones** de los filtros laterales permite mostrarlos u ocultarlos; los filtros de Misiones también se aplican a sus marcadores, independientemente de los filtros de coleccionables. Los marcadores compartidos se separan visualmente para poder elegir cada uno. Indican una zona de referencia o el santuario asociado, no la posición exacta del personaje ni el objetivo actual; cinco misiones no tienen ubicación fija. Los nombres y lugares se muestran en inglés. No hay marcado manual ni edición del guardado.
+La pestaña **Misiones** incluye las 253 entradas del diario: hechas, en curso, por hacer y sin verificar. Usa el mismo guardado en seguimiento o consulta temporal que Mapa e Inventario. Permite buscar por nombre, personaje o lugar y filtrar por tipo/estado. **Ver en el mapa** elige la capa y resalta el marcador. La categoría **Misiones** de los filtros laterales permite mostrarlos u ocultarlos; los filtros de Misiones también se aplican a sus marcadores, independientemente de los filtros de coleccionables. Los marcadores compartidos se separan visualmente para poder elegir cada uno. Indican una zona de referencia o el santuario asociado, no la posición exacta del personaje ni el objetivo actual; cinco misiones no tienen ubicación fija. Los nombres de misiones, personajes y lugares asociados siguen el idioma español/inglés elegido, tanto en las fichas como en sus marcadores. La búsqueda acepta ambos idiomas y los enlaces de las guías conservan su destino original en inglés. No hay marcado manual ni edición del guardado.
 
 La categoría **Misiones** de los filtros laterales, con su propio icono y desactivada por defecto, muestra u oculta todos los marcadores. Cada misión también tiene su casilla **Mostrar en el mapa**: ocultarla conserva la misión en la lista y su preferencia al activar o desactivar la categoría. **Ver en el mapa** vuelve a mostrar esa misión.
 

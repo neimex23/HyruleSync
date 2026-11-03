@@ -318,3 +318,376 @@
   width: 21px;
   height: 21px;
 }
+
+.inventory-tabs {
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid var(--line);
+  margin: 24px 0;
+  overflow-x: auto;
+}
+.inventory-tabs button {
+  background: transparent;
+  color: var(--muted);
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
+  padding: 14px 16px;
+  white-space: nowrap;
+}
+.inventory-tabs button[aria-selected="true"] {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+.collection-content h2 {
+  font-size: 21px;
+  font-weight: 500;
+}
+.collection-help,
+.collection-counts,
+.collection-card p,
+.collection-sources {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.collection-counts {
+  color: var(--gold);
+}
+.collection-filters {
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.collection-section-heading {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.collection-section-heading h3 {
+  margin: 0;
+}
+.upgrade-planner {
+  padding: 22px;
+  border: 1px solid #c9b58066;
+  border-radius: 10px;
+  background: linear-gradient(110deg, #35453d77, #102329aa);
+  margin: 24px 0;
+}
+.collection-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.collection-actions button,
+.medal-bosses button {
+  font-size: 11px;
+}
+.upgrade-rupees {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.upgrade-rupees strong {
+  color: var(--gold);
+}
+.upgrade-rupees > span {
+  color: var(--muted);
+}
+.collection-table-wrap {
+  overflow-x: auto;
+}
+.collection-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.collection-table caption {
+  text-align: left;
+  color: var(--muted);
+  padding: 8px 0 14px;
+}
+.collection-table th,
+.collection-table td {
+  padding: 10px;
+  border-bottom: 1px solid #65736b44;
+  text-align: right;
+}
+.collection-table th {
+  font-weight: 500;
+}
+.collection-table th:first-child {
+  text-align: left;
+}
+.collection-shortage {
+  color: #f2bd92;
+}
+.collection-card {
+  overflow-wrap: anywhere;
+}
+.collection-card.collection-owned {
+  border-color: #8bb99b66;
+}
+.collection-badge,
+.collection-tag {
+  display: inline-block;
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px solid #65736b88;
+  border-radius: 4px;
+  padding: 3px 6px;
+  margin-bottom: 12px;
+}
+.collection-owned .collection-badge {
+  color: #a9dfbe;
+  border-color: #a9dfbe55;
+}
+.collection-card .collection-level {
+  color: var(--gold);
+}
+.collection-card h4 {
+  font-size: 12px;
+  margin: 16px 0 8px;
+}
+.collection-sources {
+  padding-left: 18px;
+}
+.collection-select {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  padding: 15px 0;
+}
+.collection-select input {
+  accent-color: var(--gold);
+  width: 16px;
+  height: 16px;
+}
+.upgrade-tier {
+  border-top: 1px solid #65736b44;
+  margin-top: 12px;
+}
+.upgrade-tier ul {
+  padding-left: 18px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.medal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+  gap: 16px;
+}
+.medal-total {
+  font-size: 30px !important;
+  color: var(--gold) !important;
+  margin-bottom: 10px;
+}
+.medal-total span {
+  font-size: 16px;
+  color: var(--muted);
+}
+.collection-card progress {
+  width: 100%;
+  height: 7px;
+  accent-color: #a9dfbe;
+}
+.medal-bosses {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow: auto;
+}
+.medal-bosses li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #65736b44;
+}
+.medal-bosses small {
+  display: block;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 5px;
+}
+.medal-bosses button {
+  flex-shrink: 0;
+}
+.collection-card > .guide-button {
+  display: inline-flex;
+  margin: 10px 0;
+}
+
+.collection-howto {
+  color: #c4d8cd;
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 760px;
+}
+.collection-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 140px;
+  border-radius: 7px;
+  background: radial-gradient(ellipse at 50% 40%, #d8c28c18, #07171f66 75%);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.collection-art img {
+  display: block;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 9px #0006);
+}
+.collection-art .inventory-glyph {
+  width: 48px;
+  height: 48px;
+  opacity: 0.65;
+}
+.collection-art.is-concealed > img,
+.collection-art.is-concealed > svg {
+  filter: blur(12px);
+  opacity: 0.65;
+}
+.collection-art-memory {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+.collection-art-memory img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.collection-art-small {
+  height: 56px;
+  width: 65px;
+  flex-shrink: 0;
+  margin: 0;
+  aspect-ratio: auto;
+}
+.collection-art-small img {
+  height: 52px;
+  width: 52px;
+  object-fit: contain;
+}
+.collection-types {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+.collection-types button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #65736b77;
+  background: #102229;
+  color: var(--muted);
+  border-radius: 8px;
+  font-size: 12px;
+}
+.collection-types button[aria-pressed="true"] {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: #2c3e35;
+}
+.collection-types small {
+  display: block;
+  color: var(--muted);
+  margin-top: 7px;
+}
+.collection-location {
+  margin: 14px 0;
+}
+.collection-location > summary {
+  color: #bddbca;
+  padding: 7px 0;
+}
+.collection-location .guide-button {
+  display: inline-block;
+  margin: 10px 0;
+}
+.upgrade-plan-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 14px;
+  color: var(--gold);
+}
+.upgrade-plan-summary::-webkit-details-marker {
+  display: none;
+}
+.upgrade-plan-summary > span {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 12px;
+}
+.upgrade-plan-summary::after {
+  content: "+";
+  font-size: 20px;
+  color: var(--gold);
+}
+.upgrade-planner[open] > .upgrade-plan-summary {
+  padding-bottom: 22px;
+  border-bottom: 1px solid #65736b44;
+  margin-bottom: 20px;
+}
+.upgrade-planner[open] > .upgrade-plan-summary::after {
+  content: "−";
+}
+.upgrade-materials > summary {
+  padding: 10px 0;
+  font-size: 12px;
+}
+.upgrade-material-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.upgrade-material-name .inventory-item-image {
+  width: 28px;
+  height: 28px;
+}
+@media (max-width: 1100px) {
+  .collection-types {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 680px) {
+  .inventory-tabs {
+    margin: 16px 0;
+  }
+  .inventory-tabs button {
+    padding: 12px 10px;
+    font-size: 12px;
+  }
+  .upgrade-planner {
+    padding: 15px;
+  }
+  .collection-table th,
+  .collection-table td {
+    padding: 10px 6px;
+  }
+  .collection-types {
+    gap: 8px;
+  }
+  .collection-types button {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .collection-types .collection-art {
+    width: 100%;
+  }
+}

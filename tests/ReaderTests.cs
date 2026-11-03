@@ -117,6 +117,56 @@ public static class ReaderTests {
         pages.Close("unknown",null,now);Assert(pages.Connected("reload",a),"Unknown close cannot close another document");
         pages.Close("reload",null,now);Assert(pages.ShouldExit(now.AddSeconds(5),false),"Pagehide beacon closes its document");
     }
+    static void CheckShrineChests(int length, uint header, uint metadata) {
+        var data = Fixture(length, header, metadata);
+        uint visitHash = InventoryReader.Hash("IsVisitLocation.Dungeon001");
+        Assert(visitHash == 0xab281eb6u, "Shrine discovery hash matches the source table");
+        Put(data, 56, visitHash); Put(data, 60, 1);
+        Put(data, 64, 456); Put(data, 68, 0);
+        Put(data, 72, 789); Put(data, 76, 1);
+        Put(data, 80, 0xa3db7114); Put(data, 84, 96);
+        var point = new MapPoint { category = "shrines", hash = "123", visitHash = visitHash.ToString(), chestHashes = new[] { "456", "789" } };
+        string raw;
+        var original = (byte[])data.Clone();
+        var reader = new SaveReader(data);
+        var chests = reader.ReadChests(point);
+        Assert(reader.State(point, out raw) == 0 && reader.BooleanState(point.visitHash) == 1, "Discovery does not complete a shrine");
+        Assert(chests.total == 2 && chests.opened == 1 && chests.unknown == 0, "Read individual chest flags in a multi-chest shrine");
+        Assert(Convert.ToBase64String(original) == Convert.ToBase64String(data), "Reading discovery and chests preserves save bytes");
+        Put(data, 44, 1654019904);
+        reader = new SaveReader(data);
+        Assert(reader.State(point, out raw) == 1 && reader.ReadChests(point).opened == 1, "Shrine completion does not imply all chests");
+        Put(data, 68, 1);
+        chests = new SaveReader(data).ReadChests(point);
+        Assert(chests.opened == 2 && chests.unknown == 0, "All chests require every chest flag");
+        Put(data, 72, 790);
+        chests = new SaveReader(data).ReadChests(point);
+        Assert(chests.opened == 1 && chests.unknown == 1, "Missing chest hashes stay unverified");
+        Assert(new SaveReader(data).ReadChests(new MapPoint { category = "shrines" }).total == 0, "Missing shrine metadata stays unavailable");
+        Assert(new SaveReader(data).ReadChests(new MapPoint { category = "towers" }) == null, "Chest progress only applies to shrines");
+    }
+    static void CheckShrineCatalog() {
+        var json = new System.Web.Script.Serialization.JavaScriptSerializer();
+        string shrineData = System.Text.Encoding.UTF8.GetString(MapResources.Embedded("shrines.json"));
+        var definitions = json.Deserialize<ShrineCatalog>(shrineData).shrines;
+        var data = new System.Collections.Generic.Dictionary<string, Entry[]>();
+        foreach (string category in new[] { "hidden_koroks", "carry_koroks", "shrines", "lightroots", "caves", "bubbuls", "wells", "chasms", "locations", "hinoxes", "taluses", "moldugas", "flux_constructs", "froxes", "gleeoks", "sages_wills", "old_maps", "addison_signposts", "schema_stones", "yiga_schematics" })
+            data.Add(category, new Entry[0]);
+        var entries = new Entry[definitions.Length];
+        for (int i = 0; i < entries.Length; i++) entries[i] = new Entry { internal_name = definitions[i].id };
+        data["shrines"] = entries;
+        var loaded = Catalog.Load(json.Serialize(data), "[]", shrineData);
+        Assert(loaded.points.Count == 152 && loaded.points[0].id == "shrines:0" && loaded.points[151].id == "shrines:151", "Shrine metadata preserves catalog identities and order");
+        int chests = 0;
+        var used = new System.Collections.Generic.HashSet<string>();
+        for (int i = 0; i < entries.Length; i++) {
+            var point = loaded.points[i];
+            Assert(point.visitHash == InventoryReader.Hash("IsVisitLocation." + point.internalName).ToString(), "Shrine visit metadata matches its own dungeon");
+            Assert(point.chestHashes.Length > 0, "Each shrine has chest metadata");
+            foreach (string hash in point.chestHashes) { Assert(used.Add(hash), "A chest belongs to exactly one shrine"); chests++; }
+        }
+        Assert(chests == 166, "Catalog covers all 166 shrine chests");
+    }
     static void CheckProgressCounts(){
         var catalog=new Catalog();
         catalog.categories.Add(new Category{id="shrines",count=3});
@@ -206,6 +256,59 @@ public static class ReaderTests {
         Put(data, 44, 1654019904);
         Assert(QuestReader.Read(new SaveReader(data), definitions)[0].state == "unknown", "Shrine Clear is not quest Complete");
     }
+    static void CheckWorld(int length, uint header, uint metadata) {
+        var data = Fixture(length, header, metadata);
+        var definitions = new[] { new WorldDefinition { id = "test", hash = 123 }, new WorldDefinition { id = "absent", hash = 124 } };
+        string[] values = { "Unopened", "TakePhoto", "Buy", "FutureEnum" };
+        string[] states = { "missing", "photo", "bought", "unknown" };
+        for (int i = 0; i < values.Length; i++) {
+            Put(data, 44, InventoryReader.Hash(values[i]));
+            var entries = WorldReader.Read(new SaveReader(data), definitions);
+            Assert(entries[0].state == states[i], "Compendium enum: " + values[i]);
+            Assert(entries[0].raw == InventoryReader.Hash(values[i]), "Compendium retains raw enum");
+            Assert(entries[1].state == "unknown" && entries[1].raw == null, "Missing compendium field is unknown");
+        }
+        Assert(WorldReader.Read(new SaveReader(data)).Length == 509, "Embedded compendium has all 509 definitions");
+    }
+    static void CheckCharacters(int length, uint header, uint metadata) {
+        var data = Fixture(length, header, metadata);
+        Put(data, 48, 124);
+        var definitions = new[] {
+            new CharacterDefinition { id = "test", notificationHash = 123, newHash = 124 },
+            new CharacterDefinition { id = "no-new-field", notificationHash = 123, newHash = 125 },
+            new CharacterDefinition { id = "absent", notificationHash = 125, newHash = 126 }
+        };
+        uint[,] flags = { { 1, 0 }, { 1, 1 }, { 0, 1 }, { 0, 0 }, { 2, 0 }, { 0, 2 } };
+        string[] expected = { "discovered", "discovered", "discovered", "missing", "unknown", "unknown" };
+        for (int i = 0; i < expected.Length; i++) {
+            Put(data, 44, flags[i, 0]); Put(data, 52, flags[i, 1]);
+            var before = (byte[])data.Clone();
+            var result = WorldReader.ReadCharacters(new SaveReader(data), definitions);
+            Assert(result[0].state == expected[i], "Character registration flags: " + flags[i, 0] + "/" + flags[i, 1]);
+            Assert(result[0].notificationRaw == flags[i, 0] && result[0].newRaw == flags[i, 1], "Retain character raw flags");
+            Assert(result[1].state == (flags[i, 0] == 1 ? "discovered" : "unknown"), "Absent unread field cannot prove undiscovered");
+            Assert(result[2].state == "unknown" && result[2].notificationRaw == null && result[2].newRaw == null, "Missing character fields remain unknown");
+            Assert(System.Linq.Enumerable.SequenceEqual(before, data), "Character inspection never edits save bytes");
+        }
+        var all = WorldReader.ReadCharacters(new SaveReader(data));
+        Assert(all.Length == 22 && System.Linq.Enumerable.All(all, entry => entry.state == "unknown"), "All 22 embedded profiles are unknown without their fields");
+    }
+    static void CheckCollections(int length, uint header, uint metadata) {
+        var data = Fixture(length, header, metadata);
+        var definitions = new[] { new CollectionDefinition { id = "test", hash = 123 }, new CollectionDefinition { id = "absent", hash = 124 } };
+        uint[] values = { 0, 1, 2, UInt32.MaxValue };
+        string[] states = { "missing", "owned", "unknown", "unknown" };
+        for (int i = 0; i < values.Length; i++) {
+            Put(data, 44, values[i]);
+            var before = (byte[])data.Clone();
+            var entries = CollectionReader.Read(new SaveReader(data), definitions);
+            Assert(entries[0].state == states[i] && entries[0].raw == values[i], "Collection flag retains raw value and handles invalid booleans");
+            Assert(entries[1].state == "unknown" && entries[1].raw == null, "Absent collection flags stay unknown");
+            Assert(System.Linq.Enumerable.SequenceEqual(before, data), "Collection inspection never edits save bytes");
+        }
+        var all = CollectionReader.Read(new SaveReader(data));
+        Assert(all.Length == 100 && System.Linq.Enumerable.All(all, entry => entry.state == "unknown"), "All embedded collection flags are read without guessing absent values");
+    }
     public static int Main() {
         try {
             Assert(Locale.Resolve("es-UY")=="es", "Spanish Windows locale");
@@ -230,11 +333,25 @@ public static class ReaderTests {
             CheckPosition(2307552,0x46c3c8,0x3c050);
             CheckPosition(2307656,0x47e0f4,0x3c088);
             CheckPosition(2307856,0x49e946,0x3c138);
+            CheckCollections(2307552,0x46c3c8,0x3c050);
+            CheckCollections(2307656,0x47e0f4,0x3c088);
+            CheckCollections(2307856,0x49e946,0x3c138);
             CheckUpdates();
             CheckHDMap();
             CheckPageLifetime();
             CheckProgressCounts();
+            CheckShrineCatalog();
+            CheckShrineChests(2307552,0x46c3c8,0x3c050);
+            CheckShrineChests(2307656,0x47e0f4,0x3c088);
+            CheckShrineChests(2307856,0x49e946,0x3c138);
+            Program.CheckSaveSync(Assert, () => Fixture(2307856, 0x49e946, 0x3c138));
             CheckQuests(2307552,0x46c3c8,0x3c050);
+            CheckWorld(2307552,0x46c3c8,0x3c050);
+            CheckWorld(2307656,0x47e0f4,0x3c088);
+            CheckWorld(2307856,0x49e946,0x3c138);
+            CheckCharacters(2307552,0x46c3c8,0x3c050);
+            CheckCharacters(2307656,0x47e0f4,0x3c088);
+            CheckCharacters(2307856,0x49e946,0x3c138);
             CheckQuests(2307656,0x47e0f4,0x3c088);
             CheckQuests(2307856,0x49e946,0x3c138);
             CheckInventory(2307552,0x46c3c8,0x3c050);
@@ -270,6 +387,6 @@ public static class ReaderTests {
             Put(data,60,1);rejected=false;try {new SaveReader(data);}catch(InvalidDataException){rejected=true;}
             Assert(rejected,"Reject invalid GUID offset");
             Console.WriteLine(passed+" reader checks passed.");return 0;
-        } catch(Exception ex) {Console.Error.WriteLine(ex.Message);return 1;}
+        } catch(Exception ex) {Console.Error.WriteLine(ex);return 1;}
     }
 }

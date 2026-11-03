@@ -52,6 +52,52 @@ main {
   opacity: 0.5;
 }
 
+.point-icon.discovered img,
+#detailIcon[data-state="discovered"] {
+  filter: brightness(0) saturate(100%) invert(86%) sepia(76%) saturate(1040%)
+    hue-rotate(349deg) brightness(103%) contrast(102%);
+}
+
+#detailState[data-state="discovered"] {
+  color: #f5d34e;
+}
+
+.map-state-legend {
+  display: flex;
+  gap: 7px;
+  align-items: baseline;
+  margin: 0 24px 12px;
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.map-state-legend i {
+  flex: 0 0 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f5d34e;
+}
+
+.shrine-chests-badge {
+  position: absolute;
+  bottom: -4px;
+  right: -6px;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  background: #152328;
+  border: 1px solid #e6d9a0;
+  border-radius: 3px;
+  color: #e6d9a0;
+}
+
+.shrine-chests-badge svg {
+  width: 11px;
+  height: 11px;
+}
+
 .point-icon.unknown {
   opacity: 0.35;
   filter: grayscale(1);
@@ -291,6 +337,21 @@ main {
   font-size: 11px;
   color: #ded09e;
   padding: 7px 0 14px;
+}
+
+#detailChests {
+  margin: 0 0 14px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #e6c27b;
+}
+
+#detailChests[data-state="found"] {
+  color: #88d5c1;
+}
+
+#detailChests[data-state="unknown"] {
+  color: var(--muted);
 }
 
 .coords {

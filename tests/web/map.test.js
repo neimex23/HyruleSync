@@ -6,6 +6,8 @@ import {
   ll,
   playerLayer,
   prepareMapCatalog,
+  mapPointState,
+  shrineChestState,
 } from "../../web/src/features/map/model.js";
 
 const fixture = {
@@ -50,6 +52,68 @@ const fixture = {
   ],
 };
 describe("map model", () => {
+  it("distinguishes shrine/tower discovery from completion and chest progress", () => {
+    const points = ["shrines", "towers", "caves", "shrines", "shrines"].map(
+      (category, index) => ({
+        category,
+        index,
+        position: { x: index, y: 100, z: 0 },
+        searchText: "",
+      }),
+    );
+    const snapshot = {
+      states: [0, 0, 0, 1, -1],
+      visited: [1, 1, 1, 1, -1],
+      shrineChests: [
+        { opened: 1, total: 2, unknown: 0 },
+        null,
+        null,
+        { opened: 1, total: 1, unknown: 0 },
+        { opened: 0, total: 1, unknown: 1 },
+      ],
+    };
+    expect(points.map((point) => mapPointState(point, snapshot))).toEqual([
+      "discovered",
+      "discovered",
+      "missing",
+      "found",
+      "unknown",
+    ]);
+    const options = {
+      layer: "surface",
+      active: new Set(["shrines", "towers", "caves"]),
+      snapshot,
+    };
+    expect(
+      filterMapPoints(points, { ...options, mode: "discovered" }).map(
+        (p) => p.index,
+      ),
+    ).toEqual([0, 1]);
+    expect(
+      filterMapPoints(points, { ...options, mode: "missing" }).map(
+        (p) => p.index,
+      ),
+    ).toEqual([0, 1, 2]);
+    expect(
+      filterMapPoints(points, { ...options, mode: "found" }).map(
+        (p) => p.index,
+      ),
+    ).toEqual([3]);
+    expect(
+      filterMapPoints(points, { ...options, mode: "chests" }).map(
+        (p) => p.index,
+      ),
+    ).toEqual([0]);
+    expect(mapPointState(points[0], null)).toBe("unknown");
+    expect(shrineChestState({ opened: 2, total: 2, unknown: 0 })).toBe("found");
+    expect(shrineChestState({ opened: 1, total: 2, unknown: 1 })).toBe(
+      "unknown",
+    );
+    expect(shrineChestState({ opened: 0, total: 0, unknown: 0 })).toBe(
+      "unknown",
+    );
+    expect(shrineChestState(null)).toBe("unknown");
+  });
   it("reuses matching points while panning and invalidates changed filters and snapshots", () => {
     const catalog = prepareMapCatalog(fixture);
     const filter = createMapPointFilter();

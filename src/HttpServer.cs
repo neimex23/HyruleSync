@@ -178,7 +178,7 @@ public static partial class Program {
             + "\r\nCache-Control: " + CacheControl(response.ContentType)
             + "\r\nX-Content-Type-Options: nosniff"
             + "\r\nReferrer-Policy: no-referrer"
-            + "\r\nContent-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://raw.githubusercontent.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'"
+            + "\r\nContent-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://raw.githubusercontent.com https://www.zeldadungeon.net https://cdn.wikimg.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'"
             + "\r\nConnection: close\r\n\r\n";
         byte[] bytes = Encoding.ASCII.GetBytes(header);
         stream.Write(bytes, 0, bytes.Length);

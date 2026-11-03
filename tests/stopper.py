@@ -3,6 +3,7 @@ import json, pathlib, shutil, subprocess, sys, time, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 APP = ROOT / 'outputs/HyruleSync'
+EXPECTED_CREDITS = json.loads((ROOT / 'assets/credits.json').read_text(encoding='utf-8-sig'))
 children = []
 decoy = subprocess.Popen([sys.executable, '-c', 'import time; time.sleep(30)'], creationflags=subprocess.CREATE_NO_WINDOW)
 try:
@@ -28,7 +29,8 @@ try:
         expected = language or ('es' if config['windowsCulture'].lower().startswith('es') else 'en')
         assert config['language'] == expected
         credits = json.loads(read('api/credits'))
-        assert credits['author'] == 'Neimex23' and credits['ai']['model'] == 'GPT-6.1'
+        for key, value in EXPECTED_CREDITS.items():
+            assert credits.get(key) == value, 'Packaged credits differ from source: ' + key
         assert read('legal/leaflet.txt') == (ROOT / 'licenses/Leaflet.txt').read_bytes()
         assert b'Neimex23' in read('legal/app.txt')
     result = subprocess.run([str(APP / 'HyruleSync.Stop.exe'), '--quiet'], timeout=12, creationflags=subprocess.CREATE_NO_WINDOW)
