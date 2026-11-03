@@ -183,12 +183,20 @@ describe("inventory subtabs", () => {
   it("preserves the plan between tabs, supports keyboard navigation and follows snapshots", () => {
     const store = createViewStore();
     const inv = inventory(["Armor_001_Head"], [["Item_Enemy_77", 3]], 7);
+    // Tab state needs only two real pieces; the full catalog is checked above.
+    const collectionData = {
+      ...data,
+      armor: data.armor.filter((piece) =>
+        ["Armor_001_Head", "Armor_001_Upper"].includes(piece.id),
+      ),
+    };
     store.update({
       view: "inventory",
-      inventory: { snapshot: snapshot(inv), data: names, collectionData: data },
+      inventory: { snapshot: snapshot(inv), data: names, collectionData },
     });
     const ui = render(<InventoryPanel store={store} />);
-    fireEvent.click(ui.getByRole("tab", { name: "Armaduras" }));
+    const armorTab = ui.getByRole("tab", { name: "Armaduras" });
+    fireEvent.click(armorTab);
     const panel = () =>
       within(ui.container.querySelector("#inventory-content-armor"));
     expect(ui.container.querySelector(".upgrade-planner").open).toBe(false);
@@ -213,14 +221,20 @@ describe("inventory subtabs", () => {
     fireEvent.keyDown(ui.getByRole("tab", { name: "Otras colecciones" }), {
       key: "ArrowLeft",
     });
+    expect(document.activeElement).toBe(armorTab);
+    expect(armorTab.getAttribute("aria-selected")).toBe("true");
     expect(panel().getByLabelText("Nivel objetivo").value).toBe("1");
+    expect(within(hood).getByLabelText("Incluir en el plan").checked).toBe(
+      true,
+    );
+    expect(panel().getByText("1 mejoras pendientes")).toBeTruthy();
     const next = inventory(["Armor_002_Head"], [], 50);
     act(() =>
       store.update({
         inventory: {
           snapshot: snapshot(next),
           data: names,
-          collectionData: data,
+          collectionData,
         },
       }),
     );
